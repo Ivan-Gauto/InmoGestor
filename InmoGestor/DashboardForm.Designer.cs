@@ -20,27 +20,27 @@ namespace InmoGestor
             lblSubtitulo = new Label();
             lblTitulo = new Label();
             panelCards = new Panel();
-            cardInmuebles = new GroupBox();
-            lblInmuebles = new Label();
             cardInquilinos = new GroupBox();
             lblInquilinos = new Label();
             cardContratos = new GroupBox();
             lblContratos = new Label();
             cardIngresos = new GroupBox();
+            label1 = new Label();
             lblIngresos = new Label();
+            cardInmuebles = new GroupBox();
+            lblInmuebles = new Label();
             panelPagos = new GroupBox();
             panelContratosVencer = new GroupBox();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            label1 = new Label();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
             panelHeader.SuspendLayout();
             panelCards.SuspendLayout();
-            cardInmuebles.SuspendLayout();
             cardInquilinos.SuspendLayout();
             cardContratos.SuspendLayout();
             cardIngresos.SuspendLayout();
+            cardInmuebles.SuspendLayout();
             SuspendLayout();
             // 
             // panelSidebar
@@ -93,28 +93,6 @@ namespace InmoGestor
             panelCards.Name = "panelCards";
             panelCards.Size = new Size(900, 120);
             panelCards.TabIndex = 2;
-            // 
-            // cardInmuebles
-            // 
-            cardInmuebles.Controls.Add(lblInmuebles);
-            cardInmuebles.ForeColor = SystemColors.ButtonFace;
-            cardInmuebles.Location = new Point(220, 83);
-            cardInmuebles.Name = "cardInmuebles";
-            cardInmuebles.Size = new Size(200, 100);
-            cardInmuebles.TabIndex = 0;
-            cardInmuebles.TabStop = false;
-            cardInmuebles.Text = "Inmuebles Totales";
-            cardInmuebles.Enter += cardInmuebles_Enter;
-            // 
-            // lblInmuebles
-            // 
-            lblInmuebles.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            lblInmuebles.ForeColor = Color.White;
-            lblInmuebles.Location = new Point(20, 40);
-            lblInmuebles.Name = "lblInmuebles";
-            lblInmuebles.Size = new Size(110, 42);
-            lblInmuebles.TabIndex = 0;
-            lblInmuebles.Text = "124";
             // 
             // cardInquilinos
             // 
@@ -171,6 +149,16 @@ namespace InmoGestor
             cardIngresos.TabStop = false;
             cardIngresos.Enter += cardIngresos_Enter;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(6, 20);
+            label1.Name = "label1";
+            label1.Size = new Size(50, 20);
+            label1.TabIndex = 1;
+            label1.Text = "label1";
+            label1.Click += label1_Click;
+            // 
             // lblIngresos
             // 
             lblIngresos.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
@@ -180,6 +168,28 @@ namespace InmoGestor
             lblIngresos.Size = new Size(160, 42);
             lblIngresos.TabIndex = 0;
             lblIngresos.Text = "$245.000";
+            // 
+            // cardInmuebles
+            // 
+            cardInmuebles.Controls.Add(lblInmuebles);
+            cardInmuebles.ForeColor = SystemColors.ButtonFace;
+            cardInmuebles.Location = new Point(220, 83);
+            cardInmuebles.Name = "cardInmuebles";
+            cardInmuebles.Size = new Size(200, 100);
+            cardInmuebles.TabIndex = 0;
+            cardInmuebles.TabStop = false;
+            cardInmuebles.Text = "Inmuebles Totales";
+            cardInmuebles.Enter += cardInmuebles_Enter;
+            // 
+            // lblInmuebles
+            // 
+            lblInmuebles.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            lblInmuebles.ForeColor = Color.White;
+            lblInmuebles.Location = new Point(20, 40);
+            lblInmuebles.Name = "lblInmuebles";
+            lblInmuebles.Size = new Size(110, 42);
+            lblInmuebles.TabIndex = 0;
+            lblInmuebles.Text = "124";
             // 
             // panelPagos
             // 
@@ -199,16 +209,6 @@ namespace InmoGestor
             panelContratosVencer.TabStop = false;
             panelContratosVencer.Text = "Contratos por Vencer";
             panelContratosVencer.Enter += panelContratosVencer_Enter;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(6, 20);
-            label1.Name = "label1";
-            label1.Size = new Size(50, 20);
-            label1.TabIndex = 1;
-            label1.Text = "label1";
-            label1.Click += label1_Click;
             // 
             // label2
             // 
@@ -256,11 +256,11 @@ namespace InmoGestor
             Load += DashboardForm_Load;
             panelHeader.ResumeLayout(false);
             panelCards.ResumeLayout(false);
-            cardInmuebles.ResumeLayout(false);
             cardInquilinos.ResumeLayout(false);
             cardContratos.ResumeLayout(false);
             cardIngresos.ResumeLayout(false);
             cardIngresos.PerformLayout();
+            cardInmuebles.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
