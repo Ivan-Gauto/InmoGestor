@@ -67,7 +67,7 @@ namespace InmoGestor
             // 
             lblSubtitulo.Font = new Font("Segoe UI", 10F);
             lblSubtitulo.ForeColor = Color.LightGray;
-            lblSubtitulo.Location = new Point(193, 37);
+            lblSubtitulo.Location = new Point(450, 20);
             lblSubtitulo.Name = "lblSubtitulo";
             lblSubtitulo.Size = new Size(100, 23);
             lblSubtitulo.TabIndex = 1;
@@ -154,7 +154,7 @@ namespace InmoGestor
             label1.AutoSize = true;
             label1.Location = new Point(6, 20);
             label1.Name = "label1";
-            label1.Size = new Size(50, 20);
+            label1.Size = new Size(59, 25);
             label1.TabIndex = 1;
             label1.Text = "label1";
             label1.Click += label1_Click;
@@ -193,6 +193,7 @@ namespace InmoGestor
             // 
             // panelPagos
             // 
+            panelPagos.BackColor = Color.FromArgb(20, 40, 60);
             panelPagos.Location = new Point(220, 220);
             panelPagos.Name = "panelPagos";
             panelPagos.Size = new Size(400, 200);
@@ -202,6 +203,7 @@ namespace InmoGestor
             // 
             // panelContratosVencer
             // 
+            panelContratosVencer.BackColor = Color.FromArgb(20, 40, 60);
             panelContratosVencer.Location = new Point(630, 220);
             panelContratosVencer.Name = "panelContratosVencer";
             panelContratosVencer.Size = new Size(400, 200);
@@ -215,7 +217,7 @@ namespace InmoGestor
             label2.AutoSize = true;
             label2.Location = new Point(963, 471);
             label2.Name = "label2";
-            label2.Size = new Size(50, 20);
+            label2.Size = new Size(59, 25);
             label2.TabIndex = 2;
             label2.Text = "label2";
             // 
@@ -224,7 +226,7 @@ namespace InmoGestor
             label3.AutoSize = true;
             label3.Location = new Point(728, 450);
             label3.Name = "label3";
-            label3.Size = new Size(50, 20);
+            label3.Size = new Size(59, 25);
             label3.TabIndex = 3;
             label3.Text = "label3";
             // 
@@ -233,7 +235,7 @@ namespace InmoGestor
             label4.AutoSize = true;
             label4.Location = new Point(841, 450);
             label4.Name = "label4";
-            label4.Size = new Size(50, 20);
+            label4.Size = new Size(59, 25);
             label4.TabIndex = 4;
             label4.Text = "label4";
             label4.Click += label4_Click;
