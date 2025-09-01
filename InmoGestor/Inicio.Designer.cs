@@ -58,7 +58,7 @@
             label1.Margin = new System.Windows.Forms.Padding(20, 10, 0, 0);
             label1.Name = "label1";
             label1.Padding = new System.Windows.Forms.Padding(0, 10, 10, 5);
-            label1.Size = new System.Drawing.Size(64, 30);
+            label1.Size = new System.Drawing.Size(79, 35);
             label1.TabIndex = 2;
             label1.Text = "Principal";
             // 
@@ -72,7 +72,7 @@
             label2.Margin = new System.Windows.Forms.Padding(10, 10, 0, 0);
             label2.Name = "label2";
             label2.Padding = new System.Windows.Forms.Padding(0, 10, 10, 5);
-            label2.Size = new System.Drawing.Size(100, 30);
+            label2.Size = new System.Drawing.Size(126, 35);
             label2.TabIndex = 4;
             label2.Text = "Administracion";
             // 
@@ -81,13 +81,14 @@
             label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             label5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(183)))), ((int)(((byte)(217)))));
-            label5.Location = new System.Drawing.Point(123, 40);
+            label5.Location = new System.Drawing.Point(153, 40);
             label5.Margin = new System.Windows.Forms.Padding(10, 10, 0, 0);
             label5.Name = "label5";
             label5.Padding = new System.Windows.Forms.Padding(0, 10, 10, 5);
             label5.Size = new System.Drawing.Size(89, 32);
             label5.TabIndex = 9;
             label5.Text = "Version 1.0";
+            label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
             // 
@@ -99,7 +100,7 @@
             label6.Margin = new System.Windows.Forms.Padding(10, 10, 0, 0);
             label6.Name = "label6";
             label6.Padding = new System.Windows.Forms.Padding(0, 10, 10, 5);
-            label6.Size = new System.Drawing.Size(74, 30);
+            label6.Size = new System.Drawing.Size(91, 35);
             label6.TabIndex = 10;
             label6.Text = "Financiero";
             // 
@@ -108,6 +109,7 @@
             this.menuStrip1.AutoSize = false;
             this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(40)))), ((int)(((byte)(60)))));
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Location = new System.Drawing.Point(0, 72);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(218, 453);
@@ -118,6 +120,7 @@
             // 
             this.menuStrip2.AutoSize = false;
             this.menuStrip2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.menuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Size = new System.Drawing.Size(1032, 72);
@@ -176,10 +179,10 @@
             this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.label4.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(51, 18);
+            this.label4.Location = new System.Drawing.Point(51, 12);
             this.label4.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(122, 26);
+            this.label4.Size = new System.Drawing.Size(116, 34);
             this.label4.TabIndex = 8;
             this.label4.Text = "Inmo";
             this.label4.UseMnemonic = false;
@@ -204,15 +207,15 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, -25);
+            this.pictureBox1.Location = new System.Drawing.Point(0, -15);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(54, 97);
+            this.pictureBox1.Size = new System.Drawing.Size(54, 84);
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
             // Inicio
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
             this.ClientSize = new System.Drawing.Size(1032, 525);
