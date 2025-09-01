@@ -36,11 +36,11 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.BUsuarios = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             label5 = new System.Windows.Forms.Label();
@@ -140,23 +140,25 @@
             this.button1.Text = "Dashboard";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.BDashboard_Click);
             // 
-            // button2
+            // BUsuarios
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(22, 212);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(171, 30);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Usuarios";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.UseVisualStyleBackColor = false;
+            this.BUsuarios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
+            this.BUsuarios.FlatAppearance.BorderSize = 0;
+            this.BUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BUsuarios.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BUsuarios.ForeColor = System.Drawing.Color.White;
+            this.BUsuarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BUsuarios.Location = new System.Drawing.Point(22, 212);
+            this.BUsuarios.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
+            this.BUsuarios.Name = "BUsuarios";
+            this.BUsuarios.Size = new System.Drawing.Size(171, 30);
+            this.BUsuarios.TabIndex = 5;
+            this.BUsuarios.Text = "Usuarios";
+            this.BUsuarios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BUsuarios.UseVisualStyleBackColor = false;
+            this.BUsuarios.Click += new System.EventHandler(this.BUsuarios_Click);
             // 
             // label3
             // 
@@ -182,16 +184,6 @@
             this.label4.Text = "Inmo";
             this.label4.UseMnemonic = false;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, -25);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(54, 97);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
@@ -208,6 +200,16 @@
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button3.UseVisualStyleBackColor = false;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(0, -25);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(54, 97);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -220,7 +222,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.BUsuarios);
             this.Controls.Add(label2);
             this.Controls.Add(this.button1);
             this.Controls.Add(label1);
@@ -240,7 +242,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.MenuStrip menuStrip2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button BUsuarios;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
