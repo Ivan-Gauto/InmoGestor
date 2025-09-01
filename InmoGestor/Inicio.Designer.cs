@@ -31,17 +31,20 @@
             System.Windows.Forms.Label label1;
             System.Windows.Forms.Label label2;
             System.Windows.Forms.Label label5;
+            System.Windows.Forms.Label label6;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inicio));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button3 = new System.Windows.Forms.Button();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             label5 = new System.Windows.Forms.Label();
+            label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,8 +54,8 @@
             label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(40)))), ((int)(((byte)(60)))));
             label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(183)))), ((int)(((byte)(217)))));
-            label1.Location = new System.Drawing.Point(19, 95);
-            label1.Margin = new System.Windows.Forms.Padding(10, 10, 0, 0);
+            label1.Location = new System.Drawing.Point(19, 98);
+            label1.Margin = new System.Windows.Forms.Padding(20, 10, 0, 0);
             label1.Name = "label1";
             label1.Padding = new System.Windows.Forms.Padding(0, 10, 10, 5);
             label1.Size = new System.Drawing.Size(64, 30);
@@ -86,6 +89,20 @@
             label5.TabIndex = 9;
             label5.Text = "Version 1.0";
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(40)))), ((int)(((byte)(60)))));
+            label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(183)))), ((int)(((byte)(217)))));
+            label6.Location = new System.Drawing.Point(19, 262);
+            label6.Margin = new System.Windows.Forms.Padding(10, 10, 0, 0);
+            label6.Name = "label6";
+            label6.Padding = new System.Windows.Forms.Padding(0, 10, 10, 5);
+            label6.Size = new System.Drawing.Size(74, 30);
+            label6.TabIndex = 10;
+            label6.Text = "Financiero";
+            // 
             // menuStrip1
             // 
             this.menuStrip1.AutoSize = false;
@@ -115,7 +132,8 @@
             this.button1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(22, 128);
+            this.button1.Location = new System.Drawing.Point(22, 131);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(171, 30);
             this.button1.TabIndex = 3;
@@ -132,22 +150,13 @@
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button2.Location = new System.Drawing.Point(22, 212);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(171, 30);
             this.button2.TabIndex = 5;
             this.button2.Text = "Usuarios";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button2.UseVisualStyleBackColor = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, -25);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(54, 97);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
             // 
             // label3
             // 
@@ -173,12 +182,40 @@
             this.label4.Text = "Inmo";
             this.label4.UseMnemonic = false;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(0, -25);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(54, 97);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.Location = new System.Drawing.Point(22, 295);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(171, 30);
+            this.button3.TabIndex = 11;
+            this.button3.Text = "Reportes";
+            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.UseVisualStyleBackColor = false;
+            // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
             this.ClientSize = new System.Drawing.Size(1032, 525);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(label6);
             this.Controls.Add(label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -207,6 +244,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button3;
     }
 }
 

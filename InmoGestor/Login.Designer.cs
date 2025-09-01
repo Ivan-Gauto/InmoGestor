@@ -33,6 +33,8 @@
             System.Windows.Forms.Label label6;
             System.Windows.Forms.Label label7;
             this.panel1 = new System.Windows.Forms.Panel();
+            this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
+            this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.button2 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -45,6 +47,8 @@
             label6 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -107,6 +111,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.panel1.Controls.Add(this.iconPictureBox2);
+            this.panel1.Controls.Add(this.iconPictureBox1);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.textBox2);
             this.panel1.Controls.Add(this.textBox1);
@@ -116,8 +122,38 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(42, 198);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(324, 314);
+            this.panel1.Size = new System.Drawing.Size(324, 330);
             this.panel1.TabIndex = 0;
+            // 
+            // iconPictureBox2
+            // 
+            this.iconPictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.iconPictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.Lock;
+            this.iconPictureBox2.IconColor = System.Drawing.Color.White;
+            this.iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox2.IconSize = 24;
+            this.iconPictureBox2.Location = new System.Drawing.Point(6, 195);
+            this.iconPictureBox2.Name = "iconPictureBox2";
+            this.iconPictureBox2.Size = new System.Drawing.Size(24, 24);
+            this.iconPictureBox2.TabIndex = 19;
+            this.iconPictureBox2.TabStop = false;
+            // 
+            // iconPictureBox1
+            // 
+            this.iconPictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconPictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.User;
+            this.iconPictureBox1.IconColor = System.Drawing.Color.White;
+            this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox1.IconSize = 24;
+            this.iconPictureBox1.Location = new System.Drawing.Point(6, 138);
+            this.iconPictureBox1.Name = "iconPictureBox1";
+            this.iconPictureBox1.Size = new System.Drawing.Size(24, 24);
+            this.iconPictureBox1.TabIndex = 18;
+            this.iconPictureBox1.TabStop = false;
             // 
             // button2
             // 
@@ -127,7 +163,7 @@
             this.button2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(83, 234);
+            this.button2.Location = new System.Drawing.Point(81, 239);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(171, 30);
             this.button2.TabIndex = 15;
@@ -138,11 +174,12 @@
             // 
             this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.ForeColor = System.Drawing.Color.White;
             this.textBox2.HideSelection = false;
             this.textBox2.Location = new System.Drawing.Point(32, 194);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(266, 20);
+            this.textBox2.Size = new System.Drawing.Size(266, 25);
             this.textBox2.TabIndex = 14;
             // 
             // textBox1
@@ -150,11 +187,12 @@
             this.textBox1.AllowDrop = true;
             this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.ForeColor = System.Drawing.Color.White;
             this.textBox1.HideSelection = false;
             this.textBox1.Location = new System.Drawing.Point(32, 137);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(266, 20);
+            this.textBox1.Size = new System.Drawing.Size(266, 25);
             this.textBox1.TabIndex = 13;
             // 
             // label1
@@ -209,7 +247,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.ClientSize = new System.Drawing.Size(411, 549);
+            this.ClientSize = new System.Drawing.Size(411, 568);
             this.Controls.Add(label7);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label4);
@@ -218,6 +256,8 @@
             this.Name = "Login";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -233,5 +273,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button2;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
     }
 }
