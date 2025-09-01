@@ -88,7 +88,7 @@
             label5.Size = new System.Drawing.Size(89, 32);
             label5.TabIndex = 9;
             label5.Text = "Version 1.0";
-            label5.Click += new System.EventHandler(this.label5_Click);
+           
             // 
             // label6
             // 
