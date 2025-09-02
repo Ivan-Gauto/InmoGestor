@@ -41,6 +41,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Contenedor = new System.Windows.Forms.Panel();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             label5 = new System.Windows.Forms.Label();
@@ -58,7 +59,7 @@
             label1.Margin = new System.Windows.Forms.Padding(20, 10, 0, 0);
             label1.Name = "label1";
             label1.Padding = new System.Windows.Forms.Padding(0, 10, 10, 5);
-            label1.Size = new System.Drawing.Size(79, 35);
+            label1.Size = new System.Drawing.Size(64, 30);
             label1.TabIndex = 2;
             label1.Text = "Principal";
             // 
@@ -72,7 +73,7 @@
             label2.Margin = new System.Windows.Forms.Padding(10, 10, 0, 0);
             label2.Name = "label2";
             label2.Padding = new System.Windows.Forms.Padding(0, 10, 10, 5);
-            label2.Size = new System.Drawing.Size(126, 35);
+            label2.Size = new System.Drawing.Size(100, 30);
             label2.TabIndex = 4;
             label2.Text = "Administracion";
             // 
@@ -81,14 +82,13 @@
             label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             label5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(183)))), ((int)(((byte)(217)))));
-            label5.Location = new System.Drawing.Point(153, 40);
+            label5.Location = new System.Drawing.Point(129, 40);
             label5.Margin = new System.Windows.Forms.Padding(10, 10, 0, 0);
             label5.Name = "label5";
             label5.Padding = new System.Windows.Forms.Padding(0, 10, 10, 5);
             label5.Size = new System.Drawing.Size(89, 32);
             label5.TabIndex = 9;
             label5.Text = "Version 1.0";
-            label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
             // 
@@ -100,7 +100,7 @@
             label6.Margin = new System.Windows.Forms.Padding(10, 10, 0, 0);
             label6.Name = "label6";
             label6.Padding = new System.Windows.Forms.Padding(0, 10, 10, 5);
-            label6.Size = new System.Drawing.Size(91, 35);
+            label6.Size = new System.Drawing.Size(74, 30);
             label6.TabIndex = 10;
             label6.Text = "Financiero";
             // 
@@ -213,12 +213,21 @@
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
+            // Contenedor
+            // 
+            this.Contenedor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Contenedor.Location = new System.Drawing.Point(218, 72);
+            this.Contenedor.Name = "Contenedor";
+            this.Contenedor.Size = new System.Drawing.Size(814, 453);
+            this.Contenedor.TabIndex = 12;
+            // 
             // Inicio
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
             this.ClientSize = new System.Drawing.Size(1032, 525);
+            this.Controls.Add(this.Contenedor);
             this.Controls.Add(this.button3);
             this.Controls.Add(label6);
             this.Controls.Add(label5);
@@ -250,6 +259,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Panel Contenedor;
     }
 }
 
