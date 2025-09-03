@@ -34,6 +34,7 @@ namespace InmoGestor
             System.Windows.Forms.Label label10;
             System.Windows.Forms.Label label7;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -170,6 +171,8 @@ namespace InmoGestor
             // 
             // dataGridUsuarios
             // 
+            this.dataGridUsuarios.AllowUserToAddRows = false;
+            this.dataGridUsuarios.AllowUserToOrderColumns = true;
             this.dataGridUsuarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridUsuarios.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.dataGridUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -201,6 +204,8 @@ namespace InmoGestor
             this.dataGridUsuarios.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dataGridUsuarios.RowHeadersVisible = false;
             this.dataGridUsuarios.RowHeadersWidth = 62;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridUsuarios.RowsDefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridUsuarios.Size = new System.Drawing.Size(691, 60);
             this.dataGridUsuarios.TabIndex = 16;
             // 
@@ -351,6 +356,7 @@ namespace InmoGestor
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
             this.UsuarioColumna.DefaultCellStyle = dataGridViewCellStyle2;
             this.UsuarioColumna.HeaderText = "Usuario";
             this.UsuarioColumna.MinimumWidth = 8;
@@ -361,6 +367,7 @@ namespace InmoGestor
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
             this.ColumnaNombre.DefaultCellStyle = dataGridViewCellStyle3;
             this.ColumnaNombre.HeaderText = "Nombre";
             this.ColumnaNombre.MinimumWidth = 8;
@@ -371,6 +378,7 @@ namespace InmoGestor
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
             this.ColumnaApellido.DefaultCellStyle = dataGridViewCellStyle4;
             this.ColumnaApellido.HeaderText = "Apellido";
             this.ColumnaApellido.MinimumWidth = 8;
@@ -381,6 +389,7 @@ namespace InmoGestor
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
             this.ColumnaDireccion.DefaultCellStyle = dataGridViewCellStyle5;
             this.ColumnaDireccion.HeaderText = "Direccion";
             this.ColumnaDireccion.MinimumWidth = 8;
@@ -391,6 +400,7 @@ namespace InmoGestor
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
             this.ColumnaTelefono.DefaultCellStyle = dataGridViewCellStyle6;
             this.ColumnaTelefono.HeaderText = "Telefono";
             this.ColumnaTelefono.MinimumWidth = 8;
@@ -401,6 +411,7 @@ namespace InmoGestor
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
             this.ColumnaCorreo.DefaultCellStyle = dataGridViewCellStyle7;
             this.ColumnaCorreo.HeaderText = "Correo";
             this.ColumnaCorreo.MinimumWidth = 8;
@@ -411,6 +422,7 @@ namespace InmoGestor
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
             this.ColumnaRol.DefaultCellStyle = dataGridViewCellStyle8;
             this.ColumnaRol.HeaderText = "Rol";
             this.ColumnaRol.MinimumWidth = 8;
@@ -421,6 +433,7 @@ namespace InmoGestor
             dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
             this.ColumnaEstado.DefaultCellStyle = dataGridViewCellStyle9;
             this.ColumnaEstado.HeaderText = "Estado";
             this.ColumnaEstado.MinimumWidth = 8;
@@ -431,6 +444,7 @@ namespace InmoGestor
             dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
             this.ColumnaAcciones.DefaultCellStyle = dataGridViewCellStyle10;
             this.ColumnaAcciones.HeaderText = "Acciones";
             this.ColumnaAcciones.MinimumWidth = 8;
