@@ -64,6 +64,13 @@ namespace InmoGestor
 
         private void Usuarios_Load(object sender, EventArgs e)
         {
+            // Limpia la tabla primero
+            dataGridUsuarios.Rows.Clear();
+
+            // Agrega filas de ejemplo
+            dataGridUsuarios.Rows.Add("u001", "Av. Siempre Viva 742", "Juan", "Pérez", "123456789", "juan@mail.com", "Admin", "Activo");
+            dataGridUsuarios.Rows.Add("u002", "Calle Falsa 123", "Ana", "Gómez", "987654321", "ana@mail.com", "Usuario", "Inactivo");
+
 
         }
     }
