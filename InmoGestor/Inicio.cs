@@ -12,8 +12,8 @@ namespace InmoGestor
 {
     public partial class Inicio : Form
     {
-        private static ToolStripItem menuActivo = null;
         private static Button botonActivo = null;
+        private static Form formularioActivo = null;
         public Inicio()
         {
             InitializeComponent();
@@ -24,12 +24,42 @@ namespace InmoGestor
 
         }
 
-        private void abrirFormulario(Button BUsuarios)
+        private void AbrirFormulario(Button boton, Form formulario)
         {
+            // Restaurar color del botón anterior
+            if (botonActivo != null)
+                botonActivo.BackColor = Color.FromArgb(26, 32, 40);
 
+            boton.BackColor = Color.FromArgb(0, 80, 200);
+            botonActivo = boton;
+
+            // Cerrar formulario activo previo
+            if (formularioActivo != null)
+                formularioActivo.Close();
+
+            formularioActivo = formulario;
+
+            // Configuración para que no altere el tamaño del padre
+            formulario.TopLevel = false;
+            formulario.FormBorderStyle = FormBorderStyle.None;
+            formulario.Dock = DockStyle.Fill;
+            formulario.AutoSize = false;                    // 👈 clave
+
+            // Limpiar contenedor antes de agregar
+            Contenedor.Controls.Clear();                    // 👈 clave
+            Contenedor.Controls.Add(formulario);
+
+            formulario.BringToFront();
+            formulario.Show();
         }
 
+
         private void BUsuarios_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario((Button)sender, new Usuarios());
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
         {
 
         }
