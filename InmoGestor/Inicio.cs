@@ -43,11 +43,12 @@ namespace InmoGestor
             formulario.TopLevel = false;
             formulario.FormBorderStyle = FormBorderStyle.None;
             formulario.Dock = DockStyle.Fill;
-            formulario.AutoSize = false;                    
+            formulario.AutoSize = false;                    // 👈 clave
 
             // Limpiar contenedor antes de agregar
-            Contenedor.Controls.Clear();                    
+            Contenedor.Controls.Clear();                    // 👈 clave
             Contenedor.Controls.Add(formulario);
+
             formulario.BringToFront();
             formulario.Show();
         }
@@ -69,16 +70,6 @@ namespace InmoGestor
         }
 
         private void menuStrip2_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
         {
 
         }
