@@ -57,7 +57,7 @@ namespace InmoGestor
             this.panel2 = new System.Windows.Forms.Panel();
             this.LCantUsuarios = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.BAgregarUsuario = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.UsuarioColumna = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnaNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -200,6 +200,7 @@ namespace InmoGestor
             this.dataGridUsuarios.EnableHeadersVisualStyles = false;
             this.dataGridUsuarios.GridColor = System.Drawing.Color.Teal;
             this.dataGridUsuarios.Location = new System.Drawing.Point(24, 72);
+            this.dataGridUsuarios.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
             this.dataGridUsuarios.Name = "dataGridUsuarios";
             this.dataGridUsuarios.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dataGridUsuarios.RowHeadersVisible = false;
@@ -312,7 +313,7 @@ namespace InmoGestor
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.button1, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.BAgregarUsuario, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.label12, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(30, 30);
@@ -323,20 +324,20 @@ namespace InmoGestor
             this.tableLayoutPanel3.Size = new System.Drawing.Size(739, 37);
             this.tableLayoutPanel3.TabIndex = 20;
             // 
-            // button1
+            // BAgregarUsuario
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(632, 2);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 0, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(107, 33);
-            this.button1.TabIndex = 18;
-            this.button1.Text = "Agregar usuario";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = true;
+            this.BAgregarUsuario.Dock = System.Windows.Forms.DockStyle.Right;
+            this.BAgregarUsuario.FlatAppearance.BorderSize = 0;
+            this.BAgregarUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BAgregarUsuario.ForeColor = System.Drawing.Color.White;
+            this.BAgregarUsuario.Location = new System.Drawing.Point(632, 2);
+            this.BAgregarUsuario.Margin = new System.Windows.Forms.Padding(2, 2, 0, 2);
+            this.BAgregarUsuario.Name = "BAgregarUsuario";
+            this.BAgregarUsuario.Size = new System.Drawing.Size(107, 33);
+            this.BAgregarUsuario.TabIndex = 18;
+            this.BAgregarUsuario.Text = "Agregar usuario";
+            this.BAgregarUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BAgregarUsuario.UseVisualStyleBackColor = true;
             // 
             // label12
             // 
@@ -489,7 +490,7 @@ namespace InmoGestor
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button BAgregarUsuario;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label8;
