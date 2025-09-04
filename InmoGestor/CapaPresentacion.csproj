@@ -131,5 +131,8 @@
   <ItemGroup>
     <None Include="Resources\20250830_2216_Logo Blanco Transparente_remix_01k3yv0qm0f0ss31wj5nb5hcp2 %281%29.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
