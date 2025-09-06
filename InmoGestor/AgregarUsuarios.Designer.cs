@@ -52,7 +52,6 @@
             this.TDni = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.BCerrarForm = new System.Windows.Forms.Button();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
             this.TApellido = new System.Windows.Forms.TextBox();
@@ -74,6 +73,7 @@
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.TDireccion = new System.Windows.Forms.TextBox();
             this.BIngresar = new System.Windows.Forms.Button();
+            this.BCerrarForm = new System.Windows.Forms.Button();
             label12 = new System.Windows.Forms.Label();
             label11 = new System.Windows.Forms.Label();
             label6 = new System.Windows.Forms.Label();
@@ -216,7 +216,7 @@
             this.tableLayoutPanel19.ColumnCount = 3;
             this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 56.33803F));
             this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43.66197F));
-            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 59F));
+            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel19.Controls.Add(this.RBHombre, 0, 0);
             this.tableLayoutPanel19.Controls.Add(this.RBOtro, 2, 0);
             this.tableLayoutPanel19.Controls.Add(this.RBMujer, 1, 0);
@@ -236,7 +236,7 @@
             this.RBHombre.Location = new System.Drawing.Point(0, 0);
             this.RBHombre.Margin = new System.Windows.Forms.Padding(0);
             this.RBHombre.Name = "RBHombre";
-            this.RBHombre.Size = new System.Drawing.Size(79, 23);
+            this.RBHombre.Size = new System.Drawing.Size(78, 23);
             this.RBHombre.TabIndex = 16;
             this.RBHombre.TabStop = true;
             this.RBHombre.Text = "Hombre";
@@ -248,10 +248,10 @@
             this.RBOtro.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RBOtro.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold);
             this.RBOtro.ForeColor = System.Drawing.Color.White;
-            this.RBOtro.Location = new System.Drawing.Point(140, 0);
+            this.RBOtro.Location = new System.Drawing.Point(139, 0);
             this.RBOtro.Margin = new System.Windows.Forms.Padding(0);
             this.RBOtro.Name = "RBOtro";
-            this.RBOtro.Size = new System.Drawing.Size(60, 23);
+            this.RBOtro.Size = new System.Drawing.Size(61, 23);
             this.RBOtro.TabIndex = 15;
             this.RBOtro.TabStop = true;
             this.RBOtro.Text = "Otro";
@@ -263,7 +263,7 @@
             this.RBMujer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RBMujer.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold);
             this.RBMujer.ForeColor = System.Drawing.Color.White;
-            this.RBMujer.Location = new System.Drawing.Point(79, 0);
+            this.RBMujer.Location = new System.Drawing.Point(78, 0);
             this.RBMujer.Margin = new System.Windows.Forms.Padding(0);
             this.RBMujer.Name = "RBMujer";
             this.RBMujer.Size = new System.Drawing.Size(61, 23);
@@ -353,20 +353,6 @@
             this.label1.Text = "Agregar nuevo usuario";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.UseMnemonic = false;
-            // 
-            // BCerrarForm
-            // 
-            this.BCerrarForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.BCerrarForm.Dock = System.Windows.Forms.DockStyle.Right;
-            this.BCerrarForm.FlatAppearance.BorderSize = 0;
-            this.BCerrarForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BCerrarForm.Image = global::InmoGestor.Properties.Resources.close__2_;
-            this.BCerrarForm.Location = new System.Drawing.Point(392, 3);
-            this.BCerrarForm.Name = "BCerrarForm";
-            this.BCerrarForm.Size = new System.Drawing.Size(27, 27);
-            this.BCerrarForm.TabIndex = 12;
-            this.BCerrarForm.UseVisualStyleBackColor = false;
-            this.BCerrarForm.Click += new System.EventHandler(this.BCerrarForm_Click);
             // 
             // tableLayoutPanel12
             // 
@@ -764,6 +750,20 @@
             this.BIngresar.TabIndex = 19;
             this.BIngresar.Text = "Agregar";
             this.BIngresar.UseVisualStyleBackColor = false;
+            // 
+            // BCerrarForm
+            // 
+            this.BCerrarForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.BCerrarForm.Dock = System.Windows.Forms.DockStyle.Right;
+            this.BCerrarForm.FlatAppearance.BorderSize = 0;
+            this.BCerrarForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BCerrarForm.Image = global::InmoGestor.Properties.Resources.close__2_;
+            this.BCerrarForm.Location = new System.Drawing.Point(392, 3);
+            this.BCerrarForm.Name = "BCerrarForm";
+            this.BCerrarForm.Size = new System.Drawing.Size(27, 27);
+            this.BCerrarForm.TabIndex = 12;
+            this.BCerrarForm.UseVisualStyleBackColor = false;
+            this.BCerrarForm.Click += new System.EventHandler(this.BCerrarForm_Click);
             // 
             // AgregarUsuarios
             // 

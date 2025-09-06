@@ -20,16 +20,11 @@ namespace InmoGestor
             InitializeComponent();
         }
 
-        private void BDashboard_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void AbrirFormulario(Button boton, Form formulario)
         {
             // Restaurar color del botón anterior
             if (botonActivo != null)
-                botonActivo.BackColor = Color.FromArgb(26, 32, 40);
+                botonActivo.BackColor = Color.FromArgb(24, 123, 185);
 
             boton.BackColor = Color.FromArgb(0, 80, 200);
             botonActivo = boton;
@@ -60,6 +55,11 @@ namespace InmoGestor
             AbrirFormulario((Button)sender, new Usuarios());
         }
 
+        private void BDashboard_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario((Button)sender, new Dashboard());
+        }
+
         private void panel4_Paint(object sender, PaintEventArgs e)
         {
 
@@ -78,6 +78,11 @@ namespace InmoGestor
         private void label5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Inicio_Load(object sender, EventArgs e)
+        {
+            AbrirFormulario(BDashboard, new Dashboard());
         }
     }
 }
