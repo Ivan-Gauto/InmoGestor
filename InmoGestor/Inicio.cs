@@ -14,6 +14,7 @@ namespace InmoGestor
     {
         private static Button botonActivo = null;
         private static Form formularioActivo = null;
+
         public Inicio()
         {
             InitializeComponent();
@@ -70,6 +71,11 @@ namespace InmoGestor
         }
 
         private void menuStrip2_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
         {
 
         }

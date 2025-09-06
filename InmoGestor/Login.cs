@@ -12,9 +12,27 @@ namespace InmoGestor
 {
     public partial class Login : Form
     {
+
         public Login()
         {
             InitializeComponent();
+        }
+
+        private void BIngresar_Click(object sender, EventArgs e)
+        {
+            Inicio form = new Inicio();
+
+            form.Show();
+            this.Hide();
+
+            form.FormClosing += frm_closing;
+        }
+
+        private void frm_closing(object sender, FormClosingEventArgs e)
+        {   
+            LIngresoUsuario.Text = "";
+            LIngresoClave.Text = "";
+            this.Show();
         }
     }
 }

@@ -73,5 +73,25 @@ namespace InmoGestor
 
 
         }
+
+        private void BAgregarUsuario_Click(object sender, EventArgs e)
+        {
+            var form = new AgregarUsuarios();
+
+            form.TopLevel = false;  
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.StartPosition = FormStartPosition.Manual;
+
+            ContenedorUsuarios.Controls.Add(form);
+
+            form.Location = new Point(
+                (ContenedorUsuarios.Width - form.Width) / 2,
+                (ContenedorUsuarios.Height - form.Height) / 2
+            );
+
+            form.BringToFront();
+            form.Show();
+        }
+
     }
 }

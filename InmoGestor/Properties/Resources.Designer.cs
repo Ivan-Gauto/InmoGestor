@@ -63,9 +63,9 @@ namespace InmoGestor.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _20250830_2216_Logo_Blanco_Transparente_remix_01k3yv0qm0f0ss31wj5nb5hcp2__1_ {
+        internal static System.Drawing.Bitmap _001_user {
             get {
-                object obj = ResourceManager.GetObject("20250830_2216_Logo Blanco Transparente_remix_01k3yv0qm0f0ss31wj5nb5hcp2 (1)", resourceCulture);
+                object obj = ResourceManager.GetObject("001-user", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -86,6 +86,76 @@ namespace InmoGestor.Properties {
         internal static System.Drawing.Bitmap logo__1_ {
             get {
                 object obj = ResourceManager.GetObject("logo (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logo__1_1 {
+            get {
+                object obj = ResourceManager.GetObject("logo (1)1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logo__1_2 {
+            get {
+                object obj = ResourceManager.GetObject("logo (1)2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logo__2_ {
+            get {
+                object obj = ResourceManager.GetObject("logo (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logo__2_1 {
+            get {
+                object obj = ResourceManager.GetObject("logo (2)1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logo__3_ {
+            get {
+                object obj = ResourceManager.GetObject("logo (3)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logo1 {
+            get {
+                object obj = ResourceManager.GetObject("logo1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logo2 {
+            get {
+                object obj = ResourceManager.GetObject("logo2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
