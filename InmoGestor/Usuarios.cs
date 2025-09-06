@@ -12,9 +12,28 @@ namespace InmoGestor
 {
     public partial class Usuarios : Form
     {
+        private AgregarUsuarios agregarUsuariosForm;
+
         public Usuarios()
         {
             InitializeComponent();
+            this.Resize += Usuarios_Resize;
+        }
+
+        private void Usuarios_Resize(object sender, EventArgs e)
+        {
+            CentrarAgregarUsuarios();
+        }
+
+        private void CentrarAgregarUsuarios()
+        {
+            if (agregarUsuariosForm != null && agregarUsuariosForm.Visible)
+            {
+                agregarUsuariosForm.Location = new Point(
+                    (ContenedorUsuarios.Width - agregarUsuariosForm.Width) / 2,
+                    (ContenedorUsuarios.Height - agregarUsuariosForm.Height) / 2
+                );
+            }
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -76,21 +95,17 @@ namespace InmoGestor
 
         private void BAgregarUsuario_Click(object sender, EventArgs e)
         {
-            var form = new AgregarUsuarios();
+            agregarUsuariosForm = new AgregarUsuarios();
 
-            form.TopLevel = false;  
-            form.FormBorderStyle = FormBorderStyle.None;
-            form.StartPosition = FormStartPosition.Manual;
+            agregarUsuariosForm.TopLevel = false;  
+            agregarUsuariosForm.FormBorderStyle = FormBorderStyle.None;
 
-            ContenedorUsuarios.Controls.Add(form);
+            ContenedorUsuarios.Controls.Add(agregarUsuariosForm);
 
-            form.Location = new Point(
-                (ContenedorUsuarios.Width - form.Width) / 2,
-                (ContenedorUsuarios.Height - form.Height) / 2
-            );
+            agregarUsuariosForm.BringToFront();
+            agregarUsuariosForm.Show();
 
-            form.BringToFront();
-            form.Show();
+            CentrarAgregarUsuarios();
         }
 
     }

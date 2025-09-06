@@ -216,7 +216,7 @@
             this.tableLayoutPanel19.ColumnCount = 3;
             this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 56.33803F));
             this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43.66197F));
-            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 58F));
+            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 59F));
             this.tableLayoutPanel19.Controls.Add(this.RBHombre, 0, 0);
             this.tableLayoutPanel19.Controls.Add(this.RBOtro, 2, 0);
             this.tableLayoutPanel19.Controls.Add(this.RBMujer, 1, 0);
@@ -236,7 +236,7 @@
             this.RBHombre.Location = new System.Drawing.Point(0, 0);
             this.RBHombre.Margin = new System.Windows.Forms.Padding(0);
             this.RBHombre.Name = "RBHombre";
-            this.RBHombre.Size = new System.Drawing.Size(80, 23);
+            this.RBHombre.Size = new System.Drawing.Size(79, 23);
             this.RBHombre.TabIndex = 16;
             this.RBHombre.TabStop = true;
             this.RBHombre.Text = "Hombre";
@@ -248,10 +248,10 @@
             this.RBOtro.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RBOtro.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold);
             this.RBOtro.ForeColor = System.Drawing.Color.White;
-            this.RBOtro.Location = new System.Drawing.Point(141, 0);
+            this.RBOtro.Location = new System.Drawing.Point(140, 0);
             this.RBOtro.Margin = new System.Windows.Forms.Padding(0);
             this.RBOtro.Name = "RBOtro";
-            this.RBOtro.Size = new System.Drawing.Size(59, 23);
+            this.RBOtro.Size = new System.Drawing.Size(60, 23);
             this.RBOtro.TabIndex = 15;
             this.RBOtro.TabStop = true;
             this.RBOtro.Text = "Otro";
@@ -263,7 +263,7 @@
             this.RBMujer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RBMujer.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold);
             this.RBMujer.ForeColor = System.Drawing.Color.White;
-            this.RBMujer.Location = new System.Drawing.Point(80, 0);
+            this.RBMujer.Location = new System.Drawing.Point(79, 0);
             this.RBMujer.Margin = new System.Windows.Forms.Padding(0);
             this.RBMujer.Name = "RBMujer";
             this.RBMujer.Size = new System.Drawing.Size(61, 23);
@@ -774,7 +774,7 @@
             this.ClientSize = new System.Drawing.Size(468, 566);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "AgregarUsuarios";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar usuario";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
