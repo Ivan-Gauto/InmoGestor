@@ -36,5 +36,11 @@ namespace InmoGestor
         {
             this.Close();
         }
+
+        private void BIngresar_Click(object sender, EventArgs e)
+        {
+
+
+        }
     }
 }

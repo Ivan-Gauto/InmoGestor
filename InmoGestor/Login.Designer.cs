@@ -28,83 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             System.Windows.Forms.Label label7;
             System.Windows.Forms.Label label6;
             System.Windows.Forms.Label label5;
             System.Windows.Forms.Label label2;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.BIngresar = new System.Windows.Forms.Button();
-            this.LIngresoClave = new System.Windows.Forms.TextBox();
-            this.LIngresoUsuario = new System.Windows.Forms.TextBox();
+            this.TIngresoClave = new System.Windows.Forms.TextBox();
+            this.TIngresoUsuario = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             label7 = new System.Windows.Forms.Label();
             label6 = new System.Windows.Forms.Label();
             label5 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27.76935F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 72.23065F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(411, 569);
-            this.tableLayoutPanel1.TabIndex = 11;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.White;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.InitialImage")));
-            this.pictureBox2.Location = new System.Drawing.Point(164, 66);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(207, 113);
-            this.pictureBox2.TabIndex = 13;
-            this.pictureBox2.TabStop = false;
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.0921F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.90789F));
-            this.tableLayoutPanel2.Controls.Add(this.pictureBox1, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(label7, 1, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(52, 12);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0, 0, 3, 3);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(304, 143);
-            this.tableLayoutPanel2.TabIndex = 18;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::InmoGestor.Properties.Resources.logo__2_1;
-            this.pictureBox1.Location = new System.Drawing.Point(2, 2);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(203, 139);
-            this.pictureBox1.TabIndex = 16;
-            this.pictureBox1.TabStop = false;
             // 
             // label7
             // 
@@ -118,66 +65,6 @@
             label7.Size = new System.Drawing.Size(89, 16);
             label7.TabIndex = 15;
             label7.Text = "Version 1.0";
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.panel1.Controls.Add(this.BIngresar);
-            this.panel1.Controls.Add(this.LIngresoClave);
-            this.panel1.Controls.Add(this.LIngresoUsuario);
-            this.panel1.Controls.Add(label6);
-            this.panel1.Controls.Add(label5);
-            this.panel1.Controls.Add(label2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(43, 208);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 50, 3, 50);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(324, 311);
-            this.panel1.TabIndex = 19;
-            // 
-            // BIngresar
-            // 
-            this.BIngresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.BIngresar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BIngresar.FlatAppearance.BorderSize = 0;
-            this.BIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BIngresar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BIngresar.ForeColor = System.Drawing.Color.White;
-            this.BIngresar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BIngresar.Location = new System.Drawing.Point(81, 239);
-            this.BIngresar.Name = "BIngresar";
-            this.BIngresar.Size = new System.Drawing.Size(171, 30);
-            this.BIngresar.TabIndex = 15;
-            this.BIngresar.Text = "Ingresar";
-            this.BIngresar.UseVisualStyleBackColor = false;
-            this.BIngresar.Click += new System.EventHandler(this.BIngresar_Click);
-            // 
-            // LIngresoClave
-            // 
-            this.LIngresoClave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.LIngresoClave.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LIngresoClave.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LIngresoClave.ForeColor = System.Drawing.Color.White;
-            this.LIngresoClave.HideSelection = false;
-            this.LIngresoClave.Location = new System.Drawing.Point(32, 194);
-            this.LIngresoClave.Name = "LIngresoClave";
-            this.LIngresoClave.PasswordChar = '*';
-            this.LIngresoClave.Size = new System.Drawing.Size(266, 25);
-            this.LIngresoClave.TabIndex = 14;
-            // 
-            // LIngresoUsuario
-            // 
-            this.LIngresoUsuario.AllowDrop = true;
-            this.LIngresoUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.LIngresoUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LIngresoUsuario.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LIngresoUsuario.ForeColor = System.Drawing.Color.White;
-            this.LIngresoUsuario.HideSelection = false;
-            this.LIngresoUsuario.Location = new System.Drawing.Point(32, 137);
-            this.LIngresoUsuario.Name = "LIngresoUsuario";
-            this.LIngresoUsuario.Size = new System.Drawing.Size(266, 25);
-            this.LIngresoUsuario.TabIndex = 13;
             // 
             // label6
             // 
@@ -222,6 +109,108 @@
             label2.Text = "Ingresa tus credenciales para acceder al sistema";
             label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27.76935F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 72.23065F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(411, 569);
+            this.tableLayoutPanel1.TabIndex = 11;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.0921F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.90789F));
+            this.tableLayoutPanel2.Controls.Add(this.pictureBox1, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(label7, 1, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(52, 12);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0, 0, 3, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(304, 143);
+            this.tableLayoutPanel2.TabIndex = 18;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::InmoGestor.Properties.Resources.logo__2_1;
+            this.pictureBox1.Location = new System.Drawing.Point(2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(203, 139);
+            this.pictureBox1.TabIndex = 16;
+            this.pictureBox1.TabStop = false;
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.panel1.Controls.Add(this.BIngresar);
+            this.panel1.Controls.Add(this.TIngresoClave);
+            this.panel1.Controls.Add(this.TIngresoUsuario);
+            this.panel1.Controls.Add(label6);
+            this.panel1.Controls.Add(label5);
+            this.panel1.Controls.Add(label2);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(43, 208);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 50, 3, 50);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(324, 311);
+            this.panel1.TabIndex = 19;
+            // 
+            // BIngresar
+            // 
+            this.BIngresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
+            this.BIngresar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BIngresar.FlatAppearance.BorderSize = 0;
+            this.BIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BIngresar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BIngresar.ForeColor = System.Drawing.Color.White;
+            this.BIngresar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BIngresar.Location = new System.Drawing.Point(81, 239);
+            this.BIngresar.Name = "BIngresar";
+            this.BIngresar.Size = new System.Drawing.Size(171, 30);
+            this.BIngresar.TabIndex = 15;
+            this.BIngresar.Text = "Ingresar";
+            this.BIngresar.UseVisualStyleBackColor = false;
+            this.BIngresar.Click += new System.EventHandler(this.BIngresar_Click);
+            // 
+            // TIngresoClave
+            // 
+            this.TIngresoClave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.TIngresoClave.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TIngresoClave.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TIngresoClave.ForeColor = System.Drawing.Color.White;
+            this.TIngresoClave.HideSelection = false;
+            this.TIngresoClave.Location = new System.Drawing.Point(32, 194);
+            this.TIngresoClave.Name = "TIngresoClave";
+            this.TIngresoClave.PasswordChar = '*';
+            this.TIngresoClave.Size = new System.Drawing.Size(266, 25);
+            this.TIngresoClave.TabIndex = 14;
+            // 
+            // TIngresoUsuario
+            // 
+            this.TIngresoUsuario.AllowDrop = true;
+            this.TIngresoUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.TIngresoUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TIngresoUsuario.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TIngresoUsuario.ForeColor = System.Drawing.Color.White;
+            this.TIngresoUsuario.HideSelection = false;
+            this.TIngresoUsuario.Location = new System.Drawing.Point(32, 137);
+            this.TIngresoUsuario.Name = "TIngresoUsuario";
+            this.TIngresoUsuario.Size = new System.Drawing.Size(266, 25);
+            this.TIngresoUsuario.TabIndex = 13;
+            // 
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
@@ -236,6 +225,17 @@
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.UseMnemonic = false;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.White;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.InitialImage")));
+            this.pictureBox2.Location = new System.Drawing.Point(164, 66);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(207, 113);
+            this.pictureBox2.TabIndex = 13;
+            this.pictureBox2.TabStop = false;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -248,11 +248,11 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ingresar";
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -264,8 +264,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button BIngresar;
-        private System.Windows.Forms.TextBox LIngresoClave;
-        private System.Windows.Forms.TextBox LIngresoUsuario;
+        private System.Windows.Forms.TextBox TIngresoClave;
+        private System.Windows.Forms.TextBox TIngresoUsuario;
         private System.Windows.Forms.Label label1;
     }
 }

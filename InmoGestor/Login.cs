@@ -22,6 +22,19 @@ namespace InmoGestor
         {
             Inicio form = new Inicio();
 
+            string usuario = TIngresoUsuario.Text.Trim();
+            string clave = TIngresoClave.Text.Trim();
+
+
+            bool camposFaltantes = string.IsNullOrWhiteSpace(usuario) || string.IsNullOrWhiteSpace(clave);
+
+            if (camposFaltantes)
+            {
+                MessageBox.Show("Debe completar todos los campos.", "Atención",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             form.Show();
             this.Hide();
 
@@ -30,8 +43,8 @@ namespace InmoGestor
 
         private void frm_closing(object sender, FormClosingEventArgs e)
         {   
-            LIngresoUsuario.Text = "";
-            LIngresoClave.Text = "";
+            TIngresoUsuario.Text = "";
+            TIngresoClave.Text = "";
             this.Show();
         }
     }

@@ -111,9 +111,8 @@
             label6.Location = new System.Drawing.Point(0, 0);
             label6.Margin = new System.Windows.Forms.Padding(0);
             label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(58, 24);
+            label6.Size = new System.Drawing.Size(0, 24);
             label6.TabIndex = 40;
-            label6.Text = "Reportes";
             // 
             // label1
             // 
