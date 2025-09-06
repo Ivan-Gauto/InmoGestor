@@ -31,5 +31,10 @@ namespace InmoGestor
         {
 
         }
+
+        private void BCerrarForm_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
