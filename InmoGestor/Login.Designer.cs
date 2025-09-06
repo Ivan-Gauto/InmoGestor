@@ -63,10 +63,10 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30.34901F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 69.65099F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27.76935F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 72.23065F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(411, 659);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(411, 569);
             this.tableLayoutPanel1.TabIndex = 11;
             // 
             // pictureBox2
@@ -88,7 +88,8 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.90789F));
             this.tableLayoutPanel2.Controls.Add(this.pictureBox1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(label7, 1, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(53, 54);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(52, 12);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0, 0, 3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -129,10 +130,10 @@
             this.panel1.Controls.Add(label5);
             this.panel1.Controls.Add(label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(43, 250);
+            this.panel1.Location = new System.Drawing.Point(43, 208);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 50, 3, 50);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(324, 359);
+            this.panel1.Size = new System.Drawing.Size(324, 311);
             this.panel1.TabIndex = 19;
             // 
             // BIngresar
@@ -240,7 +241,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.ClientSize = new System.Drawing.Size(411, 659);
+            this.ClientSize = new System.Drawing.Size(411, 569);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Login";
