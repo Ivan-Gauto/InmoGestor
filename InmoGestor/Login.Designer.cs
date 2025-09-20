@@ -39,7 +39,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.BIngresar = new System.Windows.Forms.Button();
             this.TIngresoClave = new System.Windows.Forms.TextBox();
-            this.TIngresoUsuario = new System.Windows.Forms.TextBox();
+            this.TIngresoDNI = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             label7 = new System.Windows.Forms.Label();
@@ -90,9 +90,9 @@
             label5.Margin = new System.Windows.Forms.Padding(10, 10, 0, 0);
             label5.Name = "label5";
             label5.Padding = new System.Windows.Forms.Padding(0, 10, 10, 5);
-            label5.Size = new System.Drawing.Size(64, 30);
+            label5.Size = new System.Drawing.Size(40, 30);
             label5.TabIndex = 11;
-            label5.Text = "Usuario";
+            label5.Text = "DNI";
             // 
             // label2
             // 
@@ -157,7 +157,7 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.panel1.Controls.Add(this.BIngresar);
             this.panel1.Controls.Add(this.TIngresoClave);
-            this.panel1.Controls.Add(this.TIngresoUsuario);
+            this.panel1.Controls.Add(this.TIngresoDNI);
             this.panel1.Controls.Add(label6);
             this.panel1.Controls.Add(label5);
             this.panel1.Controls.Add(label2);
@@ -198,18 +198,18 @@
             this.TIngresoClave.Size = new System.Drawing.Size(266, 25);
             this.TIngresoClave.TabIndex = 14;
             // 
-            // TIngresoUsuario
+            // TIngresoDNI
             // 
-            this.TIngresoUsuario.AllowDrop = true;
-            this.TIngresoUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.TIngresoUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TIngresoUsuario.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TIngresoUsuario.ForeColor = System.Drawing.Color.White;
-            this.TIngresoUsuario.HideSelection = false;
-            this.TIngresoUsuario.Location = new System.Drawing.Point(32, 137);
-            this.TIngresoUsuario.Name = "TIngresoUsuario";
-            this.TIngresoUsuario.Size = new System.Drawing.Size(266, 25);
-            this.TIngresoUsuario.TabIndex = 13;
+            this.TIngresoDNI.AllowDrop = true;
+            this.TIngresoDNI.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.TIngresoDNI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TIngresoDNI.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TIngresoDNI.ForeColor = System.Drawing.Color.White;
+            this.TIngresoDNI.HideSelection = false;
+            this.TIngresoDNI.Location = new System.Drawing.Point(32, 137);
+            this.TIngresoDNI.Name = "TIngresoDNI";
+            this.TIngresoDNI.Size = new System.Drawing.Size(266, 25);
+            this.TIngresoDNI.TabIndex = 13;
             // 
             // label1
             // 
@@ -266,7 +266,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button BIngresar;
         private System.Windows.Forms.TextBox TIngresoClave;
-        private System.Windows.Forms.TextBox TIngresoUsuario;
+        private System.Windows.Forms.TextBox TIngresoDNI;
         private System.Windows.Forms.Label label1;
     }
 }

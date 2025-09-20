@@ -22,15 +22,29 @@ namespace InmoGestor
         {
             Inicio form = new Inicio();
 
-            string usuario = TIngresoUsuario.Text.Trim();
+            string dniText = TIngresoDNI.Text.Trim();
             string clave = TIngresoClave.Text.Trim();
 
 
-            bool camposFaltantes = string.IsNullOrWhiteSpace(usuario) || string.IsNullOrWhiteSpace(clave);
+            bool camposFaltantes = string.IsNullOrWhiteSpace(dniText) || string.IsNullOrWhiteSpace(clave);
 
             if (camposFaltantes)
             {
                 MessageBox.Show("Debe completar todos los campos.", "Atención",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!int.TryParse(dniText, out int dni))
+            {
+                MessageBox.Show("El DNI debe ser numérico.", "Atención",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (dniText.Length < 7 || dniText.Length > 8)
+            {
+                MessageBox.Show("El DNI debe tener 7 u 8 dígitos.", "Atención",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -43,7 +57,7 @@ namespace InmoGestor
 
         private void frm_closing(object sender, FormClosingEventArgs e)
         {   
-            TIngresoUsuario.Text = "";
+            TIngresoDNI.Text = "";
             TIngresoClave.Text = "";
             this.Show();
         }
