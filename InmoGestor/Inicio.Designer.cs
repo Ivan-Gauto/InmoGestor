@@ -45,16 +45,16 @@
             this.button11 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.BInquilinos = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.BUsuarios = new System.Windows.Forms.Button();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.BDashboard = new System.Windows.Forms.Button();
             this.Contenedor = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             label2 = new System.Windows.Forms.Label();
             label6 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
@@ -69,9 +69,9 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel8.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -128,7 +128,6 @@
             label5.Size = new System.Drawing.Size(105, 14);
             label5.TabIndex = 9;
             label5.Text = "Version 1.0";
-            label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label3
             // 
@@ -271,7 +270,7 @@
             this.tableLayoutPanel5.Controls.Add(this.button11, 0, 4);
             this.tableLayoutPanel5.Controls.Add(this.button10, 0, 3);
             this.tableLayoutPanel5.Controls.Add(this.button9, 0, 2);
-            this.tableLayoutPanel5.Controls.Add(this.button8, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.BInquilinos, 0, 1);
             this.tableLayoutPanel5.Controls.Add(label2, 0, 0);
             this.tableLayoutPanel5.Location = new System.Drawing.Point(23, 183);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -336,22 +335,23 @@
             this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button9.UseVisualStyleBackColor = false;
             // 
-            // button8
+            // BInquilinos
             // 
-            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.button8.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.ForeColor = System.Drawing.Color.White;
-            this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button8.Location = new System.Drawing.Point(3, 27);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(142, 29);
-            this.button8.TabIndex = 41;
-            this.button8.Text = "Inquilinos";
-            this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button8.UseVisualStyleBackColor = false;
+            this.BInquilinos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
+            this.BInquilinos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BInquilinos.FlatAppearance.BorderSize = 0;
+            this.BInquilinos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BInquilinos.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BInquilinos.ForeColor = System.Drawing.Color.White;
+            this.BInquilinos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BInquilinos.Location = new System.Drawing.Point(3, 27);
+            this.BInquilinos.Name = "BInquilinos";
+            this.BInquilinos.Size = new System.Drawing.Size(142, 29);
+            this.BInquilinos.TabIndex = 41;
+            this.BInquilinos.Text = "Inquilinos";
+            this.BInquilinos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BInquilinos.UseVisualStyleBackColor = false;
+            this.BInquilinos.Click += new System.EventHandler(this.BInquilinos_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -445,18 +445,6 @@
             this.panel1.Size = new System.Drawing.Size(185, 57);
             this.panel1.TabIndex = 14;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBox1.Image = global::InmoGestor.Properties.Resources.logo__1_2;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(80, 57);
-            this.pictureBox1.TabIndex = 13;
-            this.pictureBox1.TabStop = false;
-            // 
             // tableLayoutPanel8
             // 
             this.tableLayoutPanel8.ColumnCount = 2;
@@ -490,6 +478,18 @@
             this.tableLayoutPanel7.Size = new System.Drawing.Size(856, 77);
             this.tableLayoutPanel7.TabIndex = 16;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox1.Image = global::InmoGestor.Properties.Resources.logo__1_2;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(80, 57);
+            this.pictureBox1.TabIndex = 13;
+            this.pictureBox1.TabStop = false;
+            // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -517,10 +517,10 @@
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel8.PerformLayout();
             this.tableLayoutPanel7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -532,7 +532,7 @@
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button BInquilinos;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button BUsuarios;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;

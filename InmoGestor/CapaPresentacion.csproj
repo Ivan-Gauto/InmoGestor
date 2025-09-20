@@ -56,11 +56,23 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AgregarUsuarios.cs">
+    <Compile Include="AgregarInquilino.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AgregarUsuarios.Designer.cs">
-      <DependentUpon>AgregarUsuarios.cs</DependentUpon>
+    <Compile Include="AgregarInquilino.Designer.cs">
+      <DependentUpon>AgregarInquilino.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditarInquilino.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditarInquilino.Designer.cs">
+      <DependentUpon>EditarInquilino.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarUsuario.Designer.cs">
+      <DependentUpon>AgregarUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="Auxiliar.cs">
       <SubType>Form</SubType>
@@ -73,6 +85,18 @@
     </Compile>
     <Compile Include="Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditarUsuario.Designer.cs">
+      <DependentUpon>EditarUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inquilinos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inquilinos.Designer.cs">
+      <DependentUpon>Inquilinos.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -94,14 +118,26 @@
     <Compile Include="Usuarios.Designer.cs">
       <DependentUpon>Usuarios.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AgregarUsuarios.resx">
-      <DependentUpon>AgregarUsuarios.cs</DependentUpon>
+    <EmbeddedResource Include="AgregarInquilino.resx">
+      <DependentUpon>AgregarInquilino.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditarInquilino.resx">
+      <DependentUpon>EditarInquilino.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarUsuario.resx">
+      <DependentUpon>AgregarUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Auxiliar.resx">
       <DependentUpon>Auxiliar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditarUsuario.resx">
+      <DependentUpon>EditarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inquilinos.resx">
+      <DependentUpon>Inquilinos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -191,5 +227,12 @@
   <ItemGroup>
     <None Include="Resources\close %282%29.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

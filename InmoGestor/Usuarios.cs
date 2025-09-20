@@ -12,7 +12,8 @@ namespace InmoGestor
 {
     public partial class Usuarios : Form
     {
-        private AgregarUsuarios agregarUsuariosForm;
+        private AgregarUsuario agregarUsuariosForm;
+        private EditarUsuario editarUsuarioForm;
 
         public Usuarios()
         {
@@ -20,93 +21,109 @@ namespace InmoGestor
             this.Resize += Usuarios_Resize;
         }
 
-        private void Usuarios_Resize(object sender, EventArgs e)
-        {
-            CentrarAgregarUsuarios();
-        }
+        private static bool IsOpen(Form f) => f != null && !f.IsDisposed && f.Visible;
 
-        private void CentrarAgregarUsuarios()
-        {
-            if (agregarUsuariosForm != null && agregarUsuariosForm.Visible)
-            {
-                agregarUsuariosForm.Location = new Point(
-                    (ContenedorUsuarios.Width - agregarUsuariosForm.Width) / 2,
-                    (ContenedorUsuarios.Height - agregarUsuariosForm.Height) / 2
-                );
-            }
-        }
+        private bool HayFormAbierto() =>
+            IsOpen(agregarUsuariosForm) || IsOpen(editarUsuarioForm);
 
-        private void label2_Click(object sender, EventArgs e)
+        private void FocusFormAbierto()
         {
+            if (IsOpen(agregarUsuariosForm)) { agregarUsuariosForm.BringToFront(); agregarUsuariosForm.Focus(); return; }
+            if (IsOpen(editarUsuarioForm)) { editarUsuarioForm.BringToFront(); editarUsuarioForm.Focus(); return; }
 
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
+        private void Usuarios_Resize(object sender, EventArgs e) => CentrarFormAbierto();
 
+        private void CentrarFormAbierto()
+        {
+            Form f = IsOpen(agregarUsuariosForm) ? (Form)agregarUsuariosForm
+                  : IsOpen(editarUsuarioForm) ? (Form)editarUsuarioForm
+                  : null;
+
+            if (f == null) return;
+
+            f.Location = new Point(
+                (ContenedorUsuarios.Width - f.Width) / 2,
+                (ContenedorUsuarios.Height - f.Height) / 2
+            );
         }
 
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel1_Paint_1(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void iconPictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel1_Paint_2(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void Usuarios_Load(object sender, EventArgs e)
         {
-            // Limpia la tabla primero
             dataGridUsuarios.Rows.Clear();
 
-            // Agrega filas de ejemplo
-            dataGridUsuarios.Rows.Add("u001", "Av. Siempre Viva 742", "Juan", "Pérez", "123456789", "juan@mail.com", "Admin", "Activo");
-            dataGridUsuarios.Rows.Add("u002", "Calle Falsa 123", "Ana", "Gómez", "987654321", "ana@mail.com", "Usuario", "Inactivo");
-
+            dataGridUsuarios.Rows.Add("11111111", "Av. Siempre Viva 742", "Juan", "Pérez", "123456789", "juan@mail.com", "Admin", "Activo");
+            dataGridUsuarios.Rows.Add("22222222", "Calle Falsa 123", "Ana", "Gómez", "987654321", "ana@mail.com", "Usuario", "Inactivo");
+            dataGridUsuarios.Rows.Add("33333333", "San Martín 555", "Carlos", "López", "112233445", "carlos@mail.com", "Operador", "Activo");
+            dataGridUsuarios.Rows.Add("44444444", "Belgrano 890", "María", "Fernández", "556677889", "maria@mail.com", "Usuario", "Activo");
+            dataGridUsuarios.Rows.Add("55555555", "Mitre 321", "Luis", "Ramírez", "667788990", "luis@mail.com", "Admin", "Inactivo");
 
         }
 
         private void BAgregarUsuario_Click(object sender, EventArgs e)
         {
-            agregarUsuariosForm = new AgregarUsuarios();
+            if (HayFormAbierto()) { FocusFormAbierto(); return; }
 
-            agregarUsuariosForm.TopLevel = false;  
-            agregarUsuariosForm.FormBorderStyle = FormBorderStyle.None;
-
+            agregarUsuariosForm = new AgregarUsuario
+            {
+                TopLevel = false,
+                FormBorderStyle = FormBorderStyle.None
+            };
             ContenedorUsuarios.Controls.Add(agregarUsuariosForm);
 
-            agregarUsuariosForm.BringToFront();
-            agregarUsuariosForm.Show();
+            agregarUsuariosForm.FormClosed += (_, __) =>
+            {
+                ContenedorUsuarios.Controls.Remove(agregarUsuariosForm);
+                agregarUsuariosForm.Dispose();
+                agregarUsuariosForm = null;
+            };
 
-            CentrarAgregarUsuarios();
+            agregarUsuariosForm.Show();
+            agregarUsuariosForm.BringToFront();
+            agregarUsuariosForm.Focus();
+            CentrarFormAbierto();
         }
 
+
+        private void dataGridUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            var colName = dataGridUsuarios.Columns[e.ColumnIndex].Name;
+
+            if (HayFormAbierto()) { FocusFormAbierto(); return; }
+
+            if (colName == "ColumnaEditar")
+            {
+                editarUsuarioForm = new EditarUsuario
+                {
+                    TopLevel = false,
+                    FormBorderStyle = FormBorderStyle.None
+                };
+                ContenedorUsuarios.Controls.Add(editarUsuarioForm);
+
+                editarUsuarioForm.FormClosed += (_, __) =>
+                {
+                    ContenedorUsuarios.Controls.Remove(editarUsuarioForm);
+                    editarUsuarioForm.Dispose();
+                    editarUsuarioForm = null;
+                };
+
+                editarUsuarioForm.Show();
+                editarUsuarioForm.BringToFront();
+                editarUsuarioForm.Focus();
+                CentrarFormAbierto();
+            }
+            else if (colName == "ColumnaEliminar")
+            {
+                var result = MessageBox.Show("¿Está seguro de que desea eliminar este usuario?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    dataGridUsuarios.Rows.RemoveAt(e.RowIndex);
+                }
+            }
+
+        }
     }
 }

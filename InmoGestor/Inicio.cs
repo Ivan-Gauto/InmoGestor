@@ -60,29 +60,14 @@ namespace InmoGestor
             AbrirFormulario((Button)sender, new Dashboard());
         }
 
-        private void panel4_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void menuStrip2_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Inicio_Load(object sender, EventArgs e)
         {
             AbrirFormulario(BDashboard, new Dashboard());
+        }
+
+        private void BInquilinos_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario((Button)sender, new Inquilinos());
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace InmoGestor
 {
-    partial class AgregarUsuarios
+    partial class EditarInquilino
     {
         /// <summary>
         /// Required designer variable.
@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.Label label12;
             System.Windows.Forms.Label label9;
             System.Windows.Forms.Label label10;
             System.Windows.Forms.Label label3;
             System.Windows.Forms.Label label4;
+            System.Windows.Forms.Label label6;
             System.Windows.Forms.Label label2;
             System.Windows.Forms.Label label8;
             System.Windows.Forms.Label label7;
-            System.Windows.Forms.Label label6;
-            System.Windows.Forms.Label label12;
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel18 = new System.Windows.Forms.TableLayoutPanel();
@@ -65,15 +65,15 @@
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.TDireccion = new System.Windows.Forms.TextBox();
             this.BIngresar = new System.Windows.Forms.Button();
+            label12 = new System.Windows.Forms.Label();
             label9 = new System.Windows.Forms.Label();
             label10 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
+            label6 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             label8 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
-            label6 = new System.Windows.Forms.Label();
-            label12 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             this.tableLayoutPanel18.SuspendLayout();
@@ -91,6 +91,19 @@
             this.tableLayoutPanel11.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            label12.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label12.ForeColor = System.Drawing.Color.White;
+            label12.Location = new System.Drawing.Point(0, 10);
+            label12.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            label12.Name = "label12";
+            label12.Size = new System.Drawing.Size(98, 15);
+            label12.TabIndex = 15;
+            label12.Text = "Rol del usuario";
             // 
             // label9
             // 
@@ -144,6 +157,19 @@
             label4.TabIndex = 12;
             label4.Text = "Telefono";
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            label6.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label6.ForeColor = System.Drawing.Color.White;
+            label6.Location = new System.Drawing.Point(0, 10);
+            label6.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(30, 15);
+            label6.TabIndex = 12;
+            label6.Text = "DNI";
+            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -183,32 +209,6 @@
             label7.TabIndex = 12;
             label7.Text = "Direccion";
             // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            label6.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label6.ForeColor = System.Drawing.Color.White;
-            label6.Location = new System.Drawing.Point(0, 10);
-            label6.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(30, 15);
-            label6.TabIndex = 12;
-            label6.Text = "DNI";
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            label12.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label12.ForeColor = System.Drawing.Color.White;
-            label12.Location = new System.Drawing.Point(0, 10);
-            label12.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            label12.Name = "label12";
-            label12.Size = new System.Drawing.Size(98, 15);
-            label12.TabIndex = 15;
-            label12.Text = "Rol del usuario";
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
@@ -235,7 +235,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(468, 504);
-            this.tableLayoutPanel1.TabIndex = 4;
+            this.tableLayoutPanel1.TabIndex = 6;
             // 
             // tableLayoutPanel9
             // 
@@ -307,9 +307,9 @@
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(238, 32);
+            this.label1.Size = new System.Drawing.Size(175, 32);
             this.label1.TabIndex = 11;
-            this.label1.Text = "Agregar nuevo usuario";
+            this.label1.Text = "Editar inquilino";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.UseMnemonic = false;
             // 
@@ -617,21 +617,18 @@
             this.BIngresar.Name = "BIngresar";
             this.BIngresar.Size = new System.Drawing.Size(171, 29);
             this.BIngresar.TabIndex = 19;
-            this.BIngresar.Text = "Agregar";
+            this.BIngresar.Text = "Guardar";
             this.BIngresar.UseVisualStyleBackColor = false;
             // 
-            // AgregarUsuarios
+            // EditarInquilino
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(468, 504);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "AgregarUsuarios";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Agregar usuario";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Name = "EditarInquilino";
+            this.Text = "EditarInquilino";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel9.ResumeLayout(false);
             this.tableLayoutPanel18.ResumeLayout(false);
@@ -665,6 +662,8 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel18;
+        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button BCerrarForm;
@@ -679,6 +678,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.TextBox TTelefono;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel16;
+        private System.Windows.Forms.TextBox TDni;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.TextBox TClave;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
@@ -687,9 +688,5 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
         private System.Windows.Forms.TextBox TDireccion;
         private System.Windows.Forms.Button BIngresar;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel18;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel16;
-        private System.Windows.Forms.TextBox TDni;
     }
 }
