@@ -56,11 +56,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AgregarInmuble.cs">
+    <Compile Include="AgregarInmueble.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AgregarInmuble.Designer.cs">
-      <DependentUpon>AgregarInmuble.cs</DependentUpon>
+    <Compile Include="AgregarInmueble.Designer.cs">
+      <DependentUpon>AgregarInmueble.cs</DependentUpon>
     </Compile>
     <Compile Include="AgregarInquilino.cs">
       <SubType>Form</SubType>
@@ -154,14 +154,17 @@
     <Compile Include="Usuarios.Designer.cs">
       <DependentUpon>Usuarios.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AgregarInmuble.resx">
-      <DependentUpon>AgregarInmuble.cs</DependentUpon>
+    <EmbeddedResource Include="AgregarInmueble.resx">
+      <DependentUpon>AgregarInmueble.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AgregarInquilino.resx">
       <DependentUpon>AgregarInquilino.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AgregarPropietario.resx">
       <DependentUpon>AgregarPropietario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditarInmueble.resx">
+      <DependentUpon>EditarInmueble.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditarInquilino.resx">
       <DependentUpon>EditarInquilino.cs</DependentUpon>

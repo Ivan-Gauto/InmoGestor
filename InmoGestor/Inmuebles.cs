@@ -52,7 +52,7 @@ namespace InmoGestor
         {
             if (HayFormAbierto()) { FocusFormAbierto(); return; }
 
-            agregarInmuebleForm = new AgregarInquilino
+            agregarInmuebleForm = new AgregarInmueble
             {
                 TopLevel = false,
                 FormBorderStyle = FormBorderStyle.None

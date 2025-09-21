@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace InmoGestor
 {
-    public partial class AgregarInmuble : Form
+    public partial class AgregarInmueble : Form
     {
-        public AgregarInmuble()
+        public AgregarInmueble()
         {
             InitializeComponent();
         }

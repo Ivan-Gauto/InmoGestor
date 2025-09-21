@@ -65,9 +65,9 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.label12 = new System.Windows.Forms.Label();
+            this.BAgregarInquilino = new System.Windows.Forms.Button();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.BAgregarInquilino = new System.Windows.Forms.Button();
             this.ColumnaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UsuarioColumna = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnaDireccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -396,6 +396,26 @@
             this.label12.TabIndex = 19;
             this.label12.Text = "Inquilinos";
             // 
+            // BAgregarInquilino
+            // 
+            this.BAgregarInquilino.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.BAgregarInquilino.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.BAgregarInquilino.FlatAppearance.BorderSize = 0;
+            this.BAgregarInquilino.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BAgregarInquilino.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.BAgregarInquilino.ForeColor = System.Drawing.Color.White;
+            this.BAgregarInquilino.Image = global::InmoGestor.Properties.Resources._001_user;
+            this.BAgregarInquilino.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BAgregarInquilino.Location = new System.Drawing.Point(599, 4);
+            this.BAgregarInquilino.Name = "BAgregarInquilino";
+            this.BAgregarInquilino.Padding = new System.Windows.Forms.Padding(10);
+            this.BAgregarInquilino.Size = new System.Drawing.Size(151, 53);
+            this.BAgregarInquilino.TabIndex = 23;
+            this.BAgregarInquilino.Text = "Agregar inquilino";
+            this.BAgregarInquilino.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BAgregarInquilino.UseVisualStyleBackColor = false;
+            this.BAgregarInquilino.Click += new System.EventHandler(this.BAgregarInquilino_Click);
+            // 
             // dataGridViewImageColumn1
             // 
             dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -432,26 +452,6 @@
             this.dataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewImageColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.dataGridViewImageColumn2.Width = 53;
-            // 
-            // BAgregarInquilino
-            // 
-            this.BAgregarInquilino.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.BAgregarInquilino.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.BAgregarInquilino.FlatAppearance.BorderSize = 0;
-            this.BAgregarInquilino.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BAgregarInquilino.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.BAgregarInquilino.ForeColor = System.Drawing.Color.White;
-            this.BAgregarInquilino.Image = global::InmoGestor.Properties.Resources._001_user;
-            this.BAgregarInquilino.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BAgregarInquilino.Location = new System.Drawing.Point(599, 4);
-            this.BAgregarInquilino.Name = "BAgregarInquilino";
-            this.BAgregarInquilino.Padding = new System.Windows.Forms.Padding(10);
-            this.BAgregarInquilino.Size = new System.Drawing.Size(151, 53);
-            this.BAgregarInquilino.TabIndex = 23;
-            this.BAgregarInquilino.Text = "Agregar inquilino";
-            this.BAgregarInquilino.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BAgregarInquilino.UseVisualStyleBackColor = false;
-            this.BAgregarInquilino.Click += new System.EventHandler(this.BAgregarInquilino_Click);
             // 
             // ColumnaId
             // 
