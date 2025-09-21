@@ -84,5 +84,10 @@ namespace InmoGestor
         {
             AbrirFormulario((Button)sender, new Contratos());
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario((Button)sender, new Reportes());
+        }
     }
 }
