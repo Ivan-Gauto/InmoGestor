@@ -12,7 +12,7 @@ namespace InmoGestor
 {
     public partial class Inquilinos : Form
     {
-        private EditarInmueble editarInquilinoForm;
+        private EditarInquilino editarInquilinoForm;
         private AgregarInquilino agregarInquilinoForm;
 
         public Inquilinos()
@@ -81,7 +81,7 @@ namespace InmoGestor
 
             if (colName == "ColumnaEditar")
             {
-                editarInquilinoForm = new EditarInmueble
+                editarInquilinoForm = new EditarInquilino
                 {
                     TopLevel = false,
                     FormBorderStyle = FormBorderStyle.None

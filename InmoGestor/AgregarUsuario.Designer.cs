@@ -585,7 +585,7 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Administrador",
-            "Inmobiliario",
+            "Operador",
             "Ayudante"});
             this.comboBox1.Location = new System.Drawing.Point(3, 32);
             this.comboBox1.Name = "comboBox1";
