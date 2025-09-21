@@ -40,6 +40,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
+            this.BCerrarForm = new System.Windows.Forms.Button();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
@@ -47,16 +48,15 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
             this.TNacimiento = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
             this.TNombre = new System.Windows.Forms.TextBox();
             this.BIngresar = new System.Windows.Forms.Button();
-            this.BCerrarForm = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             label2 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             label9 = new System.Windows.Forms.Label();
@@ -77,6 +77,97 @@
             this.tableLayoutPanel11.SuspendLayout();
             this.tableLayoutPanel14.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            label2.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label2.ForeColor = System.Drawing.Color.White;
+            label2.Location = new System.Drawing.Point(0, 5);
+            label2.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(82, 15);
+            label2.TabIndex = 12;
+            label2.Text = "Condiciones";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            label3.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label3.ForeColor = System.Drawing.Color.White;
+            label3.Location = new System.Drawing.Point(0, 10);
+            label3.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(63, 15);
+            label3.TabIndex = 12;
+            label3.Text = "Inquilino";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            label9.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label9.ForeColor = System.Drawing.Color.White;
+            label9.Location = new System.Drawing.Point(0, 10);
+            label9.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            label9.Name = "label9";
+            label9.Size = new System.Drawing.Size(64, 15);
+            label9.TabIndex = 12;
+            label9.Text = "Inmueble";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            label6.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label6.ForeColor = System.Drawing.Color.White;
+            label6.Location = new System.Drawing.Point(0, 10);
+            label6.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(95, 15);
+            label6.TabIndex = 12;
+            label6.Text = "Fecha de inicio";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            label4.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label4.ForeColor = System.Drawing.Color.White;
+            label4.Location = new System.Drawing.Point(0, 10);
+            label4.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(78, 15);
+            label4.TabIndex = 12;
+            label4.Text = "Fecha de fin";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            label8.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label8.ForeColor = System.Drawing.Color.White;
+            label8.Location = new System.Drawing.Point(0, 10);
+            label8.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(123, 15);
+            label8.TabIndex = 12;
+            label8.Text = "Cantidad de cuotas";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            label10.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label10.ForeColor = System.Drawing.Color.White;
+            label10.Location = new System.Drawing.Point(0, 10);
+            label10.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            label10.Name = "label10";
+            label10.Size = new System.Drawing.Size(100, 15);
+            label10.TabIndex = 12;
+            label10.Text = "Precio de cuota";
             // 
             // tableLayoutPanel1
             // 
@@ -131,19 +222,6 @@
             this.textBox1.Size = new System.Drawing.Size(416, 52);
             this.textBox1.TabIndex = 14;
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            label2.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label2.ForeColor = System.Drawing.Color.White;
-            label2.Location = new System.Drawing.Point(0, 5);
-            label2.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(82, 15);
-            label2.TabIndex = 12;
-            label2.Text = "Condiciones";
-            // 
             // tableLayoutPanel15
             // 
             this.tableLayoutPanel15.ColumnCount = 2;
@@ -172,6 +250,20 @@
             this.label1.Text = "Editar contrato";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.UseMnemonic = false;
+            // 
+            // BCerrarForm
+            // 
+            this.BCerrarForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.BCerrarForm.Dock = System.Windows.Forms.DockStyle.Right;
+            this.BCerrarForm.FlatAppearance.BorderSize = 0;
+            this.BCerrarForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BCerrarForm.Image = global::InmoGestor.Properties.Resources.close__2_;
+            this.BCerrarForm.Location = new System.Drawing.Point(392, 3);
+            this.BCerrarForm.Name = "BCerrarForm";
+            this.BCerrarForm.Size = new System.Drawing.Size(27, 27);
+            this.BCerrarForm.TabIndex = 12;
+            this.BCerrarForm.UseVisualStyleBackColor = false;
+            this.BCerrarForm.Click += new System.EventHandler(this.BCerrarForm_Click);
             // 
             // tableLayoutPanel12
             // 
@@ -218,19 +310,6 @@
             this.comboBox2.Size = new System.Drawing.Size(199, 25);
             this.comboBox2.TabIndex = 15;
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            label3.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label3.ForeColor = System.Drawing.Color.White;
-            label3.Location = new System.Drawing.Point(0, 10);
-            label3.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(63, 15);
-            label3.TabIndex = 12;
-            label3.Text = "Inquilino";
-            // 
             // tableLayoutPanel13
             // 
             this.tableLayoutPanel13.ColumnCount = 1;
@@ -261,19 +340,6 @@
             this.comboBox1.Size = new System.Drawing.Size(199, 25);
             this.comboBox1.TabIndex = 15;
             // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            label9.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label9.ForeColor = System.Drawing.Color.White;
-            label9.Location = new System.Drawing.Point(0, 10);
-            label9.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            label9.Name = "label9";
-            label9.Size = new System.Drawing.Size(64, 15);
-            label9.TabIndex = 12;
-            label9.Text = "Inmueble";
-            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 2;
@@ -302,18 +368,19 @@
             this.tableLayoutPanel16.Size = new System.Drawing.Size(204, 60);
             this.tableLayoutPanel16.TabIndex = 15;
             // 
-            // label6
+            // dateTimePicker1
             // 
-            label6.AutoSize = true;
-            label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            label6.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label6.ForeColor = System.Drawing.Color.White;
-            label6.Location = new System.Drawing.Point(0, 10);
-            label6.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(95, 15);
-            label6.TabIndex = 12;
-            label6.Text = "Fecha de inicio";
+            this.dateTimePicker1.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.dateTimePicker1.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.dateTimePicker1.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.dateTimePicker1.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.dateTimePicker1.CalendarTrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(3, 33);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(198, 23);
+            this.dateTimePicker1.TabIndex = 13;
             // 
             // tableLayoutPanel7
             // 
@@ -329,18 +396,19 @@
             this.tableLayoutPanel7.Size = new System.Drawing.Size(205, 61);
             this.tableLayoutPanel7.TabIndex = 12;
             // 
-            // label4
+            // dateTimePicker2
             // 
-            label4.AutoSize = true;
-            label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            label4.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label4.ForeColor = System.Drawing.Color.White;
-            label4.Location = new System.Drawing.Point(0, 10);
-            label4.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(78, 15);
-            label4.TabIndex = 12;
-            label4.Text = "Fecha de fin";
+            this.dateTimePicker2.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.dateTimePicker2.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.dateTimePicker2.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.dateTimePicker2.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.dateTimePicker2.CalendarTrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.dateTimePicker2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker2.Location = new System.Drawing.Point(3, 33);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(198, 23);
+            this.dateTimePicker2.TabIndex = 14;
             // 
             // tableLayoutPanel8
             // 
@@ -384,19 +452,6 @@
             this.TNacimiento.Size = new System.Drawing.Size(199, 25);
             this.TNacimiento.TabIndex = 14;
             // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            label8.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label8.ForeColor = System.Drawing.Color.White;
-            label8.Location = new System.Drawing.Point(0, 10);
-            label8.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            label8.Name = "label8";
-            label8.Size = new System.Drawing.Size(123, 15);
-            label8.TabIndex = 12;
-            label8.Text = "Cantidad de cuotas";
-            // 
             // tableLayoutPanel14
             // 
             this.tableLayoutPanel14.ColumnCount = 1;
@@ -424,19 +479,6 @@
             this.TNombre.Size = new System.Drawing.Size(199, 25);
             this.TNombre.TabIndex = 14;
             // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            label10.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label10.ForeColor = System.Drawing.Color.White;
-            label10.Location = new System.Drawing.Point(0, 10);
-            label10.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            label10.Name = "label10";
-            label10.Size = new System.Drawing.Size(100, 15);
-            label10.TabIndex = 12;
-            label10.Text = "Precio de cuota";
-            // 
             // BIngresar
             // 
             this.BIngresar.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -454,48 +496,6 @@
             this.BIngresar.TabIndex = 19;
             this.BIngresar.Text = "Guardar";
             this.BIngresar.UseVisualStyleBackColor = false;
-            // 
-            // BCerrarForm
-            // 
-            this.BCerrarForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.BCerrarForm.Dock = System.Windows.Forms.DockStyle.Right;
-            this.BCerrarForm.FlatAppearance.BorderSize = 0;
-            this.BCerrarForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BCerrarForm.Image = global::InmoGestor.Properties.Resources.close__2_;
-            this.BCerrarForm.Location = new System.Drawing.Point(392, 3);
-            this.BCerrarForm.Name = "BCerrarForm";
-            this.BCerrarForm.Size = new System.Drawing.Size(27, 27);
-            this.BCerrarForm.TabIndex = 12;
-            this.BCerrarForm.UseVisualStyleBackColor = false;
-            this.BCerrarForm.Click += new System.EventHandler(this.BCerrarForm_Click);
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.dateTimePicker1.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.dateTimePicker1.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.dateTimePicker1.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.dateTimePicker1.CalendarTrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(3, 33);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(198, 23);
-            this.dateTimePicker1.TabIndex = 13;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.dateTimePicker2.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.dateTimePicker2.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.dateTimePicker2.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.dateTimePicker2.CalendarTrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.dateTimePicker2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(3, 33);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(198, 23);
-            this.dateTimePicker2.TabIndex = 14;
             // 
             // EditarContrato
             // 
