@@ -69,5 +69,15 @@ namespace InmoGestor
         {
             AbrirFormulario((Button)sender, new Inquilinos());
         }
+
+        private void BPropietarios_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario((Button)sender, new Propietarios());
+        }
+
+        private void BInmuebles_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario((Button)sender, new Inmuebles());
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace InmoGestor
 {
-    partial class AgregarInquilino
+    partial class AgregarPropietario
     {
         /// <summary>
         /// Required designer variable.
@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.Label label9;
-            System.Windows.Forms.Label label10;
             System.Windows.Forms.Label label3;
-            System.Windows.Forms.Label label4;
-            System.Windows.Forms.Label label6;
-            System.Windows.Forms.Label label8;
             System.Windows.Forms.Label label7;
+            System.Windows.Forms.Label label6;
+            System.Windows.Forms.Label label4;
+            System.Windows.Forms.Label label8;
+            System.Windows.Forms.Label label10;
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -59,12 +59,12 @@
             this.TNombre = new System.Windows.Forms.TextBox();
             this.BIngresar = new System.Windows.Forms.Button();
             label9 = new System.Windows.Forms.Label();
-            label10 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
-            label4 = new System.Windows.Forms.Label();
-            label6 = new System.Windows.Forms.Label();
-            label8 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
+            label6 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
+            label8 = new System.Windows.Forms.Label();
+            label10 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel15.SuspendLayout();
             this.tableLayoutPanel12.SuspendLayout();
@@ -93,19 +93,6 @@
             label9.TabIndex = 12;
             label9.Text = "Apellido";
             // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            label10.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label10.ForeColor = System.Drawing.Color.White;
-            label10.Location = new System.Drawing.Point(0, 10);
-            label10.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            label10.Name = "label10";
-            label10.Size = new System.Drawing.Size(56, 15);
-            label10.TabIndex = 12;
-            label10.Text = "Nombre";
-            // 
             // label3
             // 
             label3.AutoSize = true;
@@ -119,18 +106,18 @@
             label3.TabIndex = 12;
             label3.Text = "Correo electronico";
             // 
-            // label4
+            // label7
             // 
-            label4.AutoSize = true;
-            label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            label4.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label4.ForeColor = System.Drawing.Color.White;
-            label4.Location = new System.Drawing.Point(0, 10);
-            label4.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(62, 15);
-            label4.TabIndex = 12;
-            label4.Text = "Telefono";
+            label7.AutoSize = true;
+            label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            label7.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label7.ForeColor = System.Drawing.Color.White;
+            label7.Location = new System.Drawing.Point(0, 10);
+            label7.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(64, 15);
+            label7.TabIndex = 12;
+            label7.Text = "Direccion";
             // 
             // label6
             // 
@@ -145,6 +132,19 @@
             label6.TabIndex = 12;
             label6.Text = "DNI";
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            label4.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label4.ForeColor = System.Drawing.Color.White;
+            label4.Location = new System.Drawing.Point(0, 10);
+            label4.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(62, 15);
+            label4.TabIndex = 12;
+            label4.Text = "Telefono";
+            // 
             // label8
             // 
             label8.AutoSize = true;
@@ -158,18 +158,18 @@
             label8.TabIndex = 12;
             label8.Text = "Fecha de nacimiento";
             // 
-            // label7
+            // label10
             // 
-            label7.AutoSize = true;
-            label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            label7.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label7.ForeColor = System.Drawing.Color.White;
-            label7.Location = new System.Drawing.Point(0, 10);
-            label7.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(64, 15);
-            label7.TabIndex = 12;
-            label7.Text = "Direccion";
+            label10.AutoSize = true;
+            label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            label10.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label10.ForeColor = System.Drawing.Color.White;
+            label10.Location = new System.Drawing.Point(0, 10);
+            label10.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            label10.Name = "label10";
+            label10.Size = new System.Drawing.Size(56, 15);
+            label10.TabIndex = 12;
+            label10.Text = "Nombre";
             // 
             // tableLayoutPanel1
             // 
@@ -194,13 +194,13 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(468, 434);
-            this.tableLayoutPanel1.TabIndex = 5;
+            this.tableLayoutPanel1.TabIndex = 6;
             // 
             // tableLayoutPanel15
             // 
             this.tableLayoutPanel15.ColumnCount = 2;
-            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60.42654F));
-            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 39.57346F));
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.87678F));
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.12322F));
             this.tableLayoutPanel15.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel15.Controls.Add(this.BCerrarForm, 1, 0);
             this.tableLayoutPanel15.Location = new System.Drawing.Point(23, 23);
@@ -219,9 +219,9 @@
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(255, 32);
+            this.label1.Size = new System.Drawing.Size(278, 32);
             this.label1.TabIndex = 11;
-            this.label1.Text = "Agregar nuevo inquilino";
+            this.label1.Text = "Agregar nuevo propietario";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.UseMnemonic = false;
             // 
@@ -503,15 +503,15 @@
             this.BIngresar.Text = "Agregar";
             this.BIngresar.UseVisualStyleBackColor = false;
             // 
-            // AgregarInquilino
+            // AgregarPropietario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(468, 434);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "AgregarInquilino";
-            this.Text = "AgregarInquilino";
+            this.Name = "AgregarPropietario";
+            this.Text = "AgregarPropietario";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel15.ResumeLayout(false);
             this.tableLayoutPanel12.ResumeLayout(false);
@@ -545,21 +545,21 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
         private System.Windows.Forms.TextBox TApellido;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
-        private System.Windows.Forms.TextBox TNombre;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.TextBox TCorreo;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
-        private System.Windows.Forms.TextBox TTelefono;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
+        private System.Windows.Forms.TextBox TDireccion;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel16;
         private System.Windows.Forms.TextBox TDni;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.TextBox TTelefono;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
         private System.Windows.Forms.TextBox TNacimiento;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
-        private System.Windows.Forms.TextBox TDireccion;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
+        private System.Windows.Forms.TextBox TNombre;
         private System.Windows.Forms.Button BIngresar;
     }
 }

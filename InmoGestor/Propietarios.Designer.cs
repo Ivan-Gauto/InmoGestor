@@ -1,6 +1,6 @@
 ﻿namespace InmoGestor
 {
-    partial class Inquilinos
+    partial class Propietarios
     {
         /// <summary>
         /// Required designer variable.
@@ -34,8 +34,6 @@
             System.Windows.Forms.Label label2;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -47,13 +45,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inquilinos));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Propietarios));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.ContenedorInquilinos = new System.Windows.Forms.Panel();
+            this.ContenedorPropietarios = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.dataGridInquilinos = new System.Windows.Forms.DataGridView();
+            this.dataGridPropietarios = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -65,9 +63,7 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.label12 = new System.Windows.Forms.Label();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.BAgregarInquilino = new System.Windows.Forms.Button();
+            this.BAgregarPropietario = new System.Windows.Forms.Button();
             this.ColumnaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UsuarioColumna = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnaDireccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,8 +71,8 @@
             this.ColumnaApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnaTelefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnaCorreo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnaAlquiler = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnaUltimoPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnaIngresos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnaPropiedades = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnaEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnaEditar = new System.Windows.Forms.DataGridViewImageColumn();
             this.ColumnaEliminar = new System.Windows.Forms.DataGridViewImageColumn();
@@ -84,11 +80,11 @@
             label3 = new System.Windows.Forms.Label();
             label10 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
-            this.ContenedorInquilinos.SuspendLayout();
+            this.ContenedorPropietarios.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridInquilinos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridPropietarios)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -101,26 +97,26 @@
             // 
             label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label5.ForeColor = System.Drawing.Color.Red;
+            label5.ForeColor = System.Drawing.Color.DarkOrange;
             label5.Location = new System.Drawing.Point(10, 42);
             label5.Margin = new System.Windows.Forms.Padding(10, 10, 0, 0);
             label5.Name = "label5";
             label5.Size = new System.Drawing.Size(67, 17);
             label5.TabIndex = 16;
-            label5.Text = "Morosos";
+            label5.Text = "Inactivos";
             label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3
             // 
             label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label3.ForeColor = System.Drawing.Color.DarkOrange;
+            label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(183)))), ((int)(((byte)(217)))));
             label3.Location = new System.Drawing.Point(10, 42);
             label3.Margin = new System.Windows.Forms.Padding(10, 10, 0, 0);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(82, 17);
+            label3.Size = new System.Drawing.Size(64, 17);
             label3.TabIndex = 16;
-            label3.Text = "Pendientes";
+            label3.Text = "Activos";
             label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label10
@@ -131,9 +127,9 @@
             label10.Location = new System.Drawing.Point(10, 42);
             label10.Margin = new System.Windows.Forms.Padding(10, 10, 0, 0);
             label10.Name = "label10";
-            label10.Size = new System.Drawing.Size(117, 17);
+            label10.Size = new System.Drawing.Size(135, 17);
             label10.TabIndex = 16;
-            label10.Text = "Total de inquilinos";
+            label10.Text = "Total de propietarios";
             label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
@@ -146,18 +142,18 @@
             label2.Location = new System.Drawing.Point(5, 40);
             label2.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(122, 15);
+            label2.Size = new System.Drawing.Size(137, 15);
             label2.TabIndex = 41;
-            label2.Text = "Gestion de inquilinos";
+            label2.Text = "Gestion de propietarios";
             // 
-            // ContenedorInquilinos
+            // ContenedorPropietarios
             // 
-            this.ContenedorInquilinos.Controls.Add(this.tableLayoutPanel1);
-            this.ContenedorInquilinos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ContenedorInquilinos.Location = new System.Drawing.Point(0, 0);
-            this.ContenedorInquilinos.Name = "ContenedorInquilinos";
-            this.ContenedorInquilinos.Size = new System.Drawing.Size(813, 467);
-            this.ContenedorInquilinos.TabIndex = 0;
+            this.ContenedorPropietarios.Controls.Add(this.tableLayoutPanel1);
+            this.ContenedorPropietarios.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ContenedorPropietarios.Location = new System.Drawing.Point(0, 0);
+            this.ContenedorPropietarios.Name = "ContenedorPropietarios";
+            this.ContenedorPropietarios.Size = new System.Drawing.Size(819, 470);
+            this.ContenedorPropietarios.TabIndex = 0;
             // 
             // tableLayoutPanel1
             // 
@@ -178,7 +174,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 61F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 107F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 238F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(813, 467);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(819, 470);
             this.tableLayoutPanel1.TabIndex = 8;
             // 
             // tableLayoutPanel4
@@ -192,30 +188,30 @@
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(753, 239);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(759, 242);
             this.tableLayoutPanel4.TabIndex = 19;
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.panel5.Controls.Add(this.dataGridInquilinos);
+            this.panel5.Controls.Add(this.dataGridPropietarios);
             this.panel5.Controls.Add(this.label1);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(0, 40);
             this.panel5.Margin = new System.Windows.Forms.Padding(0, 40, 0, 67);
             this.panel5.Name = "panel5";
             this.panel5.Padding = new System.Windows.Forms.Padding(24, 72, 24, 25);
-            this.panel5.Size = new System.Drawing.Size(753, 132);
+            this.panel5.Size = new System.Drawing.Size(759, 135);
             this.panel5.TabIndex = 21;
             // 
-            // dataGridInquilinos
+            // dataGridPropietarios
             // 
-            this.dataGridInquilinos.AllowUserToAddRows = false;
-            this.dataGridInquilinos.AllowUserToOrderColumns = true;
-            this.dataGridInquilinos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridInquilinos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.dataGridInquilinos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridInquilinos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dataGridPropietarios.AllowUserToAddRows = false;
+            this.dataGridPropietarios.AllowUserToOrderColumns = true;
+            this.dataGridPropietarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridPropietarios.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.dataGridPropietarios.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridPropietarios.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -223,9 +219,9 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridInquilinos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridInquilinos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridInquilinos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridPropietarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridPropietarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridPropietarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnaId,
             this.UsuarioColumna,
             this.ColumnaDireccion,
@@ -233,26 +229,26 @@
             this.ColumnaApellido,
             this.ColumnaTelefono,
             this.ColumnaCorreo,
-            this.ColumnaAlquiler,
-            this.ColumnaUltimoPago,
+            this.ColumnaIngresos,
+            this.ColumnaPropiedades,
             this.ColumnaEstado,
             this.ColumnaEditar,
             this.ColumnaEliminar});
-            this.dataGridInquilinos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridInquilinos.EnableHeadersVisualStyles = false;
-            this.dataGridInquilinos.GridColor = System.Drawing.Color.Teal;
-            this.dataGridInquilinos.Location = new System.Drawing.Point(24, 72);
-            this.dataGridInquilinos.Margin = new System.Windows.Forms.Padding(0);
-            this.dataGridInquilinos.Name = "dataGridInquilinos";
-            this.dataGridInquilinos.ReadOnly = true;
-            this.dataGridInquilinos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dataGridInquilinos.RowHeadersVisible = false;
-            this.dataGridInquilinos.RowHeadersWidth = 62;
+            this.dataGridPropietarios.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridPropietarios.EnableHeadersVisualStyles = false;
+            this.dataGridPropietarios.GridColor = System.Drawing.Color.Teal;
+            this.dataGridPropietarios.Location = new System.Drawing.Point(24, 72);
+            this.dataGridPropietarios.Margin = new System.Windows.Forms.Padding(0);
+            this.dataGridPropietarios.Name = "dataGridPropietarios";
+            this.dataGridPropietarios.ReadOnly = true;
+            this.dataGridPropietarios.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dataGridPropietarios.RowHeadersVisible = false;
+            this.dataGridPropietarios.RowHeadersWidth = 62;
             dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridInquilinos.RowsDefaultCellStyle = dataGridViewCellStyle14;
-            this.dataGridInquilinos.Size = new System.Drawing.Size(705, 35);
-            this.dataGridInquilinos.TabIndex = 16;
-            this.dataGridInquilinos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridInquilinos_CellContentClick);
+            this.dataGridPropietarios.RowsDefaultCellStyle = dataGridViewCellStyle14;
+            this.dataGridPropietarios.Size = new System.Drawing.Size(711, 38);
+            this.dataGridPropietarios.TabIndex = 16;
+            this.dataGridPropietarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridPropietarios_CellContentClick);
             // 
             // label1
             // 
@@ -261,9 +257,9 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(19, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 30);
+            this.label1.Size = new System.Drawing.Size(132, 30);
             this.label1.TabIndex = 14;
-            this.label1.Text = "Inquilinos";
+            this.label1.Text = "Propietarios";
             // 
             // tableLayoutPanel2
             // 
@@ -281,7 +277,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(753, 77);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(759, 77);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // panel3
@@ -290,10 +286,10 @@
             this.panel3.Controls.Add(label5);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(542, 0);
+            this.panel3.Location = new System.Drawing.Point(546, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(40, 0, 0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(211, 77);
+            this.panel3.Size = new System.Drawing.Size(213, 77);
             this.panel3.TabIndex = 27;
             // 
             // label6
@@ -313,10 +309,10 @@
             this.panel2.Controls.Add(label3);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(291, 0);
+            this.panel2.Location = new System.Drawing.Point(293, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(40, 0, 0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(211, 77);
+            this.panel2.Size = new System.Drawing.Size(213, 77);
             this.panel2.TabIndex = 26;
             // 
             // label4
@@ -339,7 +335,7 @@
             this.panel8.Location = new System.Drawing.Point(0, 0);
             this.panel8.Margin = new System.Windows.Forms.Padding(0);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(251, 77);
+            this.panel8.Size = new System.Drawing.Size(253, 77);
             this.panel8.TabIndex = 25;
             // 
             // label11
@@ -359,14 +355,14 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel5, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.BAgregarInquilino, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.BAgregarPropietario, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(30, 30);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(753, 61);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(759, 61);
             this.tableLayoutPanel3.TabIndex = 20;
             // 
             // tableLayoutPanel5
@@ -392,66 +388,29 @@
             this.label12.Location = new System.Drawing.Point(0, 1);
             this.label12.Margin = new System.Windows.Forms.Padding(0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(144, 37);
+            this.label12.Size = new System.Drawing.Size(176, 37);
             this.label12.TabIndex = 19;
-            this.label12.Text = "Inquilinos";
+            this.label12.Text = "Propietarios";
             // 
-            // dataGridViewImageColumn1
+            // BAgregarPropietario
             // 
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle15.NullValue")));
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.dataGridViewImageColumn1.DefaultCellStyle = dataGridViewCellStyle15;
-            this.dataGridViewImageColumn1.FillWeight = 74.01306F;
-            this.dataGridViewImageColumn1.HeaderText = "Editar";
-            this.dataGridViewImageColumn1.Image = global::InmoGestor.Properties.Resources.edit;
-            this.dataGridViewImageColumn1.MinimumWidth = 8;
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            this.dataGridViewImageColumn1.ReadOnly = true;
-            this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewImageColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dataGridViewImageColumn1.Width = 52;
-            // 
-            // dataGridViewImageColumn2
-            // 
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle16.NullValue")));
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.dataGridViewImageColumn2.DefaultCellStyle = dataGridViewCellStyle16;
-            this.dataGridViewImageColumn2.FillWeight = 76.14214F;
-            this.dataGridViewImageColumn2.HeaderText = "Eliminar";
-            this.dataGridViewImageColumn2.Image = global::InmoGestor.Properties.Resources.delete;
-            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
-            this.dataGridViewImageColumn2.ReadOnly = true;
-            this.dataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewImageColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dataGridViewImageColumn2.Width = 53;
-            // 
-            // BAgregarInquilino
-            // 
-            this.BAgregarInquilino.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.BAgregarInquilino.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.BAgregarInquilino.FlatAppearance.BorderSize = 0;
-            this.BAgregarInquilino.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BAgregarInquilino.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.BAgregarInquilino.ForeColor = System.Drawing.Color.White;
-            this.BAgregarInquilino.Image = global::InmoGestor.Properties.Resources._001_user;
-            this.BAgregarInquilino.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BAgregarInquilino.Location = new System.Drawing.Point(599, 4);
-            this.BAgregarInquilino.Name = "BAgregarInquilino";
-            this.BAgregarInquilino.Padding = new System.Windows.Forms.Padding(10);
-            this.BAgregarInquilino.Size = new System.Drawing.Size(151, 53);
-            this.BAgregarInquilino.TabIndex = 23;
-            this.BAgregarInquilino.Text = "Agregar inquilino";
-            this.BAgregarInquilino.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BAgregarInquilino.UseVisualStyleBackColor = false;
-            this.BAgregarInquilino.Click += new System.EventHandler(this.BAgregarInquilino_Click);
+            this.BAgregarPropietario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.BAgregarPropietario.Dock = System.Windows.Forms.DockStyle.Right;
+            this.BAgregarPropietario.FlatAppearance.BorderSize = 0;
+            this.BAgregarPropietario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BAgregarPropietario.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.BAgregarPropietario.ForeColor = System.Drawing.Color.White;
+            this.BAgregarPropietario.Image = global::InmoGestor.Properties.Resources._001_user;
+            this.BAgregarPropietario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BAgregarPropietario.Location = new System.Drawing.Point(586, 3);
+            this.BAgregarPropietario.Name = "BAgregarPropietario";
+            this.BAgregarPropietario.Padding = new System.Windows.Forms.Padding(10);
+            this.BAgregarPropietario.Size = new System.Drawing.Size(170, 55);
+            this.BAgregarPropietario.TabIndex = 23;
+            this.BAgregarPropietario.Text = "Agregar propietario";
+            this.BAgregarPropietario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BAgregarPropietario.UseVisualStyleBackColor = false;
+            this.BAgregarPropietario.Click += new System.EventHandler(this.BAgregarPropietario_Click);
             // 
             // ColumnaId
             // 
@@ -542,27 +501,27 @@
             this.ColumnaCorreo.Name = "ColumnaCorreo";
             this.ColumnaCorreo.ReadOnly = true;
             // 
-            // ColumnaAlquiler
+            // ColumnaIngresos
             // 
             dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.ColumnaAlquiler.DefaultCellStyle = dataGridViewCellStyle9;
-            this.ColumnaAlquiler.HeaderText = "Alquiler";
-            this.ColumnaAlquiler.Name = "ColumnaAlquiler";
-            this.ColumnaAlquiler.ReadOnly = true;
+            this.ColumnaIngresos.DefaultCellStyle = dataGridViewCellStyle9;
+            this.ColumnaIngresos.HeaderText = "Ingresos";
+            this.ColumnaIngresos.Name = "ColumnaIngresos";
+            this.ColumnaIngresos.ReadOnly = true;
             // 
-            // ColumnaUltimoPago
+            // ColumnaPropiedades
             // 
             dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.ColumnaUltimoPago.DefaultCellStyle = dataGridViewCellStyle10;
-            this.ColumnaUltimoPago.HeaderText = "Ultimo pago";
-            this.ColumnaUltimoPago.Name = "ColumnaUltimoPago";
-            this.ColumnaUltimoPago.ReadOnly = true;
+            this.ColumnaPropiedades.DefaultCellStyle = dataGridViewCellStyle10;
+            this.ColumnaPropiedades.HeaderText = "Propiedades";
+            this.ColumnaPropiedades.Name = "ColumnaPropiedades";
+            this.ColumnaPropiedades.ReadOnly = true;
             // 
             // ColumnaEstado
             // 
@@ -610,23 +569,23 @@
             this.ColumnaEliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ColumnaEliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
-            // Inquilinos
+            // Propietarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.AutoScrollMinSize = new System.Drawing.Size(799, 467);
-            this.ClientSize = new System.Drawing.Size(813, 467);
-            this.Controls.Add(this.ContenedorInquilinos);
-            this.Name = "Inquilinos";
-            this.Text = "Inquilinos";
-            this.Load += new System.EventHandler(this.Inquilinos_Load);
-            this.ContenedorInquilinos.ResumeLayout(false);
+            this.ClientSize = new System.Drawing.Size(819, 470);
+            this.Controls.Add(this.ContenedorPropietarios);
+            this.Name = "Propietarios";
+            this.Text = "Propietarios";
+            this.Load += new System.EventHandler(this.Propietarios_Load);
+            this.ContenedorPropietarios.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridInquilinos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridPropietarios)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -643,13 +602,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel ContenedorInquilinos;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
+        private System.Windows.Forms.Panel ContenedorPropietarios;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.DataGridView dataGridInquilinos;
+        private System.Windows.Forms.DataGridView dataGridPropietarios;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Panel panel3;
@@ -661,7 +618,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Button BAgregarInquilino;
+        private System.Windows.Forms.Button BAgregarPropietario;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaId;
         private System.Windows.Forms.DataGridViewTextBoxColumn UsuarioColumna;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaDireccion;
@@ -669,8 +626,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaApellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaTelefono;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaCorreo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaAlquiler;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaUltimoPago;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaIngresos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaPropiedades;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaEstado;
         private System.Windows.Forms.DataGridViewImageColumn ColumnaEditar;
         private System.Windows.Forms.DataGridViewImageColumn ColumnaEliminar;

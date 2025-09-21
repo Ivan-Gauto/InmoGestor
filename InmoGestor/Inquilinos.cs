@@ -12,7 +12,7 @@ namespace InmoGestor
 {
     public partial class Inquilinos : Form
     {
-        private EditarInquilino editarInquilinoForm;
+        private EditarInmueble editarInquilinoForm;
         private AgregarInquilino agregarInquilinoForm;
 
         public Inquilinos()
@@ -72,18 +72,7 @@ namespace InmoGestor
             CentrarFormAbierto();
         }
 
-        private void Inquilinos_Load(object sender, EventArgs e)
-        {
-            dataGridInquilinos.Rows.Clear();
-
-            dataGridInquilinos.Rows.Add("11111111", "Av. Siempre Viva 742", "Juan", "Pérez", "123456789", "juan@mail.com", "300000", "10/10/10");
-            dataGridInquilinos.Rows.Add("22222222", "Calle Falsa 123", "Ana", "Gómez", "987654321", "ana@mail.com", "3000000", "10/10/10");
-            dataGridInquilinos.Rows.Add("33333333", "San Martín 555", "Carlos", "López", "112233445", "carlos@mail.com", "200000", "10/10/10");
-            dataGridInquilinos.Rows.Add("44444444", "Belgrano 890", "María", "Fernández", "556677889", "maria@mail.com", "250000", "10/10/10");
-            dataGridInquilinos.Rows.Add("55555555", "Mitre 321", "Luis", "Ramírez", "667788990", "luis@mail.com", "200000", "10/10/10");
-        }
-
-        private void dataGridInquilinos_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        private void dataGridInquilinos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
             var colName = dataGridInquilinos.Columns[e.ColumnIndex].Name;
@@ -92,7 +81,7 @@ namespace InmoGestor
 
             if (colName == "ColumnaEditar")
             {
-                editarInquilinoForm = new EditarInquilino
+                editarInquilinoForm = new EditarInmueble
                 {
                     TopLevel = false,
                     FormBorderStyle = FormBorderStyle.None
@@ -113,12 +102,23 @@ namespace InmoGestor
             }
             else if (colName == "ColumnaEliminar")
             {
-                var result = MessageBox.Show("¿Está seguro de que desea eliminar este usuario?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                var result = MessageBox.Show("¿Está seguro de que desea eliminar este inquilino?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
                     dataGridInquilinos.Rows.RemoveAt(e.RowIndex);
                 }
             }
+        }
+
+        private void Inquilinos_Load(object sender, EventArgs e)
+        {
+            dataGridInquilinos.Rows.Clear();
+
+            dataGridInquilinos.Rows.Add("11111111", "Av. Siempre Viva 742", "Juan", "Pérez", "123456789", "juan@mail.com", "300000", "10/10/10", "activo");
+            dataGridInquilinos.Rows.Add("22222222", "Calle Falsa 123", "Ana", "Gómez", "987654321", "ana@mail.com", "3000000", "10/10/10", "activo");
+            dataGridInquilinos.Rows.Add("33333333", "San Martín 555", "Carlos", "López", "112233445", "carlos@mail.com", "200000", "10/10/10", "activo");
+            dataGridInquilinos.Rows.Add("44444444", "Belgrano 890", "María", "Fernández", "556677889", "maria@mail.com", "250000", "10/10/10", "activo");
+            dataGridInquilinos.Rows.Add("55555555", "Mitre 321", "Luis", "Ramírez", "667788990", "luis@mail.com", "200000", "10/10/10", "activo");
         }
     }
 }
