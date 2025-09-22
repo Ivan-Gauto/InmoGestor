@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using CapaNegocio;
+using CapaEntidad;
+
 namespace InmoGestor
 {
     public partial class Login : Form
@@ -20,40 +23,75 @@ namespace InmoGestor
 
         private void BIngresar_Click(object sender, EventArgs e)
         {
-            Inicio form = new Inicio();
+            // Evita doble click mientras valida (opcional)
+            BIngresar.Enabled = false;
 
-            string dniText = TIngresoDNI.Text.Trim();
-            string clave = TIngresoClave.Text.Trim();
-
-
-            bool camposFaltantes = string.IsNullOrWhiteSpace(dniText) || string.IsNullOrWhiteSpace(clave);
-
-            if (camposFaltantes)
+            try
             {
-                MessageBox.Show("Debe completar todos los campos.", "Atención",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+
+                string dniText = TIngresoDNI.Text.Trim();
+                string clave = TIngresoClave.Text.Trim();
+
+                // Validaciones básicas
+                bool camposFaltantes = string.IsNullOrWhiteSpace(dniText) || string.IsNullOrWhiteSpace(clave);
+
+                if (camposFaltantes)
+                {
+                    MessageBox.Show("Debe completar todos los campos.", "Atención",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (!int.TryParse(dniText, out int dni))
+                {
+                    MessageBox.Show("El DNI debe ser numérico.", "Atención",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (dniText.Length < 7 || dniText.Length > 8)
+                {
+                    MessageBox.Show("El DNI debe tener 7 u 8 dígitos.", "Atención",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Autenticación
+                Usuario oUsuario = new CN_Usuario().Listar().Where(u => u.Dni == (TIngresoDNI.Text) && u.Clave == TIngresoClave.Text).FirstOrDefault();
+
+                if(oUsuario == null)
+                {
+                    MessageBox.Show("DNI o Clave incorrecta.", "Atención",
+                       MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Si manejás Estado como bool en la entidad
+                if (!oUsuario.Estado)
+                {
+                    MessageBox.Show("El usuario está inactivo.", "Atención",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // OK → abrir Inicio
+                var form = new Inicio();
+                form.FormClosing += frm_closing;
+                form.Show();
+                this.Hide();
             }
 
-            if (!int.TryParse(dniText, out int dni))
+            catch (Exception ex)
             {
-                MessageBox.Show("El DNI debe ser numérico.", "Atención",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                MessageBox.Show("No se pudo validar el usuario.\n" + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            if (dniText.Length < 7 || dniText.Length > 8)
+            finally
             {
-                MessageBox.Show("El DNI debe tener 7 u 8 dígitos.", "Atención",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                BIngresar.Enabled = true;
             }
-
-            form.Show();
-            this.Hide();
-
-            form.FormClosing += frm_closing;
         }
+        
 
         private void frm_closing(object sender, FormClosingEventArgs e)
         {   
