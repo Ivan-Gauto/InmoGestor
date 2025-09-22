@@ -19,12 +19,15 @@ namespace CapaDatos
             {
                 try
                 {
-                    string query = "SELECT u.dni, u.clave, u.estado, u.fecha_creacion, u.rol_usuario_id, " +
-                                   "p.nombre, p.apellido, p.correo_electronico, " +
-                                   "r.nombre AS rol_nombre " +
-                                   "FROM usuario u " +
-                                   "INNER JOIN persona p ON u.dni = p.dni " +
-                                   "INNER JOIN rol_usuario r ON u.rol_usuario_id = r.rol_usuario_id";
+                    string query = @"
+                            SELECT 
+                                u.dni, u.clave, u.estado, u.fecha_creacion, u.rol_usuario_id,
+                                p.nombre, p.apellido, p.correo_electronico, p.direccion, p.telefono,
+                                r.nombre AS rol_nombre
+                            FROM usuario u
+                            INNER JOIN persona     p ON u.dni = p.dni
+                            INNER JOIN rol_usuario r ON u.rol_usuario_id = r.rol_usuario_id;";
+
                     SqlCommand cmd = new SqlCommand(query, oconexion);
                     cmd.CommandType = CommandType.Text;
                     oconexion.Open();
@@ -43,7 +46,9 @@ namespace CapaDatos
                                 {
                                     Nombre = dr["nombre"].ToString(),
                                     Apellido = dr["apellido"].ToString(),
-                                    CorreoElectronico = dr["correo_electronico"].ToString()
+                                    CorreoElectronico = dr["correo_electronico"].ToString(),
+                                    Direccion = dr["direccion"].ToString(),   
+                                    Telefono = dr["telefono"].ToString()     
                                 },
                                 oRolUsuario = new RolUsuario()
                                 {
