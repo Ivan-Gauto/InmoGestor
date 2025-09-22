@@ -99,6 +99,7 @@ namespace InmoGestor
             agregarUsuariosForm.FormClosed += (_, __) =>
             {
                 ContenedorUsuarios.Controls.Remove(agregarUsuariosForm);
+                CargarUsuarios();
                 agregarUsuariosForm.Dispose();
                 agregarUsuariosForm = null;
             };

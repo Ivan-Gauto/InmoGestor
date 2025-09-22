@@ -629,6 +629,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "EditarUsuario";
             this.Text = "EditarUsuario";
+            this.Load += new System.EventHandler(this.EditarUsuario_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel9.ResumeLayout(false);
             this.tableLayoutPanel18.ResumeLayout(false);

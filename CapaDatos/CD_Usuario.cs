@@ -47,8 +47,8 @@ namespace CapaDatos
                                     Nombre = dr["nombre"].ToString(),
                                     Apellido = dr["apellido"].ToString(),
                                     CorreoElectronico = dr["correo_electronico"].ToString(),
-                                    Direccion = dr["direccion"].ToString(),   
-                                    Telefono = dr["telefono"].ToString()     
+                                    Direccion = dr["direccion"].ToString(),
+                                    Telefono = dr["telefono"].ToString()
                                 },
                                 oRolUsuario = new RolUsuario()
                                 {
@@ -70,5 +70,104 @@ namespace CapaDatos
 
 
         }
+
+
+        // alta (upsert persona + insert usuario)
+        public bool Registrar(Usuario u, out string mensaje)
+        {
+            mensaje = string.Empty;
+
+            using (SqlConnection cn = new SqlConnection(Conexion.cadena))
+            {
+                cn.Open();
+                using (SqlTransaction tx = cn.BeginTransaction())
+                {
+                    try
+                    {
+                        // 1) UPSERT de persona
+                        var cmdPersona = new SqlCommand(@"
+IF EXISTS (SELECT 1 FROM persona WHERE dni=@dni)
+BEGIN
+    UPDATE persona
+       SET nombre             = @nombre,
+           apellido           = @apellido,
+           correo_electronico = @correo,
+           telefono           = @tel,
+           direccion          = @dir,
+           estado             = @estadoPersona,
+           fecha_nacimiento   = @fnac
+     WHERE dni = @dni;
+END
+ELSE
+BEGIN
+    INSERT INTO persona(dni, nombre, apellido, correo_electronico, telefono, direccion, estado, fecha_nacimiento)
+    VALUES (@dni, @nombre, @apellido, @correo, @tel, @dir, @estadoPersona, @fnac);
+END
+", cn, tx);
+
+                        cmdPersona.CommandType = CommandType.Text;
+
+                        cmdPersona.Parameters.AddWithValue("@dni", u.Dni ?? string.Empty);
+                        cmdPersona.Parameters.AddWithValue("@nombre", (object)u.oPersona?.Nombre ?? DBNull.Value);
+                        cmdPersona.Parameters.AddWithValue("@apellido", (object)u.oPersona?.Apellido ?? DBNull.Value);
+                        cmdPersona.Parameters.AddWithValue("@correo", (object)u.oPersona?.CorreoElectronico ?? DBNull.Value);
+                        cmdPersona.Parameters.AddWithValue("@tel", (object)u.oPersona?.Telefono ?? DBNull.Value);
+                        cmdPersona.Parameters.AddWithValue("@dir", (object)u.oPersona?.Direccion ?? DBNull.Value);
+
+                        // Persona.Estado es INT (0/1) → asegurar entero 0/1
+                        int estadoPersona = 1; // por defecto activo
+                        if (u.oPersona != null)
+                        {
+                            // si tu clase Persona.Estado = int (0/1):
+                            estadoPersona = (u.oPersona.Estado != 0) ? 1 : 0;
+
+                            // si fuera bool, usarías: estadoPersona = u.oPersona.Estado ? 1 : 0;
+                        }
+                        cmdPersona.Parameters.Add("@estadoPersona", SqlDbType.Int).Value = estadoPersona;
+
+                        // DateTime? → DBNull si es null
+                        var pFnac = cmdPersona.Parameters.Add("@fnac", SqlDbType.Date);
+                        pFnac.Value = (object)u.oPersona?.FechaNacimiento ?? DBNull.Value;
+
+                        cmdPersona.ExecuteNonQuery();
+
+                        // 2) INSERT de usuario (dni es PK; si existe, aborta)
+                        var cmdUsuario = new SqlCommand(@"
+IF EXISTS (SELECT 1 FROM usuario WHERE dni=@dni)
+BEGIN
+    RAISERROR('Ya existe un usuario con ese DNI.', 16, 1);
+END
+ELSE
+BEGIN
+    INSERT INTO usuario(dni, clave, estado, fecha_creacion, rol_usuario_id)
+    VALUES (@dni, @clave, @estadoUsuario, GETDATE(), @rol);
+END
+", cn, tx);
+
+                        cmdUsuario.CommandType = CommandType.Text;
+
+                        cmdUsuario.Parameters.AddWithValue("@dni", u.Dni ?? string.Empty);
+                        cmdUsuario.Parameters.AddWithValue("@clave", u.Clave ?? string.Empty);
+
+                        // Usuario.Estado es BOOL → INT (0/1)
+                        cmdUsuario.Parameters.Add("@estadoUsuario", SqlDbType.Int).Value = u.Estado ? 1 : 0;
+
+                        cmdUsuario.Parameters.AddWithValue("@rol", u.RolUsuarioId);
+
+                        cmdUsuario.ExecuteNonQuery();
+
+                        tx.Commit();
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        try { tx.Rollback(); } catch { /* ignore */ }
+                        mensaje = ex.Message;
+                        return false;
+                    }
+                }
+            }
+        }
     }
 }
+

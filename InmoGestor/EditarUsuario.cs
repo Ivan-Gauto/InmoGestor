@@ -21,5 +21,10 @@ namespace InmoGestor
         {
             this.Close();
         }
+
+        private void EditarUsuario_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
