@@ -56,6 +56,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgregarContrato.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarContrato.Designer.cs">
+      <DependentUpon>AgregarContrato.cs</DependentUpon>
+    </Compile>
     <Compile Include="AgregarInmueble.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +79,18 @@
     </Compile>
     <Compile Include="AgregarPropietario.Designer.cs">
       <DependentUpon>AgregarPropietario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contratos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Contratos.Designer.cs">
+      <DependentUpon>Contratos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditarContrato.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditarContrato.Designer.cs">
+      <DependentUpon>EditarContrato.cs</DependentUpon>
     </Compile>
     <Compile Include="EditarInmueble.cs">
       <SubType>Form</SubType>
@@ -148,12 +166,21 @@
     <Compile Include="Propietarios.Designer.cs">
       <DependentUpon>Propietarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes.Designer.cs">
+      <DependentUpon>Reportes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Usuarios.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Usuarios.Designer.cs">
       <DependentUpon>Usuarios.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AgregarContrato.resx">
+      <DependentUpon>AgregarContrato.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AgregarInmueble.resx">
       <DependentUpon>AgregarInmueble.cs</DependentUpon>
     </EmbeddedResource>
@@ -162,6 +189,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AgregarPropietario.resx">
       <DependentUpon>AgregarPropietario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Contratos.resx">
+      <DependentUpon>Contratos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditarContrato.resx">
+      <DependentUpon>EditarContrato.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditarInmueble.resx">
       <DependentUpon>EditarInmueble.cs</DependentUpon>
@@ -203,6 +236,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Propietarios.resx">
       <DependentUpon>Propietarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes.resx">
+      <DependentUpon>Reportes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Usuarios.resx">
       <DependentUpon>Usuarios.cs</DependentUpon>
@@ -294,6 +330,7 @@
     <None Include="Resources\house.png" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <ProjectReference Include="..\CapaEntidades\CapaEntidades.csproj">
       <Project>{5d71ef46-f165-400f-a7c3-ffd106630be6}</Project>
       <Name>CapaEntidades</Name>
@@ -302,6 +339,12 @@
       <Project>{227eb08d-ca31-4982-a0c5-ee0b58fc7417}</Project>
       <Name>CapaNegocio</Name>
     </ProjectReference>
+=======
+    <None Include="Resources\file.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\excel.png" />
+>>>>>>> 84db008f5fcb2700219a5e3a0d6d19923c30b267
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
