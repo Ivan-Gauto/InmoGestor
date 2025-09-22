@@ -52,14 +52,37 @@ namespace InmoGestor
 
         private void Usuarios_Load(object sender, EventArgs e)
         {
+            CargarUsuarios();
+        }
+
+        private void CargarUsuarios()
+        {
             dataGridUsuarios.Rows.Clear();
+            dataGridUsuarios.AutoGenerateColumns = false;  
 
-            dataGridUsuarios.Rows.Add("11111111", "Av. Siempre Viva 742", "Juan", "Pérez", "123456789", "juan@mail.com", "Admin", "Activo");
-            dataGridUsuarios.Rows.Add("22222222", "Calle Falsa 123", "Ana", "Gómez", "987654321", "ana@mail.com", "Usuario", "Inactivo");
-            dataGridUsuarios.Rows.Add("33333333", "San Martín 555", "Carlos", "López", "112233445", "carlos@mail.com", "Operador", "Activo");
-            dataGridUsuarios.Rows.Add("44444444", "Belgrano 890", "María", "Fernández", "556677889", "maria@mail.com", "Usuario", "Activo");
-            dataGridUsuarios.Rows.Add("55555555", "Mitre 321", "Luis", "Ramírez", "667788990", "luis@mail.com", "Admin", "Inactivo");
+            var usuarios = new CapaNegocio.CN_Usuario().Listar() ?? new List<CapaEntidad.Usuario>();
 
+            // OJO con el orden de columnas en el diseñador:
+            // DNI, Nombre, Apellido, Direccion, Telefono, Correo, Rol, Estado, (Editar, Eliminar)
+            foreach (var u in usuarios)
+            {
+                dataGridUsuarios.Rows.Add(
+                    u.Dni,
+                    u.oPersona?.Nombre ?? "",
+                    u.oPersona?.Apellido ?? "",
+                    u.oPersona?.Direccion ?? "",        
+                    u.oPersona?.Telefono ?? "",        
+                    u.oPersona?.CorreoElectronico ?? "",
+                    u.oRolUsuario?.Nombre ?? "",
+                    u.Estado ? "Activo" : "Inactivo"
+                );
+            }
+
+            // contadores 
+            label11.Text = usuarios.Count.ToString();                                      // total
+            label8.Text = usuarios.Count(x => x.RolUsuarioId == 1).ToString();                  // Admin
+            label6.Text = usuarios.Count(x => x.RolUsuarioId == 2).ToString();                  // Operador/Inmobiliario
+            label14.Text = usuarios.Count(x => x.RolUsuarioId == 3).ToString();                  // Ayudante
         }
 
         private void BAgregarUsuario_Click(object sender, EventArgs e)
