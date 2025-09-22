@@ -82,7 +82,8 @@ namespace InmoGestor
                 }
 
                 // OK → abrir Inicio
-                var form = new Inicio();
+                var form = new Inicio(oUsuario);
+
                 form.FormClosing += frm_closing;
                 form.Show();
                 this.Hide();
