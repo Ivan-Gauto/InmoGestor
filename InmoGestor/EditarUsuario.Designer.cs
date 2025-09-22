@@ -41,6 +41,7 @@
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel18 = new System.Windows.Forms.TableLayoutPanel();
             this.comboRol = new System.Windows.Forms.ComboBox();
+            this.checkEstado = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.BCerrarForm = new System.Windows.Forms.Button();
@@ -65,7 +66,6 @@
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.TDireccion = new System.Windows.Forms.TextBox();
             this.BGuardar = new System.Windows.Forms.Button();
-            this.checkEstado = new System.Windows.Forms.CheckBox();
             label12 = new System.Windows.Forms.Label();
             label9 = new System.Windows.Forms.Label();
             label10 = new System.Windows.Forms.Label();
@@ -285,6 +285,17 @@
             this.comboRol.Name = "comboRol";
             this.comboRol.Size = new System.Drawing.Size(198, 25);
             this.comboRol.TabIndex = 14;
+            // 
+            // checkEstado
+            // 
+            this.checkEstado.AutoSize = true;
+            this.checkEstado.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.checkEstado.Location = new System.Drawing.Point(215, 3);
+            this.checkEstado.Name = "checkEstado";
+            this.checkEstado.Size = new System.Drawing.Size(56, 17);
+            this.checkEstado.TabIndex = 22;
+            this.checkEstado.Text = "Activo";
+            this.checkEstado.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel15
             // 
@@ -621,17 +632,6 @@
             this.BGuardar.TabIndex = 19;
             this.BGuardar.Text = "Guardar";
             this.BGuardar.UseVisualStyleBackColor = false;
-            // 
-            // checkEstado
-            // 
-            this.checkEstado.AutoSize = true;
-            this.checkEstado.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.checkEstado.Location = new System.Drawing.Point(215, 3);
-            this.checkEstado.Name = "checkEstado";
-            this.checkEstado.Size = new System.Drawing.Size(56, 17);
-            this.checkEstado.TabIndex = 22;
-            this.checkEstado.Text = "Activo";
-            this.checkEstado.UseVisualStyleBackColor = true;
             // 
             // EditarUsuario
             // 
