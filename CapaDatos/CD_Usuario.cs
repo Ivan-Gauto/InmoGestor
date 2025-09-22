@@ -23,6 +23,7 @@ namespace CapaDatos
                             SELECT 
                                 u.dni, u.clave, u.estado, u.fecha_creacion, u.rol_usuario_id,
                                 p.nombre, p.apellido, p.correo_electronico, p.direccion, p.telefono,
+                                p.fecha_nacimiento, 
                                 r.nombre AS rol_nombre
                             FROM usuario u
                             INNER JOIN persona     p ON u.dni = p.dni
@@ -48,7 +49,8 @@ namespace CapaDatos
                                     Apellido = dr["apellido"].ToString(),
                                     CorreoElectronico = dr["correo_electronico"].ToString(),
                                     Direccion = dr["direccion"].ToString(),
-                                    Telefono = dr["telefono"].ToString()
+                                    Telefono = dr["telefono"].ToString(),
+                                    FechaNacimiento = Convert.ToDateTime(dr["fecha_nacimiento"])
                                 },
                                 oRolUsuario = new RolUsuario()
                                 {
@@ -125,9 +127,9 @@ END
                         }
                         cmdPersona.Parameters.Add("@estadoPersona", SqlDbType.Int).Value = estadoPersona;
 
-                        // DateTime? → DBNull si es null
-                        var pFnac = cmdPersona.Parameters.Add("@fnac", SqlDbType.Date);
-                        pFnac.Value = (object)u.oPersona?.FechaNacimiento ?? DBNull.Value;
+                        // Fecha obligatoria:
+                        cmdPersona.Parameters.Add("@fnac", SqlDbType.Date).Value = u.oPersona.FechaNacimiento.Date;
+
 
                         cmdPersona.ExecuteNonQuery();
 
@@ -202,8 +204,8 @@ UPDATE persona
                     int estadoPersona = (u.oPersona != null ? u.oPersona.Estado : 1); // int en BD
                     cmdPersona.Parameters.Add("@estadoPersona", SqlDbType.Int).Value = estadoPersona;
 
-                    var fnac = (u.oPersona != null ? u.oPersona.FechaNacimiento : (DateTime?)null);
-                    cmdPersona.Parameters.Add("@fnac", SqlDbType.Date).Value = fnac.HasValue ? (object)fnac.Value : DBNull.Value;
+                    cmdPersona.Parameters.Add("@fnac", SqlDbType.Date).Value = u.oPersona.FechaNacimiento.Date;
+
 
                     cmdPersona.ExecuteNonQuery();
 
@@ -229,12 +231,17 @@ UPDATE usuario
                     tx.Commit();
                     return true;
                 }
-                catch (Exception ex)
+                catch (SqlException ex)
                 {
-                    try { tx.Rollback(); } catch { /* ignore */ }
-                    mensaje = ex.Message;
+                    if (ex.Number == 547 && ex.Message.Contains("CK_usuario_pass_minlen"))
+                        mensaje = "La contraseña debe tener al menos 8 dígitos numéricos.";
+                    else
+                        mensaje = ex.Message;
+
+                    try { tx.Rollback(); } catch { }
                     return false;
                 }
+
             }
         }
 
