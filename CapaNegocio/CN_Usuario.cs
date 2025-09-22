@@ -24,5 +24,9 @@ namespace CapaNegocio
             return objcd_usuario.Registrar(u, out mensaje);
         }
 
+        public bool Actualizar(Usuario u, out string mensaje) =>
+            objcd_usuario.Actualizar(u, out mensaje);
+
+
     }
 }

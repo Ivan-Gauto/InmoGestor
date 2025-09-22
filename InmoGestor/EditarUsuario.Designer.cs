@@ -40,7 +40,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel18 = new System.Windows.Forms.TableLayoutPanel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboRol = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.BCerrarForm = new System.Windows.Forms.Button();
@@ -64,7 +64,8 @@
             this.TNacimiento = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.TDireccion = new System.Windows.Forms.TextBox();
-            this.BIngresar = new System.Windows.Forms.Button();
+            this.BGuardar = new System.Windows.Forms.Button();
+            this.checkEstado = new System.Windows.Forms.CheckBox();
             label12 = new System.Windows.Forms.Label();
             label9 = new System.Windows.Forms.Label();
             label10 = new System.Windows.Forms.Label();
@@ -219,7 +220,7 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel5, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel8, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.BIngresar, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.BGuardar, 0, 6);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -243,6 +244,7 @@
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.23697F));
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.76303F));
             this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel18, 0, 0);
+            this.tableLayoutPanel9.Controls.Add(this.checkEstado, 1, 0);
             this.tableLayoutPanel9.Location = new System.Drawing.Point(23, 368);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 1;
@@ -255,7 +257,7 @@
             // 
             this.tableLayoutPanel18.ColumnCount = 1;
             this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel18.Controls.Add(this.comboBox1, 0, 1);
+            this.tableLayoutPanel18.Controls.Add(this.comboRol, 0, 1);
             this.tableLayoutPanel18.Controls.Add(label12, 0, 0);
             this.tableLayoutPanel18.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel18.Name = "tableLayoutPanel18";
@@ -267,22 +269,22 @@
             this.tableLayoutPanel18.Size = new System.Drawing.Size(204, 60);
             this.tableLayoutPanel18.TabIndex = 21;
             // 
-            // comboBox1
+            // comboRol
             // 
-            this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.comboBox1.ForeColor = System.Drawing.Color.White;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.comboRol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.comboRol.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboRol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboRol.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.comboRol.ForeColor = System.Drawing.Color.White;
+            this.comboRol.FormattingEnabled = true;
+            this.comboRol.Items.AddRange(new object[] {
             "Administrador",
             "Operador",
             "Ayudante"});
-            this.comboBox1.Location = new System.Drawing.Point(3, 32);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(198, 25);
-            this.comboBox1.TabIndex = 14;
+            this.comboRol.Location = new System.Drawing.Point(3, 32);
+            this.comboRol.Name = "comboRol";
+            this.comboRol.Size = new System.Drawing.Size(198, 25);
+            this.comboRol.TabIndex = 14;
             // 
             // tableLayoutPanel15
             // 
@@ -602,23 +604,34 @@
             this.TDireccion.Size = new System.Drawing.Size(199, 25);
             this.TDireccion.TabIndex = 14;
             // 
-            // BIngresar
+            // BGuardar
             // 
-            this.BIngresar.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.BIngresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.BIngresar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BIngresar.FlatAppearance.BorderSize = 0;
-            this.BIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BIngresar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BIngresar.ForeColor = System.Drawing.Color.White;
-            this.BIngresar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BIngresar.Location = new System.Drawing.Point(27, 455);
-            this.BIngresar.Margin = new System.Windows.Forms.Padding(7, 0, 0, 0);
-            this.BIngresar.Name = "BIngresar";
-            this.BIngresar.Size = new System.Drawing.Size(171, 29);
-            this.BIngresar.TabIndex = 19;
-            this.BIngresar.Text = "Guardar";
-            this.BIngresar.UseVisualStyleBackColor = false;
+            this.BGuardar.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.BGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
+            this.BGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BGuardar.FlatAppearance.BorderSize = 0;
+            this.BGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BGuardar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BGuardar.ForeColor = System.Drawing.Color.White;
+            this.BGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BGuardar.Location = new System.Drawing.Point(27, 455);
+            this.BGuardar.Margin = new System.Windows.Forms.Padding(7, 0, 0, 0);
+            this.BGuardar.Name = "BGuardar";
+            this.BGuardar.Size = new System.Drawing.Size(171, 29);
+            this.BGuardar.TabIndex = 19;
+            this.BGuardar.Text = "Guardar";
+            this.BGuardar.UseVisualStyleBackColor = false;
+            // 
+            // checkEstado
+            // 
+            this.checkEstado.AutoSize = true;
+            this.checkEstado.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.checkEstado.Location = new System.Drawing.Point(215, 3);
+            this.checkEstado.Name = "checkEstado";
+            this.checkEstado.Size = new System.Drawing.Size(56, 17);
+            this.checkEstado.TabIndex = 22;
+            this.checkEstado.Text = "Activo";
+            this.checkEstado.UseVisualStyleBackColor = true;
             // 
             // EditarUsuario
             // 
@@ -632,6 +645,7 @@
             this.Load += new System.EventHandler(this.EditarUsuario_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel9.ResumeLayout(false);
+            this.tableLayoutPanel9.PerformLayout();
             this.tableLayoutPanel18.ResumeLayout(false);
             this.tableLayoutPanel18.PerformLayout();
             this.tableLayoutPanel15.ResumeLayout(false);
@@ -664,7 +678,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel18;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboRol;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button BCerrarForm;
@@ -688,6 +702,7 @@
         private System.Windows.Forms.TextBox TNacimiento;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
         private System.Windows.Forms.TextBox TDireccion;
-        private System.Windows.Forms.Button BIngresar;
+        private System.Windows.Forms.Button BGuardar;
+        private System.Windows.Forms.CheckBox checkEstado;
     }
 }

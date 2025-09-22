@@ -15,6 +15,8 @@ namespace InmoGestor
         private AgregarUsuario agregarUsuariosForm;
         private EditarUsuario editarUsuarioForm;
 
+        private List<CapaEntidad.Usuario> _usuarios = new List<CapaEntidad.Usuario>();
+
         public Usuarios()
         {
             InitializeComponent();
@@ -58,32 +60,31 @@ namespace InmoGestor
         private void CargarUsuarios()
         {
             dataGridUsuarios.Rows.Clear();
-            dataGridUsuarios.AutoGenerateColumns = false;  
+            dataGridUsuarios.AutoGenerateColumns = false;
 
-            var usuarios = new CapaNegocio.CN_Usuario().Listar() ?? new List<CapaEntidad.Usuario>();
+            _usuarios = new CapaNegocio.CN_Usuario().Listar() ?? new List<CapaEntidad.Usuario>();
 
-            // OJO con el orden de columnas en el diseñador:
-            // DNI, Nombre, Apellido, Direccion, Telefono, Correo, Rol, Estado, (Editar, Eliminar)
-            foreach (var u in usuarios)
+            foreach (var u in _usuarios)
             {
                 dataGridUsuarios.Rows.Add(
                     u.Dni,
                     u.oPersona?.Nombre ?? "",
                     u.oPersona?.Apellido ?? "",
-                    u.oPersona?.Direccion ?? "",        
-                    u.oPersona?.Telefono ?? "",        
+                    u.oPersona?.Direccion ?? "",
+                    u.oPersona?.Telefono ?? "",
                     u.oPersona?.CorreoElectronico ?? "",
                     u.oRolUsuario?.Nombre ?? "",
                     u.Estado ? "Activo" : "Inactivo"
                 );
             }
 
-            // contadores 
-            label11.Text = usuarios.Count.ToString();                                      // total
-            label8.Text = usuarios.Count(x => x.RolUsuarioId == 1).ToString();                  // Admin
-            label6.Text = usuarios.Count(x => x.RolUsuarioId == 2).ToString();                  // Operador/Inmobiliario
-            label14.Text = usuarios.Count(x => x.RolUsuarioId == 3).ToString();                  // Ayudante
+            // contadores
+            label11.Text = _usuarios.Count.ToString();
+            label8.Text = _usuarios.Count(x => x.RolUsuarioId == 1).ToString(); // Admin
+            label6.Text = _usuarios.Count(x => x.RolUsuarioId == 2).ToString(); // Operador
+            label14.Text = _usuarios.Count(x => x.RolUsuarioId == 3).ToString(); // Ayudante
         }
+
 
         private void BAgregarUsuario_Click(object sender, EventArgs e)
         {
@@ -120,18 +121,37 @@ namespace InmoGestor
 
             if (colName == "ColumnaEditar")
             {
-                editarUsuarioForm = new EditarUsuario
+                // 1) tomar DNI desde la grilla
+                var dni = dataGridUsuarios.Rows[e.RowIndex]
+                                          .Cells["UsuarioColumna"] // <-- Asegurate que la columna DNI se llame así
+                                          .Value?.ToString();
+
+                // 2) buscar el objeto completo en la lista en memoria
+                var uSel = _usuarios.FirstOrDefault(x => x.Dni == dni);
+                if (uSel == null)
+                {
+                    MessageBox.Show("No se encontró el usuario.", "Atención",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (HayFormAbierto()) { FocusFormAbierto(); return; }
+
+                // 3) abrir el editor PASÁNDOLE el usuario
+                editarUsuarioForm = new EditarUsuario(uSel)
                 {
                     TopLevel = false,
                     FormBorderStyle = FormBorderStyle.None
                 };
                 ContenedorUsuarios.Controls.Add(editarUsuarioForm);
 
+                // refrescar al cerrar
                 editarUsuarioForm.FormClosed += (_, __) =>
                 {
                     ContenedorUsuarios.Controls.Remove(editarUsuarioForm);
                     editarUsuarioForm.Dispose();
                     editarUsuarioForm = null;
+                    CargarUsuarios();
                 };
 
                 editarUsuarioForm.Show();
@@ -139,6 +159,7 @@ namespace InmoGestor
                 editarUsuarioForm.Focus();
                 CentrarFormAbierto();
             }
+
             else if (colName == "ColumnaEliminar")
             {
                 var result = MessageBox.Show("¿Está seguro de que desea eliminar este usuario?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);

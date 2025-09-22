@@ -168,6 +168,77 @@ END
                 }
             }
         }
+
+        public bool Actualizar(Usuario u, out string mensaje)
+        {
+            mensaje = string.Empty;
+
+            using (SqlConnection cn = new SqlConnection(Conexion.cadena))
+            {
+                cn.Open();
+                var tx = cn.BeginTransaction();
+
+                try
+                {
+                    // PERSONA
+                    var cmdPersona = new SqlCommand(@"
+UPDATE persona
+   SET nombre            = @nombre,
+       apellido          = @apellido,
+       correo_electronico= @correo,
+       telefono          = @tel,
+       direccion         = @dir,
+       estado            = @estadoPersona,
+       fecha_nacimiento  = @fnac
+ WHERE dni = @dni;", cn, tx);
+
+                    cmdPersona.Parameters.AddWithValue("@dni", u.Dni);
+                    cmdPersona.Parameters.AddWithValue("@nombre", (object)(u.oPersona != null ? u.oPersona.Nombre : null) ?? DBNull.Value);
+                    cmdPersona.Parameters.AddWithValue("@apellido", (object)(u.oPersona != null ? u.oPersona.Apellido : null) ?? DBNull.Value);
+                    cmdPersona.Parameters.AddWithValue("@correo", (object)(u.oPersona != null ? u.oPersona.CorreoElectronico : null) ?? DBNull.Value);
+                    cmdPersona.Parameters.AddWithValue("@tel", (object)(u.oPersona != null ? u.oPersona.Telefono : null) ?? DBNull.Value);
+                    cmdPersona.Parameters.AddWithValue("@dir", (object)(u.oPersona != null ? u.oPersona.Direccion : null) ?? DBNull.Value);
+
+                    int estadoPersona = (u.oPersona != null ? u.oPersona.Estado : 1); // int en BD
+                    cmdPersona.Parameters.Add("@estadoPersona", SqlDbType.Int).Value = estadoPersona;
+
+                    var fnac = (u.oPersona != null ? u.oPersona.FechaNacimiento : (DateTime?)null);
+                    cmdPersona.Parameters.Add("@fnac", SqlDbType.Date).Value = fnac.HasValue ? (object)fnac.Value : DBNull.Value;
+
+                    cmdPersona.ExecuteNonQuery();
+
+                    // USUARIO
+                    var cmdUsuario = new SqlCommand(@"
+UPDATE usuario
+   SET clave          = @clave,
+       estado         = @estadoUsuario,
+       rol_usuario_id = @rol
+ WHERE dni = @dni;", cn, tx);
+
+                    cmdUsuario.Parameters.AddWithValue("@dni", u.Dni);
+                    cmdUsuario.Parameters.AddWithValue("@clave", u.Clave);
+                    cmdUsuario.Parameters.Add("@estadoUsuario", SqlDbType.Int).Value = u.Estado ? 1 : 0;
+                    cmdUsuario.Parameters.AddWithValue("@rol", u.RolUsuarioId);
+
+                    int filas = cmdUsuario.ExecuteNonQuery();
+                    if (filas == 0)
+                    {
+                        throw new Exception("No se encontró el usuario a actualizar.");
+                    }
+
+                    tx.Commit();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    try { tx.Rollback(); } catch { /* ignore */ }
+                    mensaje = ex.Message;
+                    return false;
+                }
+            }
+        }
+
+
     }
 }
 
