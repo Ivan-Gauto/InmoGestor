@@ -57,9 +57,16 @@ namespace InmoGestor
                 }
 
                 // Autenticación
-                Usuario oUsuario = new CN_Usuario().Listar().Where(u => u.Dni == (TIngresoDNI.Text) && u.Clave == TIngresoClave.Text).FirstOrDefault();
 
-                if(oUsuario == null)
+                // Traer usuarios UNA sola vez
+                List<Usuario> usuarios = new CN_Usuario().Listar();
+
+                // Autenticación (usa las variables ya trimmeadas (sin espacios al inicio y final))
+                Usuario oUsuario = usuarios.FirstOrDefault(
+                    u => string.Equals(u.Dni?.Trim(), dniText, StringComparison.Ordinal)
+                      && string.Equals(u.Clave, clave, StringComparison.Ordinal));
+
+                if (oUsuario == null)
                 {
                     MessageBox.Show("DNI o Clave incorrecta.", "Atención",
                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
