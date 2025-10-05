@@ -135,22 +135,24 @@ namespace InmoGestor
             dataGridInquilinos.Rows.Clear();
             dataGridInquilinos.AutoGenerateColumns = false;
 
-            _inquilinos = new CN_PersonaRolCliente().ListarInquilinos(2)
-                 ?? new List<PersonaRolCliente>();
+            _inquilinos = new CN_PersonaRolCliente().ListarInquilinos(2) ?? new List<PersonaRolCliente>();
 
             foreach (var i in _inquilinos)
             {
                 dataGridInquilinos.Rows.Add(new object[]
                 {
-                i.Dni,
-                i.oPersona?.Direccion ?? "",
-                i.oPersona?.Nombre ?? "",
-                i.oPersona?.Apellido ?? "",
-                i.oPersona?.Telefono ?? "",
-                i.oPersona?.CorreoElectronico ?? ""
+                    i.Dni,
+                    i.oPersona?.Direccion ?? "",
+                    i.oPersona?.Nombre ?? "",
+                    i.oPersona?.Apellido ?? "",
+                    i.oPersona?.Telefono ?? "",
+                    i.oPersona?.CorreoElectronico ?? "",
+                    "",                          // Alquiler (si no hay contrato)
+                    "",                          // Último pago
+                    ""                           // Estado
                 });
             }
-
         }
+
     }
 }
