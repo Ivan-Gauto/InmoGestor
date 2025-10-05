@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PersonaRolCliente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Persona.cs" />
+    <Compile Include="RolCliente.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="RolUsuario.cs" />
   </ItemGroup>

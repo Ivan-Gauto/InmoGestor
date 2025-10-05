@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaEntidades;
+using CapaNegocio;
 
 namespace InmoGestor
 {
@@ -15,7 +17,7 @@ namespace InmoGestor
         private AgregarUsuario agregarUsuariosForm;
         private EditarUsuario editarUsuarioForm;
 
-        private List<CapaEntidad.Usuario> _usuarios = new List<CapaEntidad.Usuario>();
+        private List<Usuario> _usuarios = new List<Usuario>();
 
         public Usuarios()
         {
@@ -62,7 +64,7 @@ namespace InmoGestor
             dataGridUsuarios.Rows.Clear();
             dataGridUsuarios.AutoGenerateColumns = false;
 
-            _usuarios = new CapaNegocio.CN_Usuario().Listar() ?? new List<CapaEntidad.Usuario>();
+            _usuarios = new CN_Usuario().Listar() ?? new List<Usuario>();
 
             foreach (var u in _usuarios)
             {

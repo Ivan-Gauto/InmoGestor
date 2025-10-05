@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaEntidades;
+using CapaNegocio;
 
 namespace InmoGestor
 {
@@ -14,6 +16,7 @@ namespace InmoGestor
     {
         private EditarInquilino editarInquilinoForm;
         private AgregarInquilino agregarInquilinoForm;
+        private List<PersonaRolCliente> _inquilinos = new List<PersonaRolCliente>();
 
         public Inquilinos()
         {
@@ -81,18 +84,38 @@ namespace InmoGestor
 
             if (colName == "ColumnaEditar")
             {
-                editarInquilinoForm = new EditarInquilino
+                // 1) tomar DNI desde la grilla
+                var dni = dataGridInquilinos.Rows[e.RowIndex]
+                                          .Cells["UsuarioColumna"] // <-- Asegurate que la columna DNI se llame así
+                                          .Value?.ToString();
+
+                // 2) buscar el objeto completo en la lista en memoria
+                var iSel = _inquilinos.FirstOrDefault(x => x.Dni == dni);
+
+                if (iSel == null)
+                {
+                    MessageBox.Show("No se encontró el inquilino.", "Atención",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (HayFormAbierto()) { FocusFormAbierto(); return; }
+
+                // 3) abrir el editor PASÁNDOLE el usuario
+                editarInquilinoForm = new EditarInquilino(iSel)
                 {
                     TopLevel = false,
                     FormBorderStyle = FormBorderStyle.None
                 };
                 ContenedorInquilinos.Controls.Add(editarInquilinoForm);
 
+                // refrescar al cerrar
                 editarInquilinoForm.FormClosed += (_, __) =>
                 {
                     ContenedorInquilinos.Controls.Remove(editarInquilinoForm);
                     editarInquilinoForm.Dispose();
                     editarInquilinoForm = null;
+                    CargarInquilinos();
                 };
 
                 editarInquilinoForm.Show();
@@ -100,25 +123,34 @@ namespace InmoGestor
                 editarInquilinoForm.Focus();
                 CentrarFormAbierto();
             }
-            else if (colName == "ColumnaEliminar")
-            {
-                var result = MessageBox.Show("¿Está seguro de que desea eliminar este inquilino?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (result == DialogResult.Yes)
-                {
-                    dataGridInquilinos.Rows.RemoveAt(e.RowIndex);
-                }
-            }
         }
 
         private void Inquilinos_Load(object sender, EventArgs e)
         {
-            dataGridInquilinos.Rows.Clear();
+            CargarInquilinos();
+        }
 
-            dataGridInquilinos.Rows.Add("11111111", "Av. Siempre Viva 742", "Juan", "Pérez", "123456789", "juan@mail.com", "300000", "10/10/10", "activo");
-            dataGridInquilinos.Rows.Add("22222222", "Calle Falsa 123", "Ana", "Gómez", "987654321", "ana@mail.com", "3000000", "10/10/10", "activo");
-            dataGridInquilinos.Rows.Add("33333333", "San Martín 555", "Carlos", "López", "112233445", "carlos@mail.com", "200000", "10/10/10", "activo");
-            dataGridInquilinos.Rows.Add("44444444", "Belgrano 890", "María", "Fernández", "556677889", "maria@mail.com", "250000", "10/10/10", "activo");
-            dataGridInquilinos.Rows.Add("55555555", "Mitre 321", "Luis", "Ramírez", "667788990", "luis@mail.com", "200000", "10/10/10", "activo");
+        private void CargarInquilinos()
+        {
+            dataGridInquilinos.Rows.Clear();
+            dataGridInquilinos.AutoGenerateColumns = false;
+
+            _inquilinos = new CN_PersonaRolCliente().ListarInquilinos(2)
+                 ?? new List<PersonaRolCliente>();
+
+            foreach (var i in _inquilinos)
+            {
+                dataGridInquilinos.Rows.Add(new object[]
+                {
+                i.Dni,
+                i.oPersona?.Direccion ?? "",
+                i.oPersona?.Nombre ?? "",
+                i.oPersona?.Apellido ?? "",
+                i.oPersona?.Telefono ?? "",
+                i.oPersona?.CorreoElectronico ?? ""
+                });
+            }
+
         }
     }
 }

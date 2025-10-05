@@ -42,21 +42,21 @@
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
             this.TApellido = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
-            this.TNombre = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.TCorreo = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.TTelefono = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
+            this.TDireccion = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.TCorreo = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
             this.TDni = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
             this.TNacimiento = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
-            this.TDireccion = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
+            this.TNombre = new System.Windows.Forms.TextBox();
             this.BIngresar = new System.Windows.Forms.Button();
             label9 = new System.Windows.Forms.Label();
             label10 = new System.Windows.Forms.Label();
@@ -69,15 +69,15 @@
             this.tableLayoutPanel15.SuspendLayout();
             this.tableLayoutPanel12.SuspendLayout();
             this.tableLayoutPanel13.SuspendLayout();
-            this.tableLayoutPanel14.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
-            this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
+            this.tableLayoutPanel10.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel16.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
             this.tableLayoutPanel11.SuspendLayout();
-            this.tableLayoutPanel10.SuspendLayout();
+            this.tableLayoutPanel14.SuspendLayout();
             this.SuspendLayout();
             // 
             // label9
@@ -280,33 +280,6 @@
             this.TApellido.Size = new System.Drawing.Size(199, 25);
             this.TApellido.TabIndex = 14;
             // 
-            // tableLayoutPanel14
-            // 
-            this.tableLayoutPanel14.ColumnCount = 1;
-            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel14.Controls.Add(this.TNombre, 0, 1);
-            this.tableLayoutPanel14.Controls.Add(label10, 0, 0);
-            this.tableLayoutPanel14.Location = new System.Drawing.Point(214, 3);
-            this.tableLayoutPanel14.Name = "tableLayoutPanel14";
-            this.tableLayoutPanel14.RowCount = 2;
-            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel14.Size = new System.Drawing.Size(205, 59);
-            this.tableLayoutPanel14.TabIndex = 12;
-            // 
-            // TNombre
-            // 
-            this.TNombre.AllowDrop = true;
-            this.TNombre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.TNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TNombre.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TNombre.ForeColor = System.Drawing.Color.White;
-            this.TNombre.HideSelection = false;
-            this.TNombre.Location = new System.Drawing.Point(3, 32);
-            this.TNombre.Name = "TNombre";
-            this.TNombre.Size = new System.Drawing.Size(199, 25);
-            this.TNombre.TabIndex = 14;
-            // 
             // tableLayoutPanel5
             // 
             this.tableLayoutPanel5.ColumnCount = 2;
@@ -320,33 +293,6 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(422, 67);
             this.tableLayoutPanel5.TabIndex = 12;
-            // 
-            // tableLayoutPanel6
-            // 
-            this.tableLayoutPanel6.ColumnCount = 1;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Controls.Add(this.TCorreo, 0, 1);
-            this.tableLayoutPanel6.Controls.Add(label3, 0, 0);
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(214, 3);
-            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.RowCount = 2;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(205, 61);
-            this.tableLayoutPanel6.TabIndex = 13;
-            // 
-            // TCorreo
-            // 
-            this.TCorreo.AllowDrop = true;
-            this.TCorreo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.TCorreo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TCorreo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TCorreo.ForeColor = System.Drawing.Color.White;
-            this.TCorreo.HideSelection = false;
-            this.TCorreo.Location = new System.Drawing.Point(3, 33);
-            this.TCorreo.Name = "TCorreo";
-            this.TCorreo.Size = new System.Drawing.Size(199, 25);
-            this.TCorreo.TabIndex = 14;
             // 
             // tableLayoutPanel7
             // 
@@ -375,6 +321,33 @@
             this.TTelefono.Size = new System.Drawing.Size(199, 25);
             this.TTelefono.TabIndex = 14;
             // 
+            // tableLayoutPanel10
+            // 
+            this.tableLayoutPanel10.ColumnCount = 1;
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel10.Controls.Add(this.TDireccion, 0, 1);
+            this.tableLayoutPanel10.Controls.Add(label7, 0, 0);
+            this.tableLayoutPanel10.Location = new System.Drawing.Point(214, 3);
+            this.tableLayoutPanel10.Name = "tableLayoutPanel10";
+            this.tableLayoutPanel10.RowCount = 2;
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(205, 59);
+            this.tableLayoutPanel10.TabIndex = 12;
+            // 
+            // TDireccion
+            // 
+            this.TDireccion.AllowDrop = true;
+            this.TDireccion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.TDireccion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TDireccion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TDireccion.ForeColor = System.Drawing.Color.White;
+            this.TDireccion.HideSelection = false;
+            this.TDireccion.Location = new System.Drawing.Point(3, 32);
+            this.TDireccion.Name = "TDireccion";
+            this.TDireccion.Size = new System.Drawing.Size(199, 25);
+            this.TDireccion.TabIndex = 14;
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 2;
@@ -388,6 +361,33 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(422, 67);
             this.tableLayoutPanel2.TabIndex = 11;
+            // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.ColumnCount = 1;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.Controls.Add(this.TCorreo, 0, 1);
+            this.tableLayoutPanel6.Controls.Add(label3, 0, 0);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(214, 3);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 2;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(205, 61);
+            this.tableLayoutPanel6.TabIndex = 13;
+            // 
+            // TCorreo
+            // 
+            this.TCorreo.AllowDrop = true;
+            this.TCorreo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.TCorreo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TCorreo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TCorreo.ForeColor = System.Drawing.Color.White;
+            this.TCorreo.HideSelection = false;
+            this.TCorreo.Location = new System.Drawing.Point(3, 33);
+            this.TCorreo.Name = "TCorreo";
+            this.TCorreo.Size = new System.Drawing.Size(199, 25);
+            this.TCorreo.TabIndex = 14;
             // 
             // tableLayoutPanel16
             // 
@@ -458,32 +458,32 @@
             this.TNacimiento.Size = new System.Drawing.Size(199, 25);
             this.TNacimiento.TabIndex = 14;
             // 
-            // tableLayoutPanel10
+            // tableLayoutPanel14
             // 
-            this.tableLayoutPanel10.ColumnCount = 1;
-            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel10.Controls.Add(this.TDireccion, 0, 1);
-            this.tableLayoutPanel10.Controls.Add(label7, 0, 0);
-            this.tableLayoutPanel10.Location = new System.Drawing.Point(214, 3);
-            this.tableLayoutPanel10.Name = "tableLayoutPanel10";
-            this.tableLayoutPanel10.RowCount = 2;
-            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel10.Size = new System.Drawing.Size(205, 59);
-            this.tableLayoutPanel10.TabIndex = 12;
+            this.tableLayoutPanel14.ColumnCount = 1;
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel14.Controls.Add(this.TNombre, 0, 1);
+            this.tableLayoutPanel14.Controls.Add(label10, 0, 0);
+            this.tableLayoutPanel14.Location = new System.Drawing.Point(214, 3);
+            this.tableLayoutPanel14.Name = "tableLayoutPanel14";
+            this.tableLayoutPanel14.RowCount = 2;
+            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel14.Size = new System.Drawing.Size(205, 59);
+            this.tableLayoutPanel14.TabIndex = 12;
             // 
-            // TDireccion
+            // TNombre
             // 
-            this.TDireccion.AllowDrop = true;
-            this.TDireccion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.TDireccion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TDireccion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TDireccion.ForeColor = System.Drawing.Color.White;
-            this.TDireccion.HideSelection = false;
-            this.TDireccion.Location = new System.Drawing.Point(3, 32);
-            this.TDireccion.Name = "TDireccion";
-            this.TDireccion.Size = new System.Drawing.Size(199, 25);
-            this.TDireccion.TabIndex = 14;
+            this.TNombre.AllowDrop = true;
+            this.TNombre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.TNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TNombre.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TNombre.ForeColor = System.Drawing.Color.White;
+            this.TNombre.HideSelection = false;
+            this.TNombre.Location = new System.Drawing.Point(3, 32);
+            this.TNombre.Name = "TNombre";
+            this.TNombre.Size = new System.Drawing.Size(199, 25);
+            this.TNombre.TabIndex = 14;
             // 
             // BIngresar
             // 
@@ -517,21 +517,21 @@
             this.tableLayoutPanel12.ResumeLayout(false);
             this.tableLayoutPanel13.ResumeLayout(false);
             this.tableLayoutPanel13.PerformLayout();
-            this.tableLayoutPanel14.ResumeLayout(false);
-            this.tableLayoutPanel14.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
-            this.tableLayoutPanel6.ResumeLayout(false);
-            this.tableLayoutPanel6.PerformLayout();
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
+            this.tableLayoutPanel10.ResumeLayout(false);
+            this.tableLayoutPanel10.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel6.ResumeLayout(false);
+            this.tableLayoutPanel6.PerformLayout();
             this.tableLayoutPanel16.ResumeLayout(false);
             this.tableLayoutPanel16.PerformLayout();
             this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel11.ResumeLayout(false);
             this.tableLayoutPanel11.PerformLayout();
-            this.tableLayoutPanel10.ResumeLayout(false);
-            this.tableLayoutPanel10.PerformLayout();
+            this.tableLayoutPanel14.ResumeLayout(false);
+            this.tableLayoutPanel14.PerformLayout();
             this.ResumeLayout(false);
 
         }
