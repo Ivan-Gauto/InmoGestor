@@ -86,24 +86,24 @@ namespace CapaDatos
                     {
                         // 1) UPSERT de persona
                         var cmdPersona = new SqlCommand(@"
-IF EXISTS (SELECT 1 FROM persona WHERE dni=@dni)
-BEGIN
-    UPDATE persona
-       SET nombre             = @nombre,
-           apellido           = @apellido,
-           correo_electronico = @correo,
-           telefono           = @tel,
-           direccion          = @dir,
-           estado             = @estadoPersona,
-           fecha_nacimiento   = @fnac
-     WHERE dni = @dni;
-END
-ELSE
-BEGIN
-    INSERT INTO persona(dni, nombre, apellido, correo_electronico, telefono, direccion, estado, fecha_nacimiento)
-    VALUES (@dni, @nombre, @apellido, @correo, @tel, @dir, @estadoPersona, @fnac);
-END
-", cn, tx);
+                        IF EXISTS (SELECT 1 FROM persona WHERE dni=@dni)
+                        BEGIN
+                            UPDATE persona
+                               SET nombre             = @nombre,
+                                   apellido           = @apellido,
+                                   correo_electronico = @correo,
+                                   telefono           = @tel,
+                                   direccion          = @dir,
+                                   estado             = @estadoPersona,
+                                   fecha_nacimiento   = @fnac
+                             WHERE dni = @dni;
+                        END
+                        ELSE
+                        BEGIN
+                            INSERT INTO persona(dni, nombre, apellido, correo_electronico, telefono, direccion, estado, fecha_nacimiento)
+                            VALUES (@dni, @nombre, @apellido, @correo, @tel, @dir, @estadoPersona, @fnac);
+                        END
+                        ", cn, tx);
 
                         cmdPersona.CommandType = CommandType.Text;
 
@@ -133,16 +133,16 @@ END
 
                         // 2) INSERT de usuario (dni es PK; si existe, aborta)
                         var cmdUsuario = new SqlCommand(@"
-IF EXISTS (SELECT 1 FROM usuario WHERE dni=@dni)
-BEGIN
-    RAISERROR('Ya existe un usuario con ese DNI.', 16, 1);
-END
-ELSE
-BEGIN
-    INSERT INTO usuario(dni, clave, estado, fecha_creacion, rol_usuario_id)
-    VALUES (@dni, @clave, @estadoUsuario, GETDATE(), @rol);
-END
-", cn, tx);
+                        IF EXISTS (SELECT 1 FROM usuario WHERE dni=@dni)
+                        BEGIN
+                            RAISERROR('Ya existe un usuario con ese DNI.', 16, 1);
+                        END
+                        ELSE
+                        BEGIN
+                            INSERT INTO usuario(dni, clave, estado, fecha_creacion, rol_usuario_id)
+                            VALUES (@dni, @clave, @estadoUsuario, GETDATE(), @rol);
+                        END
+                        ", cn, tx);
 
                         cmdUsuario.CommandType = CommandType.Text;
 
@@ -182,15 +182,15 @@ END
                 {
                     // PERSONA
                     var cmdPersona = new SqlCommand(@"
-UPDATE persona
-   SET nombre            = @nombre,
-       apellido          = @apellido,
-       correo_electronico= @correo,
-       telefono          = @tel,
-       direccion         = @dir,
-       estado            = @estadoPersona,
-       fecha_nacimiento  = @fnac
- WHERE dni = @dni;", cn, tx);
+                    UPDATE persona
+                       SET nombre            = @nombre,
+                           apellido          = @apellido,
+                           correo_electronico= @correo,
+                           telefono          = @tel,
+                           direccion         = @dir,
+                           estado            = @estadoPersona,
+                           fecha_nacimiento  = @fnac
+                     WHERE dni = @dni;", cn, tx);
 
                     cmdPersona.Parameters.AddWithValue("@dni", u.Dni);
                     cmdPersona.Parameters.AddWithValue("@nombre", (object)(u.oPersona != null ? u.oPersona.Nombre : null) ?? DBNull.Value);
@@ -209,11 +209,11 @@ UPDATE persona
 
                     // USUARIO
                     var cmdUsuario = new SqlCommand(@"
-UPDATE usuario
-   SET clave          = @clave,
-       estado         = @estadoUsuario,
-       rol_usuario_id = @rol
- WHERE dni = @dni;", cn, tx);
+                    UPDATE usuario
+                       SET clave          = @clave,
+                           estado         = @estadoUsuario,
+                           rol_usuario_id = @rol
+                     WHERE dni = @dni;", cn, tx);
 
                     cmdUsuario.Parameters.AddWithValue("@dni", u.Dni);
                     cmdUsuario.Parameters.AddWithValue("@clave", u.Clave);

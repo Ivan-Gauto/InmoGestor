@@ -20,11 +20,11 @@ namespace InmoGestor
 
         private static Usuario usuarioActual;
 
-        // Constantes de rol (según tu BD)
-        private const int ROL_ADMIN = 1; // accede a todo
-        private const int ROL_OPERADOR = 2; // todo MENOS Usuarios
-        private const int ROL_AYUDANTE = 3; // como Operador, y además SIN Reportes
-
+        // Constantes de rol
+        private const int ROL_ADMIN = 1; 
+        private const int ROL_OPERADOR = 2;
+        private const int ROL_AYUDANTE = 3;
+        private const int ROL_GERENTE = 4;
 
         public Inicio(Usuario oUsuario)
         {
@@ -40,31 +40,34 @@ namespace InmoGestor
             // Limitar menú según rol
             AplicarPermisos();
 
-            AbrirFormulario(BDashboard, new Dashboard());
-
+            if(usuarioActual.RolUsuarioId == 1)
+            {
+                AbrirFormulario(BUsuarios, new Usuarios());
+            } else
+            {
+                AbrirFormulario(BDashboard, new Dashboard());
+            }
         }
 
         private void AplicarPermisos()
         {
             int rol = usuarioActual?.RolUsuarioId ?? 0;
 
-            // Todos ven esto:
-            BDashboard.Visible = true;
-            BInquilinos.Visible = true;
-            BPropietarios.Visible = true;
-            BInmuebles.Visible = true;
-            button11.Visible = true; // Contratos
+            //Funciones para roles que involucran gestión de inmuebles
+            BDashboard.Enabled = (rol == ROL_GERENTE || rol == ROL_OPERADOR || rol == ROL_ADMIN);
+            BInquilinos.Enabled = (rol == ROL_GERENTE || rol == ROL_OPERADOR || rol == ROL_ADMIN);
+            BPropietarios.Enabled = (rol == ROL_GERENTE || rol == ROL_OPERADOR || rol == ROL_ADMIN);
+            BInmuebles.Enabled = (rol == ROL_GERENTE || rol == ROL_OPERADOR || rol == ROL_ADMIN);
+            BContratos.Enabled = (rol == ROL_GERENTE || rol == ROL_OPERADOR || rol == ROL_ADMIN);
+            BPagos.Enabled = (rol == ROL_GERENTE || rol == ROL_OPERADOR || rol == ROL_ADMIN);
 
-            // Usuarios: solo Admin
-            BUsuarios.Visible = (rol == ROL_ADMIN);
-            LBAdministracion.Visible = (rol == ROL_ADMIN);
+            //Funciones de administrador/programador
+            BUsuarios.Enabled = (rol == ROL_ADMIN);
 
-            // Reportes: Admin y Operador (Ayudante no)
-            button3.Visible = (rol == ROL_ADMIN || rol == ROL_OPERADOR);
-
+            //Funciones para todos 
+            BReportes.Enabled = (rol == ROL_GERENTE || rol == ROL_OPERADOR || rol == ROL_ADMIN);
         }
 
-        // ---------- Guardas extra en los clicks (defensa en profundidad) ----------
         private void BUsuarios_Click(object sender, EventArgs e)
         {
             if (usuarioActual?.RolUsuarioId != ROL_ADMIN)
@@ -76,17 +79,32 @@ namespace InmoGestor
             AbrirFormulario((Button)sender, new Usuarios());
         }
 
-        private void button3_Click(object sender, EventArgs e) // Reportes
+        private void button3_Click(object sender, EventArgs e)
         {
-            if (usuarioActual?.RolUsuarioId == ROL_AYUDANTE)
-            {
-                MessageBox.Show("No tiene permisos para acceder a Reportes.", "Permisos",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            AbrirFormulario((Button)sender, new ReportesOperador());
-        }
+            int rol = usuarioActual?.RolUsuarioId ?? 0;
 
+            switch (rol)
+            {
+                case ROL_ADMIN:
+                    AbrirFormulario((Button)sender, new ReportesAdministrador());
+                    break;
+
+                case ROL_GERENTE:
+                    AbrirFormulario((Button)sender, new ReportesGerente());
+                    break;
+
+                case ROL_OPERADOR:
+                    AbrirFormulario((Button)sender, new ReportesOperador());
+                    break;
+
+                default:
+                    MessageBox.Show("No tienes permisos definidos para acceder a los reportes.",
+                                    "Acceso Denegado",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Warning);
+                    break;
+            }
+        }
 
         private void AbrirFormulario(Button boton, Form formulario)
         {
@@ -124,7 +142,7 @@ namespace InmoGestor
 
         private void BInquilinos_Click(object sender, EventArgs e)
         {
-            AbrirFormulario((Button)sender, new Inquilinos());
+            AbrirFormulario((Button)sender, new Inquilinos(usuarioActual));
         }
 
         private void BPropietarios_Click(object sender, EventArgs e)
@@ -154,7 +172,21 @@ namespace InmoGestor
             {
                 this.Close();
             }
-            // Si elige No, no se hace nada
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario((Button)sender, new Pagos());
+        }
+
+        private void LBGestion_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LBPrincipal_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

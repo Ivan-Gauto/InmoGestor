@@ -10,12 +10,11 @@ using System.Windows.Forms;
 
 namespace InmoGestor
 {
-    public partial class Reportes : Form
+    public partial class RegistrarPago : Form
     {
-        public Reportes()
+        public RegistrarPago()
         {
             InitializeComponent();
         }
-
     }
 }

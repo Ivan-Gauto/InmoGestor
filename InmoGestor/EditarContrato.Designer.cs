@@ -33,6 +33,7 @@
             System.Windows.Forms.Label label9;
             System.Windows.Forms.Label label6;
             System.Windows.Forms.Label label4;
+            System.Windows.Forms.Label label5;
             System.Windows.Forms.Label label8;
             System.Windows.Forms.Label label10;
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -52,6 +53,8 @@
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
             this.TNacimiento = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
@@ -62,6 +65,7 @@
             label9 = new System.Windows.Forms.Label();
             label6 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
+            label5 = new System.Windows.Forms.Label();
             label8 = new System.Windows.Forms.Label();
             label10 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
@@ -74,6 +78,8 @@
             this.tableLayoutPanel16.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.tableLayoutPanel11.SuspendLayout();
             this.tableLayoutPanel14.SuspendLayout();
             this.SuspendLayout();
@@ -142,6 +148,19 @@
             label4.Size = new System.Drawing.Size(78, 15);
             label4.TabIndex = 12;
             label4.Text = "Fecha de fin";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            label5.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label5.ForeColor = System.Drawing.Color.White;
+            label5.Location = new System.Drawing.Point(0, 10);
+            label5.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(103, 15);
+            label5.TabIndex = 12;
+            label5.Text = "Tasa mensual %";
             // 
             // label8
             // 
@@ -225,8 +244,8 @@
             // tableLayoutPanel15
             // 
             this.tableLayoutPanel15.ColumnCount = 2;
-            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.87678F));
-            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.12322F));
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.70616F));
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.29384F));
             this.tableLayoutPanel15.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel15.Controls.Add(this.BCerrarForm, 1, 0);
             this.tableLayoutPanel15.Location = new System.Drawing.Point(23, 23);
@@ -245,7 +264,7 @@
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(165, 32);
+            this.label1.Size = new System.Drawing.Size(175, 32);
             this.label1.TabIndex = 11;
             this.label1.Text = "Editar contrato";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -263,7 +282,6 @@
             this.BCerrarForm.Size = new System.Drawing.Size(27, 27);
             this.BCerrarForm.TabIndex = 12;
             this.BCerrarForm.UseVisualStyleBackColor = false;
-            this.BCerrarForm.Click += new System.EventHandler(this.BCerrarForm_Click);
             // 
             // tableLayoutPanel12
             // 
@@ -358,8 +376,8 @@
             // 
             this.tableLayoutPanel16.ColumnCount = 1;
             this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel16.Controls.Add(label6, 0, 0);
             this.tableLayoutPanel16.Controls.Add(this.dateTimePicker1, 0, 1);
+            this.tableLayoutPanel16.Controls.Add(label6, 0, 0);
             this.tableLayoutPanel16.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel16.Name = "tableLayoutPanel16";
             this.tableLayoutPanel16.RowCount = 2;
@@ -380,7 +398,7 @@
             this.dateTimePicker1.Location = new System.Drawing.Point(3, 33);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(198, 23);
-            this.dateTimePicker1.TabIndex = 13;
+            this.dateTimePicker1.TabIndex = 14;
             // 
             // tableLayoutPanel7
             // 
@@ -412,18 +430,48 @@
             // 
             // tableLayoutPanel8
             // 
-            this.tableLayoutPanel8.ColumnCount = 2;
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.ColumnCount = 3;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.22749F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.75356F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.01896F));
+            this.tableLayoutPanel8.Controls.Add(this.tableLayoutPanel5, 2, 0);
             this.tableLayoutPanel8.Controls.Add(this.tableLayoutPanel11, 0, 0);
             this.tableLayoutPanel8.Controls.Add(this.tableLayoutPanel14, 1, 0);
             this.tableLayoutPanel8.Location = new System.Drawing.Point(23, 236);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 1;
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 67F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel8.Size = new System.Drawing.Size(422, 67);
             this.tableLayoutPanel8.TabIndex = 12;
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 1;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.Controls.Add(label5, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.numericUpDown1, 0, 1);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(273, 3);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 2;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.76271F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 54.23729F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(146, 59);
+            this.tableLayoutPanel5.TabIndex = 15;
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.numericUpDown1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.numericUpDown1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numericUpDown1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.numericUpDown1.ForeColor = System.Drawing.Color.White;
+            this.numericUpDown1.Location = new System.Drawing.Point(5, 32);
+            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(5);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(136, 25);
+            this.numericUpDown1.TabIndex = 13;
             // 
             // tableLayoutPanel11
             // 
@@ -436,7 +484,7 @@
             this.tableLayoutPanel11.RowCount = 2;
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel11.Size = new System.Drawing.Size(205, 59);
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(130, 59);
             this.tableLayoutPanel11.TabIndex = 14;
             // 
             // TNacimiento
@@ -449,7 +497,7 @@
             this.TNacimiento.HideSelection = false;
             this.TNacimiento.Location = new System.Drawing.Point(3, 32);
             this.TNacimiento.Name = "TNacimiento";
-            this.TNacimiento.Size = new System.Drawing.Size(199, 25);
+            this.TNacimiento.Size = new System.Drawing.Size(124, 25);
             this.TNacimiento.TabIndex = 14;
             // 
             // tableLayoutPanel14
@@ -458,12 +506,12 @@
             this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel14.Controls.Add(this.TNombre, 0, 1);
             this.tableLayoutPanel14.Controls.Add(label10, 0, 0);
-            this.tableLayoutPanel14.Location = new System.Drawing.Point(214, 3);
+            this.tableLayoutPanel14.Location = new System.Drawing.Point(139, 3);
             this.tableLayoutPanel14.Name = "tableLayoutPanel14";
             this.tableLayoutPanel14.RowCount = 2;
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel14.Size = new System.Drawing.Size(205, 59);
+            this.tableLayoutPanel14.Size = new System.Drawing.Size(128, 59);
             this.tableLayoutPanel14.TabIndex = 12;
             // 
             // TNombre
@@ -476,7 +524,7 @@
             this.TNombre.HideSelection = false;
             this.TNombre.Location = new System.Drawing.Point(3, 32);
             this.TNombre.Name = "TNombre";
-            this.TNombre.Size = new System.Drawing.Size(199, 25);
+            this.TNombre.Size = new System.Drawing.Size(122, 25);
             this.TNombre.TabIndex = 14;
             // 
             // BIngresar
@@ -521,6 +569,9 @@
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
             this.tableLayoutPanel8.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.tableLayoutPanel11.ResumeLayout(false);
             this.tableLayoutPanel11.PerformLayout();
             this.tableLayoutPanel14.ResumeLayout(false);
@@ -544,14 +595,16 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel16;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
         private System.Windows.Forms.TextBox TNacimiento;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
         private System.Windows.Forms.TextBox TNombre;
         private System.Windows.Forms.Button BIngresar;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
     }
 }

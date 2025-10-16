@@ -54,10 +54,10 @@
             this.TDni = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
-            this.TNacimiento = new System.Windows.Forms.TextBox();
+            this.TNacimiento = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
             this.TNombre = new System.Windows.Forms.TextBox();
-            this.BIngresar = new System.Windows.Forms.Button();
+            this.BGuardar = new System.Windows.Forms.Button();
             label9 = new System.Windows.Forms.Label();
             label10 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
@@ -180,7 +180,7 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel5, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel8, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.BIngresar, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.BGuardar, 0, 5);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -238,6 +238,7 @@
             this.BCerrarForm.Size = new System.Drawing.Size(27, 27);
             this.BCerrarForm.TabIndex = 12;
             this.BCerrarForm.UseVisualStyleBackColor = false;
+            this.BCerrarForm.Click += new System.EventHandler(this.BCerrarForm_Click_1);
             // 
             // tableLayoutPanel12
             // 
@@ -447,16 +448,17 @@
             // 
             // TNacimiento
             // 
-            this.TNacimiento.AllowDrop = true;
-            this.TNacimiento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.TNacimiento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TNacimiento.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TNacimiento.ForeColor = System.Drawing.Color.White;
-            this.TNacimiento.HideSelection = false;
+            this.TNacimiento.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.TNacimiento.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.TNacimiento.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.TNacimiento.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.TNacimiento.CalendarTrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.TNacimiento.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.TNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.TNacimiento.Location = new System.Drawing.Point(3, 32);
             this.TNacimiento.Name = "TNacimiento";
-            this.TNacimiento.Size = new System.Drawing.Size(199, 25);
-            this.TNacimiento.TabIndex = 14;
+            this.TNacimiento.Size = new System.Drawing.Size(198, 25);
+            this.TNacimiento.TabIndex = 16;
             // 
             // tableLayoutPanel14
             // 
@@ -485,23 +487,23 @@
             this.TNombre.Size = new System.Drawing.Size(199, 25);
             this.TNombre.TabIndex = 14;
             // 
-            // BIngresar
+            // BGuardar
             // 
-            this.BIngresar.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.BIngresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.BIngresar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BIngresar.FlatAppearance.BorderSize = 0;
-            this.BIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BIngresar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BIngresar.ForeColor = System.Drawing.Color.White;
-            this.BIngresar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BIngresar.Location = new System.Drawing.Point(27, 383);
-            this.BIngresar.Margin = new System.Windows.Forms.Padding(7, 0, 0, 0);
-            this.BIngresar.Name = "BIngresar";
-            this.BIngresar.Size = new System.Drawing.Size(171, 29);
-            this.BIngresar.TabIndex = 19;
-            this.BIngresar.Text = "Guardar";
-            this.BIngresar.UseVisualStyleBackColor = false;
+            this.BGuardar.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.BGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
+            this.BGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BGuardar.FlatAppearance.BorderSize = 0;
+            this.BGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BGuardar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BGuardar.ForeColor = System.Drawing.Color.White;
+            this.BGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BGuardar.Location = new System.Drawing.Point(27, 383);
+            this.BGuardar.Margin = new System.Windows.Forms.Padding(7, 0, 0, 0);
+            this.BGuardar.Name = "BGuardar";
+            this.BGuardar.Size = new System.Drawing.Size(171, 29);
+            this.BGuardar.TabIndex = 19;
+            this.BGuardar.Text = "Guardar";
+            this.BGuardar.UseVisualStyleBackColor = false;
             // 
             // EditarInquilino
             // 
@@ -557,9 +559,9 @@
         private System.Windows.Forms.TextBox TDni;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
-        private System.Windows.Forms.TextBox TNacimiento;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
         private System.Windows.Forms.TextBox TDireccion;
-        private System.Windows.Forms.Button BIngresar;
+        private System.Windows.Forms.Button BGuardar;
+        private System.Windows.Forms.DateTimePicker TNacimiento;
     }
 }

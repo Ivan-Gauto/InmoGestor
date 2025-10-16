@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaEntidades;
+using CapaNegocio;
 
 namespace InmoGestor
 {
@@ -15,6 +10,67 @@ namespace InmoGestor
         public AgregarInquilino()
         {
             InitializeComponent();
+            BIngresar.Click += BIngresar_Click;
+        }
+
+        private void BIngresar_Click(object sender, EventArgs e)
+        {
+            string dni = TDni.Text.Trim();
+            string nombre = TNombre.Text.Trim();
+            string apellido = TApellido.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(dni) || string.IsNullOrWhiteSpace(nombre) || string.IsNullOrWhiteSpace(apellido))
+            {
+                MessageBox.Show("Completá DNI, Nombre y Apellido.", "Atención",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (!long.TryParse(dni, out _) || dni.Length < 7 || dni.Length > 8)
+            {
+                MessageBox.Show("El DNI debe ser numérico y de 7 u 8 dígitos.", "Atención",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DateTime? fnac = null;
+            if (dateTimePicker1.Checked)
+            {
+                fnac = dateTimePicker1.Value;
+            }
+
+            var inquilino = new PersonaRolCliente
+            {
+                Dni = dni,
+                oRolCliente = new RolCliente
+                {
+                    RolClienteId = 2
+                },
+                oPersona = new Persona
+                {
+                    Dni = dni,
+                    Nombre = nombre,
+                    Apellido = apellido,
+                    CorreoElectronico = TCorreo.Text.Trim(),
+                    Telefono = TTelefono.Text.Trim(),
+                    Direccion = TDireccion.Text.Trim(),
+                    Estado = 1,
+                    FechaNacimiento = fnac
+                }
+            };
+
+            string mensaje;
+            bool ok = new CN_PersonaRolCliente().Registrar(inquilino, out mensaje);
+
+            if (!ok)
+            {
+                MessageBox.Show(mensaje, "No se pudo guardar",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            MessageBox.Show("Inquilino creado correctamente.", "OK",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Close();
         }
 
         private void BCerrarForm_Click(object sender, EventArgs e)

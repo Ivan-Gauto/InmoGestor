@@ -28,33 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.Label label2;
-            System.Windows.Forms.Label label1;
             System.Windows.Forms.Label label5;
             System.Windows.Forms.Label label3;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inicio));
-            this.LBAdministracion = new System.Windows.Forms.Label();
             this.LBUsuario = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.BSalir = new System.Windows.Forms.Button();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
+            this.BPagos = new System.Windows.Forms.Button();
+            this.BReportes = new System.Windows.Forms.Button();
+            this.BContratos = new System.Windows.Forms.Button();
             this.BInmuebles = new System.Windows.Forms.Button();
             this.BPropietarios = new System.Windows.Forms.Button();
             this.BInquilinos = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.BUsuarios = new System.Windows.Forms.Button();
+            this.LBAdministracion = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.BDashboard = new System.Windows.Forms.Button();
             this.Contenedor = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.BSalir = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            label2 = new System.Windows.Forms.Label();
-            label1 = new System.Windows.Forms.Label();
+            this.LBGestion = new System.Windows.Forms.Label();
+            this.LBPrincipal = new System.Windows.Forms.Label();
             label5 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2.SuspendLayout();
@@ -63,38 +62,10 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel8.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(40)))), ((int)(((byte)(60)))));
-            label2.Dock = System.Windows.Forms.DockStyle.Left;
-            label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(183)))), ((int)(((byte)(217)))));
-            label2.Location = new System.Drawing.Point(0, 0);
-            label2.Margin = new System.Windows.Forms.Padding(0);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(50, 24);
-            label2.TabIndex = 40;
-            label2.Text = "Gestion";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(40)))), ((int)(((byte)(60)))));
-            label1.Dock = System.Windows.Forms.DockStyle.Left;
-            label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(183)))), ((int)(((byte)(217)))));
-            label1.Location = new System.Drawing.Point(0, 0);
-            label1.Margin = new System.Windows.Forms.Padding(0);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(54, 24);
-            label1.TabIndex = 40;
-            label1.Text = "Principal";
             // 
             // label5
             // 
@@ -122,20 +93,6 @@
             label3.Size = new System.Drawing.Size(58, 15);
             label3.TabIndex = 15;
             label3.Text = "Usuario:";
-            // 
-            // LBAdministracion
-            // 
-            this.LBAdministracion.AutoSize = true;
-            this.LBAdministracion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(40)))), ((int)(((byte)(60)))));
-            this.LBAdministracion.Dock = System.Windows.Forms.DockStyle.Left;
-            this.LBAdministracion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBAdministracion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(183)))), ((int)(((byte)(217)))));
-            this.LBAdministracion.Location = new System.Drawing.Point(0, 0);
-            this.LBAdministracion.Margin = new System.Windows.Forms.Padding(0);
-            this.LBAdministracion.Name = "LBAdministracion";
-            this.LBAdministracion.Size = new System.Drawing.Size(90, 24);
-            this.LBAdministracion.TabIndex = 40;
-            this.LBAdministracion.Text = "Administracion";
             // 
             // LBUsuario
             // 
@@ -184,70 +141,107 @@
             this.tableLayoutPanel3.RowCount = 4;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 253F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 149F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 287F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 115F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(200, 602);
             this.tableLayoutPanel3.TabIndex = 2;
+            // 
+            // BSalir
+            // 
+            this.BSalir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(40)))), ((int)(((byte)(60)))));
+            this.BSalir.FlatAppearance.BorderSize = 0;
+            this.BSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BSalir.ForeColor = System.Drawing.Color.White;
+            this.BSalir.Image = global::InmoGestor.Properties.Resources.logout;
+            this.BSalir.Location = new System.Drawing.Point(23, 528);
+            this.BSalir.Name = "BSalir";
+            this.BSalir.Padding = new System.Windows.Forms.Padding(10);
+            this.BSalir.Size = new System.Drawing.Size(60, 51);
+            this.BSalir.TabIndex = 24;
+            this.BSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BSalir.UseVisualStyleBackColor = false;
+            this.BSalir.Click += new System.EventHandler(this.BSalir_Click);
             // 
             // tableLayoutPanel5
             // 
             this.tableLayoutPanel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(40)))), ((int)(((byte)(60)))));
             this.tableLayoutPanel5.ColumnCount = 1;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Controls.Add(this.button3, 0, 5);
-            this.tableLayoutPanel5.Controls.Add(this.button11, 0, 4);
+            this.tableLayoutPanel5.Controls.Add(this.LBGestion, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.BPagos, 0, 6);
+            this.tableLayoutPanel5.Controls.Add(this.BReportes, 0, 5);
+            this.tableLayoutPanel5.Controls.Add(this.BContratos, 0, 4);
             this.tableLayoutPanel5.Controls.Add(this.BInmuebles, 0, 3);
             this.tableLayoutPanel5.Controls.Add(this.BPropietarios, 0, 2);
             this.tableLayoutPanel5.Controls.Add(this.BInquilinos, 0, 1);
-            this.tableLayoutPanel5.Controls.Add(label2, 0, 0);
             this.tableLayoutPanel5.Location = new System.Drawing.Point(23, 183);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 6;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(177, 246);
+            this.tableLayoutPanel5.RowCount = 7;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.80672F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.80672F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.96639F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.38655F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.80672F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.22689F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(177, 264);
             this.tableLayoutPanel5.TabIndex = 12;
             // 
-            // button3
+            // BPagos
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(3, 203);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(142, 28);
-            this.button3.TabIndex = 47;
-            this.button3.Text = "Reportes";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.BPagos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
+            this.BPagos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BPagos.FlatAppearance.BorderSize = 0;
+            this.BPagos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BPagos.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BPagos.ForeColor = System.Drawing.Color.White;
+            this.BPagos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BPagos.Location = new System.Drawing.Point(3, 225);
+            this.BPagos.Name = "BPagos";
+            this.BPagos.Size = new System.Drawing.Size(142, 28);
+            this.BPagos.TabIndex = 48;
+            this.BPagos.Text = "Pagos";
+            this.BPagos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BPagos.UseVisualStyleBackColor = false;
+            this.BPagos.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button11
+            // BReportes
             // 
-            this.button11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.button11.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button11.FlatAppearance.BorderSize = 0;
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.ForeColor = System.Drawing.Color.White;
-            this.button11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button11.Location = new System.Drawing.Point(3, 159);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(142, 28);
-            this.button11.TabIndex = 46;
-            this.button11.Text = "Contratos";
-            this.button11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button11.UseVisualStyleBackColor = false;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
+            this.BReportes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
+            this.BReportes.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BReportes.FlatAppearance.BorderSize = 0;
+            this.BReportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BReportes.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BReportes.ForeColor = System.Drawing.Color.White;
+            this.BReportes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BReportes.Location = new System.Drawing.Point(3, 185);
+            this.BReportes.Name = "BReportes";
+            this.BReportes.Size = new System.Drawing.Size(142, 28);
+            this.BReportes.TabIndex = 47;
+            this.BReportes.Text = "Reportes";
+            this.BReportes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BReportes.UseVisualStyleBackColor = false;
+            this.BReportes.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // BContratos
+            // 
+            this.BContratos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
+            this.BContratos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BContratos.FlatAppearance.BorderSize = 0;
+            this.BContratos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BContratos.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BContratos.ForeColor = System.Drawing.Color.White;
+            this.BContratos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BContratos.Location = new System.Drawing.Point(3, 147);
+            this.BContratos.Name = "BContratos";
+            this.BContratos.Size = new System.Drawing.Size(142, 28);
+            this.BContratos.TabIndex = 46;
+            this.BContratos.Text = "Contratos";
+            this.BContratos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BContratos.UseVisualStyleBackColor = false;
+            this.BContratos.Click += new System.EventHandler(this.button11_Click);
             // 
             // BInmuebles
             // 
@@ -258,7 +252,7 @@
             this.BInmuebles.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BInmuebles.ForeColor = System.Drawing.Color.White;
             this.BInmuebles.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BInmuebles.Location = new System.Drawing.Point(3, 115);
+            this.BInmuebles.Location = new System.Drawing.Point(3, 109);
             this.BInmuebles.Name = "BInmuebles";
             this.BInmuebles.Size = new System.Drawing.Size(142, 28);
             this.BInmuebles.TabIndex = 45;
@@ -276,7 +270,7 @@
             this.BPropietarios.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BPropietarios.ForeColor = System.Drawing.Color.White;
             this.BPropietarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BPropietarios.Location = new System.Drawing.Point(3, 71);
+            this.BPropietarios.Location = new System.Drawing.Point(3, 69);
             this.BPropietarios.Name = "BPropietarios";
             this.BPropietarios.Size = new System.Drawing.Size(142, 28);
             this.BPropietarios.TabIndex = 44;
@@ -294,7 +288,7 @@
             this.BInquilinos.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BInquilinos.ForeColor = System.Drawing.Color.White;
             this.BInquilinos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BInquilinos.Location = new System.Drawing.Point(3, 27);
+            this.BInquilinos.Location = new System.Drawing.Point(3, 29);
             this.BInquilinos.Name = "BInquilinos";
             this.BInquilinos.Size = new System.Drawing.Size(142, 28);
             this.BInquilinos.TabIndex = 41;
@@ -339,13 +333,27 @@
             this.BUsuarios.UseVisualStyleBackColor = false;
             this.BUsuarios.Click += new System.EventHandler(this.BUsuarios_Click);
             // 
+            // LBAdministracion
+            // 
+            this.LBAdministracion.AutoSize = true;
+            this.LBAdministracion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(40)))), ((int)(((byte)(60)))));
+            this.LBAdministracion.Dock = System.Windows.Forms.DockStyle.Left;
+            this.LBAdministracion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBAdministracion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(183)))), ((int)(((byte)(217)))));
+            this.LBAdministracion.Location = new System.Drawing.Point(0, 0);
+            this.LBAdministracion.Margin = new System.Windows.Forms.Padding(0);
+            this.LBAdministracion.Name = "LBAdministracion";
+            this.LBAdministracion.Size = new System.Drawing.Size(90, 24);
+            this.LBAdministracion.TabIndex = 40;
+            this.LBAdministracion.Text = "Administracion";
+            // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(40)))), ((int)(((byte)(60)))));
             this.tableLayoutPanel4.ColumnCount = 1;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Controls.Add(this.LBPrincipal, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.BDashboard, 0, 1);
-            this.tableLayoutPanel4.Controls.Add(label1, 0, 0);
             this.tableLayoutPanel4.Location = new System.Drawing.Point(23, 23);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
@@ -395,6 +403,18 @@
             this.panel1.Size = new System.Drawing.Size(185, 57);
             this.panel1.TabIndex = 14;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox1.Image = global::InmoGestor.Properties.Resources.logo__1_2;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(80, 57);
+            this.pictureBox1.TabIndex = 13;
+            this.pictureBox1.TabStop = false;
+            // 
             // tableLayoutPanel8
             // 
             this.tableLayoutPanel8.ColumnCount = 2;
@@ -428,34 +448,33 @@
             this.tableLayoutPanel7.Size = new System.Drawing.Size(856, 77);
             this.tableLayoutPanel7.TabIndex = 16;
             // 
-            // BSalir
+            // LBGestion
             // 
-            this.BSalir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.BSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(40)))), ((int)(((byte)(60)))));
-            this.BSalir.FlatAppearance.BorderSize = 0;
-            this.BSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BSalir.ForeColor = System.Drawing.Color.White;
-            this.BSalir.Image = global::InmoGestor.Properties.Resources.logout;
-            this.BSalir.Location = new System.Drawing.Point(23, 528);
-            this.BSalir.Name = "BSalir";
-            this.BSalir.Padding = new System.Windows.Forms.Padding(10);
-            this.BSalir.Size = new System.Drawing.Size(60, 51);
-            this.BSalir.TabIndex = 24;
-            this.BSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BSalir.UseVisualStyleBackColor = false;
-            this.BSalir.Click += new System.EventHandler(this.BSalir_Click);
+            this.LBGestion.AutoSize = true;
+            this.LBGestion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(40)))), ((int)(((byte)(60)))));
+            this.LBGestion.Dock = System.Windows.Forms.DockStyle.Left;
+            this.LBGestion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBGestion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(183)))), ((int)(((byte)(217)))));
+            this.LBGestion.Location = new System.Drawing.Point(0, 0);
+            this.LBGestion.Margin = new System.Windows.Forms.Padding(0);
+            this.LBGestion.Name = "LBGestion";
+            this.LBGestion.Size = new System.Drawing.Size(50, 26);
+            this.LBGestion.TabIndex = 49;
+            this.LBGestion.Text = "Gestion";
             // 
-            // pictureBox1
+            // LBPrincipal
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBox1.Image = global::InmoGestor.Properties.Resources.logo__1_2;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(80, 57);
-            this.pictureBox1.TabIndex = 13;
-            this.pictureBox1.TabStop = false;
+            this.LBPrincipal.AutoSize = true;
+            this.LBPrincipal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(40)))), ((int)(((byte)(60)))));
+            this.LBPrincipal.Dock = System.Windows.Forms.DockStyle.Left;
+            this.LBPrincipal.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBPrincipal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(183)))), ((int)(((byte)(217)))));
+            this.LBPrincipal.Location = new System.Drawing.Point(0, 0);
+            this.LBPrincipal.Margin = new System.Windows.Forms.Padding(0);
+            this.LBPrincipal.Name = "LBPrincipal";
+            this.LBPrincipal.Size = new System.Drawing.Size(54, 24);
+            this.LBPrincipal.TabIndex = 47;
+            this.LBPrincipal.Text = "Principal";
             // 
             // Inicio
             // 
@@ -482,35 +501,38 @@
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel8.PerformLayout();
             this.tableLayoutPanel7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button BInmuebles;
-        private System.Windows.Forms.Button BPropietarios;
-        private System.Windows.Forms.Button BInquilinos;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button BUsuarios;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.Button BDashboard;
         private System.Windows.Forms.Panel Contenedor;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label LBUsuario;
-        private System.Windows.Forms.Label LBAdministracion;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Button BSalir;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.Button BPagos;
+        private System.Windows.Forms.Button BReportes;
+        private System.Windows.Forms.Button BContratos;
+        private System.Windows.Forms.Button BInmuebles;
+        private System.Windows.Forms.Button BPropietarios;
+        private System.Windows.Forms.Button BInquilinos;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Button BUsuarios;
+        private System.Windows.Forms.Label LBAdministracion;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.Button BDashboard;
+        private System.Windows.Forms.Label LBGestion;
+        private System.Windows.Forms.Label LBPrincipal;
     }
 }
 

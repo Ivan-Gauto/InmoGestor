@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace InmoGestor
 {
-    public partial class Auxiliar : Form
+    public partial class ReportesAdministrador : Form
     {
-        public Auxiliar()
+        public ReportesAdministrador()
         {
             InitializeComponent();
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

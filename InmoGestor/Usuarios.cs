@@ -83,8 +83,8 @@ namespace InmoGestor
             // contadores
             label11.Text = _usuarios.Count.ToString();
             label8.Text = _usuarios.Count(x => x.RolUsuarioId == 1).ToString(); // Admin
-            label6.Text = _usuarios.Count(x => x.RolUsuarioId == 2).ToString(); // Operador
-            label14.Text = _usuarios.Count(x => x.RolUsuarioId == 3).ToString(); // Ayudante
+            label6.Text = _usuarios.Count(x => x.RolUsuarioId == 4).ToString(); // Gerente
+            label14.Text = _usuarios.Count(x => x.RolUsuarioId == 2).ToString(); // Operador
         }
 
 
