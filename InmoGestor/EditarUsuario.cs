@@ -2,6 +2,11 @@
 using System.Windows.Forms;
 using CapaEntidades;
 using CapaNegocio;
+using System;
+using System.Globalization;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
+
 
 namespace InmoGestor
 {
@@ -44,7 +49,8 @@ namespace InmoGestor
             TTelefono.Text = _modelo.oPersona?.Telefono ?? "";
             TDireccion.Text = _modelo.oPersona?.Direccion ?? "";
             TClave.Text = _modelo.Clave ?? "";
-            TNacimiento.Text = _modelo.oPersona?.FechaNacimiento?.ToString("yyyy-MM-dd") ?? "";
+            TNacimiento.Text = _modelo.oPersona.FechaNacimiento
+                .ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
             checkEstado.Checked = _modelo.Estado;
 
             // Seleccionar rol en combo por nombre (tolerante a may/min)
@@ -75,17 +81,58 @@ namespace InmoGestor
                 return;
             }
 
-            // Fecha opcional
-            DateTime? fnac = null;
-            if (!string.IsNullOrWhiteSpace(TNacimiento.Text))
+            // === Fecha de nacimiento OBLIGATORIA, formato dd/MM/yyyy ===
+            if (string.IsNullOrWhiteSpace(TNacimiento.Text))
             {
-                if (DateTime.TryParse(TNacimiento.Text.Trim(), out var f)) fnac = f;
-                else
-                {
-                    MessageBox.Show("Fecha de nacimiento inválida.",
-                        "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+                MessageBox.Show("La fecha de nacimiento es obligatoria.", "Atención",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                TNacimiento.Focus();
+                return;
+            }
+
+            // Aceptar varios formatos y luego normalizar a dd/MM/yyyy
+            string input = TNacimiento.Text.Trim();
+            string[] formatos = { "dd/MM/yyyy", "d/M/yyyy", "yyyy-MM-dd", "yyyy/MM/dd", "yyyy-M-d", "yyyy/M/d", "dd-MM-yyyy", "d-M-yyyy" };
+
+            if (!DateTime.TryParseExact(input, formatos, new CultureInfo("es-AR"),
+                                        DateTimeStyles.None, out var fnacValue))
+            {
+                MessageBox.Show("Fecha de nacimiento inválida. Usá el formato dd/mm/aaaa.",
+                                "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                TNacimiento.Focus();
+                return;
+            }
+
+            // Normalizar el texto del TextBox a dd/MM/yyyy (mas prolijo)
+            TNacimiento.Text = fnacValue.ToString("dd/MM/yyyy");
+
+            if (fnacValue.Date > DateTime.Today)
+            {
+                MessageBox.Show("La fecha de nacimiento no puede ser futura.", "Atención",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                TNacimiento.Focus();
+                return;
+            }
+
+            // (Opcional) validar edad mínima
+            var edad = DateTime.Today.Year - fnacValue.Year;
+            if (fnacValue.Date > DateTime.Today.AddYears(-edad)) edad--;
+            if (edad < 17)
+            {
+                MessageBox.Show("El usuario debe tener al menos 17 años.", "Atención",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                TNacimiento.Focus();
+                return;
+            }
+
+            // Clave: 8 o más dígitos
+            var clave = TClave.Text.Trim();
+            if (!Regex.IsMatch(clave, @"^\d{8,}$"))
+            {
+                MessageBox.Show("La contraseña debe tener al menos 8 dígitos numéricos.",
+                    "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                TClave.Focus();
+                return;
             }
 
             // Mapear a modelo
@@ -99,8 +146,8 @@ namespace InmoGestor
             _modelo.oPersona.CorreoElectronico = TCorreo.Text.Trim();
             _modelo.oPersona.Telefono = TTelefono.Text.Trim();
             _modelo.oPersona.Direccion = TDireccion.Text.Trim();
-            _modelo.oPersona.FechaNacimiento = fnac;
             _modelo.oPersona.Estado = 1; // en BD persona.estado = INT
+            _modelo.oPersona.FechaNacimiento = fnacValue.Date;   // <-- NO nullable
 
             // Persistir
             string msg;
@@ -116,7 +163,6 @@ namespace InmoGestor
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
             Close(); // al cerrar, Usuarios refresca la grilla (CargarUsuarios)
         }
-
         private void BCerrarForm_Click(object sender, EventArgs e)
         {
             Close();
