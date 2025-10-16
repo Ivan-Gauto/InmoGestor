@@ -32,19 +32,16 @@ namespace InmoGestor
                 return;
             }
 
-            DateTime? fnac = null;
-            if (dateTimePicker1.Checked)
-            {
-                fnac = dateTimePicker1.Value;
-            }
+            // Si el DateTimePicker tiene check, usamos su valor;
+            // si no, usamos una fecha por defecto (por ejemplo, hoy)
+            DateTime fechaNac = dateTimePicker1.Checked
+                ? dateTimePicker1.Value
+                : DateTime.Today;
 
             var inquilino = new PersonaRolCliente
             {
                 Dni = dni,
-                oRolCliente = new RolCliente
-                {
-                    RolClienteId = 2
-                },
+                oRolCliente = new RolCliente { RolClienteId = 2 },
                 oPersona = new Persona
                 {
                     Dni = dni,
@@ -54,9 +51,10 @@ namespace InmoGestor
                     Telefono = TTelefono.Text.Trim(),
                     Direccion = TDireccion.Text.Trim(),
                     Estado = 1,
-                    FechaNacimiento = fnac
+                    FechaNacimiento = fechaNac // ✅ siempre un DateTime
                 }
             };
+
 
             string mensaje;
             bool ok = new CN_PersonaRolCliente().Registrar(inquilino, out mensaje);
