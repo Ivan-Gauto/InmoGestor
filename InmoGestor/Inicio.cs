@@ -84,7 +84,7 @@ namespace InmoGestor
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            AbrirFormulario((Button)sender, new Reportes());
+            AbrirFormulario((Button)sender, new ReportesOperador());
         }
 
 
@@ -142,5 +142,19 @@ namespace InmoGestor
             AbrirFormulario((Button)sender, new Contratos());
         }
 
+        private void BSalir_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show(
+                "¿Está seguro que desea salir?",
+                "Confirmar salida",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
+            // Si elige No, no se hace nada
+        }
     }
 }

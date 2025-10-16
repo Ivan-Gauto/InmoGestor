@@ -49,9 +49,10 @@
             this.BDashboard = new System.Windows.Forms.Button();
             this.Contenedor = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.BSalir = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             label2 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             label5 = new System.Windows.Forms.Label();
@@ -62,9 +63,9 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel8.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -80,20 +81,6 @@
             label2.Size = new System.Drawing.Size(50, 24);
             label2.TabIndex = 40;
             label2.Text = "Gestion";
-            // 
-            // LBAdministracion
-            // 
-            this.LBAdministracion.AutoSize = true;
-            this.LBAdministracion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(40)))), ((int)(((byte)(60)))));
-            this.LBAdministracion.Dock = System.Windows.Forms.DockStyle.Left;
-            this.LBAdministracion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBAdministracion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(183)))), ((int)(((byte)(217)))));
-            this.LBAdministracion.Location = new System.Drawing.Point(0, 0);
-            this.LBAdministracion.Margin = new System.Windows.Forms.Padding(0);
-            this.LBAdministracion.Name = "LBAdministracion";
-            this.LBAdministracion.Size = new System.Drawing.Size(90, 24);
-            this.LBAdministracion.TabIndex = 40;
-            this.LBAdministracion.Text = "Administracion";
             // 
             // label1
             // 
@@ -136,6 +123,20 @@
             label3.TabIndex = 15;
             label3.Text = "Usuario:";
             // 
+            // LBAdministracion
+            // 
+            this.LBAdministracion.AutoSize = true;
+            this.LBAdministracion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(40)))), ((int)(((byte)(60)))));
+            this.LBAdministracion.Dock = System.Windows.Forms.DockStyle.Left;
+            this.LBAdministracion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBAdministracion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(183)))), ((int)(((byte)(217)))));
+            this.LBAdministracion.Location = new System.Drawing.Point(0, 0);
+            this.LBAdministracion.Margin = new System.Windows.Forms.Padding(0);
+            this.LBAdministracion.Name = "LBAdministracion";
+            this.LBAdministracion.Size = new System.Drawing.Size(90, 24);
+            this.LBAdministracion.TabIndex = 40;
+            this.LBAdministracion.Text = "Administracion";
+            // 
             // LBUsuario
             // 
             this.LBUsuario.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -171,6 +172,7 @@
             this.tableLayoutPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(40)))), ((int)(((byte)(60)))));
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel3.Controls.Add(this.BSalir, 0, 3);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel5, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel1, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 0, 0);
@@ -179,10 +181,11 @@
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.Padding = new System.Windows.Forms.Padding(20);
-            this.tableLayoutPanel3.RowCount = 3;
+            this.tableLayoutPanel3.RowCount = 4;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 253F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 149F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(200, 602);
             this.tableLayoutPanel3.TabIndex = 2;
@@ -392,18 +395,6 @@
             this.panel1.Size = new System.Drawing.Size(185, 57);
             this.panel1.TabIndex = 14;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBox1.Image = global::InmoGestor.Properties.Resources.logo__1_2;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(80, 57);
-            this.pictureBox1.TabIndex = 13;
-            this.pictureBox1.TabStop = false;
-            // 
             // tableLayoutPanel8
             // 
             this.tableLayoutPanel8.ColumnCount = 2;
@@ -437,6 +428,35 @@
             this.tableLayoutPanel7.Size = new System.Drawing.Size(856, 77);
             this.tableLayoutPanel7.TabIndex = 16;
             // 
+            // BSalir
+            // 
+            this.BSalir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(40)))), ((int)(((byte)(60)))));
+            this.BSalir.FlatAppearance.BorderSize = 0;
+            this.BSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BSalir.ForeColor = System.Drawing.Color.White;
+            this.BSalir.Image = global::InmoGestor.Properties.Resources.logout;
+            this.BSalir.Location = new System.Drawing.Point(23, 528);
+            this.BSalir.Name = "BSalir";
+            this.BSalir.Padding = new System.Windows.Forms.Padding(10);
+            this.BSalir.Size = new System.Drawing.Size(60, 51);
+            this.BSalir.TabIndex = 24;
+            this.BSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BSalir.UseVisualStyleBackColor = false;
+            this.BSalir.Click += new System.EventHandler(this.BSalir_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox1.Image = global::InmoGestor.Properties.Resources.logo__1_2;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(80, 57);
+            this.pictureBox1.TabIndex = 13;
+            this.pictureBox1.TabStop = false;
+            // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -462,10 +482,10 @@
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel8.PerformLayout();
             this.tableLayoutPanel7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -490,6 +510,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label LBUsuario;
         private System.Windows.Forms.Label LBAdministracion;
+        private System.Windows.Forms.Button BSalir;
     }
 }
 
