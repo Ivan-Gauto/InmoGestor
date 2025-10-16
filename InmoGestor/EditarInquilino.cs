@@ -38,16 +38,25 @@ namespace InmoGestor
             TDireccion.Text = _inquilino.oPersona?.Direccion ?? "";
 
             // Para el DateTimePicker, verificamos si la fecha tiene un valor antes de asignarla.
-            if (_inquilino.oPersona?.FechaNacimiento.HasValue == true)
+            if (_inquilino.oPersona != null)
             {
-                // Aseguramos que la fecha no esté fuera del rango soportado por el control.
-                DateTime fechaNac = _inquilino.oPersona.FechaNacimiento.Value;
+                DateTime fechaNac = _inquilino.oPersona.FechaNacimiento;
+
+                // Validamos que la fecha esté dentro del rango permitido del control DateTimePicker
                 if (fechaNac >= TNacimiento.MinDate && fechaNac <= TNacimiento.MaxDate)
                 {
                     TNacimiento.Value = fechaNac;
                 }
+                else
+                {
+                    // Si la fecha está fuera de rango (por ejemplo, año muy antiguo), 
+                    // colocamos un valor por defecto válido
+                    TNacimiento.Value = TNacimiento.MinDate;
+                }
             }
+
         }
+        
 
         private void BGuardar_Click(object sender, EventArgs e)
         {
