@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CapaEntidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,7 @@ namespace InmoGestor
 {
     public partial class EditarInquilino : Form
     {
-        public EditarInquilino()
+        public EditarInquilino(PersonaRolCliente Inquilino)
         {
             InitializeComponent();
         }

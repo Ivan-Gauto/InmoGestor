@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CapaEntidades
 {
-    public class RolUsuario
+    public class RolCliente
     {
-        public int RolUsuarioId { get; set; }
-        public string Nombre { get; set; } = string.Empty;
+        public int RolClienteId { get; set; }
+        public string Descripcion { get; set; } = string.Empty;
     }
 }

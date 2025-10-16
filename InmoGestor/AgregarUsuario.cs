@@ -112,14 +112,14 @@ namespace InmoGestor
             int rolId = MapRolId(comboBox1.SelectedItem?.ToString());
 
             // Armar entidad
-            var usuario = new CapaEntidad.Usuario
+            var usuario = new CapaEntidades.Usuario
             {
                 Dni = dni,
                 Clave = clave,
                 Estado = true,                   // activo
                 FechaCreacion = DateTime.Now,
                 RolUsuarioId = rolId,
-                oPersona = new CapaEntidad.Persona
+                oPersona = new CapaEntidades.Persona
                 {
                     Dni = dni,
                     Nombre = nombre,

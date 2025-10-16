@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CapaEntidad
+namespace CapaEntidades
 {
     public class Usuario
     {

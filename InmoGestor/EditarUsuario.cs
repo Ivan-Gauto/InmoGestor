@@ -1,4 +1,6 @@
-﻿using CapaEntidad;
+﻿using System;
+using System.Windows.Forms;
+using CapaEntidades;
 using CapaNegocio;
 using System;
 using System.Globalization;
