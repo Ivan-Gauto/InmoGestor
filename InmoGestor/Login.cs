@@ -1,21 +1,20 @@
-﻿using System;
+﻿using CapaEntidades;
+using CapaNegocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-using CapaNegocio;
-using CapaEntidades;
 
 namespace InmoGestor
 {
     public partial class Login : Form
     {
-
         public Login()
         {
             InitializeComponent();
@@ -23,45 +22,47 @@ namespace InmoGestor
 
         private void BIngresar_Click(object sender, EventArgs e)
         {
-            // Evita doble click mientras valida (opcional)
             BIngresar.Enabled = false;
 
             try
             {
-
                 string dniText = TIngresoDNI.Text.Trim();
                 string clave = TIngresoClave.Text.Trim();
 
-                // Validaciones básicas
-                bool camposFaltantes = string.IsNullOrWhiteSpace(dniText) || string.IsNullOrWhiteSpace(clave);
-
-                if (camposFaltantes)
+                if (string.IsNullOrWhiteSpace(dniText))
                 {
-                    MessageBox.Show("Debe completar todos los campos.", "Atención",
+                    MessageBox.Show("Debe completar su dni", "Atención",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    TIngresoDNI.Focus();
                     return;
                 }
 
-                if (!int.TryParse(dniText, out int dni))
+                if (string.IsNullOrWhiteSpace(clave))
                 {
-                    MessageBox.Show("El DNI debe ser numérico.", "Atención",
+                    MessageBox.Show("Debe completar su contraseña", "Atención",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    TIngresoClave.Focus();
                     return;
                 }
 
-                if (dniText.Length < 7 || dniText.Length > 8)
+                if (!long.TryParse(dniText, out _) || dniText.Length != 8)
                 {
-                    MessageBox.Show("El DNI debe tener 7 u 8 dígitos.", "Atención",
+                    MessageBox.Show("El DNI debe ser numérico y tener 8 dígitos.", "Atención",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    TIngresoDNI.Focus();
                     return;
                 }
 
-                // Autenticación
+                if (!Regex.IsMatch(clave, @"^\d{8,}$"))
+                {
+                    MessageBox.Show("La contraseña debe tener al menos 8 dígitos numéricos.", "Atención",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    TIngresoClave.Focus();
+                    return;
+                }
 
-                // Traer usuarios UNA sola vez
-                List<Usuario> usuarios = new CN_Usuario().Listar();
+                List<Usuario> usuarios = new CN_Usuario().Listar(RolUsuarioFiltro.Todos, EstadoFiltro.Todos);
 
-                // Autenticación (usa las variables ya trimmeadas (sin espacios al inicio y final))
                 Usuario oUsuario = usuarios.FirstOrDefault(
                     u => string.Equals(u.Dni?.Trim(), dniText, StringComparison.Ordinal)
                       && string.Equals(u.Clave, clave, StringComparison.Ordinal));
@@ -69,26 +70,22 @@ namespace InmoGestor
                 if (oUsuario == null)
                 {
                     MessageBox.Show("DNI o Clave incorrecta.", "Atención",
-                       MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                // Si manejás Estado como bool en la entidad
-                if (!oUsuario.Estado)
-                {
-                    MessageBox.Show("El usuario está inactivo.", "Atención",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                // OK → abrir Inicio
-                var form = new Inicio(oUsuario);
+                if (oUsuario.Estado == 0)
+                {
+                    MessageBox.Show("Su cuenta de usuario se encuentra desactivada. Contacte a un administrador.", "Usuario inactivo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
 
+                var form = new Inicio(oUsuario);
                 form.FormClosing += frm_closing;
                 form.Show();
                 this.Hide();
             }
-
             catch (Exception ex)
             {
                 MessageBox.Show("No se pudo validar el usuario.\n" + ex.Message,
@@ -99,10 +96,9 @@ namespace InmoGestor
                 BIngresar.Enabled = true;
             }
         }
-        
 
         private void frm_closing(object sender, FormClosingEventArgs e)
-        {   
+        {
             TIngresoDNI.Text = "";
             TIngresoClave.Text = "";
             this.Show();

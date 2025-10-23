@@ -31,11 +31,11 @@
             System.Windows.Forms.Label label5;
             System.Windows.Forms.Label label3;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inicio));
-            this.LBUsuario = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.BSalir = new System.Windows.Forms.Button();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.LBGestion = new System.Windows.Forms.Label();
             this.BPagos = new System.Windows.Forms.Button();
             this.BReportes = new System.Windows.Forms.Button();
             this.BContratos = new System.Windows.Forms.Button();
@@ -46,14 +46,14 @@
             this.BUsuarios = new System.Windows.Forms.Button();
             this.LBAdministracion = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.LBPrincipal = new System.Windows.Forms.Label();
             this.BDashboard = new System.Windows.Forms.Button();
             this.Contenedor = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.LBGestion = new System.Windows.Forms.Label();
-            this.LBPrincipal = new System.Windows.Forms.Label();
+            this.LBUsuario = new System.Windows.Forms.Label();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             label5 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2.SuspendLayout();
@@ -63,8 +63,8 @@
             this.tableLayoutPanel4.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.tableLayoutPanel8.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
+            this.tableLayoutPanel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // label5
@@ -79,34 +79,6 @@
             label5.Size = new System.Drawing.Size(105, 14);
             label5.TabIndex = 9;
             label5.Text = "Version 1.0";
-            // 
-            // label3
-            // 
-            label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            label3.AutoSize = true;
-            label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            label3.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label3.ForeColor = System.Drawing.Color.White;
-            label3.Location = new System.Drawing.Point(0, 11);
-            label3.Margin = new System.Windows.Forms.Padding(0);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(58, 15);
-            label3.TabIndex = 15;
-            label3.Text = "Usuario:";
-            // 
-            // LBUsuario
-            // 
-            this.LBUsuario.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.LBUsuario.AutoSize = true;
-            this.LBUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.LBUsuario.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBUsuario.ForeColor = System.Drawing.Color.White;
-            this.LBUsuario.Location = new System.Drawing.Point(58, 11);
-            this.LBUsuario.Margin = new System.Windows.Forms.Padding(0);
-            this.LBUsuario.Name = "LBUsuario";
-            this.LBUsuario.Size = new System.Drawing.Size(95, 15);
-            this.LBUsuario.TabIndex = 16;
-            this.LBUsuario.Text = "Administrador";
             // 
             // tableLayoutPanel2
             // 
@@ -188,6 +160,20 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.22689F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(177, 264);
             this.tableLayoutPanel5.TabIndex = 12;
+            // 
+            // LBGestion
+            // 
+            this.LBGestion.AutoSize = true;
+            this.LBGestion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(40)))), ((int)(((byte)(60)))));
+            this.LBGestion.Dock = System.Windows.Forms.DockStyle.Left;
+            this.LBGestion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBGestion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(183)))), ((int)(((byte)(217)))));
+            this.LBGestion.Location = new System.Drawing.Point(0, 0);
+            this.LBGestion.Margin = new System.Windows.Forms.Padding(0);
+            this.LBGestion.Name = "LBGestion";
+            this.LBGestion.Size = new System.Drawing.Size(50, 26);
+            this.LBGestion.TabIndex = 49;
+            this.LBGestion.Text = "Gestion";
             // 
             // BPagos
             // 
@@ -365,6 +351,20 @@
             this.tableLayoutPanel4.Size = new System.Drawing.Size(174, 74);
             this.tableLayoutPanel4.TabIndex = 5;
             // 
+            // LBPrincipal
+            // 
+            this.LBPrincipal.AutoSize = true;
+            this.LBPrincipal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(40)))), ((int)(((byte)(60)))));
+            this.LBPrincipal.Dock = System.Windows.Forms.DockStyle.Left;
+            this.LBPrincipal.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBPrincipal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(183)))), ((int)(((byte)(217)))));
+            this.LBPrincipal.Location = new System.Drawing.Point(0, 0);
+            this.LBPrincipal.Margin = new System.Windows.Forms.Padding(0);
+            this.LBPrincipal.Name = "LBPrincipal";
+            this.LBPrincipal.Size = new System.Drawing.Size(54, 24);
+            this.LBPrincipal.TabIndex = 47;
+            this.LBPrincipal.Text = "Principal";
+            // 
             // BDashboard
             // 
             this.BDashboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
@@ -415,22 +415,6 @@
             this.pictureBox1.TabIndex = 13;
             this.pictureBox1.TabStop = false;
             // 
-            // tableLayoutPanel8
-            // 
-            this.tableLayoutPanel8.ColumnCount = 2;
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel8.Controls.Add(this.LBUsuario, 1, 0);
-            this.tableLayoutPanel8.Controls.Add(label3, 0, 0);
-            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Left;
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(682, 20);
-            this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(20);
-            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
-            this.tableLayoutPanel8.RowCount = 1;
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(154, 37);
-            this.tableLayoutPanel8.TabIndex = 0;
-            // 
             // tableLayoutPanel7
             // 
             this.tableLayoutPanel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
@@ -448,33 +432,49 @@
             this.tableLayoutPanel7.Size = new System.Drawing.Size(856, 77);
             this.tableLayoutPanel7.TabIndex = 16;
             // 
-            // LBGestion
+            // label3
             // 
-            this.LBGestion.AutoSize = true;
-            this.LBGestion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(40)))), ((int)(((byte)(60)))));
-            this.LBGestion.Dock = System.Windows.Forms.DockStyle.Left;
-            this.LBGestion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBGestion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(183)))), ((int)(((byte)(217)))));
-            this.LBGestion.Location = new System.Drawing.Point(0, 0);
-            this.LBGestion.Margin = new System.Windows.Forms.Padding(0);
-            this.LBGestion.Name = "LBGestion";
-            this.LBGestion.Size = new System.Drawing.Size(50, 26);
-            this.LBGestion.TabIndex = 49;
-            this.LBGestion.Text = "Gestion";
+            label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            label3.AutoSize = true;
+            label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            label3.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label3.ForeColor = System.Drawing.Color.White;
+            label3.Location = new System.Drawing.Point(0, 11);
+            label3.Margin = new System.Windows.Forms.Padding(0);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(58, 15);
+            label3.TabIndex = 15;
+            label3.Text = "Usuario:";
             // 
-            // LBPrincipal
+            // LBUsuario
             // 
-            this.LBPrincipal.AutoSize = true;
-            this.LBPrincipal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(40)))), ((int)(((byte)(60)))));
-            this.LBPrincipal.Dock = System.Windows.Forms.DockStyle.Left;
-            this.LBPrincipal.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBPrincipal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(183)))), ((int)(((byte)(217)))));
-            this.LBPrincipal.Location = new System.Drawing.Point(0, 0);
-            this.LBPrincipal.Margin = new System.Windows.Forms.Padding(0);
-            this.LBPrincipal.Name = "LBPrincipal";
-            this.LBPrincipal.Size = new System.Drawing.Size(54, 24);
-            this.LBPrincipal.TabIndex = 47;
-            this.LBPrincipal.Text = "Principal";
+            this.LBUsuario.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.LBUsuario.AutoSize = true;
+            this.LBUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.LBUsuario.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBUsuario.ForeColor = System.Drawing.Color.White;
+            this.LBUsuario.Location = new System.Drawing.Point(58, 11);
+            this.LBUsuario.Margin = new System.Windows.Forms.Padding(0);
+            this.LBUsuario.Name = "LBUsuario";
+            this.LBUsuario.Size = new System.Drawing.Size(95, 15);
+            this.LBUsuario.TabIndex = 16;
+            this.LBUsuario.Text = "Administrador";
+            // 
+            // tableLayoutPanel8
+            // 
+            this.tableLayoutPanel8.ColumnCount = 2;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel8.Controls.Add(this.LBUsuario, 1, 0);
+            this.tableLayoutPanel8.Controls.Add(label3, 0, 0);
+            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Left;
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(682, 20);
+            this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(20);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 1;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(154, 37);
+            this.tableLayoutPanel8.TabIndex = 0;
             // 
             // Inicio
             // 
@@ -502,9 +502,9 @@
             this.tableLayoutPanel4.PerformLayout();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel8.PerformLayout();
-            this.tableLayoutPanel7.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -514,9 +514,7 @@
         private System.Windows.Forms.Panel Contenedor;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
-        private System.Windows.Forms.Label LBUsuario;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Button BSalir;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
@@ -533,6 +531,8 @@
         private System.Windows.Forms.Button BDashboard;
         private System.Windows.Forms.Label LBGestion;
         private System.Windows.Forms.Label LBPrincipal;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
+        private System.Windows.Forms.Label LBUsuario;
     }
 }
 

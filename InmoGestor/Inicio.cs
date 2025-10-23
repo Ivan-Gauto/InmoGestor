@@ -7,9 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 using CapaEntidades;
-
 
 namespace InmoGestor
 {
@@ -17,33 +15,29 @@ namespace InmoGestor
     {
         private static Button botonActivo = null;
         private static Form formularioActivo = null;
-
         private static Usuario usuarioActual;
 
-        // Constantes de rol
-        private const int ROL_ADMIN = 1; 
-        private const int ROL_OPERADOR = 2;
-        private const int ROL_AYUDANTE = 3;
-        private const int ROL_GERENTE = 4;
+        private const int ROL_ADMIN = 1;
+        private const int ROL_OPERADOR = 3;
+        private const int ROL_AYUDANTE = 0; // Asumiendo que Ayudante no tiene ID 3
+        private const int ROL_GERENTE = 2;
 
         public Inicio(Usuario oUsuario)
         {
             usuarioActual = oUsuario;
-
             InitializeComponent();
         }
 
         private void Inicio_Load(object sender, EventArgs e)
-        {            
+        {
             LBUsuario.Text = usuarioActual.NombreCompleto;
-
-            // Limitar menú según rol
             AplicarPermisos();
 
-            if(usuarioActual.RolUsuarioId == 1)
+            if (usuarioActual.RolUsuarioId == ROL_ADMIN)
             {
-                AbrirFormulario(BUsuarios, new Usuarios());
-            } else
+                AbrirFormulario(BUsuarios, new Usuarios(usuarioActual));
+            }
+            else
             {
                 AbrirFormulario(BDashboard, new Dashboard());
             }
@@ -53,18 +47,13 @@ namespace InmoGestor
         {
             int rol = usuarioActual?.RolUsuarioId ?? 0;
 
-            //Funciones para roles que involucran gestión de inmuebles
-            BDashboard.Enabled = (rol == ROL_GERENTE || rol == ROL_OPERADOR || rol == ROL_ADMIN);
-            BInquilinos.Enabled = (rol == ROL_GERENTE || rol == ROL_OPERADOR || rol == ROL_ADMIN);
-            BPropietarios.Enabled = (rol == ROL_GERENTE || rol == ROL_OPERADOR || rol == ROL_ADMIN);
-            BInmuebles.Enabled = (rol == ROL_GERENTE || rol == ROL_OPERADOR || rol == ROL_ADMIN);
-            BContratos.Enabled = (rol == ROL_GERENTE || rol == ROL_OPERADOR || rol == ROL_ADMIN);
-            BPagos.Enabled = (rol == ROL_GERENTE || rol == ROL_OPERADOR || rol == ROL_ADMIN);
-
-            //Funciones de administrador/programador
-            BUsuarios.Enabled = (rol == ROL_ADMIN);
-
-            //Funciones para todos 
+            BDashboard.Enabled = (rol == ROL_GERENTE || rol == ROL_OPERADOR);
+            BInquilinos.Enabled = (rol == ROL_GERENTE || rol == ROL_OPERADOR);
+            BPropietarios.Enabled = (rol == ROL_GERENTE || rol == ROL_OPERADOR);
+            BInmuebles.Enabled = (rol == ROL_GERENTE || rol == ROL_OPERADOR);
+            BContratos.Enabled = (rol == ROL_GERENTE || rol == ROL_OPERADOR);
+            BPagos.Enabled = (rol == ROL_GERENTE || rol == ROL_OPERADOR);
+            BUsuarios.Enabled = (rol == ROL_ADMIN);
             BReportes.Enabled = (rol == ROL_GERENTE || rol == ROL_OPERADOR || rol == ROL_ADMIN);
         }
 
@@ -76,59 +65,48 @@ namespace InmoGestor
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            AbrirFormulario((Button)sender, new Usuarios());
+            AbrirFormulario((Button)sender, new Usuarios(usuarioActual));
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             int rol = usuarioActual?.RolUsuarioId ?? 0;
-
             switch (rol)
             {
                 case ROL_ADMIN:
                     AbrirFormulario((Button)sender, new ReportesAdministrador());
                     break;
-
                 case ROL_GERENTE:
                     AbrirFormulario((Button)sender, new ReportesGerente());
                     break;
-
                 case ROL_OPERADOR:
                     AbrirFormulario((Button)sender, new ReportesOperador());
                     break;
-
                 default:
                     MessageBox.Show("No tienes permisos definidos para acceder a los reportes.",
-                                    "Acceso Denegado",
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Warning);
+                                    "Acceso Denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     break;
             }
         }
 
         private void AbrirFormulario(Button boton, Form formulario)
         {
-            // Restaurar color del botón anterior
             if (botonActivo != null)
                 botonActivo.BackColor = Color.FromArgb(24, 123, 185);
 
             boton.BackColor = Color.FromArgb(0, 80, 200);
             botonActivo = boton;
 
-            // Cerrar formulario activo previo
             if (formularioActivo != null)
                 formularioActivo.Close();
 
             formularioActivo = formulario;
-
-            // Configuración para que no altere el tamaño del padre
             formulario.TopLevel = false;
             formulario.FormBorderStyle = FormBorderStyle.None;
             formulario.Dock = DockStyle.Fill;
-            formulario.AutoSize = false;                    // 👈 clave
+            formulario.AutoSize = false;
 
-            // Limpiar contenedor antes de agregar
-            Contenedor.Controls.Clear();                    // 👈 clave
+            Contenedor.Controls.Clear();
             Contenedor.Controls.Add(formulario);
 
             formulario.BringToFront();
@@ -162,11 +140,8 @@ namespace InmoGestor
 
         private void BSalir_Click(object sender, EventArgs e)
         {
-            var result = MessageBox.Show(
-                "¿Está seguro que desea salir?",
-                "Confirmar salida",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
+            var result = MessageBox.Show("¿Está seguro que desea salir?", "Confirmar salida",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
@@ -177,16 +152,6 @@ namespace InmoGestor
         private void button1_Click(object sender, EventArgs e)
         {
             AbrirFormulario((Button)sender, new Pagos());
-        }
-
-        private void LBGestion_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void LBPrincipal_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
