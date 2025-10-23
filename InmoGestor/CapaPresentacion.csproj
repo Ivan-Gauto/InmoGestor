@@ -135,6 +135,12 @@
     <Compile Include="EditarUsuario.Designer.cs">
       <DependentUpon>EditarUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="InmuebleCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InmuebleCard.Designer.cs">
+      <DependentUpon>InmuebleCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Inmuebles.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -241,6 +247,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditarUsuario.resx">
       <DependentUpon>EditarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InmuebleCard.resx">
+      <DependentUpon>InmuebleCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inmuebles.resx">
       <DependentUpon>Inmuebles.cs</DependentUpon>
@@ -390,6 +399,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\paper1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check-mark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\location.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\inquilino.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\propietario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\propietario1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\noimage.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

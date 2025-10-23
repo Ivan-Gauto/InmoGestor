@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CapaEntidades;
+using CapaNegocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,7 +20,16 @@ namespace InmoGestor
         public Inmuebles()
         {
             InitializeComponent();
+            this.Load += Inmuebles_Load;
             this.Resize += Inmueble_Resize;
+
+            typeof(Panel).InvokeMember("DoubleBuffered",
+                System.Reflection.BindingFlags.SetProperty |
+                System.Reflection.BindingFlags.Instance |
+                System.Reflection.BindingFlags.NonPublic,
+                null,
+                ContenedorInmuebles,
+                new object[] { true });
         }
 
         private static bool IsOpen(Form f) => f != null && !f.IsDisposed && f.Visible;
@@ -59,6 +70,11 @@ namespace InmoGestor
             };
             ContenedorInmuebles.Controls.Add(agregarInmuebleForm);
 
+            agregarInmuebleForm.InmuebleRegistradoConExito += (s, ev) =>
+            {
+                CargarInmuebles();
+            };
+
             agregarInmuebleForm.FormClosed += (_, __) =>
             {
                 ContenedorInmuebles.Controls.Remove(agregarInmuebleForm);
@@ -72,54 +88,121 @@ namespace InmoGestor
             CentrarFormAbierto();
         }
 
-        private void dataGridInmuebles_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex < 0) return;
-            var colName = dataGridInmuebles.Columns[e.ColumnIndex].Name;
-
-            if (HayFormAbierto()) { FocusFormAbierto(); return; }
-
-            if (colName == "ColumnaEditar")
-            {
-                editarInmuebleForm = new EditarInmueble
-                {
-                    TopLevel = false,
-                    FormBorderStyle = FormBorderStyle.None
-                };
-                ContenedorInmuebles.Controls.Add(editarInmuebleForm);
-
-                editarInmuebleForm.FormClosed += (_, __) =>
-                {
-                    ContenedorInmuebles.Controls.Remove(editarInmuebleForm);
-                    editarInmuebleForm.Dispose();
-                    editarInmuebleForm = null;
-                };
-
-                editarInmuebleForm.Show();
-                editarInmuebleForm.BringToFront();
-                editarInmuebleForm.Focus();
-                CentrarFormAbierto();
-            }
-            else if (colName == "ColumnaEliminar")
-            {
-                var result = MessageBox.Show("¿Está seguro de que desea eliminar este inquilino?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (result == DialogResult.Yes)
-                {
-                    dataGridInmuebles.Rows.RemoveAt(e.RowIndex);
-                }
-            }
-        }
-
         private void Inmuebles_Load(object sender, EventArgs e)
         {
-            dataGridInmuebles.Rows.Add("1", "Av. Corrientes 1200", "Depto 2 ambientes", "Juan Pérez", "Departamento", "Ocupado");
-            dataGridInmuebles.Rows.Add("2", "San Martín 450", "Casa de 3 dormitorios", "María González", "Casa", "Disponible");
-            dataGridInmuebles.Rows.Add("3", "Belgrano 789", "Local comercial", "Carlos López", "Local", "En reparación");
-            dataGridInmuebles.Rows.Add("4", "Rivadavia 234", "Depto monoambiente", "Ana Fernández", "Departamento", "Ocupado");
-            dataGridInmuebles.Rows.Add("5", "Junín 1020", "Casa con patio", "Diego Martínez", "Casa", "Disponible");
-            dataGridInmuebles.Rows.Add("6", "Rioja 550", "Oficina 1er piso", "Laura Ramírez", "Oficina", "Ocupado");
+            comboBox1.SelectedIndex = 0;
+            CargarInmuebles();
+            ActualizarContadores();
         }
 
+        private void CargarInmuebles()
+        {
+            flowLayoutPanelInmuebles.Controls.Clear();
 
+            CN_Inmueble negocioInmueble = new CN_Inmueble();
+
+            // 1. Determinar el filtro seleccionado
+            string filtro = comboBox1.SelectedItem?.ToString() ?? "Activos";
+
+            List<Inmueble> listaParaMostrar;
+
+            // 2. Cargar y filtrar la lista según el caso
+            if (filtro == "Inactivos")
+            {
+                // Traemos TODOS (activos e inactivos) y filtramos solo los inactivos
+                listaParaMostrar = negocioInmueble.Listar(true)
+                                                  .Where(i => i.Estado == 0)
+                                                  .ToList();
+            }
+            else
+            {
+                // Traemos solo los ACTIVOS (default)
+                var listaActivos = negocioInmueble.Listar(false);
+
+                if (filtro == "Disponibles")
+                {
+                    listaParaMostrar = listaActivos.Where(i => i.Disponibilidad == 1).ToList();
+                }
+                else if (filtro == "Ocupados")
+                {
+                    listaParaMostrar = listaActivos.Where(i => i.Disponibilidad == 0).ToList();
+                }
+                else // "Activos" o cualquier caso por defecto
+                {
+                    listaParaMostrar = listaActivos;
+                }
+            }
+
+            // 3. (El resto de tu método sigue igual)
+            foreach (Inmueble inmueble in listaParaMostrar)
+            {
+                InmuebleCard card = new InmuebleCard();
+                card.CargarDatos(inmueble);
+                flowLayoutPanelInmuebles.Controls.Add(card);
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Cada vez que cambia el filtro, volvemos a cargar las tarjetas
+            CargarInmuebles();
+        }
+
+        private void ActualizarContadores()
+        {
+            // 1. Obtenemos la lista completa de inmuebles
+            List<Inmueble> listaInmuebles = new CN_Inmueble().Listar();
+
+            // 2. Usamos LINQ para contar según la disponibilidad
+            // (Asumiendo 1 = Disponible, 0 = Ocupado/No Disponible)
+
+            int totalDisponibles = listaInmuebles.Count(inmueble => inmueble.Disponibilidad == 1);
+            int totalOcupados = listaInmuebles.Count(inmueble => inmueble.Disponibilidad == 0);
+
+            // 3. Actualizamos el texto de los Labels
+            LDisponibles.Text = totalDisponibles.ToString();
+            LOcupados.Text = totalOcupados.ToString();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // Abre el editor embebido (misma lógica que agregación) para editar el inmueble
+        public void AbrirEditor(CapaEntidades.Inmueble inmueble)
+        {
+            if (HayFormAbierto()) { FocusFormAbierto(); return; }
+
+            editarInmuebleForm = new EditarInmueble(inmueble)
+            {
+                TopLevel = false,
+                FormBorderStyle = FormBorderStyle.None
+            };
+            ContenedorInmuebles.Controls.Add(editarInmuebleForm);
+
+            editarInmuebleForm.FormClosed += (_, __) =>
+            {
+                ContenedorInmuebles.Controls.Remove(editarInmuebleForm);
+                editarInmuebleForm.Dispose();
+                editarInmuebleForm = null;
+
+                // refrescar lista siempre que el editor se cierre
+                CargarInmuebles();
+                ActualizarContadores();
+            };
+
+            editarInmuebleForm.Show();
+            editarInmuebleForm.BringToFront();
+            editarInmuebleForm.Focus();
+            CentrarFormAbierto();
+        }
+
+        // Método público para refrescar desde controles hijos
+        public void RefrescarLista()
+        {
+            CargarInmuebles();
+            ActualizarContadores();
+        }
     }
 }
