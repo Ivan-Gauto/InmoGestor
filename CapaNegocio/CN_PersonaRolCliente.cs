@@ -8,36 +8,15 @@ namespace CapaNegocio
     {
         private readonly CD_PersonaRolCliente _capaDatos = new CD_PersonaRolCliente();
 
-        //Inquilinos
-
-        public List<PersonaRolCliente> ListarInquilinosActivos()
+        public List<PersonaRolCliente> ListarClientes(TipoRolCliente rol, EstadoFiltro filtro)
         {
-            return _capaDatos.Listar(2, true);
+            return _capaDatos.Listar(rol, filtro);
         }
 
-        public List<PersonaRolCliente> ListarTodosLosInquilinos()
+        public (int Total, int Activos, int Inactivos) ObtenerEstadisticas(TipoRolCliente rol)
         {
-            return _capaDatos.Listar(2, null);
+            return _capaDatos.ObtenerEstadisticasBasicas(rol);
         }
-
-        public (int Total, int Activos, int Inactivos) ObtenerEstadisticasInquilinos()
-        {
-            return _capaDatos.ObtenerEstadisticasBasicas(2); // ID de Inquilino
-        }
-
-        //Propietarios
-
-        public List<PersonaRolCliente> ListarPropietarios()
-        {
-            return _capaDatos.Listar(1);
-        }
-
-        public (int Total, int Activos, int Inactivos) ObtenerEstadisticasPropietarios()
-        {
-            return _capaDatos.ObtenerEstadisticasBasicas(1); // ID de Propietario
-        }
-
-        //Metodos comunes
 
         public bool Registrar(PersonaRolCliente prc, out string mensaje)
         {
@@ -70,7 +49,9 @@ namespace CapaNegocio
             return _capaDatos.Actualizar(prc, out mensaje);
         }
 
-        public bool CambiarEstado(string dni, int nuevoEstado) =>
-            _capaDatos.CambiarEstado(dni, nuevoEstado);
+        public bool CambiarEstado(string dni, int nuevoEstado, int idRolCliente)
+        {
+            return _capaDatos.CambiarEstado(dni, nuevoEstado, idRolCliente);
+        }
     }
 }
