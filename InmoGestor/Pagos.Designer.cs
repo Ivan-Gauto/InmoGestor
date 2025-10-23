@@ -77,7 +77,7 @@
             this.ColumnaAdicionalOtros = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnaMonto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnaEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnaEditar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ColumnaAnularPago = new System.Windows.Forms.DataGridViewImageColumn();
             label5 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             label10 = new System.Windows.Forms.Label();
@@ -270,7 +270,7 @@
             this.ColumnaAdicionalOtros,
             this.ColumnaMonto,
             this.ColumnaEstado,
-            this.ColumnaEditar});
+            this.ColumnaAnularPago});
             this.dataGridPagos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridPagos.EnableHeadersVisualStyles = false;
             this.dataGridPagos.GridColor = System.Drawing.Color.Teal;
@@ -564,7 +564,7 @@
             this.ColumnaEstado.Name = "ColumnaEstado";
             this.ColumnaEstado.ReadOnly = true;
             // 
-            // ColumnaEditar
+            // ColumnaAnularPago
             // 
             dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
@@ -572,15 +572,15 @@
             dataGridViewCellStyle14.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle14.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle14.NullValue")));
             dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.ColumnaEditar.DefaultCellStyle = dataGridViewCellStyle14;
-            this.ColumnaEditar.FillWeight = 74.01306F;
-            this.ColumnaEditar.HeaderText = "Anular pago";
-            this.ColumnaEditar.Image = global::InmoGestor.Properties.Resources.paper1;
-            this.ColumnaEditar.MinimumWidth = 8;
-            this.ColumnaEditar.Name = "ColumnaEditar";
-            this.ColumnaEditar.ReadOnly = true;
-            this.ColumnaEditar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnaEditar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColumnaAnularPago.DefaultCellStyle = dataGridViewCellStyle14;
+            this.ColumnaAnularPago.FillWeight = 74.01306F;
+            this.ColumnaAnularPago.HeaderText = "Anular pago";
+            this.ColumnaAnularPago.Image = global::InmoGestor.Properties.Resources.paper1;
+            this.ColumnaAnularPago.MinimumWidth = 8;
+            this.ColumnaAnularPago.Name = "ColumnaAnularPago";
+            this.ColumnaAnularPago.ReadOnly = true;
+            this.ColumnaAnularPago.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnaAnularPago.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Pagos
             // 
@@ -643,6 +643,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaAdicionalOtros;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaMonto;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaEstado;
-        private System.Windows.Forms.DataGridViewImageColumn ColumnaEditar;
+        private System.Windows.Forms.DataGridViewImageColumn ColumnaAnularPago;
     }
 }
