@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaEntidades; // <-- Requerido
+using CapaNegocio; // <-- Requerido
 
 namespace InmoGestor
 {
@@ -15,12 +17,16 @@ namespace InmoGestor
         private EditarPropietario editarPropietarioForm;
         private AgregarPropietario agregarPropietarioForm;
 
+        // 1. Lista para almacenar los datos, igual que _inquilinos
+        private List<PersonaRolCliente> _propietarios = new List<PersonaRolCliente>();
+
         public Propietarios()
         {
             InitializeComponent();
             this.Resize += Propietarios_Resize;
         }
 
+        #region "Gestión de Formularios Hijos (Pop-ups)"
         private static bool IsOpen(Form f) => f != null && !f.IsDisposed && f.Visible;
         private bool HayFormAbierto() =>
             IsOpen(agregarPropietarioForm) || IsOpen(editarPropietarioForm);
@@ -29,7 +35,6 @@ namespace InmoGestor
         {
             if (IsOpen(agregarPropietarioForm)) { agregarPropietarioForm.BringToFront(); agregarPropietarioForm.Focus(); return; }
             if (IsOpen(editarPropietarioForm)) { editarPropietarioForm.BringToFront(); editarPropietarioForm.Focus(); return; }
-
         }
 
         private void Propietarios_Resize(object sender, EventArgs e) => CentrarFormAbierto();
@@ -37,21 +42,248 @@ namespace InmoGestor
         private void CentrarFormAbierto()
         {
             Form f = IsOpen(agregarPropietarioForm) ? (Form)agregarPropietarioForm
-                  : IsOpen(editarPropietarioForm) ? (Form)editarPropietarioForm
-                  : null;
+                    : IsOpen(editarPropietarioForm) ? (Form)editarPropietarioForm
+                    : null;
 
             if (f == null) return;
 
+            // (Asegúrate que tu panel contenedor se llame 'ContenedorPropietarios')
             f.Location = new Point(
                 (ContenedorPropietarios.Width - f.Width) / 2,
                 (ContenedorPropietarios.Height - f.Height) / 2
             );
         }
+        #endregion
 
+        #region "Métodos de Carga y Actualización"
+
+        // 2. Evento Load (Modificado)
+        private void Propietarios_Load(object sender, EventArgs e)
+        {
+            // (Asumo que tu ComboBox se llama 'comboBox1' como en Inquilinos)
+            comboBox1.Items.Add("Todos");
+            comboBox1.Items.Add("Activos");
+            comboBox1.Items.Add("Inactivos");
+            comboBox1.SelectedIndex = 0; // Esto dispara CargarPropietarios()
+        }
+
+        // 3. Método CargarPropietarios (Análogo a CargarInquilinos)
+        private void CargarPropietarios()
+        {
+            dataGridPropietarios.Rows.Clear(); // Limpiamos la grilla
+            dataGridPropietarios.AutoGenerateColumns = false;
+
+            var negocio = new CN_PersonaRolCliente();
+            // (Usamos 'comboBox1' como en Inquilinos)
+            string seleccion = comboBox1.SelectedItem?.ToString() ?? "Todos";
+            EstadoFiltro filtro;
+
+            switch (seleccion.ToUpper())
+            {
+                case "ACTIVOS":
+                    filtro = EstadoFiltro.Activos;
+                    break;
+                case "INACTIVOS":
+                    filtro = EstadoFiltro.Inactivos;
+                    break;
+                // (Quitamos 'Morosos' ya que no está en tu combo de Propietarios)
+                default:
+                    filtro = EstadoFiltro.Todos;
+                    break;
+            }
+
+            // --- Reutilización de la Capa de Negocio ---
+            _propietarios = negocio.ListarClientes(TipoRolCliente.Propietario, filtro);
+
+            // 4. Poblar el grid (ajustado a tus 11 columnas)
+            foreach (var p in _propietarios)
+            {
+                dataGridPropietarios.Rows.Add(new object[]
+                {
+                    p.Dni,                          // 1. DNI
+                    p.oPersona?.Direccion,          // 2. Direccion
+                    p.oPersona?.Nombre,             // 3. Nombre
+                    p.oPersona?.Apellido,           // 4. Apellido
+                    p.oPersona?.Telefono,           // 5. Telefono
+                    p.oPersona?.CorreoElectronico,  // 6. Correo
+                    null,                           // 7. Ingresos (Vacío)
+                    null,                           // 8. Propiedades (Vacío)
+                    p.Estado,                       // 9. Estado (del rol)
+                    null,                           // 10. Editar
+                    null                            // 11. Eliminar
+                });
+            }
+
+            ActualizarIndicadores();
+        }
+
+        // 5. Método ActualizarIndicadores (Análogo a Inquilinos)
+        private void ActualizarIndicadores()
+        {
+            var estadisticas = new CN_PersonaRolCliente().ObtenerEstadisticas(TipoRolCliente.Propietario);
+
+            // (Asegúrate que tus Labels se llamen así)
+            // LTotalPropietarios.Text = estadisticas.Total.ToString();
+            // LPropietariosActivos.Text = estadisticas.Activos.ToString();
+            // LPropietariosInactivos.Text = estadisticas.Inactivos.ToString();
+        }
+
+        // 6. Evento del ComboBox (Análogo a Inquilinos)
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarPropietarios();
+        }
+
+        #endregion
+
+        #region "Eventos del DataGridView"
+
+        // 7. Evento CellContentClick (Modificado con tus nombres de columna)
+        private void dataGridPropietarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            // Usamos los nombres de columna de tu imagen
+            var colName = dataGridPropietarios.Columns[e.ColumnIndex].Name;
+
+            if (HayFormAbierto()) { FocusFormAbierto(); return; }
+
+            if (colName == "ColumnaEditar") // <-- Nombre de tu columna
+            {
+                var dniEditar = dataGridPropietarios.Rows[e.RowIndex].Cells["DNI"].Value?.ToString(); // <-- Nombre de tu columna
+                var pSel = _propietarios.FirstOrDefault(x => x.Dni == dniEditar);
+
+                if (pSel == null)
+                {
+                    MessageBox.Show("No se encontró el propietario.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // (Asumo que tu form se llama 'EditarPropietario')
+                editarPropietarioForm = new EditarPropietario(pSel);
+
+                editarPropietarioForm.TopLevel = false;
+                editarPropietarioForm.FormBorderStyle = FormBorderStyle.None;
+                ContenedorPropietarios.Controls.Add(editarPropietarioForm);
+
+                editarPropietarioForm.FormClosed += (_, __) =>
+                {
+                    ContenedorPropietarios.Controls.Remove(editarPropietarioForm);
+                    editarPropietarioForm.Dispose();
+                    editarPropietarioForm = null;
+                    CargarPropietarios(); // Recargar al cerrar
+                };
+
+                editarPropietarioForm.Show();
+                editarPropietarioForm.BringToFront();
+                editarPropietarioForm.Focus();
+                CentrarFormAbierto();
+            }
+            else if (colName == "Eliminar") // <-- Nombre de tu columna
+            {
+                try
+                {
+                    string dni = dataGridPropietarios.Rows[e.RowIndex].Cells["DNI"].Value.ToString(); // <-- Nombre de tu columna
+                    var propSeleccionado = _propietarios.FirstOrDefault(p => p.Dni == dni);
+                    if (propSeleccionado == null) return;
+
+                    int estadoActual = propSeleccionado.Estado;
+                    int idRolPropietario = (int)TipoRolCliente.Propietario;
+
+                    if (estadoActual == 1)
+                    {
+                        DialogResult resultado = MessageBox.Show("¿Está seguro de que desea desactivar a este propietario?", "Confirmar Baja", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (resultado == DialogResult.Yes)
+                        {
+                            if (new CN_PersonaRolCliente().CambiarEstado(dni, 0, idRolPropietario))
+                            {
+                                CargarPropietarios();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        DialogResult resultado = MessageBox.Show("¿Desea reactivar este propietario?", "Confirmar Reactivación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (resultado == DialogResult.Yes)
+                        {
+                            if (new CN_PersonaRolCliente().CambiarEstado(dni, 1, idRolPropietario))
+                            {
+                                CargarPropietarios();
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ocurrió un error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        // 8. Evento CellFormatting (Para iconos y colores)
+        private void dataGridPropietarios_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            string dni = dataGridPropietarios.Rows[e.RowIndex].Cells["DNI"].Value?.ToString();
+            if (string.IsNullOrEmpty(dni)) return;
+
+            PersonaRolCliente propActual = _propietarios.FirstOrDefault(p => p.Dni == dni);
+            if (propActual == null)
+            {
+                // Si el DNI está en la grilla pero no en la lista (raro), salimos
+                return;
+            }
+
+            int estado = propActual.Estado;
+            string columnName = dataGridPropietarios.Columns[e.ColumnIndex].Name;
+
+            if (columnName == "Editar") // <-- Nombre de tu columna
+            {
+                e.Value = Properties.Resources.edit;
+                dataGridPropietarios.Rows[e.RowIndex].Cells[e.ColumnIndex].ToolTipText = "Editar propietario";
+            }
+
+            if (columnName == "Eliminar") // <-- Nombre de tu columna
+            {
+                if (estado == 1)
+                {
+                    e.Value = Properties.Resources.delete;
+                    dataGridPropietarios.Rows[e.RowIndex].Cells[e.ColumnIndex].ToolTipText = "Desactivar propietario";
+                }
+                else
+                {
+                    e.Value = Properties.Resources.reactive;
+                    dataGridPropietarios.Rows[e.RowIndex].Cells[e.ColumnIndex].ToolTipText = "Reactivar propietario";
+                }
+            }
+
+            if (columnName == "Estado") // <-- Nombre de tu columna
+            {
+                e.Value = (estado == 1) ? "Activo" : "Inactivo";
+            }
+
+            // Pintar la fila si está inactivo
+            if (estado == 0)
+            {
+                e.CellStyle.BackColor = Color.DarkOrange;
+                e.CellStyle.ForeColor = Color.White;
+            }
+            else
+            {
+                // (Asumo este color de fondo por tu imagen)
+                e.CellStyle.BackColor = Color.FromArgb(15, 30, 45);
+                e.CellStyle.ForeColor = Color.White;
+            }
+        }
+
+        #endregion
+
+        // 9. Evento clic del botón Agregar (Análogo a Inquilinos)
         private void BAgregarPropietario_Click(object sender, EventArgs e)
         {
             if (HayFormAbierto()) { FocusFormAbierto(); return; }
 
+            // (Asumo que tu form se llama 'AgregarPropietario')
             agregarPropietarioForm = new AgregarPropietario
             {
                 TopLevel = false,
@@ -64,6 +296,7 @@ namespace InmoGestor
                 ContenedorPropietarios.Controls.Remove(agregarPropietarioForm);
                 agregarPropietarioForm.Dispose();
                 agregarPropietarioForm = null;
+                CargarPropietarios(); // <-- Recargar al cerrar
             };
 
             agregarPropietarioForm.Show();
@@ -72,52 +305,5 @@ namespace InmoGestor
             CentrarFormAbierto();
         }
 
-        private void Propietarios_Load(object sender, EventArgs e)
-        {
-            dataGridPropietarios.Rows.Add("30111222", "Av. Corrientes 1234", "Juan", "Pérez", "3794123456", "juan.perez@mail.com", "$120000", "2", "Activo");
-            dataGridPropietarios.Rows.Add("28456789", "San Martín 450", "María", "González", "3794987654", "maria.gonzalez@mail.com", "$85000", "1", "Activo");
-            dataGridPropietarios.Rows.Add("33123456", "Belgrano 789", "Carlos", "López", "3794678901", "carlos.lopez@mail.com", "$60000", "0", "Inactivo");
-            dataGridPropietarios.Rows.Add("29876543", "Rivadavia 234", "Ana", "Fernández", "3794456123", "ana.fernandez@mail.com", "$150000", "3", "Activo");
-            dataGridPropietarios.Rows.Add("31567890", "Junín 1020", "Diego", "Martínez", "3794567890", "diego.martinez@mail.com", "$40000", "1", "Activo");
-            dataGridPropietarios.Rows.Add("27543210", "Rioja 550", "Laura", "Ramírez", "3794234567", "laura.ramirez@mail.com", "$0", "0", "Inactivo");
-        }
-
-        private void dataGridPropietarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex < 0) return;
-            var colName = dataGridPropietarios.Columns[e.ColumnIndex].Name;
-
-            if (HayFormAbierto()) { FocusFormAbierto(); return; }
-
-            if (colName == "ColumnaEditar")
-            {
-                editarPropietarioForm = new EditarPropietario
-                {
-                    TopLevel = false,
-                    FormBorderStyle = FormBorderStyle.None
-                };
-                ContenedorPropietarios.Controls.Add(editarPropietarioForm);
-
-                editarPropietarioForm.FormClosed += (_, __) =>
-                {
-                    ContenedorPropietarios.Controls.Remove(editarPropietarioForm);
-                    editarPropietarioForm.Dispose();
-                    editarPropietarioForm = null;
-                };
-
-                editarPropietarioForm.Show();
-                editarPropietarioForm.BringToFront();
-                editarPropietarioForm.Focus();
-                CentrarFormAbierto();
-            }
-            else if (colName == "ColumnaEliminar")
-            {
-                var result = MessageBox.Show("¿Está seguro de que desea eliminar este propietario?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (result == DialogResult.Yes)
-                {
-                    dataGridPropietarios.Rows.RemoveAt(e.RowIndex);
-                }
-            }
-        }
     }
 }
