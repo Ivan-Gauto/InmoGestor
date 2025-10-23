@@ -120,14 +120,24 @@ namespace InmoGestor
                     var inquilinoSeleccionado = _inquilinos.FirstOrDefault(i => i.Dni == dni);
                     if (inquilinoSeleccionado == null) return;
 
-                    int estadoActual = inquilinoSeleccionado.oPersona.Estado;
+                    // ----- CAMBIO 1 -----
+                    // Leemos el estado desde la entidad PersonaRolCliente, no desde Persona
+                    // Asumo que tu entidad 'PersonaRolCliente' tiene una propiedad 'Estado'
+                    int estadoActual = inquilinoSeleccionado.Estado;
+
+                    // ----- CAMBIO 2 -----
+                    // Definimos el ID del rol que estamos gestionando en esta grilla
+                    // Asumo que tu enum TipoRolCliente tiene un miembro 'Inquilino'
+                    int idRolInquilino = (int)TipoRolCliente.Inquilino;
+
 
                     if (estadoActual == 1)
                     {
                         DialogResult resultado = MessageBox.Show("¿Está seguro de que desea desactivar a este inquilino?", "Confirmar Baja", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (resultado == DialogResult.Yes)
                         {
-                            if (new CN_PersonaRolCliente().CambiarEstado(dni, 0))
+                            // Pasamos el IdRolCliente
+                            if (new CN_PersonaRolCliente().CambiarEstado(dni, 0, idRolInquilino))
                             {
                                 CargarInquilinos();
                             }
@@ -138,7 +148,8 @@ namespace InmoGestor
                         DialogResult resultado = MessageBox.Show("¿Desea reactivar este inquilino?", "Confirmar Reactivación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (resultado == DialogResult.Yes)
                         {
-                            if (new CN_PersonaRolCliente().CambiarEstado(dni, 1))
+                            // Pasamos el IdRolCliente
+                            if (new CN_PersonaRolCliente().CambiarEstado(dni, 1, idRolInquilino))
                             {
                                 CargarInquilinos();
                             }
@@ -158,7 +169,11 @@ namespace InmoGestor
                 return;
 
             PersonaRolCliente inquilinoActual = _inquilinos[e.RowIndex];
-            int estado = inquilinoActual.oPersona.Estado;
+
+            // ----- MODIFICADO -----
+            // Leemos el estado del rol (persona_rol_cliente), no de la persona
+            int estado = inquilinoActual.Estado;
+
             string columnName = dataGridInquilinos.Columns[e.ColumnIndex].Name;
 
             if (columnName == "ColumnaEditar")
@@ -169,7 +184,7 @@ namespace InmoGestor
 
             if (columnName == "ColumnaAcciones")
             {
-                if (estado == 1)
+                if (estado == 1) // <-- Usa el 'estado' del rol
                 {
                     e.Value = Properties.Resources.delete;
                     dataGridInquilinos.Rows[e.RowIndex].Cells[e.ColumnIndex].ToolTipText = "Desactivar inquilino";
@@ -183,10 +198,10 @@ namespace InmoGestor
 
             if (columnName == "ColumnaEstado")
             {
-                e.Value = (estado == 1) ? "Activo" : "Inactivo";
+                e.Value = (estado == 1) ? "Activo" : "Inactivo"; // <-- Usa el 'estado' del rol
             }
 
-            if (estado == 0)
+            if (estado == 0) // <-- Usa el 'estado' del rol
             {
                 e.CellStyle.BackColor = Color.DarkOrange;
                 e.CellStyle.ForeColor = Color.White;
@@ -200,6 +215,7 @@ namespace InmoGestor
 
         private void Inquilinos_Load(object sender, EventArgs e)
         {
+            comboBox1.SelectedIndex = 0;
             CargarInquilinos();
         }
 
@@ -209,22 +225,44 @@ namespace InmoGestor
             dataGridInquilinos.AutoGenerateColumns = false;
 
             var negocio = new CN_PersonaRolCliente();
+            string seleccion = comboBox1.SelectedItem?.ToString() ?? "Todos";
+            EstadoFiltro filtro;
 
-            _inquilinos = negocio.ListarTodosLosInquilinos() ?? new List<PersonaRolCliente>();
+            switch (seleccion.ToUpper())
+            {
+                case "ACTIVOS":
+                    filtro = EstadoFiltro.Activos;
+                    break;
+                case "INACTIVOS":
+                    filtro = EstadoFiltro.Inactivos;
+                    break;
+                case "MOROSOS":
+                    filtro = EstadoFiltro.Morosos;
+                    break;
+                default:
+                    filtro = EstadoFiltro.Todos;
+                    break;
+            }
+
+            _inquilinos = negocio.ListarClientes(TipoRolCliente.Inquilino, filtro);
 
             foreach (var i in _inquilinos)
             {
                 dataGridInquilinos.Rows.Add(new object[]
                 {
-            i.Dni,
-            i.oPersona?.Direccion,
-            i.oPersona?.Nombre,
-            i.oPersona?.Apellido,
-            i.oPersona?.Telefono,
-            i.oPersona?.CorreoElectronico,
-            i.oPersona?.Estado ?? 1,
-            null,
-            null
+                    i.Dni,
+                    i.oPersona?.Direccion,
+                    i.oPersona?.Nombre,
+                    i.oPersona?.Apellido,
+                    i.oPersona?.Telefono,
+                    i.oPersona?.CorreoElectronico,
+                    
+                    // ----- MODIFICADO -----
+                    // Usamos el estado del rol (PersonaRolCliente.Estado)
+                    i.Estado,
+
+                    null,
+                    null
                 });
             }
 
@@ -233,7 +271,7 @@ namespace InmoGestor
 
         private void ActualizarIndicadores()
         {
-            var estadisticas = new CN_PersonaRolCliente().ObtenerEstadisticasInquilinos();
+            var estadisticas = new CN_PersonaRolCliente().ObtenerEstadisticas(TipoRolCliente.Inquilino);
 
             LTotalInquilinos.Text = estadisticas.Total.ToString();
             LInquilinosActivos.Text = estadisticas.Activos.ToString();
@@ -241,17 +279,7 @@ namespace InmoGestor
             LInquilinosMorosos.Text = "0";
         }
 
-        private void checkInactivos_CheckedChanged(object sender, EventArgs e)
-        {
-            CargarInquilinos();
-        }
-
-        private void panel5_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void FiltroInquilinos_SelectedIndexChanged_1(object sender, EventArgs e)
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarInquilinos();
         }
