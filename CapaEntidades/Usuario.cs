@@ -9,7 +9,7 @@ namespace CapaEntidades
 
         // Credenciales / estado
         public string Clave { get; set; } = string.Empty;   // ideal: guardar hash
-        public bool Estado { get; set; }                     // 0 = Inactivo, 1 = Activo
+        public int Estado { get; set; }                     // 0 = Inactivo, 1 = Activo
         public DateTime FechaCreacion { get; set; }
 
         // FK a rol_usuario

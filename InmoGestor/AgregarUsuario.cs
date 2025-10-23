@@ -9,8 +9,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-
+using CapaEntidades;
+using CapaNegocio;
 
 namespace InmoGestor
 {
@@ -19,7 +19,7 @@ namespace InmoGestor
         public AgregarUsuario()
         {
             InitializeComponent();
-            BIngresar.Click += BIngresar_Click;   
+            BIngresar.Click += BIngresar_Click;
         }
 
         private int MapRolId(string texto)
@@ -27,15 +27,14 @@ namespace InmoGestor
             switch ((texto ?? "").Trim())
             {
                 case "Administrador": return 1;
-                case "Operador": return 2;
-                case "Ayudante": return 3;
-                default: return 2; // por defecto Operador
+                case "Gerente": return 2;
+                case "Operador": return 3;
+                default: return 2;
             }
         }
 
         private void BIngresar_Click(object sender, EventArgs e)
         {
-            // Validaciones mínimas
             string dni = TDni.Text.Trim();
             string clave = TClave.Text.Trim();
             string nombre = TNombre.Text.Trim();
@@ -55,31 +54,7 @@ namespace InmoGestor
                 return;
             }
 
-            // === Fecha de nacimiento OBLIGATORIA, formato dd/MM/yyyy ===
-            if (string.IsNullOrWhiteSpace(TNacimiento.Text))
-            {
-                MessageBox.Show("La fecha de nacimiento es obligatoria.", "Atención",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                TNacimiento.Focus();
-                return;
-            }
-
-
-            // Aceptar varios formatos y luego normalizar a dd/MM/yyyy
-            string input = TNacimiento.Text.Trim();
-            string[] formatos = { "dd/MM/yyyy", "d/M/yyyy", "yyyy-MM-dd", "yyyy/MM/dd", "yyyy-M-d", "yyyy/M/d", "dd-MM-yyyy", "d-M-yyyy" };
-
-            if (!DateTime.TryParseExact(input, formatos, new CultureInfo("es-AR"),
-                                        DateTimeStyles.None, out var fnacValue))
-            {
-                MessageBox.Show("Fecha de nacimiento inválida. Usá el formato dd/mm/aaaa.",
-                                "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                TNacimiento.Focus();
-                return;
-            }
-
-            // Normalizar el texto del TextBox a dd/MM/yyyy (mas prolijo)
-            TNacimiento.Text = fnacValue.ToString("dd/MM/yyyy");
+            DateTime fnacValue = TNacimiento.Value;
 
             if (fnacValue.Date > DateTime.Today)
             {
@@ -88,7 +63,7 @@ namespace InmoGestor
                 TNacimiento.Focus();
                 return;
             }
-            // Clave: 8 o más dígitos
+
             if (!Regex.IsMatch(clave, @"^\d{8,}$"))
             {
                 MessageBox.Show("La contraseña debe tener al menos 8 dígitos numéricos.",
@@ -97,7 +72,6 @@ namespace InmoGestor
                 return;
             }
 
-            //validar edad mínima
             var edad = DateTime.Today.Year - fnacValue.Year;
             if (fnacValue.Date > DateTime.Today.AddYears(-edad)) edad--;
             if (edad < 17)
@@ -108,18 +82,16 @@ namespace InmoGestor
                 return;
             }
 
-
             int rolId = MapRolId(comboBox1.SelectedItem?.ToString());
 
-            // Armar entidad
-            var usuario = new CapaEntidades.Usuario
+            var usuario = new Usuario
             {
                 Dni = dni,
                 Clave = clave,
-                Estado = true,                   // activo
+                Estado = 1,
                 FechaCreacion = DateTime.Now,
                 RolUsuarioId = rolId,
-                oPersona = new CapaEntidades.Persona
+                oPersona = new Persona
                 {
                     Dni = dni,
                     Nombre = nombre,
@@ -132,9 +104,8 @@ namespace InmoGestor
                 }
             };
 
-            // Guardar
             string mensaje;
-            bool ok = new CapaNegocio.CN_Usuario().Registrar(usuario, out mensaje);
+            bool ok = new CN_Usuario().Registrar(usuario, out mensaje);
 
             if (!ok)
             {
@@ -148,7 +119,6 @@ namespace InmoGestor
             this.Close();
         }
 
-
         private void BCerrarForm_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -156,7 +126,11 @@ namespace InmoGestor
 
         private void AgregarUsuario_Load(object sender, EventArgs e)
         {
-
+            if (comboBox1.Items.Count == 0)
+            {
+                comboBox1.Items.AddRange(new object[] { "Administrador", "Gerente", "Operador" });
+                comboBox1.SelectedIndex = 0;
+            }
         }
     }
 }

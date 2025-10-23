@@ -41,7 +41,6 @@
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel18 = new System.Windows.Forms.TableLayoutPanel();
             this.comboRol = new System.Windows.Forms.ComboBox();
-            this.checkEstado = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.BCerrarForm = new System.Windows.Forms.Button();
@@ -62,7 +61,7 @@
             this.TClave = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
-            this.TNacimiento = new System.Windows.Forms.TextBox();
+            this.TNacimiento = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.TDireccion = new System.Windows.Forms.TextBox();
             this.BGuardar = new System.Windows.Forms.Button();
@@ -244,7 +243,6 @@
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.23697F));
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.76303F));
             this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel18, 0, 0);
-            this.tableLayoutPanel9.Controls.Add(this.checkEstado, 1, 0);
             this.tableLayoutPanel9.Location = new System.Drawing.Point(23, 368);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 1;
@@ -279,23 +277,12 @@
             this.comboRol.FormattingEnabled = true;
             this.comboRol.Items.AddRange(new object[] {
             "Administrador",
-            "Operador",
-            "Ayudante"});
+            "Gerente",
+            "Operador"});
             this.comboRol.Location = new System.Drawing.Point(3, 32);
             this.comboRol.Name = "comboRol";
             this.comboRol.Size = new System.Drawing.Size(198, 25);
             this.comboRol.TabIndex = 14;
-            // 
-            // checkEstado
-            // 
-            this.checkEstado.AutoSize = true;
-            this.checkEstado.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.checkEstado.Location = new System.Drawing.Point(215, 3);
-            this.checkEstado.Name = "checkEstado";
-            this.checkEstado.Size = new System.Drawing.Size(56, 17);
-            this.checkEstado.TabIndex = 22;
-            this.checkEstado.Text = "Activo";
-            this.checkEstado.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel15
             // 
@@ -577,16 +564,17 @@
             // 
             // TNacimiento
             // 
-            this.TNacimiento.AllowDrop = true;
-            this.TNacimiento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.TNacimiento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TNacimiento.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TNacimiento.ForeColor = System.Drawing.Color.White;
-            this.TNacimiento.HideSelection = false;
+            this.TNacimiento.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.TNacimiento.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.TNacimiento.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.TNacimiento.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.TNacimiento.CalendarTrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.TNacimiento.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.TNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.TNacimiento.Location = new System.Drawing.Point(3, 32);
             this.TNacimiento.Name = "TNacimiento";
-            this.TNacimiento.Size = new System.Drawing.Size(199, 25);
-            this.TNacimiento.TabIndex = 14;
+            this.TNacimiento.Size = new System.Drawing.Size(198, 25);
+            this.TNacimiento.TabIndex = 17;
             // 
             // tableLayoutPanel10
             // 
@@ -645,7 +633,6 @@
             this.Load += new System.EventHandler(this.EditarUsuario_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel9.ResumeLayout(false);
-            this.tableLayoutPanel9.PerformLayout();
             this.tableLayoutPanel18.ResumeLayout(false);
             this.tableLayoutPanel18.PerformLayout();
             this.tableLayoutPanel15.ResumeLayout(false);
@@ -684,7 +671,6 @@
         private System.Windows.Forms.Button BCerrarForm;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
-        private System.Windows.Forms.TextBox TApellido;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
         private System.Windows.Forms.TextBox TNombre;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
@@ -699,10 +685,10 @@
         private System.Windows.Forms.TextBox TClave;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
-        private System.Windows.Forms.TextBox TNacimiento;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
         private System.Windows.Forms.TextBox TDireccion;
         private System.Windows.Forms.Button BGuardar;
-        private System.Windows.Forms.CheckBox checkEstado;
+        private System.Windows.Forms.TextBox TApellido;
+        private System.Windows.Forms.DateTimePicker TNacimiento;
     }
 }
