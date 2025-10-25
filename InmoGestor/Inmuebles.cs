@@ -158,10 +158,12 @@ namespace InmoGestor
 
             int totalDisponibles = listaInmuebles.Count(inmueble => inmueble.Disponibilidad == 1);
             int totalOcupados = listaInmuebles.Count(inmueble => inmueble.Disponibilidad == 0);
+            int totalInactivos = listaInmuebles.Count(inmueble => inmueble.Estado == 0);
 
             // 3. Actualizamos el texto de los Labels
             LDisponibles.Text = totalDisponibles.ToString();
             LOcupados.Text = totalOcupados.ToString();
+            LInactivos.Text = totalInactivos.ToString();
         }
 
         private void label3_Click(object sender, EventArgs e)

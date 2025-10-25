@@ -81,6 +81,12 @@
     <Compile Include="AgregarPropietario.Designer.cs">
       <DependentUpon>AgregarPropietario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Auxiliar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Auxiliar.Designer.cs">
+      <DependentUpon>Auxiliar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Contratos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,12 +116,6 @@
     </Compile>
     <Compile Include="AgregarUsuario.Designer.cs">
       <DependentUpon>AgregarUsuario.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Auxiliar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Auxiliar.Designer.cs">
-      <DependentUpon>Auxiliar.cs</DependentUpon>
     </Compile>
     <Compile Include="Dashboard.cs">
       <SubType>Form</SubType>
@@ -221,6 +221,9 @@
     <EmbeddedResource Include="AgregarPropietario.resx">
       <DependentUpon>AgregarPropietario.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Auxiliar.resx">
+      <DependentUpon>Auxiliar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Contratos.resx">
       <DependentUpon>Contratos.cs</DependentUpon>
     </EmbeddedResource>
@@ -235,9 +238,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AgregarUsuario.resx">
       <DependentUpon>AgregarUsuario.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Auxiliar.resx">
-      <DependentUpon>Auxiliar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
