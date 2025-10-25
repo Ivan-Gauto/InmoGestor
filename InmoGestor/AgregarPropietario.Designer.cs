@@ -54,10 +54,10 @@
             this.TTelefono = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
-            this.TNacimiento = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
             this.TNombre = new System.Windows.Forms.TextBox();
             this.BIngresar = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             label9 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
@@ -435,7 +435,7 @@
             // 
             this.tableLayoutPanel11.ColumnCount = 1;
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel11.Controls.Add(this.TNacimiento, 0, 1);
+            this.tableLayoutPanel11.Controls.Add(this.dateTimePicker1, 0, 1);
             this.tableLayoutPanel11.Controls.Add(label8, 0, 0);
             this.tableLayoutPanel11.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel11.Name = "tableLayoutPanel11";
@@ -444,19 +444,6 @@
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel11.Size = new System.Drawing.Size(205, 59);
             this.tableLayoutPanel11.TabIndex = 14;
-            // 
-            // TNacimiento
-            // 
-            this.TNacimiento.AllowDrop = true;
-            this.TNacimiento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.TNacimiento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TNacimiento.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TNacimiento.ForeColor = System.Drawing.Color.White;
-            this.TNacimiento.HideSelection = false;
-            this.TNacimiento.Location = new System.Drawing.Point(3, 32);
-            this.TNacimiento.Name = "TNacimiento";
-            this.TNacimiento.Size = new System.Drawing.Size(199, 25);
-            this.TNacimiento.TabIndex = 14;
             // 
             // tableLayoutPanel14
             // 
@@ -502,6 +489,20 @@
             this.BIngresar.TabIndex = 19;
             this.BIngresar.Text = "Agregar";
             this.BIngresar.UseVisualStyleBackColor = false;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.dateTimePicker1.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.dateTimePicker1.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.dateTimePicker1.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.dateTimePicker1.CalendarTrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(3, 32);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(198, 25);
+            this.dateTimePicker1.TabIndex = 16;
             // 
             // AgregarPropietario
             // 
@@ -557,9 +558,9 @@
         private System.Windows.Forms.TextBox TTelefono;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
-        private System.Windows.Forms.TextBox TNacimiento;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
         private System.Windows.Forms.TextBox TNombre;
         private System.Windows.Forms.Button BIngresar;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }
