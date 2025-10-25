@@ -60,11 +60,8 @@ namespace InmoGestor
         // 2. Evento Load (Modificado)
         private void Propietarios_Load(object sender, EventArgs e)
         {
-            // (Asumo que tu ComboBox se llama 'comboBox1' como en Inquilinos)
-            comboBox1.Items.Add("Todos");
-            comboBox1.Items.Add("Activos");
-            comboBox1.Items.Add("Inactivos");
-            comboBox1.SelectedIndex = 0; // Esto dispara CargarPropietarios()
+            comboBox1.SelectedIndex = 0;
+            CargarPropietarios(); // Esto dispara CargarPropietarios()
         }
 
         // 3. Método CargarPropietarios (Análogo a CargarInquilinos)
@@ -86,7 +83,6 @@ namespace InmoGestor
                 case "INACTIVOS":
                     filtro = EstadoFiltro.Inactivos;
                     break;
-                // (Quitamos 'Morosos' ya que no está en tu combo de Propietarios)
                 default:
                     filtro = EstadoFiltro.Todos;
                     break;
@@ -106,14 +102,11 @@ namespace InmoGestor
                     p.oPersona?.Apellido,           // 4. Apellido
                     p.oPersona?.Telefono,           // 5. Telefono
                     p.oPersona?.CorreoElectronico,  // 6. Correo
-                    null,                           // 7. Ingresos (Vacío)
-                    null,                           // 8. Propiedades (Vacío)
                     p.Estado,                       // 9. Estado (del rol)
-                    null,                           // 10. Editar
-                    null                            // 11. Eliminar
+                    null,                           // 10. Editar (para el icono)
+                    null                            // 11. Accion (para el icono)
                 });
             }
-
             ActualizarIndicadores();
         }
 
@@ -122,10 +115,9 @@ namespace InmoGestor
         {
             var estadisticas = new CN_PersonaRolCliente().ObtenerEstadisticas(TipoRolCliente.Propietario);
 
-            // (Asegúrate que tus Labels se llamen así)
-            // LTotalPropietarios.Text = estadisticas.Total.ToString();
-            // LPropietariosActivos.Text = estadisticas.Activos.ToString();
-            // LPropietariosInactivos.Text = estadisticas.Inactivos.ToString();
+            LTotalPropietarios.Text = estadisticas.Total.ToString();
+            LPropietariosActivos.Text = estadisticas.Activos.ToString();
+            LPropietariosInactivos.Text = estadisticas.Inactivos.ToString();
         }
 
         // 6. Evento del ComboBox (Análogo a Inquilinos)
@@ -149,7 +141,7 @@ namespace InmoGestor
 
             if (colName == "ColumnaEditar") // <-- Nombre de tu columna
             {
-                var dniEditar = dataGridPropietarios.Rows[e.RowIndex].Cells["DNI"].Value?.ToString(); // <-- Nombre de tu columna
+                var dniEditar = dataGridPropietarios.Rows[e.RowIndex].Cells["ColumnaDni"].Value?.ToString(); // <-- Nombre de tu columna
                 var pSel = _propietarios.FirstOrDefault(x => x.Dni == dniEditar);
 
                 if (pSel == null)
@@ -178,11 +170,11 @@ namespace InmoGestor
                 editarPropietarioForm.Focus();
                 CentrarFormAbierto();
             }
-            else if (colName == "Eliminar") // <-- Nombre de tu columna
+            else if (colName == "ColumnaAcciones") // <-- Nombre de tu columna
             {
                 try
                 {
-                    string dni = dataGridPropietarios.Rows[e.RowIndex].Cells["DNI"].Value.ToString(); // <-- Nombre de tu columna
+                    string dni = dataGridPropietarios.Rows[e.RowIndex].Cells["ColumnaDni"].Value.ToString(); // <-- Nombre de tu columna
                     var propSeleccionado = _propietarios.FirstOrDefault(p => p.Dni == dni);
                     if (propSeleccionado == null) return;
 
@@ -224,7 +216,7 @@ namespace InmoGestor
         {
             if (e.RowIndex < 0) return;
 
-            string dni = dataGridPropietarios.Rows[e.RowIndex].Cells["DNI"].Value?.ToString();
+            string dni = dataGridPropietarios.Rows[e.RowIndex].Cells["ColumnaDni"].Value?.ToString();
             if (string.IsNullOrEmpty(dni)) return;
 
             PersonaRolCliente propActual = _propietarios.FirstOrDefault(p => p.Dni == dni);
@@ -237,13 +229,13 @@ namespace InmoGestor
             int estado = propActual.Estado;
             string columnName = dataGridPropietarios.Columns[e.ColumnIndex].Name;
 
-            if (columnName == "Editar") // <-- Nombre de tu columna
+            if (columnName == "ColumnaEditar") // <-- Nombre de tu columna
             {
                 e.Value = Properties.Resources.edit;
                 dataGridPropietarios.Rows[e.RowIndex].Cells[e.ColumnIndex].ToolTipText = "Editar propietario";
             }
 
-            if (columnName == "Eliminar") // <-- Nombre de tu columna
+            if (columnName == "ColumnaAcciones") // <-- Nombre de tu columna
             {
                 if (estado == 1)
                 {
@@ -257,7 +249,7 @@ namespace InmoGestor
                 }
             }
 
-            if (columnName == "Estado") // <-- Nombre de tu columna
+            if (columnName == "ColumnaEstado") // <-- Nombre de tu columna
             {
                 e.Value = (estado == 1) ? "Activo" : "Inactivo";
             }
