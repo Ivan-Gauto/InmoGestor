@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CD_Inmueble.cs" />
+    <Compile Include="CD_Log.cs" />
     <Compile Include="CD_PersonaRolCliente.cs" />
     <Compile Include="CD_Usuario.cs" />
     <Compile Include="Conexion.cs" />
