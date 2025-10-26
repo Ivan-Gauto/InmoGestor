@@ -36,17 +36,17 @@ namespace CapaNegocio
             return _capaDatos.Registrar(prc, out mensaje);
         }
 
-        public bool Actualizar(PersonaRolCliente prc, out string mensaje)
+        public bool Actualizar(string dniOriginal, PersonaRolCliente prc, out string mensaje)
         {
             mensaje = string.Empty;
 
-            if (string.IsNullOrWhiteSpace(prc.Dni))
+            if (string.IsNullOrWhiteSpace(prc.oPersona.Dni))
             {
                 mensaje = "El DNI es necesario para actualizar.";
                 return false;
             }
 
-            return _capaDatos.Actualizar(prc, out mensaje);
+            return _capaDatos.Actualizar(dniOriginal, prc, out mensaje);
         }
 
         public bool CambiarEstado(string dni, int nuevoEstado, int idRolCliente)

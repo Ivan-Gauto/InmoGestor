@@ -1,82 +1,99 @@
 ﻿using CapaEntidades;
-using CapaNegocio; // Asegúrate de tener la referencia a tu capa de negocio
+using CapaNegocio;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace InmoGestor
 {
     public partial class EditarInquilino : Form
     {
-        // Variable privada para mantener los datos del inquilino que se está editando.
         private readonly PersonaRolCliente _inquilino;
 
         public EditarInquilino(PersonaRolCliente inquilino)
         {
             InitializeComponent();
-
-            // Guardamos el objeto inquilino que recibimos. Si es nulo, lanzamos una excepción.
             _inquilino = inquilino ?? throw new ArgumentNullException(nameof(inquilino));
-
-            // Asociamos los eventos a sus manejadores (handlers).
-            this.Load += EditarInquilino_Load; // Para cargar los datos cuando el form se abre.
-            BGuardar.Click += BGuardar_Click; // Para guardar los cambios.
+            this.Load += EditarInquilino_Load;
+            this.BGuardar.Click += new System.EventHandler(this.BGuardar_Click);
+            this.BCerrarForm.Click += new System.EventHandler(this.BCerrarForm_Click);
         }
 
         private void EditarInquilino_Load(object sender, EventArgs e)
         {
-            // --- Cargar datos del inquilino en los controles del formulario ---
-
-            // El DNI es la clave primaria, no se debe poder editar.
-            TDni.Text = _inquilino.Dni;
-            TDni.Enabled = false;
-
-            // Usamos el operador '?' para evitar errores si 'oPersona' es nulo.
-            TNombre.Text = _inquilino.oPersona?.Nombre ?? "";
-            TApellido.Text = _inquilino.oPersona?.Apellido ?? "";
-            TCorreo.Text = _inquilino.oPersona?.CorreoElectronico ?? "";
-            TTelefono.Text = _inquilino.oPersona?.Telefono ?? "";
-            TDireccion.Text = _inquilino.oPersona?.Direccion ?? "";
-
-            // Para el DateTimePicker, verificamos si la fecha tiene un valor antes de asignarla.
-            if (_inquilino.oPersona != null)
+            if (_inquilino != null && _inquilino.oPersona != null)
             {
-                DateTime fechaNac = _inquilino.oPersona.FechaNacimiento;
+                TDni.Text = _inquilino.Dni;
+                TNombre.Text = _inquilino.oPersona.Nombre;
+                TApellido.Text = _inquilino.oPersona.Apellido;
+                TCorreo.Text = _inquilino.oPersona.CorreoElectronico;
+                TTelefono.Text = _inquilino.oPersona.Telefono;
+                TDireccion.Text = _inquilino.oPersona.Direccion;
 
-                // Validamos que la fecha esté dentro del rango permitido del control DateTimePicker
-                if (fechaNac >= TNacimiento.MinDate && fechaNac <= TNacimiento.MaxDate)
+                if (_inquilino.oPersona.FechaNacimiento >= TNacimiento.MinDate &&
+                    _inquilino.oPersona.FechaNacimiento <= TNacimiento.MaxDate)
                 {
-                    TNacimiento.Value = fechaNac;
+                    TNacimiento.Value = _inquilino.oPersona.FechaNacimiento;
                 }
                 else
                 {
-                    // Si la fecha está fuera de rango (por ejemplo, año muy antiguo), 
-                    // colocamos un valor por defecto válido
-                    TNacimiento.Value = TNacimiento.MinDate;
+                    TNacimiento.Value = DateTime.Now;
                 }
             }
-
         }
-        
 
         private void BGuardar_Click(object sender, EventArgs e)
         {
-            // --- Validaciones básicas antes de guardar ---
-            if (string.IsNullOrWhiteSpace(TNombre.Text) || string.IsNullOrWhiteSpace(TApellido.Text))
+            if (string.IsNullOrWhiteSpace(TDni.Text))
             {
-                MessageBox.Show("El Nombre y el Apellido son campos obligatorios.",
-                                "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("El campo DNI no puede estar vacío.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                TDni.Focus();
                 return;
             }
 
-            // --- Mapear los datos de los controles de vuelta al objeto _inquilino ---
+            if (string.IsNullOrWhiteSpace(TNombre.Text))
+            {
+                MessageBox.Show("El campo Nombre no puede estar vacío.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                TNombre.Focus();
+                return;
+            }
 
-            // Si por alguna razón oPersona fuera nulo, lo inicializamos.
+            if (string.IsNullOrWhiteSpace(TApellido.Text))
+            {
+                MessageBox.Show("El campo Apellido no puede estar vacío.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                TApellido.Focus();
+                return;
+            }
+
+            if (!string.IsNullOrWhiteSpace(TCorreo.Text) && (!TCorreo.Text.Contains("@") || !TCorreo.Text.Contains(".")))
+            {
+                MessageBox.Show("El formato del Correo electrónico no es válido.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                TCorreo.Focus();
+                return;
+            }
+
+            if (TNacimiento.Value > DateTime.Now)
+            {
+                MessageBox.Show("La Fecha de nacimiento no puede ser una fecha futura.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                TNacimiento.Focus();
+                return;
+            }
+
             if (_inquilino.oPersona == null)
             {
                 _inquilino.oPersona = new Persona { Dni = _inquilino.Dni };
             }
 
-            // Asignamos los nuevos valores desde los TextBoxes, quitando espacios extra.
+            string dniOriginal = _inquilino.Dni;
+            string dniNuevo = TDni.Text.Trim();
+
+            _inquilino.oPersona.Dni = dniNuevo;
             _inquilino.oPersona.Nombre = TNombre.Text.Trim();
             _inquilino.oPersona.Apellido = TApellido.Text.Trim();
             _inquilino.oPersona.CorreoElectronico = TCorreo.Text.Trim();
@@ -84,19 +101,15 @@ namespace InmoGestor
             _inquilino.oPersona.Direccion = TDireccion.Text.Trim();
             _inquilino.oPersona.FechaNacimiento = TNacimiento.Value;
 
-            // --- Llamar a la capa de negocio para persistir los cambios ---
             var capaNegocio = new CN_PersonaRolCliente();
             string mensaje;
 
-            bool resultado = capaNegocio.Actualizar(_inquilino, out mensaje);
+            bool resultado = capaNegocio.Actualizar(dniOriginal, _inquilino, out mensaje);
 
-            // --- Informar al usuario el resultado de la operación ---
             if (resultado)
             {
                 MessageBox.Show("Inquilino actualizado correctamente.", "Éxito",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // DialogResult.OK le informa al formulario padre que la operación fue exitosa.
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
@@ -107,14 +120,7 @@ namespace InmoGestor
             }
         }
 
-        // El método para cerrar el formulario ya lo tenías, está perfecto.
         private void BCerrarForm_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        // Tenías este método duplicado, puedes borrarlo si quieres.
-        private void BCerrarForm_Click_1(object sender, EventArgs e)
         {
             this.Close();
         }

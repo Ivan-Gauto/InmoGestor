@@ -238,7 +238,6 @@
             this.BCerrarForm.Size = new System.Drawing.Size(27, 27);
             this.BCerrarForm.TabIndex = 12;
             this.BCerrarForm.UseVisualStyleBackColor = false;
-            this.BCerrarForm.Click += new System.EventHandler(this.BCerrarForm_Click_1);
             // 
             // tableLayoutPanel12
             // 
@@ -504,6 +503,7 @@
             this.BGuardar.TabIndex = 19;
             this.BGuardar.Text = "Guardar";
             this.BGuardar.UseVisualStyleBackColor = false;
+            this.BGuardar.Click += new System.EventHandler(this.BGuardar_Click);
             // 
             // EditarInquilino
             // 
