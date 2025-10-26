@@ -54,7 +54,7 @@
             this.TDni = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
-            this.TNacimiento = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
             this.TNombre = new System.Windows.Forms.TextBox();
             this.BGuardar = new System.Windows.Forms.Button();
@@ -79,6 +79,97 @@
             this.tableLayoutPanel11.SuspendLayout();
             this.tableLayoutPanel14.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            label9.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label9.ForeColor = System.Drawing.Color.White;
+            label9.Location = new System.Drawing.Point(0, 10);
+            label9.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            label9.Name = "label9";
+            label9.Size = new System.Drawing.Size(59, 15);
+            label9.TabIndex = 12;
+            label9.Text = "Apellido";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            label4.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label4.ForeColor = System.Drawing.Color.White;
+            label4.Location = new System.Drawing.Point(0, 10);
+            label4.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(62, 15);
+            label4.TabIndex = 12;
+            label4.Text = "Telefono";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            label7.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label7.ForeColor = System.Drawing.Color.White;
+            label7.Location = new System.Drawing.Point(0, 10);
+            label7.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(64, 15);
+            label7.TabIndex = 12;
+            label7.Text = "Direccion";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            label3.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label3.ForeColor = System.Drawing.Color.White;
+            label3.Location = new System.Drawing.Point(0, 10);
+            label3.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(119, 15);
+            label3.TabIndex = 12;
+            label3.Text = "Correo electronico";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            label6.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label6.ForeColor = System.Drawing.Color.White;
+            label6.Location = new System.Drawing.Point(0, 10);
+            label6.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(30, 15);
+            label6.TabIndex = 12;
+            label6.Text = "DNI";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            label8.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label8.ForeColor = System.Drawing.Color.White;
+            label8.Location = new System.Drawing.Point(0, 10);
+            label8.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(129, 15);
+            label8.TabIndex = 12;
+            label8.Text = "Fecha de nacimiento";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            label10.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label10.ForeColor = System.Drawing.Color.White;
+            label10.Location = new System.Drawing.Point(0, 10);
+            label10.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            label10.Name = "label10";
+            label10.Size = new System.Drawing.Size(56, 15);
+            label10.TabIndex = 12;
+            label10.Text = "Nombre";
             // 
             // tableLayoutPanel1
             // 
@@ -147,6 +238,7 @@
             this.BCerrarForm.Size = new System.Drawing.Size(27, 27);
             this.BCerrarForm.TabIndex = 12;
             this.BCerrarForm.UseVisualStyleBackColor = false;
+            this.BCerrarForm.Click += new System.EventHandler(this.BCerrarForm_Click);
             // 
             // tableLayoutPanel12
             // 
@@ -189,19 +281,6 @@
             this.TApellido.Size = new System.Drawing.Size(199, 25);
             this.TApellido.TabIndex = 14;
             // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            label9.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label9.ForeColor = System.Drawing.Color.White;
-            label9.Location = new System.Drawing.Point(0, 10);
-            label9.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            label9.Name = "label9";
-            label9.Size = new System.Drawing.Size(59, 15);
-            label9.TabIndex = 12;
-            label9.Text = "Apellido";
-            // 
             // tableLayoutPanel5
             // 
             this.tableLayoutPanel5.ColumnCount = 2;
@@ -243,19 +322,6 @@
             this.TTelefono.Size = new System.Drawing.Size(199, 25);
             this.TTelefono.TabIndex = 14;
             // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            label4.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label4.ForeColor = System.Drawing.Color.White;
-            label4.Location = new System.Drawing.Point(0, 10);
-            label4.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(62, 15);
-            label4.TabIndex = 12;
-            label4.Text = "Telefono";
-            // 
             // tableLayoutPanel10
             // 
             this.tableLayoutPanel10.ColumnCount = 1;
@@ -282,19 +348,6 @@
             this.TDireccion.Name = "TDireccion";
             this.TDireccion.Size = new System.Drawing.Size(199, 25);
             this.TDireccion.TabIndex = 14;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            label7.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label7.ForeColor = System.Drawing.Color.White;
-            label7.Location = new System.Drawing.Point(0, 10);
-            label7.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(64, 15);
-            label7.TabIndex = 12;
-            label7.Text = "Direccion";
             // 
             // tableLayoutPanel2
             // 
@@ -337,19 +390,6 @@
             this.TCorreo.Size = new System.Drawing.Size(199, 25);
             this.TCorreo.TabIndex = 14;
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            label3.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label3.ForeColor = System.Drawing.Color.White;
-            label3.Location = new System.Drawing.Point(0, 10);
-            label3.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(119, 15);
-            label3.TabIndex = 12;
-            label3.Text = "Correo electronico";
-            // 
             // tableLayoutPanel16
             // 
             this.tableLayoutPanel16.ColumnCount = 1;
@@ -377,19 +417,6 @@
             this.TDni.Size = new System.Drawing.Size(198, 25);
             this.TDni.TabIndex = 14;
             // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            label6.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label6.ForeColor = System.Drawing.Color.White;
-            label6.Location = new System.Drawing.Point(0, 10);
-            label6.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(30, 15);
-            label6.TabIndex = 12;
-            label6.Text = "DNI";
-            // 
             // tableLayoutPanel8
             // 
             this.tableLayoutPanel8.ColumnCount = 2;
@@ -409,7 +436,7 @@
             // 
             this.tableLayoutPanel11.ColumnCount = 1;
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel11.Controls.Add(this.TNacimiento, 0, 1);
+            this.tableLayoutPanel11.Controls.Add(this.dateTimePicker1, 0, 1);
             this.tableLayoutPanel11.Controls.Add(label8, 0, 0);
             this.tableLayoutPanel11.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel11.Name = "tableLayoutPanel11";
@@ -419,32 +446,19 @@
             this.tableLayoutPanel11.Size = new System.Drawing.Size(205, 59);
             this.tableLayoutPanel11.TabIndex = 14;
             // 
-            // TNacimiento
+            // dateTimePicker1
             // 
-            this.TNacimiento.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.TNacimiento.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.TNacimiento.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.TNacimiento.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.TNacimiento.CalendarTrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.TNacimiento.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.TNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.TNacimiento.Location = new System.Drawing.Point(3, 32);
-            this.TNacimiento.Name = "TNacimiento";
-            this.TNacimiento.Size = new System.Drawing.Size(198, 25);
-            this.TNacimiento.TabIndex = 16;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            label8.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label8.ForeColor = System.Drawing.Color.White;
-            label8.Location = new System.Drawing.Point(0, 10);
-            label8.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            label8.Name = "label8";
-            label8.Size = new System.Drawing.Size(129, 15);
-            label8.TabIndex = 12;
-            label8.Text = "Fecha de nacimiento";
+            this.dateTimePicker1.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.dateTimePicker1.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.dateTimePicker1.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.dateTimePicker1.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.dateTimePicker1.CalendarTrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(3, 32);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(198, 25);
+            this.dateTimePicker1.TabIndex = 16;
             // 
             // tableLayoutPanel14
             // 
@@ -473,19 +487,6 @@
             this.TNombre.Size = new System.Drawing.Size(199, 25);
             this.TNombre.TabIndex = 14;
             // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            label10.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label10.ForeColor = System.Drawing.Color.White;
-            label10.Location = new System.Drawing.Point(0, 10);
-            label10.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            label10.Name = "label10";
-            label10.Size = new System.Drawing.Size(56, 15);
-            label10.TabIndex = 12;
-            label10.Text = "Nombre";
-            // 
             // BGuardar
             // 
             this.BGuardar.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -503,6 +504,7 @@
             this.BGuardar.TabIndex = 19;
             this.BGuardar.Text = "Guardar";
             this.BGuardar.UseVisualStyleBackColor = false;
+            this.BGuardar.Click += new System.EventHandler(this.BGuardar_Click);
             // 
             // EditarPropietario
             // 
@@ -558,7 +560,7 @@
         private System.Windows.Forms.TextBox TDni;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
-        private System.Windows.Forms.DateTimePicker TNacimiento;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
         private System.Windows.Forms.TextBox TNombre;
         private System.Windows.Forms.Button BGuardar;
