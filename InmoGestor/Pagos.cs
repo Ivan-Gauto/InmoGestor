@@ -50,17 +50,7 @@ namespace InmoGestor
 
         private void Pagos_Load(object sender, EventArgs e)
         {
-            dataGridPagos.Rows.Clear();
 
-            // ID, NroComp(00001), Periodo, FechaPago, Cuota, Mora, Metodo, Otros, Total, Estado, Botón
-            dataGridPagos.Rows.Add("1", 1.ToString("D5"), "2025-10", "2025-09-21",
-                                   250000m, 0m, "Transferencia", 0m, 250000m, "Activo");
-
-            dataGridPagos.Rows.Add("2", 2.ToString("D5"), "2025-11", "2025-10-25",
-                                   260000m, 5000m, "Efectivo", 2500m, 260000m + 5000m + 2500m, "Activo");
-
-            dataGridPagos.Rows.Add("3", 3.ToString("D5"), "2025-12", "2025-12-02",
-                                   270000m, 0m, "Tarjeta", 1000m, 270000m + 0m + 1000m, "Anulado");
         }
 
         private void BRegistrarPago_Click(object sender, EventArgs e)
