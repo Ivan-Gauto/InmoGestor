@@ -87,6 +87,12 @@
     <Compile Include="Auxiliar.Designer.cs">
       <DependentUpon>Auxiliar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Backup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Backup.Designer.cs">
+      <DependentUpon>Backup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Contratos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -223,6 +229,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Auxiliar.resx">
       <DependentUpon>Auxiliar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Backup.resx">
+      <DependentUpon>Backup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Contratos.resx">
       <DependentUpon>Contratos.cs</DependentUpon>
@@ -426,6 +435,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\calendar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

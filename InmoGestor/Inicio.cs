@@ -19,7 +19,7 @@ namespace InmoGestor
 
         private const int ROL_ADMIN = 1;
         private const int ROL_OPERADOR = 3;
-        private const int ROL_AYUDANTE = 0; // Asumiendo que Ayudante no tiene ID 3
+        private const int ROL_AYUDANTE = 0;
         private const int ROL_GERENTE = 2;
 
         public Inicio(Usuario oUsuario)
@@ -55,6 +55,7 @@ namespace InmoGestor
             BPagos.Enabled = (rol == ROL_GERENTE || rol == ROL_OPERADOR);
             BUsuarios.Enabled = (rol == ROL_ADMIN);
             BReportes.Enabled = (rol == ROL_GERENTE || rol == ROL_OPERADOR || rol == ROL_ADMIN);
+            BBackup.Enabled = (rol == ROL_ADMIN);
         }
 
         private void BUsuarios_Click(object sender, EventArgs e)
@@ -152,6 +153,11 @@ namespace InmoGestor
         private void button1_Click(object sender, EventArgs e)
         {
             AbrirFormulario((Button)sender, new Pagos());
+        }
+
+        private void BBackup_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario((Button)sender, new Backup());
         }
     }
 }

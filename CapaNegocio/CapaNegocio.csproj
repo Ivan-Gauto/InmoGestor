@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CN_Backup.cs" />
     <Compile Include="CN_Inmueble.cs" />
     <Compile Include="CN_Log.cs" />
     <Compile Include="CN_PersonaRolCliente.cs" />
