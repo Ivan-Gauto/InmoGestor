@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppSession.cs" />
     <Compile Include="CN_Inmueble.cs" />
     <Compile Include="CN_PersonaRolCliente.cs" />
     <Compile Include="CN_Usuario.cs" />

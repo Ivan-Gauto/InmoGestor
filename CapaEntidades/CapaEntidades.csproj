@@ -43,12 +43,14 @@
   <ItemGroup>
     <Compile Include="ContratoAlquiler.cs" />
     <Compile Include="Cuota.cs" />
+    <Compile Include="DTOs.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Inmueble.cs" />
     <Compile Include="PersonaRolCliente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="RolCliente.cs" />
+    <Compile Include="SesionUsuario.cs" />
     <Compile Include="TipoInmueble.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="RolUsuario.cs" />

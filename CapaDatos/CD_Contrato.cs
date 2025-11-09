@@ -79,6 +79,63 @@ namespace CapaDatos
             return lista;
         }
 
+        /// <summary>
+        /// Lista filas listas para la grilla de contratos.
+        /// Trae: id, inquilino, dirección, inmueble, precio cuota, cant cuotas,
+        /// fecha inicio/fin, mora diaria (a partir de la mensual) y estado.
+        /// </summary>
+        public List<ContratoGridRow> ListarParaGrid(int? estado = null)
+        {
+            var data = new List<ContratoGridRow>();
+
+            // Nota: si preferís la fórmula exacta para diaria: (POWER(1 + c.tasa_mora_mensual/100.0, 1.0/30) - 1) * 100
+            // Aquí uso aproximación lineal mensual/30 para mostrar en la UI.
+            var sql = @"
+SELECT
+    c.contrato_id                                    AS Id,
+    (p.apellido + ', ' + p.nombre)                   AS Inquilino,
+    i.direccion                                      AS Direccion,
+    ISNULL(i.descripcion, '')                        AS Inmueble,
+    c.precio_cuota                                   AS PrecioCuota,
+    c.cantidad_cuotas                                AS CantCuotas,
+    c.fecha_inicio                                   AS FechaInicio,
+    c.fecha_fin                                      AS FechaFin,
+    CAST((c.tasa_mora_mensual / 30.0) AS decimal(7,4)) AS MoraDiaria,  -- % diario aprox
+    c.estado                                         AS Estado
+FROM dbo.contrato_alquiler c
+INNER JOIN dbo.inmueble i   ON i.inmueble_id = c.inmueble_id
+INNER JOIN dbo.persona  p   ON p.dni = c.dni_inquilino
+/**/ WHERE ( @estado IS NULL OR c.estado = @estado )
+ORDER BY c.contrato_id DESC;";
+
+            using (var cn = new SqlConnection(Conexion.cadena))
+            using (var cmd = new SqlCommand(sql, cn))
+            {
+                cmd.Parameters.AddWithValue("@estado", (object)estado ?? DBNull.Value);
+                cn.Open();
+                using (var dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        data.Add(new ContratoGridRow
+                        {
+                            Id = Convert.ToInt32(dr["Id"]),
+                            Inquilino = dr["Inquilino"].ToString(),
+                            Direccion = dr["Direccion"].ToString(),
+                            Inmueble = dr["Inmueble"].ToString(),
+                            PrecioCuota = Convert.ToDecimal(dr["PrecioCuota"]),
+                            CantCuotas = Convert.ToInt32(dr["CantCuotas"]),
+                            FechaInicio = Convert.ToDateTime(dr["FechaInicio"]),
+                            FechaFin = Convert.ToDateTime(dr["FechaFin"]),
+                            MoraDiaria = Convert.ToDecimal(dr["MoraDiaria"]),
+                            Estado = Convert.ToInt32(dr["Estado"])
+                        });
+                    }
+                }
+            }
+            return data;
+        }
+
 
         public ContratoAlquiler ObtenerDetalle(int contratoId)
         {

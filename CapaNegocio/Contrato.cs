@@ -1,7 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using CapaDatos;
 using CapaEntidades;
-using CapaDatos;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CapaNegocio
 {
@@ -22,6 +23,29 @@ namespace CapaNegocio
             if (c.FechaInicio.Date > c.FechaFin.Date) return "La fecha de inicio no puede ser mayor a la de fin.";
             return string.Empty;
         }
+
+        /// <summary>
+        /// Devuelve filas listas para bindear al DataGrid de contratos.
+        /// Si pasás estado = 1 trae solo vigentes; null = todos.
+        /// </summary>
+        public List<ContratoGridRow> ListarParaGrid(int? estado = null)
+        {
+            return cdContrato.ListarParaGrid(estado);
+        }
+
+        /// <summary>
+        /// (Opcional) KPIs para tus tarjetas: total, activos y por vencer (ej. 30 días).
+        /// </summary>
+        public (int total, int activos, int porVencer) ObtenerKpis(int diasAviso = 30)
+        {
+            var filas = cdContrato.ListarParaGrid(null);
+            int total = filas.Count;
+            int activos = filas.Count(x => x.Estado == 1);
+            DateTime limite = DateTime.Today.AddDays(diasAviso);
+            int porVencer = filas.Count(x => x.Estado == 1 && x.FechaFin <= limite);
+            return (total, activos, porVencer);
+        }
+    
 
         /// <summary>
         /// Genera N cuotas a partir de la fecha de inicio.
