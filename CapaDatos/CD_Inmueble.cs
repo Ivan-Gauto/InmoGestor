@@ -19,7 +19,7 @@ namespace CapaDatos
                 // 2. Modificamos el query para que el WHERE sea dinámico
                 string query = @"
             SELECT 
-                i.inmueble_id, i.direccion, i.descripcion, i.imagen, i.disponibilidad, i.estado, i.fecha_creacion, i.division,
+                i.inmueble_id, i.direccion, i.descripcion, i.imagen, i.disponibilidad, i.estado, i.fecha_creacion, i.division,i.disponibilidad
                 
                 ti.tipo_inmueble_id,
                 ti.nombre AS TipoInmuebleNombre,
@@ -283,5 +283,41 @@ namespace CapaDatos
 
             return exito;
         }
+
+        public List<Inmueble> ListarDisponibles()
+        {
+            List<Inmueble> lista = new List<Inmueble>();
+
+            using (SqlConnection cn = new SqlConnection(Conexion.cadena))
+            {
+                string query = @"
+                    SELECT inmueble_id, direccion, estado, disponibilidad
+                    FROM inmueble
+                    WHERE estado = 1 AND disponibilidad = 1;";
+
+                SqlCommand cmd = new SqlCommand(query, cn);
+                cmd.CommandType = CommandType.Text;
+
+                cn.Open();
+
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        Inmueble obj = new Inmueble
+                        {
+                            IdInmueble = Convert.ToInt32(dr["inmueble_id"]),
+                            Direccion = dr["direccion"] != DBNull.Value ? dr["direccion"].ToString() : string.Empty,
+                            Estado = Convert.ToInt32(dr["estado"]),
+                            Disponibilidad = Convert.ToInt32(dr["disponibilidad"])
+                        };
+                        lista.Add(obj);
+                    }
+                }
+            }
+
+            return lista;
+        }
+
     }
 }

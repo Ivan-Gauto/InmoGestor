@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContratoAlquiler.cs" />
+    <Compile Include="Cuota.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Inmueble.cs" />
     <Compile Include="PersonaRolCliente.cs" />

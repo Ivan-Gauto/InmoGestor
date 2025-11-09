@@ -114,11 +114,7 @@ namespace InmoGestor
 
         private void Contratos_Load(object sender, EventArgs e)
         {
-            dataGridContratos.Rows.Add("1", "Juan Pérez", "Av. Corrientes 1200", "Depto 2B", "120000", "12", "01/01/2025", "01/01/2026");
-            dataGridContratos.Rows.Add("2", "María López", "San Martín 850", "Casa 3", "95000", "10", "15/02/2025", "15/12/2025");
-            dataGridContratos.Rows.Add("3", "Carlos Gómez", "Av. Rivadavia 3000", "Local A", "180000", "24", "01/03/2025", "01/03/2027");
-            dataGridContratos.Rows.Add("4", "Laura Fernández", "Belgrano 455", "Depto 1A", "110000", "18", "10/04/2025", "10/10/2026");
-            dataGridContratos.Rows.Add("5", "Diego Martínez", "Mitre 2200", "PH Fondo", "135000", "12", "01/05/2025", "01/05/2026");
+           
         }
 
     }

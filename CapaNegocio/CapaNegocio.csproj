@@ -41,9 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppSession.cs" />
     <Compile Include="CN_Inmueble.cs" />
     <Compile Include="CN_PersonaRolCliente.cs" />
     <Compile Include="CN_Usuario.cs" />
+    <Compile Include="Contrato.cs" />
+    <Compile Include="Cuota.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

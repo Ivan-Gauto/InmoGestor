@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CD_Contrato.cs" />
+    <Compile Include="CD_Cuotas.cs" />
     <Compile Include="CD_Inmueble.cs" />
     <Compile Include="CD_PersonaRolCliente.cs" />
     <Compile Include="CD_Usuario.cs" />
