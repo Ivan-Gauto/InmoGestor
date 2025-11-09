@@ -16,5 +16,15 @@ namespace InmoGestor
         {
             InitializeComponent();
         }
+
+        private void tableLayoutPanel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void BCerrarForm_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -46,6 +46,7 @@
     <Compile Include="DTOs.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Inmueble.cs" />
+    <Compile Include="LogUsuario.cs" />
     <Compile Include="PersonaRolCliente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Persona.cs" />

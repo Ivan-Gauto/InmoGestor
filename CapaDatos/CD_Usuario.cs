@@ -312,8 +312,6 @@ namespace CapaDatos
                 }
             }
         }
-
-
     }
 }
 

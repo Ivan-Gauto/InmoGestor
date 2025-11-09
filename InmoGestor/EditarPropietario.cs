@@ -1,4 +1,5 @@
 ﻿using CapaEntidades;
+using CapaNegocio;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -13,32 +14,26 @@ namespace InmoGestor
 {
     public partial class EditarPropietario : Form
     {
-        // 1. Variable para guardar el propietario a editar
         private readonly PersonaRolCliente _propietarioEditar;
 
-        // 2. Constructor modificado
         public EditarPropietario(PersonaRolCliente propietario)
         {
             InitializeComponent();
-            _propietarioEditar = propietario; // Guardamos el propietario
-            this.Load += EditarPropietario_Load; // Asociamos el evento Load
+            _propietarioEditar = propietario;
+            this.Load += EditarPropietario_Load;
         }
 
-        // 3. Evento Load para rellenar los campos
         private void EditarPropietario_Load(object sender, EventArgs e)
         {
-            if (_propietarioEditar != null)
+            if (_propietarioEditar != null && _propietarioEditar.oPersona != null)
             {
-                // Asumiendo que tus TextBoxes se llaman así (ej: TDni, txtNombre)
                 TDni.Text = _propietarioEditar.Dni;
-                TNombre.Text = _propietarioEditar.oPersona?.Nombre;
-                TApellido.Text = _propietarioEditar.oPersona?.Apellido;
-                TTelefono.Text = _propietarioEditar.oPersona?.Telefono;
-                TCorreo.Text = _propietarioEditar.oPersona?.CorreoElectronico;
-                TDireccion.Text = _propietarioEditar.oPersona?.Direccion;
-
-                // (Si tienes un DateTimePicker para la fecha de nacimiento)
-                // dtpFechaNacimiento.Value = _propietarioEditar.oPersona.FechaNacimiento;
+                TNombre.Text = _propietarioEditar.oPersona.Nombre;
+                TApellido.Text = _propietarioEditar.oPersona.Apellido;
+                TTelefono.Text = _propietarioEditar.oPersona.Telefono;
+                TCorreo.Text = _propietarioEditar.oPersona.CorreoElectronico;
+                TDireccion.Text = _propietarioEditar.oPersona.Direccion;
+                dateTimePicker1.Value = _propietarioEditar.oPersona.FechaNacimiento;
             }
         }
 
@@ -47,8 +42,68 @@ namespace InmoGestor
             this.Close();
         }
 
-        // --- Pendiente ---
-        // Aquí necesitarás la lógica para el botón "Guardar"
-        // que llame a new CN_PersonaRolCliente().Actualizar(...)
+         private void BGuardar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TDni.Text))
+            {
+                MessageBox.Show("El campo DNI no puede estar vacío.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                TDni.Focus();
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(TNombre.Text))
+            {
+                MessageBox.Show("El campo Nombre no puede estar vacío.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                TNombre.Focus();
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(TApellido.Text))
+            {
+                MessageBox.Show("El campo Apellido no puede estar vacío.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                TApellido.Focus();
+                return;
+            }
+
+            if (!string.IsNullOrWhiteSpace(TCorreo.Text) && (!TCorreo.Text.Contains("@") || !TCorreo.Text.Contains(".")))
+            {
+                MessageBox.Show("El formato del Correo electrónico no es válido.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                TCorreo.Focus();
+                return;
+            }
+
+            if (dateTimePicker1.Value > DateTime.Now)
+            {
+                MessageBox.Show("La Fecha de nacimiento no puede ser una fecha futura.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                dateTimePicker1.Focus();
+                return;
+            }
+
+            string dniOriginal = _propietarioEditar.Dni;
+            string dniNuevo = TDni.Text;
+
+            _propietarioEditar.oPersona.Dni = dniNuevo;
+            _propietarioEditar.oPersona.Nombre = TNombre.Text;
+            _propietarioEditar.oPersona.Apellido = TApellido.Text;
+            _propietarioEditar.oPersona.Telefono = TTelefono.Text;
+            _propietarioEditar.oPersona.CorreoElectronico = TCorreo.Text;
+            _propietarioEditar.oPersona.Direccion = TDireccion.Text;
+            _propietarioEditar.oPersona.FechaNacimiento = dateTimePicker1.Value;
+
+            string mensaje = string.Empty;
+            CN_PersonaRolCliente negocio = new CN_PersonaRolCliente();
+
+            bool exito = negocio.Actualizar(dniOriginal, _propietarioEditar, out mensaje);
+
+            if (exito)
+            {
+                MessageBox.Show("Propietario actualizado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Error al actualizar: " + mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

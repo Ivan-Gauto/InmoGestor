@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CN_Inmueble.cs" />
+    <Compile Include="CN_Log.cs" />
     <Compile Include="CN_PersonaRolCliente.cs" />
     <Compile Include="CN_Usuario.cs" />
     <Compile Include="Contrato.cs" />
@@ -57,6 +58,9 @@
       <Project>{5d71ef46-f165-400f-a7c3-ffd106630be6}</Project>
       <Name>CapaEntidades</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.manifest" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

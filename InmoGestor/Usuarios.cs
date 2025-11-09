@@ -185,7 +185,15 @@ namespace InmoGestor
                     return;
                 }
 
-                editarUsuarioForm = new EditarUsuario(uSel, this.usuarioLogueado);
+                // Asumo que 'this.usuarioLogueado.Dni' es el DNI del admin actual
+                string adminDniActual = SesionUsuario.ObtenerDniUsuarioActual();
+                if (string.IsNullOrEmpty(adminDniActual))
+                {
+                    MessageBox.Show("Error: No se pudo identificar al administrador actual.", "Error Sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                editarUsuarioForm = new EditarUsuario(uSel); // Pasar el DNI del admin
                 editarUsuarioForm.TopLevel = false;
                 editarUsuarioForm.FormBorderStyle = FormBorderStyle.None;
                 ContenedorUsuarios.Controls.Add(editarUsuarioForm);
@@ -207,18 +215,25 @@ namespace InmoGestor
             if (colName == "ColumnaAcciones")
             {
                 string dni = dataGridUsuarios.Rows[e.RowIndex].Cells["UsuarioColumna"].Value.ToString();
+                string adminDniActual = SesionUsuario.ObtenerDniUsuarioActual();
 
-                if (dni == this.usuarioLogueado.Dni)
+                if (dni == adminDniActual)
                 {
                     MessageBox.Show("No puede modificar su propio estado desde esta pantalla.", "Acción no permitida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                
+
+                if (string.IsNullOrEmpty(adminDniActual))
+                {
+                    MessageBox.Show("Error: No se pudo identificar al administrador actual para registrar la auditoría.", "Error de Auditoría", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 try
                 {
                     var usuarioSeleccionado = _usuarios.FirstOrDefault(u => u.Dni == dni);
                     if (usuarioSeleccionado == null) return;
-                    
+
                     int estadoActual = usuarioSeleccionado.Estado;
 
                     if (estadoActual == 1)
@@ -226,9 +241,13 @@ namespace InmoGestor
                         DialogResult resultado = MessageBox.Show("¿Está seguro de que desea desactivar a este usuario?", "Confirmar Baja", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (resultado == DialogResult.Yes)
                         {
-                            if (new CN_Usuario().CambiarEstado(dni, 0))
+                            if (new CN_Usuario().CambiarEstado(dni, 0, adminDniActual))
                             {
                                 CargarGrilla();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Error al desactivar el usuario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                     }
@@ -237,9 +256,13 @@ namespace InmoGestor
                         DialogResult resultado = MessageBox.Show("¿Desea reactivar este usuario?", "Confirmar Reactivación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (resultado == DialogResult.Yes)
                         {
-                            if (new CN_Usuario().CambiarEstado(dni, 1))
+                            if (new CN_Usuario().CambiarEstado(dni, 1, adminDniActual))
                             {
                                 CargarGrilla();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Error al reactivar el usuario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                     }
@@ -247,6 +270,8 @@ namespace InmoGestor
                 catch (Exception ex)
                 {
                     MessageBox.Show("Ocurrió un error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // Futuro: Registrar error en log_error
+                    // CN_Log.RegistrarError(adminDniActual, "Usuarios", "dataGridUsuarios_CellContentClick", ex.Message, ex.StackTrace);
                 }
             }
         }

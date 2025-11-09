@@ -8,7 +8,6 @@
         private System.ComponentModel.IContainer components = null;
 
         #region Controles declarados como campos (para que el código del usuario los vea)
-        private System.Windows.Forms.Label LInquilinoNombre;
         private System.Windows.Forms.Label LPropietarioNombre;
         private System.Windows.Forms.Label LPrecio;
         #endregion
@@ -42,20 +41,20 @@
             this.LDireccion = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.label3 = new System.Windows.Forms.Label();
             this.LPrecio = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.label2 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.LPropietarioNombre = new System.Windows.Forms.Label();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.LInquilinoNombre = new System.Windows.Forms.Label();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.BEliminar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.PFotoInmueble = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.LInquilinoNombre = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -63,10 +62,10 @@
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            this.tableLayoutPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.tableLayoutPanel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PFotoInmueble)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -194,6 +193,19 @@
             this.tableLayoutPanel6.Size = new System.Drawing.Size(230, 37);
             this.tableLayoutPanel6.TabIndex = 24;
             // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(183)))), ((int)(((byte)(217)))));
+            this.label3.Location = new System.Drawing.Point(1, 11);
+            this.label3.Margin = new System.Windows.Forms.Padding(1);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(54, 15);
+            this.label3.TabIndex = 26;
+            this.label3.Text = "Alquiler";
+            // 
             // LPrecio
             // 
             this.LPrecio.Dock = System.Windows.Forms.DockStyle.Right;
@@ -212,7 +224,7 @@
             this.tableLayoutPanel5.ColumnCount = 3;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.80645F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 74.19355F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 132F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 131F));
             this.tableLayoutPanel5.Controls.Add(this.label2, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.pictureBox4, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.LPropietarioNombre, 2, 0);
@@ -223,6 +235,19 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(230, 25);
             this.tableLayoutPanel5.TabIndex = 23;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(183)))), ((int)(((byte)(217)))));
+            this.label2.Location = new System.Drawing.Point(26, 5);
+            this.label2.Margin = new System.Windows.Forms.Padding(1);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(71, 15);
+            this.label2.TabIndex = 24;
+            this.label2.Text = "Propietario";
             // 
             // pictureBox4
             // 
@@ -243,58 +268,13 @@
             this.LPropietarioNombre.Dock = System.Windows.Forms.DockStyle.Left;
             this.LPropietarioNombre.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LPropietarioNombre.ForeColor = System.Drawing.Color.White;
-            this.LPropietarioNombre.Location = new System.Drawing.Point(98, 1);
+            this.LPropietarioNombre.Location = new System.Drawing.Point(99, 1);
             this.LPropietarioNombre.Margin = new System.Windows.Forms.Padding(1);
             this.LPropietarioNombre.Name = "LPropietarioNombre";
             this.LPropietarioNombre.Size = new System.Drawing.Size(129, 23);
             this.LPropietarioNombre.TabIndex = 22;
             this.LPropietarioNombre.Text = "Perez, Carlos";
             this.LPropietarioNombre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.ColumnCount = 3;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.91566F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 71.08434F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 146F));
-            this.tableLayoutPanel4.Controls.Add(this.pictureBox3, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.LInquilinoNombre, 2, 0);
-            this.tableLayoutPanel4.Controls.Add(this.label1, 1, 0);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 228);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 1;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(230, 25);
-            this.tableLayoutPanel4.TabIndex = 22;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.pictureBox3.Image = global::InmoGestor.Properties.Resources.inquilino;
-            this.pictureBox3.InitialImage = global::InmoGestor.Properties.Resources.location;
-            this.pictureBox3.Location = new System.Drawing.Point(1, 2);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(1);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(21, 21);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox3.TabIndex = 0;
-            this.pictureBox3.TabStop = false;
-            // 
-            // LInquilinoNombre
-            // 
-            this.LInquilinoNombre.BackColor = System.Drawing.Color.Transparent;
-            this.LInquilinoNombre.Dock = System.Windows.Forms.DockStyle.Left;
-            this.LInquilinoNombre.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LInquilinoNombre.ForeColor = System.Drawing.Color.White;
-            this.LInquilinoNombre.Location = new System.Drawing.Point(84, 1);
-            this.LInquilinoNombre.Margin = new System.Windows.Forms.Padding(1);
-            this.LInquilinoNombre.Name = "LInquilinoNombre";
-            this.LInquilinoNombre.Size = new System.Drawing.Size(134, 23);
-            this.LInquilinoNombre.TabIndex = 22;
-            this.LInquilinoNombre.Text = "Jose, Lopez";
-            this.LInquilinoNombre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tableLayoutPanel7
             // 
@@ -371,31 +351,50 @@
             this.label1.TabIndex = 23;
             this.label1.Text = "Inquilino";
             // 
-            // label2
+            // LInquilinoNombre
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(183)))), ((int)(((byte)(217)))));
-            this.label2.Location = new System.Drawing.Point(26, 5);
-            this.label2.Margin = new System.Windows.Forms.Padding(1);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 15);
-            this.label2.TabIndex = 24;
-            this.label2.Text = "Propietario";
+            this.LInquilinoNombre.BackColor = System.Drawing.Color.Transparent;
+            this.LInquilinoNombre.Dock = System.Windows.Forms.DockStyle.Left;
+            this.LInquilinoNombre.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LInquilinoNombre.ForeColor = System.Drawing.Color.White;
+            this.LInquilinoNombre.Location = new System.Drawing.Point(84, 1);
+            this.LInquilinoNombre.Margin = new System.Windows.Forms.Padding(1);
+            this.LInquilinoNombre.Name = "LInquilinoNombre";
+            this.LInquilinoNombre.Size = new System.Drawing.Size(134, 23);
+            this.LInquilinoNombre.TabIndex = 22;
+            this.LInquilinoNombre.Text = "Jose, Lopez";
+            this.LInquilinoNombre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label3
+            // pictureBox3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(183)))), ((int)(((byte)(217)))));
-            this.label3.Location = new System.Drawing.Point(1, 11);
-            this.label3.Margin = new System.Windows.Forms.Padding(1);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 15);
-            this.label3.TabIndex = 26;
-            this.label3.Text = "Alquiler";
+            this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.pictureBox3.Image = global::InmoGestor.Properties.Resources.inquilino;
+            this.pictureBox3.InitialImage = global::InmoGestor.Properties.Resources.location;
+            this.pictureBox3.Location = new System.Drawing.Point(1, 2);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(1);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(21, 21);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox3.TabIndex = 0;
+            this.pictureBox3.TabStop = false;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 3;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.91566F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 71.08434F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 146F));
+            this.tableLayoutPanel4.Controls.Add(this.pictureBox3, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.LInquilinoNombre, 2, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label1, 1, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 228);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(230, 25);
+            this.tableLayoutPanel4.TabIndex = 22;
             // 
             // InmuebleCard
             // 
@@ -418,11 +417,11 @@
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            this.tableLayoutPanel4.ResumeLayout(false);
-            this.tableLayoutPanel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.tableLayoutPanel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PFotoInmueble)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -430,8 +429,6 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.PictureBox pictureBox4;
@@ -447,6 +444,9 @@
         private System.Windows.Forms.Label LEstado;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Label LInquilinoNombre;
         private System.Windows.Forms.Label label1;
     }
 }
