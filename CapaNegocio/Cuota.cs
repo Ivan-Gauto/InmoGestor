@@ -12,5 +12,12 @@ namespace CapaNegocio
         {
             return cdCuota.ListarPorContrato(contratoId);
         }
+
+       public bool CambiarEstado(int cuotaId, byte nuevoEstado)
+        {
+          return cdCuota.CambiarEstado(cuotaId, nuevoEstado);
+        }
+
+
     }
 }

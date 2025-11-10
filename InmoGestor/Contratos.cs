@@ -133,7 +133,7 @@ namespace InmoGestor
             if (rowType != null)
             {
                 // ID
-                BindProp(ColumnaId, rowType, "Id", "ContratoId");
+             
 
                 // Inquilino
                 BindProp(ColumnaInquilino, rowType, "Inquilino", "InquilinoNombre", "InquilinoEtiqueta");
@@ -141,8 +141,8 @@ namespace InmoGestor
                 // Dirección del inmueble
                 BindProp(ColumnaDireccion, rowType, "Direccion", "DireccionInmueble");
 
-                // Inmueble (etiqueta)
-                BindProp(ColumnaInmueble, rowType, "Inmueble", "InmuebleEtiqueta", "Unidad");
+               
+               
 
                 // Precio de cuota
                 BindProp(ColumnaPrecioCuotas, rowType, "PrecioCuota", "MontoCuota", "ImporteBase");

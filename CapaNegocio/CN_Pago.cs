@@ -3,6 +3,7 @@ using CapaEntidades;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using CapaNegocio;
 
 namespace CapaNegocio
 {
@@ -27,7 +28,6 @@ namespace CapaNegocio
         private readonly CD_Pago _cdPago = new CD_Pago();
         private readonly CD_Cuota _cdCuota = new CD_Cuota();
         private readonly CD_Recibo _cdRecibo = new CD_Recibo();
-
 
         #region Lecturas
 
@@ -80,7 +80,6 @@ namespace CapaNegocio
             return id;
         }
 
-
         #endregion
 
         #region Cambios de estado (sin edición de campos)
@@ -122,7 +121,6 @@ namespace CapaNegocio
             return ok;
         }
 
-
         /// <summary>
         /// Vuelve a 'Solicitud de aprobación': 1 -> 2 (idempotente si ya está en 2).
         /// Operador (3) y Gerente (2) pueden.
@@ -152,21 +150,36 @@ namespace CapaNegocio
         /// </summary>
         public bool AnularPago(long pagoId, int rolUsuario)
         {
-            if (pagoId <= 0) throw new ArgumentException("pagoId inválido.");
+            if (pagoId <= 0)
+                throw new ArgumentException("pagoId inválido.");
+
+            // Solo un GERENTE puede anular pagos
             if (rolUsuario != Roles.Gerente)
                 throw new UnauthorizedAccessException("Solo un GERENTE (rol 2) puede anular pagos.");
 
+            // Obtener datos del pago
             var actual = _cdPago.ObtenerPorId(pagoId);
-            if (actual == null) throw new InvalidOperationException("Pago no encontrado.");
+            if (actual == null)
+                throw new InvalidOperationException("Pago no encontrado.");
 
+            // Si ya está anulado, no hace nada (idempotente)
             if (actual.Estado == 0)
-                return true; // idempotente
+                return true;
 
+            // Solo se pueden anular pagos confirmados o en solicitud
             if (actual.Estado != 1 && actual.Estado != 2)
                 throw new InvalidOperationException("Solo se puede anular un pago en estado 'Confirmado' o 'Solicitud de aprobación'.");
 
-            // Si luego querés registrar en dbo.pago_anulado, agregamos inserción aquí.
-            return _cdPago.CambiarEstado(pagoId, 0);
+            // Cambiar estado del pago a 0 (Anulado)
+            bool okPago = _cdPago.CambiarEstado(pagoId, 0);
+
+            // Cambiar estado de la cuota asociada a Pendiente (0)
+            bool okCuota = false;
+            if (actual.CuotaId > 0)
+                okCuota = _cdCuota.CambiarEstado(actual.CuotaId, 0);
+
+            // Retornar true solo si ambos cambios fueron exitosos
+            return okPago && okCuota;
         }
 
         #endregion
@@ -188,9 +201,3 @@ namespace CapaNegocio
         #endregion
     }
 }
-
-
-
-
-
-
