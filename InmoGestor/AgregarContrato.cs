@@ -152,8 +152,6 @@ namespace InmoGestor
         {
             try
             {
-                int x = 0;
-                int y = 10 / x;
                 if (comboBox1.SelectedItem == null)
                 {
                     MessageBox.Show("Debe seleccionar un inmueble.",

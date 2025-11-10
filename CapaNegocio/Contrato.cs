@@ -143,6 +143,13 @@ namespace CapaNegocio
             return cdContrato.AnularContrato(contratoId, out mensaje);
         }
 
+        public List<ContratoAlquiler> ListarContratos(int? estado = null, string dniInquilino = null)
+        {
+            // cdContrato es tu variable 'private CD_Contrato cdContrato = new CD_Contrato();'
+            // Este método llama al 'ListarContratos' que SÍ existe en tu Capa de Datos.
+            return cdContrato.ListarContratos(estado, null, dniInquilino, null, null);
+        }
+
         /// <summary>
         /// Helpers
         /// </summary>

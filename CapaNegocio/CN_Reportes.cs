@@ -25,6 +25,11 @@ namespace CapaNegocio
             return objCD_Reportes.ObtenerRendimientoOperadores(fechaInicio, fechaFin);
         }
 
+        public DataTable ObtenerEstadoDeCuenta(int contratoId, DateTime fechaInicio, DateTime fechaFin)
+        {
+            return objCD_Reportes.ObtenerEstadoDeCuenta(contratoId, fechaInicio, fechaFin);
+        }
+
         public DataTable ObtenerReporteOcupacion()
         {
             return objCD_Reportes.ObtenerReporteOcupacion();
