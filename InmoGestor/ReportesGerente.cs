@@ -1,10 +1,11 @@
-﻿using System;
+﻿using CapaEntidades;
+using CapaNegocio;
+using System;
 using System.Data;
-using System.Drawing; // Asegúrate de tener este using
+using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
-using CapaNegocio;
 
 namespace InmoGestor
 {
@@ -12,19 +13,12 @@ namespace InmoGestor
     {
         private CN_Reportes objCN_Reportes = new CN_Reportes();
 
-        // Asumo que tienes estos controles de fecha
-        private DateTimePicker dtpFechaInicio;
-        private DateTimePicker dtpFechaFin;
-
         public ReportesGerente()
         {
             InitializeComponent();
-            // Asignación manual de controles de fecha (ajusta los nombres)
-            dtpFechaInicio = dateTimePicker1;
-            dtpFechaFin = dateTimePicker2;
         }
 
-        // Tu función de descarga (simplificada)
+        // Tu función de descarga (está perfecta)
         private void Descargarcvs(DataGridView dgv)
         {
             SaveFileDialog sfd = new SaveFileDialog();
@@ -74,18 +68,12 @@ namespace InmoGestor
         // Evento del ComboBox (MODIFICADO)
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (comboBox2.SelectedItem == null) return;
             string reporteSeleccionado = comboBox2.SelectedItem.ToString();
 
-            if (reporteSeleccionado == "Resumen de Transacciones")
-            {
-                dgvOcupacionYVacancia.Visible = true; // <-- NOMBRE CORREGIDO
-                dgvRendimientoOperadores.Visible = false;
-            }
-            else if (reporteSeleccionado == "Rendimiento de Operadores")
-            {
-                dgvOcupacionYVacancia.Visible = false; // <-- NOMBRE CORREGIDO
-                dgvRendimientoOperadores.Visible = true;
-            }
+            // Lógica de visibilidad
+            dgvRendimientoOperadores.Visible = (reporteSeleccionado == "Rendimiento de Operadores");
+            dgvOcupacionYVacancia.Visible = (reporteSeleccionado == "Ocupación y Vacancia de inmuebles");
 
             CargarDatosReporte();
         }
@@ -95,23 +83,22 @@ namespace InmoGestor
         {
             ConfigurarGrids();
 
-            comboBox2.Items.Clear();
-            comboBox2.Items.Add("Resumen de Transacciones"); // <-- MODIFICADO
-            comboBox2.Items.Add("Rendimiento de Operadores");
-
+            // Los items ya están cargados desde el diseñador.
+            // Establecer el valor por defecto
             comboBox2.SelectedIndex = 0;
+            // Esto dispara 'comboBox2_SelectedIndexChanged' y carga el primer reporte.
         }
 
         // Evento del Botón Descargar (MODIFICADO)
         private void BDescargarcvs_Click(object sender, EventArgs e)
         {
-            if (dgvOcupacionYVacancia.Visible) // <-- NOMBRE CORREGIDO
-            {
-                Descargarcvs(dgvOcupacionYVacancia); // <-- NOMBRE CORREGIDO
-            }
-            else if (dgvRendimientoOperadores.Visible)
+            if (dgvRendimientoOperadores.Visible)
             {
                 Descargarcvs(dgvRendimientoOperadores);
+            }
+            else if (dgvOcupacionYVacancia.Visible)
+            {
+                Descargarcvs(dgvOcupacionYVacancia);
             }
             else
             {
@@ -127,77 +114,87 @@ namespace InmoGestor
             if (comboBox2.SelectedItem == null) return;
 
             string reporteSeleccionado = comboBox2.SelectedItem.ToString();
-            DateTime fechaInicio = dtpFechaInicio.Value;
-            DateTime fechaFin = dtpFechaFin.Value;
+            DateTime fechaInicio = dateTimePicker1.Value;
+            DateTime fechaFin = dateTimePicker2.Value;
 
-            if (reporteSeleccionado == "Resumen de Transacciones")
-            {
-                DataTable dtTransacciones = objCN_Reportes.ObtenerResumenTransacciones(fechaInicio, fechaFin);
-                dgvOcupacionYVacancia.DataSource = dtTransacciones; // <-- NOMBRE CORREGIDO
-            }
-            else if (reporteSeleccionado == "Rendimiento de Operadores")
+
+
+            // --- LÓGICA DE CARGA (Ajustada a tu Designer) ---
+            if (reporteSeleccionado == "Rendimiento de Operadores")
             {
                 DataTable dtRendimiento = objCN_Reportes.ObtenerRendimientoOperadores(fechaInicio, fechaFin);
                 dgvRendimientoOperadores.DataSource = dtRendimiento;
             }
+            else if (reporteSeleccionado == "Ocupación y Vacancia de inmuebles")
+            {
+                DataTable dtOcupacion = objCN_Reportes.ObtenerReporteOcupacion();
+                dgvOcupacionYVacancia.DataSource = dtOcupacion;
+            }
         }
 
-        // Asigna los DataPropertyName
+        // Asigna los DataPropertyName (¡IMPORTANTE!)
         private void ConfigurarGrids()
         {
-            // --- Configuración Grid Resumen Transacciones ---
-            dgvOcupacionYVacancia.AutoGenerateColumns = false; // <-- NOMBRE CORREGIDO
-            // Ajusta los nombres de tus columnas "Columna..." en el diseñador
-            /*
-            ColumnaFecha.DataPropertyName = "Fecha";
-            ColumnaTipoTransaccion.DataPropertyName = "TipoTransaccion";
-            ColumnaOperadorTrans.DataPropertyName = "Operador";
-            ColumnaInquilinoTrans.DataPropertyName = "Inquilino";
-            ColumnaPeriodoTrans.DataPropertyName = "Periodo";
-            ColumnaMetodoTrans.DataPropertyName = "Metodo";
-            ColumnaMontoTrans.DataPropertyName = "Monto";
-            */
-
             // --- Configuración Grid Rendimiento Operadores ---
             dgvRendimientoOperadores.AutoGenerateColumns = false;
-            // Ajusta los nombres de tus columnas "Columna..."
-            /*
-            ColumnaNombreOperador.DataPropertyName = "Operador";
-            ColumnaPagosRegistrados.DataPropertyName = "PagosRegistrados";
-            ColumnaMontoRegistrado.DataPropertyName = "MontoTotalRegistrado";
-            ColumnaAnulaciones.DataPropertyName = "AnulacionesRealizadas";
-            */
+            // Conecta tus columnas del designer con la consulta SQL
+            ColumnaOperador.DataPropertyName = "Operador";
+            ColumnaContratosNuevos.DataPropertyName = "ContratosNuevos";
+            ColumnaContratosRenovados.DataPropertyName = "ContratosRenovados";
+            ColumnaIngresos.DataPropertyName = "IngresosTotalesGestionados";
+            ColumnaDeuda.DataPropertyName = "MontoDeudaTotal";
+
+            // --- Configuración Grid Ocupación ---
+            dgvOcupacionYVacancia.AutoGenerateColumns = false;
+            // Conecta tus columnas del designer con la consulta SQL
+            ColumnaInmueble.DataPropertyName = "Inmueble";
+            ColumnaTipoInmueble.DataPropertyName = "Tipo";
+            ColumnaDiasOcupados.DataPropertyName = "DiasOcupados";
+            ColumnaDiasVacantes.DataPropertyName = "DiasVacantes";
+            ColumnaPorcentajeOcupacion.DataPropertyName = "PorcentajeOcupacion";
         }
 
         // Refresca el reporte si cambian las fechas
-        private void dtpFechaInicio_ValueChanged(object sender, EventArgs e)
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             CargarDatosReporte();
         }
 
-        private void dtpFechaFin_ValueChanged(object sender, EventArgs e)
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
             CargarDatosReporte();
         }
 
-        // --- MÉTODO OPCIONAL: PINTAR FILAS ---
-        // Conecta esto al evento CellFormatting de 'dgvTransacciones'
-        private void dgvTransacciones_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        // --- MÉTODO OPCIONAL: PINTAR CELDAS ---
+        // Conecta esto al evento CellFormatting de 'dgvOcupacionYVacancia'
+        private void dgvOcupacionYVacancia_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.RowIndex < 0) return;
 
-            // Asumo que la columna se llama "ColumnaTipoTransaccion"
-            string tipoTransaccion = dgvOcupacionYVacancia.Rows[e.RowIndex].Cells["ColumnaTipoTransaccion"].Value?.ToString();
-
-            if (tipoTransaccion == "Egreso (Anulación)")
+            // Pintar la celda de % Ocupación según el valor
+            if (dgvOcupacionYVacancia.Columns[e.ColumnIndex].Name == "ColumnaPorcentajeOcupacion")
             {
-                e.CellStyle.BackColor = Color.DarkOrange;
-                e.CellStyle.ForeColor = Color.White;
-            }
-            else
-            {
-                e.CellStyle.BackColor = Color.FromArgb(15, 30, 45); // Tu color de fondo
-                e.CellStyle.ForeColor = Color.White;
+                if (e.Value != null && decimal.TryParse(e.Value.ToString(), out decimal porcentaje))
+                {
+                    if (porcentaje < 50.0m) // Menos del 50%
+                    {
+                        e.CellStyle.BackColor = Color.Firebrick;
+                        e.CellStyle.ForeColor = Color.White;
+                    }
+                    else if (porcentaje < 80.0m) // Menos del 80%
+                    {
+                        e.CellStyle.BackColor = Color.Goldenrod;
+                        e.CellStyle.ForeColor = Color.White;
+                    }
+                    else // 80% o más
+                    {
+                        e.CellStyle.BackColor = Color.DarkGreen;
+                        e.CellStyle.ForeColor = Color.White;
+                    }
+                    // Formatear como porcentaje
+                    e.Value = $"{porcentaje:F2} %";
+                    e.FormattingApplied = true;
+                }
             }
         }
     }

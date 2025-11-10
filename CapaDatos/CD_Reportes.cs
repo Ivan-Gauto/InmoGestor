@@ -6,6 +6,10 @@ namespace CapaDatos
 {
     public class CD_Reportes
     {
+        // --- MÉTODO 1: Rendimiento de Operadores ---
+        // MODIFICADO: La consulta ahora devuelve columnas que coinciden con tu DataGridView
+        // (Nota: 'ContratosRenovados' y 'Deuda' no se pueden calcular directamente
+        // desde un operador, así que los he omitido por ahora).
         public DataTable ObtenerRendimientoOperadores(DateTime fechaInicio, DateTime fechaFin)
         {
             DataTable dt = new DataTable();
