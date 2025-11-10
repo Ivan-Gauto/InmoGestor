@@ -48,5 +48,26 @@ ORDER BY nro_cuota;";
 
             return list;
         }
+
+        public bool CambiarEstado(int cuotaId, byte nuevoEstado)
+        {
+            try
+            {
+                using (var cn = new SqlConnection(Conexion.cadena))
+                using (var cmd = new SqlCommand("UPDATE dbo.cuota SET estado = @e WHERE cuota_id = @id;", cn))
+                {
+                    cmd.Parameters.AddWithValue("@e", nuevoEstado);
+                    cmd.Parameters.AddWithValue("@id", cuotaId);
+                    cn.Open();
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
     }
 }
