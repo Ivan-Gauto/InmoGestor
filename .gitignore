@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /InmoGestor/App.config
 /InmoGestor/App.config
+/InmoGestor/Auxiliar.cs
