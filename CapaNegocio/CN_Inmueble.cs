@@ -19,6 +19,11 @@ namespace CapaNegocio
             return objDatos.ReactivarLogico(idInmueble);
         }
 
+        public List<Inmueble> ListarPorPropietario(string dni, int rolId)
+        {
+            return objDatos.ListarPorPropietario(dni, rolId);
+        }
+
         public List<TipoInmueble> ListarTiposInmueble()
         {
             // objDatos es tu instancia de CD_Inmueble

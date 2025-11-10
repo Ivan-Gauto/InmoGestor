@@ -45,6 +45,7 @@
     <Compile Include="CN_Inmueble.cs" />
     <Compile Include="CN_Log.cs" />
     <Compile Include="CN_PersonaRolCliente.cs" />
+    <Compile Include="CN_Reportes.cs" />
     <Compile Include="CN_Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

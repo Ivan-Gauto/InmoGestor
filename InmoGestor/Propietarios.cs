@@ -60,19 +60,20 @@ namespace InmoGestor
         // 2. Evento Load (Modificado)
         private void Propietarios_Load(object sender, EventArgs e)
         {
-            comboBox1.SelectedIndex = 0;
+            comboBox3.SelectedIndex = 0;
             CargarPropietarios(); // Esto dispara CargarPropietarios()
         }
 
         // 3. Método CargarPropietarios (Análogo a CargarInquilinos)
         private void CargarPropietarios()
         {
-            dataGridPropietarios.Rows.Clear(); // Limpiamos la grilla
+            dataGridPropietarios.Rows.Clear();
+            dataGridInmuebles.Rows.Clear();
             dataGridPropietarios.AutoGenerateColumns = false;
 
             var negocio = new CN_PersonaRolCliente();
             // (Usamos 'comboBox1' como en Inquilinos)
-            string seleccion = comboBox1.SelectedItem?.ToString() ?? "Todos";
+            string seleccion = comboBox3.SelectedItem?.ToString() ?? "Todos";
             EstadoFiltro filtro;
 
             switch (seleccion.ToUpper())
@@ -126,11 +127,59 @@ namespace InmoGestor
             CargarPropietarios();
         }
 
+        private void CargarInmuebles(string dniPropietario)
+        {
+            dataGridInmuebles.Rows.Clear();
+            dataGridInmuebles.AutoGenerateColumns = false;
+
+            if (string.IsNullOrEmpty(dniPropietario))
+            {
+                return;
+            }
+
+            try
+            {
+                var negocioInmueble = new CN_Inmueble();
+                List<Inmueble> inmuebles = negocioInmueble.ListarPorPropietario(dniPropietario, (int)TipoRolCliente.Propietario);
+
+                foreach (var inm in inmuebles)
+                {
+                    dataGridInmuebles.Rows.Add(new object[]
+                    {
+                inm.Direccion,
+                inm.Descripcion,
+                // --- AQUÍ ESTÁ LA CORRECCIÓN ---
+                // Accedemos a 'oPersona' que está dentro de 'oPropietario'
+                inm.oPropietario?.oPersona?.Nombre + " " + inm.oPropietario?.oPersona?.Apellido,
+                inm.oTipoInmueble?.Nombre,
+                inm.Estado // El estado numérico
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar inmuebles: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         #endregion
 
         #region "Eventos del DataGridView"
 
-        // 7. Evento CellContentClick (Modificado con tus nombres de columna)
+        private void dataGridPropietarios_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridPropietarios.CurrentRow == null || dataGridPropietarios.CurrentRow.Index < 0)
+            {
+                CargarInmuebles(null); // Limpiar grilla de inmuebles si no hay selección
+                return;
+            }
+
+            // Obtener el DNI de la fila seleccionada
+            string dniPropietario = dataGridPropietarios.CurrentRow.Cells["ColumnaDni"].Value?.ToString();
+
+            // Llamar al nuevo método para cargar los inmuebles
+            CargarInmuebles(dniPropietario);
+        }
         private void dataGridPropietarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
@@ -265,6 +314,40 @@ namespace InmoGestor
                 // (Asumo este color de fondo por tu imagen)
                 e.CellStyle.BackColor = Color.FromArgb(15, 30, 45);
                 e.CellStyle.ForeColor = Color.White;
+            }
+        }
+
+        private void dataGridInmuebles_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            // Asumo que tu columna de estado en la grilla de inmuebles se llama 'ColumnaEstadoInmueble'
+            // ¡Verifica este nombre!
+            string columnName = dataGridInmuebles.Columns[e.ColumnIndex].Name;
+
+            if (columnName == "ColumnaEstadoInmueble")
+            {
+                if (e.Value != null && int.TryParse(e.Value.ToString(), out int estado))
+                {
+                    e.Value = (estado == 1) ? "Activo" : "Inactivo";
+                    e.FormattingApplied = true;
+                }
+            }
+
+            // Pintar toda la fila según el estado
+            var cellEstado = dataGridInmuebles.Rows[e.RowIndex].Cells["ColumnaEstadoInmueble"].Value;
+            if (cellEstado != null && int.TryParse(cellEstado.ToString(), out int estadoFila))
+            {
+                if (estadoFila == 0)
+                {
+                    e.CellStyle.BackColor = Color.DarkOrange;
+                    e.CellStyle.ForeColor = Color.White;
+                }
+                else
+                {
+                    e.CellStyle.BackColor = Color.FromArgb(15, 30, 45);
+                    e.CellStyle.ForeColor = Color.White;
+                }
             }
         }
 
