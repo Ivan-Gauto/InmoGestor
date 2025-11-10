@@ -36,12 +36,14 @@
             this.BSalir = new System.Windows.Forms.Button();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.LBGestion = new System.Windows.Forms.Label();
+            this.BPagos = new System.Windows.Forms.Button();
             this.BReportes = new System.Windows.Forms.Button();
             this.BContratos = new System.Windows.Forms.Button();
             this.BInmuebles = new System.Windows.Forms.Button();
             this.BPropietarios = new System.Windows.Forms.Button();
             this.BInquilinos = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.BBackup = new System.Windows.Forms.Button();
             this.BUsuarios = new System.Windows.Forms.Button();
             this.LBAdministracion = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -53,8 +55,6 @@
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.LBUsuario = new System.Windows.Forms.Label();
-            this.BPagos = new System.Windows.Forms.Button();
-            this.BBackup = new System.Windows.Forms.Button();
             label5 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2.SuspendLayout();
@@ -190,6 +190,24 @@
             this.LBGestion.TabIndex = 49;
             this.LBGestion.Text = "Gestion";
             // 
+            // BPagos
+            // 
+            this.BPagos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
+            this.BPagos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BPagos.FlatAppearance.BorderSize = 0;
+            this.BPagos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BPagos.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BPagos.ForeColor = System.Drawing.Color.White;
+            this.BPagos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BPagos.Location = new System.Drawing.Point(3, 219);
+            this.BPagos.Name = "BPagos";
+            this.BPagos.Size = new System.Drawing.Size(142, 28);
+            this.BPagos.TabIndex = 48;
+            this.BPagos.Text = "Pagos";
+            this.BPagos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BPagos.UseVisualStyleBackColor = false;
+            this.BPagos.Click += new System.EventHandler(this.BPagos_Click);
+            // 
             // BReportes
             // 
             this.BReportes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
@@ -296,6 +314,24 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.19048F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(177, 108);
             this.tableLayoutPanel1.TabIndex = 8;
+            // 
+            // BBackup
+            // 
+            this.BBackup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
+            this.BBackup.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BBackup.FlatAppearance.BorderSize = 0;
+            this.BBackup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BBackup.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BBackup.ForeColor = System.Drawing.Color.White;
+            this.BBackup.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BBackup.Location = new System.Drawing.Point(3, 67);
+            this.BBackup.Name = "BBackup";
+            this.BBackup.Size = new System.Drawing.Size(142, 31);
+            this.BBackup.TabIndex = 47;
+            this.BBackup.Text = "Backup";
+            this.BBackup.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BBackup.UseVisualStyleBackColor = false;
+            this.BBackup.Click += new System.EventHandler(this.BBackup_Click);
             // 
             // BUsuarios
             // 
@@ -457,42 +493,6 @@
             this.LBUsuario.Size = new System.Drawing.Size(95, 15);
             this.LBUsuario.TabIndex = 16;
             this.LBUsuario.Text = "Administrador";
-            // 
-            // BPagos
-            // 
-            this.BPagos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.BPagos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BPagos.FlatAppearance.BorderSize = 0;
-            this.BPagos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BPagos.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BPagos.ForeColor = System.Drawing.Color.White;
-            this.BPagos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BPagos.Location = new System.Drawing.Point(3, 219);
-            this.BPagos.Name = "BPagos";
-            this.BPagos.Size = new System.Drawing.Size(142, 28);
-            this.BPagos.TabIndex = 48;
-            this.BPagos.Text = "Pagos";
-            this.BPagos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BPagos.UseVisualStyleBackColor = false;
-            this.BPagos.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // BBackup
-            // 
-            this.BBackup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.BBackup.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BBackup.FlatAppearance.BorderSize = 0;
-            this.BBackup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BBackup.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BBackup.ForeColor = System.Drawing.Color.White;
-            this.BBackup.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BBackup.Location = new System.Drawing.Point(3, 68);
-            this.BBackup.Name = "BBackup";
-            this.BBackup.Size = new System.Drawing.Size(142, 31);
-            this.BBackup.TabIndex = 47;
-            this.BBackup.Text = "Backup";
-            this.BBackup.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BBackup.UseVisualStyleBackColor = false;
-            this.BBackup.Click += new System.EventHandler(this.BBackup_Click);
             // 
             // Inicio
             // 

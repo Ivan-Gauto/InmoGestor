@@ -124,6 +124,8 @@ namespace InmoGestor
             AbrirFormulario((Button)sender, new Inquilinos(usuarioActual));
         }
 
+        // --- CORREGIDO ---
+        // Le pasamos el 'usuarioActual' al constructor de Propietarios
         private void BPropietarios_Click(object sender, EventArgs e)
         {
             AbrirFormulario((Button)sender, new Propietarios());
@@ -150,14 +152,14 @@ namespace InmoGestor
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            AbrirFormulario((Button)sender, new Pagos());
-        }
-
         private void BBackup_Click(object sender, EventArgs e)
         {
             AbrirFormulario((Button)sender, new Backup());
+        }
+
+        private void BPagos_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario((Button)sender, new Pagos(usuarioActual));
         }
     }
 }

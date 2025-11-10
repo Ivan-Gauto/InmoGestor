@@ -48,37 +48,54 @@ namespace InmoGestor
 
         private void CargarCombos()
         {
-            // Inmuebles disponibles
-            var cnInmueble = new CN_Inmueble();
-            List<Inmueble> inmuebles = cnInmueble.ListarDisponibles();
+            try
+            {
+                // --- Diagnóstico Inmuebles ---
+                var cnInmueble = new CN_Inmueble();
+                List<Inmueble> inmuebles = cnInmueble.ListarDisponibles();
 
-            // IMPORTANTE: estos nombres deben existir en los objetos de la lista
-            // IdInmueble y Direccion (usa alias en tu SELECT de la capa de datos)
-            comboBox1.ValueMember = nameof(Inmueble.IdInmueble);
-            comboBox1.DisplayMember = nameof(Inmueble.Direccion);
-            comboBox1.DataSource = inmuebles;
-
-            // Inquilinos activos
-            var cnPRC = new CN_PersonaRolCliente();
-            // Usamos tu firma existente:
-            // ListarClientes(TipoRolCliente rol, EstadoFiltro filtro)
-            var inquilinosPRC = cnPRC.ListarClientes(TipoRolCliente.Inquilino, EstadoFiltro.Activos);
-
-            var dsInquilinos = inquilinosPRC
-                .Where(x => x.oPersona != null)
-                .Select(x => new
+                if (inmuebles == null || inmuebles.Count == 0)
                 {
-                    Dni = x.Dni,
-                    DisplayText = $"{x.oPersona.Apellido}, {x.oPersona.Nombre} ({x.Dni})"
-                })
-                .ToList();
+                    MessageBox.Show("Diagnóstico: No se encontraron inmuebles disponibles.\nVerifica que 'estado = 1' y 'disponibilidad = 1' en tu BD.",
+                                    "Error Carga Inmuebles", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
 
-            comboBox2.ValueMember = "Dni";
-            comboBox2.DisplayMember = "DisplayText";
-            comboBox2.DataSource = dsInquilinos;
+                comboBox1.ValueMember = "IdInmueble"; // Asegúrate que tu entidad Inmueble tenga 'IdInmueble'
+                comboBox1.DisplayMember = "Direccion";
+                comboBox1.DataSource = inmuebles;
 
-            if (comboBox1.Items.Count > 0) comboBox1.SelectedIndex = 0;
-            if (comboBox2.Items.Count > 0) comboBox2.SelectedIndex = 0;
+                // --- Diagnóstico Inquilinos ---
+                var cnPRC = new CN_PersonaRolCliente();
+                var inquilinosPRC = cnPRC.ListarClientes(TipoRolCliente.Inquilino, EstadoFiltro.Activos);
+
+                if (inquilinosPRC == null || inquilinosPRC.Count == 0)
+                {
+                    MessageBox.Show("Diagnóstico: No se encontraron inquilinos activos.\nVerifica 'rol_cliente_id = 2' y 'prc.estado = 1' en tu BD.",
+                                    "Error Carga Inquilinos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+                var dsInquilinos = inquilinosPRC
+                    .Where(x => x.oPersona != null)
+                    .Select(x => new
+                    {
+                        Dni = x.Dni,
+                        DisplayText = $"{x.oPersona.Apellido}, {x.oPersona.Nombre} ({x.Dni})"
+                    })
+                    .ToList();
+
+                comboBox2.ValueMember = "Dni";
+                comboBox2.DisplayMember = "DisplayText";
+                comboBox2.DataSource = dsInquilinos;
+
+                if (comboBox1.Items.Count > 0) comboBox1.SelectedIndex = 0;
+                if (comboBox2.Items.Count > 0) comboBox2.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                // --- Error Fatal ---
+                MessageBox.Show("Error fatal al cargar combos: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         // === Helpers de validación y fecha ===

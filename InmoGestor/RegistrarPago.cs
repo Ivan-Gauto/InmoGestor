@@ -190,9 +190,9 @@ namespace InmoGestor
                 // Estado visual
                 var inicioMoraAprox = _cuotaSel.FechaVenc.AddDays(-15);
                 if (DateTime.Today <= inicioMoraAprox)
-                    SetEstadoVisual("Pendiente", System.Drawing.Color.SeaGreen);
+                    SetEstadoVisual("Pendiente", System.Drawing.Color.Yellow);
                 else
-                    SetEstadoVisual("En mora", System.Drawing.Color.IndianRed);
+                    SetEstadoVisual("En mora", System.Drawing.Color.Red);
 
                 HabilitarAcciones(true);
             }

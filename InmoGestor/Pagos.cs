@@ -22,11 +22,18 @@ namespace InmoGestor
         private List<ContratoGridRow> _contratosVigentes = new List<ContratoGridRow>();
 
         // Rol actual del usuario logueado (2=Gerente, 3=Operador)
-        public int RolUsuarioActual { get; set; } = Roles.Operador;
+        public int RolUsuarioActual { get; set; } // ¡Quitamos el valor por defecto!
 
-        public Pagos()
+        // --- CONSTRUCTOR MODIFICADO ---
+        public Pagos(Usuario usuarioLogueado) // Recibe el usuario de la sesión
         {
             InitializeComponent();
+
+            // --- ASIGNACIÓN DE ROL ---
+            // Aquí asignamos el rol real del usuario que inició sesión
+            this.RolUsuarioActual = usuarioLogueado.oRolUsuario.RolUsuarioId;
+
+            // ... (Tus otras asignaciones de eventos) ...
             this.BRegistrarPago.Click += new System.EventHandler(this.BRegistrarPago_Click);
             this.Resize += (_, __) => CentrarFormHijoSiHubiera();
             dataGridPagos.CellContentClick += dataGridPagos_CellContentClick;
@@ -565,6 +572,11 @@ namespace InmoGestor
 
             // Actualizar la vista de pagos al cerrar
             CargarPagosDeContratoSeleccionado();
+        }
+
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
