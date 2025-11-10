@@ -5,6 +5,9 @@ using System.Linq;
 using System.Windows.Forms;
 using CapaEntidades;
 using CapaNegocio;
+using System.Drawing;
+using System.Drawing.Printing;
+
 
 namespace InmoGestor
 {
@@ -47,18 +50,19 @@ namespace InmoGestor
             CB_Inquilino.SelectedIndexChanged += CB_Inquilino_SelectedIndexChanged;
             CB_Propietario.SelectedIndexChanged += CB_Propietario_SelectedIndexChanged;
 
-            // --- Columna Imprimir Recibo ---
-if (dataGridPagos.Columns["ColumnaImprimir"] == null)
-{
-    var colImprimir = new DataGridViewButtonColumn();
-    colImprimir.Name = "ColumnaImprimir";
-    colImprimir.HeaderText = "Recibo";
-    colImprimir.Text = "Imprimir";
-    colImprimir.UseColumnTextForButtonValue = true;
-    colImprimir.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-    dataGridPagos.Columns.Add(colImprimir);
-}
-
+            // --- Columna Imprimir Recibo (una sola) ---
+            if (!dataGridPagos.Columns.Contains("ColumnaImprimirRecibo"))
+            {
+                var colImp = new DataGridViewButtonColumn
+                {
+                    Name = "ColumnaImprimirRecibo",
+                    HeaderText = "Recibo",
+                    Text = "Imprimir",
+                    UseColumnTextForButtonValue = true,
+                    Width = 80
+                };
+                dataGridPagos.Columns.Add(colImp);
+            }
 
             CargarInquilinos();
         }
@@ -180,10 +184,12 @@ if (dataGridPagos.Columns["ColumnaImprimir"] == null)
                             MetodoPagoId = p.MetodoPagoId,
                             Otros = ObtenerOtrosAdicionales(p),
                             MontoTotal = p.MontoTotal,
-                            Estado = p.Estado
+                            Estado = p.Estado,
+                            CuotaId = q.CuotaId // <<< agregado
                         });
                     }
                 }
+
 
                 // 3) Pintar
                 var ar = new CultureInfo("es-AR");
@@ -206,7 +212,18 @@ if (dataGridPagos.Columns["ColumnaImprimir"] == null)
                         null                                 // ColumnaConfirmar (imagen en Designer)
                     );
 
-                    dataGridPagos.Rows[idx].Tag = r.PagoId; // para acciones
+                    // FIX: usar dataGridPagos (no ddataGridPagos) + Tag con toda la info
+                    dataGridPagos.Rows[idx].Tag = new PagoRowTag
+                    {
+                        PagoId = r.PagoId,
+                        CuotaId = r.CuotaId,
+                        Periodo = r.Periodo,
+                        ImporteBase = r.ImporteBase,
+                        Mora = r.Mora,
+                        Otros = r.Otros,
+                        Total = r.MontoTotal,
+                        MetodoPagoId = r.MetodoPagoId
+                    };
                 }
 
                 // 4) KPIs
@@ -226,6 +243,8 @@ if (dataGridPagos.Columns["ColumnaImprimir"] == null)
             }
         }
 
+
+
         // ==== Acciones Confirmar/Anular en la grilla ====
         private void dataGridPagos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -234,11 +253,31 @@ if (dataGridPagos.Columns["ColumnaImprimir"] == null)
             var grid = dataGridPagos;
             bool isColAnular = grid.Columns[e.ColumnIndex].Name == "ColumnaAnularPago";
             bool isColConfirmar = grid.Columns[e.ColumnIndex].Name == "ColumnaConfirmar";
+            bool isColImprimir = grid.Columns[e.ColumnIndex].Name == "ColumnaImprimirRecibo";
 
-            if (!isColAnular && !isColConfirmar) return;
+            if (!isColAnular && !isColConfirmar && !isColImprimir) return;
 
-            var row = grid.Rows[e.RowIndex];
-            if (row.Tag == null || !long.TryParse(row.Tag.ToString(), out long pagoId))
+            if (isColImprimir)
+            {
+                if (grid.Rows[e.RowIndex].Tag is PagoRowTag tag)
+                {
+                    ImprimirReciboDesdeTag(tag);
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo leer los datos del pago para imprimir.", "Pagos",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                return;
+            }
+                var row = grid.Rows[e.RowIndex];
+
+            // Para confirmar/anular usamos solo el PagoId (antes estaba como string simple).
+            long pagoIdDeTag = 0;
+            if (row.Tag is PagoRowTag prt)
+                pagoIdDeTag = prt.PagoId;
+
+            if ((isColAnular || isColConfirmar) && pagoIdDeTag <= 0)
             {
                 MessageBox.Show("No se pudo identificar el pago seleccionado.", "Pagos",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -249,7 +288,7 @@ if (dataGridPagos.Columns["ColumnaImprimir"] == null)
             {
                 if (isColConfirmar)
                 {
-                    var ok = _cnPago.ConfirmarPago(pagoId, RolUsuarioActual);
+                    var ok = _cnPago.ConfirmarPago(pagoIdDeTag, RolUsuarioActual);
                     if (ok)
                     {
                         MessageBox.Show("Pago confirmado correctamente.", "Pagos",
@@ -264,7 +303,7 @@ if (dataGridPagos.Columns["ColumnaImprimir"] == null)
                 }
                 else if (isColAnular)
                 {
-                    var ok = _cnPago.AnularPago(pagoId, RolUsuarioActual);
+                    var ok = _cnPago.AnularPago(pagoIdDeTag, RolUsuarioActual);
                     if (ok)
                     {
                         MessageBox.Show("Pago anulado correctamente.", "Pagos",
@@ -276,6 +315,12 @@ if (dataGridPagos.Columns["ColumnaImprimir"] == null)
                         MessageBox.Show("No se pudo anular el pago.", "Pagos",
                             MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
+                }
+                else if (isColImprimir)
+                {
+                    // Acá después llamás a tu lógica de impresión.
+                    MessageBox.Show("Impresión de recibo: pronto aquí (usa el Tag con todos los datos).",
+                        "Pagos", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (UnauthorizedAccessException ex)
@@ -294,6 +339,139 @@ if (dataGridPagos.Columns["ColumnaImprimir"] == null)
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void ImprimirReciboDesdeTag(PagoRowTag tag)
+        {
+            // Tomamos algunos textos del contexto actual
+            string inquilino = CB_Inquilino?.SelectedItem as string ?? "-";
+            string contrato = CB_Propietario?.SelectedItem?.ToString() ?? "-";
+
+            using (var sfd = new SaveFileDialog())
+            {
+                sfd.Title = "Guardar recibo en PDF";
+                sfd.Filter = "PDF (*.pdf)|*.pdf";
+                sfd.FileName = $"Recibo_{tag.PagoId}_{tag.Periodo}.pdf";
+
+                if (sfd.ShowDialog(this) != DialogResult.OK)
+                    return;
+
+                // Buscamos la impresora Microsoft Print to PDF
+                var printerName = GetMicrosoftPrintToPdfName();
+                if (printerName == null)
+                {
+                    MessageBox.Show("No se encontró la impresora \"Microsoft Print to PDF\" en este equipo.\n" +
+                                    "Instalala o seleccioná otra impresora PDF.",
+                                    "Pagos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var printDoc = new PrintDocument();
+                printDoc.PrinterSettings.PrinterName = printerName;
+                printDoc.PrinterSettings.PrintToFile = true;
+                printDoc.PrinterSettings.PrintFileName = sfd.FileName;
+                printDoc.DocumentName = $"Recibo #{tag.PagoId}";
+                printDoc.OriginAtMargins = true;
+
+                // márgenes
+                printDoc.DefaultPageSettings.Margins = new Margins(50, 50, 50, 50);
+
+                // Para evitar el cuadro de diálogo de impresión
+                printDoc.PrintController = new StandardPrintController();
+
+                // Datos que vamos a dibujar
+                printDoc.PrintPage += (sender, e) =>
+                {
+                    RenderRecibo(e, tag, inquilino, contrato);
+                    e.HasMorePages = false;
+                };
+
+                try
+                {
+                    printDoc.Print();
+                    MessageBox.Show("Recibo generado correctamente.", "Pagos",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("No se pudo generar el PDF del recibo.\n\n" + ex.Message,
+                        "Pagos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private static string GetMicrosoftPrintToPdfName()
+        {
+            foreach (string prn in PrinterSettings.InstalledPrinters)
+            {
+                if (prn != null && prn.IndexOf("Microsoft Print to PDF", StringComparison.OrdinalIgnoreCase) >= 0)
+                    return prn;
+            }
+            return null;
+        }
+
+        private void RenderRecibo(PrintPageEventArgs e, PagoRowTag tag, string inquilino, string contrato)
+        {
+            var g = e.Graphics;
+
+            // Fuentes y pinceles
+            using (var fTitulo = new Font("Segoe UI", 16, FontStyle.Bold))
+            using (var fSub = new Font("Segoe UI", 10, FontStyle.Bold))
+            using (var fText = new Font("Segoe UI", 10))
+            using (var pen = new Pen(Color.Black, 1))
+            {
+                float y = 0;
+                float x = 0;
+                float ancho = e.MarginBounds.Width;
+
+                // Encabezado
+                g.DrawString("RECIBO DE PAGO", fTitulo, Brushes.Black, x, y);
+                y += 35;
+                g.DrawLine(pen, x, y, x + ancho, y);
+                y += 10;
+
+                // Datos principales
+                g.DrawString($"N° Comprobante: {tag.PagoId}", fSub, Brushes.Black, x, y); y += 20;
+                g.DrawString($"Fecha: {DateTime.Now:dd/MM/yyyy}", fText, Brushes.Black, x, y); y += 22;
+                g.DrawString($"Inquilino: {inquilino}", fText, Brushes.Black, x, y); y += 22;
+                g.DrawString($"Contrato: {contrato}", fText, Brushes.Black, x, y); y += 22;
+                g.DrawString($"Periodo: {tag.Periodo}", fText, Brushes.Black, x, y); y += 28;
+
+                // Detalle importe
+                g.DrawString("Detalle", fSub, Brushes.Black, x, y);
+                y += 18;
+                g.DrawLine(pen, x, y, x + ancho, y);
+                y += 10;
+
+                var ar = new CultureInfo("es-AR");
+                g.DrawString("Importe base:", fText, Brushes.Black, x, y);
+                g.DrawString(tag.ImporteBase.ToString("C0", ar), fText, Brushes.Black, x + ancho - 180, y);
+                y += 20;
+
+                g.DrawString("Adicional por mora:", fText, Brushes.Black, x, y);
+                g.DrawString(tag.Mora.ToString("C0", ar), fText, Brushes.Black, x + ancho - 180, y);
+                y += 20;
+
+                g.DrawString("Otros adicionales:", fText, Brushes.Black, x, y);
+                g.DrawString(tag.Otros.ToString("C0", ar), fText, Brushes.Black, x + ancho - 180, y);
+                y += 20;
+
+                g.DrawLine(pen, x, y, x + ancho, y); y += 8;
+
+                g.DrawString("TOTAL:", fSub, Brushes.Black, x, y);
+                g.DrawString(tag.Total.ToString("C0", ar), fSub, Brushes.Black, x + ancho - 180, y);
+                y += 28;
+
+                // Método de pago
+                g.DrawString("Método de pago:", fSub, Brushes.Black, x, y);
+                g.DrawString(ObtenerNombreMetodoPago(tag.MetodoPagoId), fText, Brushes.Black, x + 140, y);
+                y += 28;
+
+                // Pie
+                g.DrawLine(pen, x, y, x + ancho, y); y += 40;
+                g.DrawString("Firma y aclaración:", fText, Brushes.Black, x, y);
+            }
+        }
+
 
         // ==== Helpers ====
         private void LimpiarGrillaYKpis()
@@ -339,6 +517,22 @@ if (dataGridPagos.Columns["ColumnaImprimir"] == null)
             public decimal Otros { get; set; }
             public decimal MontoTotal { get; set; }
             public int Estado { get; set; }
+
+            // Agregado para poder imprimir
+            public int CuotaId { get; set; }
+        }
+
+        // Tag que colgamos en cada Row del grid para imprimir/acciones
+        private sealed class PagoRowTag
+        {
+            public long PagoId { get; set; }
+            public int CuotaId { get; set; }
+            public string Periodo { get; set; }
+            public decimal ImporteBase { get; set; }
+            public decimal Mora { get; set; }
+            public decimal Otros { get; set; }
+            public decimal Total { get; set; }
+            public int MetodoPagoId { get; set; }
         }
 
         // Item para CB_Propietario (muestra contratos del inquilino)
@@ -372,9 +566,5 @@ if (dataGridPagos.Columns["ColumnaImprimir"] == null)
             // Actualizar la vista de pagos al cerrar
             CargarPagosDeContratoSeleccionado();
         }
-
     }
-
 }
-
-

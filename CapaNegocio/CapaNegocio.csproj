@@ -45,6 +45,7 @@
     <Compile Include="CN_Log.cs" />
     <Compile Include="CN_Pago.cs" />
     <Compile Include="CN_PersonaRolCliente.cs" />
+    <Compile Include="CN_Recibo.cs" />
     <Compile Include="CN_Usuario.cs" />
     <Compile Include="Contrato.cs" />
     <Compile Include="Cuota.cs" />

@@ -1,7 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using CapaDatos;
 using CapaEntidades;
-using CapaDatos;
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 
 namespace CapaNegocio
 {
@@ -25,6 +26,7 @@ namespace CapaNegocio
     {
         private readonly CD_Pago _cdPago = new CD_Pago();
         private readonly CD_Cuota _cdCuota = new CD_Cuota();
+        private readonly CD_Recibo _cdRecibo = new CD_Recibo();
 
 
         #region Lecturas
@@ -63,16 +65,21 @@ namespace CapaNegocio
             if (nuevo.FechaPago == default(DateTime))
                 nuevo.FechaPago = DateTime.Today;
 
+            // Inserta el pago
             var id = _cdPago.Registrar(nuevo);
             if (id <= 0) throw new InvalidOperationException("No se pudo registrar el pago.");
-            // Si el pago entra como Confirmado (1), marcamos la cuota como Pagada (2)
+
+            // Si entra ya confirmado, marcamos cuota y generamos recibo
             if (nuevo.Estado == 1)
             {
-                _cdCuota.CambiarEstado(nuevo.CuotaId, 2);
+                _cdCuota.CambiarEstado(nuevo.CuotaId, 2); // 2 = Pagada
+                var cnRecibo = new CN_Recibo();
+                cnRecibo.CrearParaPago(id);               // genera recibo para el pago confirmado
             }
 
             return id;
         }
+
 
         #endregion
 
@@ -86,8 +93,9 @@ namespace CapaNegocio
         {
             if (pagoId <= 0) throw new ArgumentException("pagoId inválido.");
 
-            if (rolUsuario != Roles.Gerente)
-                throw new UnauthorizedAccessException("Solo un GERENTE (rol 2) puede confirmar pagos.");
+            // Permitir Gerente u Operador
+            if (rolUsuario != Roles.Gerente && rolUsuario != Roles.Operador)
+                throw new UnauthorizedAccessException("Solo GERENTE u OPERADOR pueden confirmar pagos.");
 
             var actual = _cdPago.ObtenerPorId(pagoId);
             if (actual == null) throw new InvalidOperationException("Pago no encontrado.");
@@ -104,12 +112,16 @@ namespace CapaNegocio
             var ok = _cdPago.CambiarEstado(pagoId, 1);
             if (ok)
             {
-                // ahora sí: la cuota queda Pagada (2)
+                // marcar cuota como Pagada
                 _cdCuota.CambiarEstado(actual.CuotaId, 2);
+
+                // generar recibo para el pago ahora confirmado
+                var cnRecibo = new CN_Recibo();
+                cnRecibo.CrearParaPago(pagoId);
             }
             return ok;
-
         }
+
 
         /// <summary>
         /// Vuelve a 'Solicitud de aprobación': 1 -> 2 (idempotente si ya está en 2).
@@ -176,3 +188,9 @@ namespace CapaNegocio
         #endregion
     }
 }
+
+
+
+
+
+

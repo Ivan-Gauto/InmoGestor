@@ -51,6 +51,7 @@
     <Compile Include="PersonaRolCliente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Persona.cs" />
+    <Compile Include="Recibo.cs" />
     <Compile Include="RolCliente.cs" />
     <Compile Include="SesionUsuario.cs" />
     <Compile Include="TipoInmueble.cs" />
