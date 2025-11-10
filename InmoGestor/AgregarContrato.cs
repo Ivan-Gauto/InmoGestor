@@ -152,7 +152,8 @@ namespace InmoGestor
         {
             try
             {
-                // Validaciones básicas
+                int x = 0;
+                int y = 10 / x;
                 if (comboBox1.SelectedItem == null)
                 {
                     MessageBox.Show("Debe seleccionar un inmueble.",
@@ -219,6 +220,9 @@ namespace InmoGestor
             }
             catch (Exception ex)
             {
+                int? usuarioId = SesionUsuario.UsuarioActual?.UsuarioId;
+                new CN_Reportes().RegistrarError(usuarioId, "AgregarContrato", "BIngresar_Click", ex);
+
                 MessageBox.Show("Ocurrió un error al crear el contrato: " + ex.Message,
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

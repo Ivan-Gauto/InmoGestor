@@ -1,6 +1,4 @@
-﻿using CapaEntidades;
-using CapaNegocio;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,12 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using CapaEntidades;
+using CapaNegocio;
 
 namespace InmoGestor
 {
     public partial class ReportesAdministrador : Form
     {
-        // Lista para guardar los resultados del log de auditoría
+        // Instancias de Capa de Negocio
+        private CN_Reportes negocioReportes = new CN_Reportes();
+        private CN_Usuario negocioUsuario = new CN_Usuario();
+
         private List<LogUsuario> _listaLogUsuarios = new List<LogUsuario>();
 
         public ReportesAdministrador()
@@ -26,22 +29,25 @@ namespace InmoGestor
             this.CBUsuarios.SelectedIndexChanged += new System.EventHandler(this.Filtro_SelectedIndexChanged);
             this.dtpFechaInicio.ValueChanged += new System.EventHandler(this.Filtro_DateValueChanged);
             this.dtpFechaFin.ValueChanged += new System.EventHandler(this.Filtro_DateValueChanged);
+
             dgvAuditoriaUsuarios.AutoGenerateColumns = false;
+            dgvErroresSistema.AutoGenerateColumns = false;
+
+            // --- AÑADIDO ---
+            // Conectar el evento de formato de celda para los errores
+            this.dgvErroresSistema.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvErroresSistema_CellFormatting);
         }
 
         private void Filtro_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Solo recargar si ya se terminó de cargar la ventana
             if (this.IsHandleCreated)
             {
                 GenerarReporte(sender, e);
             }
         }
 
-        // Manejador para los cambios en las Fechas
         private void Filtro_DateValueChanged(object sender, EventArgs e)
         {
-            // Solo recargar si ya se terminó de cargar la ventana
             if (this.IsHandleCreated)
             {
                 GenerarReporte(sender, e);
@@ -49,79 +55,44 @@ namespace InmoGestor
         }
 
         private void GenerarReporte(object sender, EventArgs e)
-
         {
-
-            // NO exportar CSV aquí. Mostrar el reporte en el DataGrid según selección.
-
-            string tipoReporte = CBTipoReporte.SelectedItem?.ToString() ?? "Auditoría de Usuarios";
-
-
-
-            // Obtengo el usuario seleccionado (si es "0" trato como todos -> null)
-
+            if (CBTipoReporte.SelectedItem == null) return;
+            string tipoReporte = CBTipoReporte.SelectedItem.ToString();
             string usuarioDniSeleccionado = (CBUsuarios.SelectedValue?.ToString() == "0") ? null : CBUsuarios.SelectedValue?.ToString();
-
-
-
-            DateTime fechaInicio = dtpFechaInicio.Value.Date; // Tomar solo la fecha
-
-            DateTime fechaFin = dtpFechaFin.Value.Date.AddDays(1).AddSeconds(-1); // Incluir todo el día final
-
-
+            DateTime fechaInicio = dtpFechaInicio.Value.Date;
+            DateTime fechaFin = dtpFechaFin.Value.Date.AddDays(1).AddSeconds(-1);
 
             if (tipoReporte == "Auditoría de Usuarios")
-
             {
-
                 CargarReporteAuditoria(usuarioDniSeleccionado, fechaInicio, fechaFin);
-
             }
-
             else if (tipoReporte == "Monitor de Errores")
-
             {
-
-                // Si aún no está implementado, limpiar y avisar
-
-                dgvErroresSistema.Rows.Clear();
-
-                MessageBox.Show("Reporte de Errores aún no implementado.");
-
+                CargarReporteErrores(fechaInicio, fechaFin);
             }
-
         }
 
         private void ReportesAdministrador_Load(object sender, EventArgs e)
         {
-            // Tipos de reporte
+            ConfigurarGrids();
+
             CBTipoReporte.Items.Add("Auditoría de Usuarios");
             CBTipoReporte.Items.Add("Monitor de Errores");
-            CBTipoReporte.SelectedIndex = 0;
 
-            // Poner fechas por defecto (ej: inicio de mes hasta hoy)
             dtpFechaInicio.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
             dtpFechaFin.Value = DateTime.Now;
 
-            // Cargar lista de usuarios antes de pedir el reporte por defecto
             CargarUsuarios();
 
-            // Mostrar un reporte por defecto: todos los usuarios en el rango seleccionado
-            string usuarioDniSeleccionado = null; // mostrar para "Todos" por defecto
-            DateTime fechaInicio = dtpFechaInicio.Value.Date;
-            DateTime fechaFin = dtpFechaFin.Value.Date.AddDays(1).AddSeconds(-1);
-
-            // Cargar directamente en el DataGrid (no exportar CSV)
-            CargarReporteAuditoria(usuarioDniSeleccionado, fechaInicio, fechaFin);
+            CBTipoReporte.SelectedIndex = 0;
         }
 
         private void CargarUsuarios()
         {
-            var negocioUsuario = new CN_Usuario();
             List<Usuario> listaUsuarios = negocioUsuario.Listar(RolUsuarioFiltro.Administradores, EstadoFiltro.Activos);
 
             var usuarioTodos = new Usuario();
-            usuarioTodos.Dni = "0"; // Usar "0" o null para representar "Todos"
+            usuarioTodos.Dni = "0";
             usuarioTodos.oPersona.Nombre = "Todos";
             usuarioTodos.oPersona.Apellido = "";
             listaUsuarios.Insert(0, usuarioTodos);
@@ -129,63 +100,41 @@ namespace InmoGestor
             CBUsuarios.DataSource = listaUsuarios;
             CBUsuarios.DisplayMember = "NombreCompleto";
             CBUsuarios.ValueMember = "Dni";
-            CBUsuarios.SelectedIndex = 0; // Seleccionar "Todos" por defecto
+            CBUsuarios.SelectedIndex = 0;
         }
 
         private void CBTipoReporte_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (CBTipoReporte.SelectedItem == null) return;
             string seleccion = CBTipoReporte.SelectedItem.ToString();
-            dgvAuditoriaUsuarios.Rows.Clear(); // Limpiar grilla al cambiar tipo
-            dgvErroresSistema.Rows.Clear();
 
-            if (seleccion == "Auditoría de Usuarios")
-            {
-                dgvAuditoriaUsuarios.Visible = true;
-                dgvErroresSistema.Visible = false;
-            }
-            else if (seleccion == "Monitor de Errores")
-            {
-                dgvAuditoriaUsuarios.Visible = false;
-                dgvErroresSistema.Visible = true;
-            }
+            bool esAuditoria = (seleccion == "Auditoría de Usuarios");
+
+            dgvAuditoriaUsuarios.Visible = esAuditoria;
+            dgvErroresSistema.Visible = !esAuditoria;
+
+            CBUsuarios.Visible = esAuditoria;
+            label3.Visible = esAuditoria;
+
+            GenerarReporte(sender, e);
         }
 
-        // Suponiendo que tienes un botón BExportarCSV_Click para la descarga
         private void BExportarCSV_Click(object sender, EventArgs e)
         {
-            // Lógica para exportar _listaLogUsuarios a un archivo CSV
-            if (_listaLogUsuarios.Any())
+            DataGridView dgvVisible = null;
+
+            if (dgvAuditoriaUsuarios.Visible)
             {
-                // 1. Mostrar SaveFileDialog
-                SaveFileDialog saveFileDialog = new SaveFileDialog();
-                saveFileDialog.Filter = "Archivos CSV (*.csv)|*.csv";
-                saveFileDialog.Title = "Guardar Reporte de Auditoría";
-                saveFileDialog.FileName = $"ReporteAuditoria_{DateTime.Now:yyyyMMdd_HHmmss}.csv";
+                dgvVisible = dgvAuditoriaUsuarios;
+            }
+            else if (dgvErroresSistema.Visible)
+            {
+                dgvVisible = dgvErroresSistema;
+            }
 
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    try
-                    {
-                        // 2. Escribir el archivo
-                        using (StreamWriter sw = new StreamWriter(saveFileDialog.FileName, false, Encoding.UTF8))
-                        {
-                            // Encabezados
-                            sw.WriteLine("DNI Administrador,Fecha y Hora,DNI Usuario Afectado,Acción");
-
-                            // Datos
-                            foreach (var log in _listaLogUsuarios)
-                            {
-                                sw.WriteLine($"{log.AdminEjecutorDni},{log.FechaHora:dd/MM/yyyy HH:mm:ss},{log.UsuarioAfectadoDni},{log.Accion.Replace(",", "")}"); // Reemplaza comas si la acción las contiene
-                            }
-                        }
-
-                        MessageBox.Show("Reporte exportado con éxito.", "Exportación Completa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Ocurrió un error al exportar: {ex.Message}", "Error de Exportación", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
+            if (dgvVisible != null && dgvVisible.Rows.Count > 0)
+            {
+                DescargarGridComoCsv(dgvVisible, CBTipoReporte.SelectedItem.ToString());
             }
             else
             {
@@ -193,29 +142,126 @@ namespace InmoGestor
             }
         }
 
+        private void DescargarGridComoCsv(DataGridView dgv, string nombreReporte)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Archivos CSV (*.csv)|*.csv";
+            saveFileDialog.Title = "Guardar Reporte";
+            saveFileDialog.FileName = $"{nombreReporte.Replace(" ", "_")}_{DateTime.Now:yyyyMMdd}.csv";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    StringBuilder sb = new StringBuilder();
+
+                    foreach (DataGridViewColumn col in dgv.Columns)
+                    {
+                        sb.Append(col.HeaderText + ";");
+                    }
+                    sb.Append("\r\n");
+
+                    foreach (DataGridViewRow row in dgv.Rows)
+                    {
+                        if (row.IsNewRow) continue;
+                        foreach (DataGridViewCell cell in row.Cells)
+                        {
+                            string valor = cell.FormattedValue != null ? cell.FormattedValue.ToString() : "";
+                            valor = valor.Replace(";", ",").Replace("\n", " ").Replace("\r", "");
+                            sb.Append(valor + ";");
+                        }
+                        sb.Append("\r\n");
+                    }
+
+                    File.WriteAllText(saveFileDialog.FileName, sb.ToString(), Encoding.UTF8);
+                    MessageBox.Show("Reporte exportado con éxito.", "Exportación Completa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ocurrió un error al exportar: {ex.Message}", "Error de Exportación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
         private void CargarReporteAuditoria(string adminDni, DateTime inicio, DateTime fin)
         {
             dgvAuditoriaUsuarios.Rows.Clear();
-            var negocioLog = new CN_Log();
-            _listaLogUsuarios = negocioLog.ListarAuditoriaUsuarios(adminDni, inicio, fin);
+            _listaLogUsuarios = negocioReportes.ListarAuditoriaUsuarios(adminDni, inicio, fin);
 
             foreach (var log in _listaLogUsuarios)
             {
-                // Asegúrate que los nombres "Columna..." coincidan exactamente
-                // con la propiedad 'Name' de tus columnas en el diseñador del DataGridView
                 dgvAuditoriaUsuarios.Rows.Add(new object[] {
                     log.AdminEjecutorDni,
-                    log.FechaHora.ToString("dd/MM/yyyy HH:mm:ss"), // Formato de fecha/hora
+                    log.FechaHora.ToString("dd/MM/yyyy HH:mm:ss"),
                     log.UsuarioAfectadoDni,
                     log.Accion,
                 });
             }
+        }
 
-            // Opcional: seleccionar la primera fila si existe
-            if (dgvAuditoriaUsuarios.Rows.Count > 0)
+        // --- MÉTODO MODIFICADO ---
+        // Usa DataSource para llenar la grilla de errores
+        private void CargarReporteErrores(DateTime inicio, DateTime fin)
+        {
+            dgvErroresSistema.DataSource = null;
+            DataTable dt = negocioReportes.ObtenerLogErrorAgrupado(inicio, fin);
+            dgvErroresSistema.DataSource = dt;
+        }
+
+        // --- MÉTODO NUEVO ---
+        // Asigna los DataPropertyName
+        private void ConfigurarGrids()
+        {
+            dgvAuditoriaUsuarios.AutoGenerateColumns = false;
+            // (Aquí va la configuración de dgvAuditoriaUsuarios si la tienes)
+
+            // --- Configuración Grid Errores ---
+            dgvErroresSistema.AutoGenerateColumns = false;
+
+            // Conecta las columnas que creaste en el diseñador
+            // con la consulta SQL.
+            ColumnaCantidad.DataPropertyName = "Cantidad";
+            ColumnaUltimaVez.DataPropertyName = "UltimaVez";
+            ColumnaFormulario.DataPropertyName = "Formulario";
+            ColumnaMetodo.DataPropertyName = "Metodo";
+            ColumnaMensajeDeError.DataPropertyName = "MensajeError";
+        }
+
+        // --- MÉTODO NUEVO ---
+        // Pinta las celdas de 'dgvErroresSistema'
+        private void dgvErroresSistema_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            // Pintar la celda de Cantidad según el valor
+            if (dgvErroresSistema.Columns[e.ColumnIndex].Name == "ColumnaCantidad")
             {
-                dgvAuditoriaUsuarios.ClearSelection();
-                dgvAuditoriaUsuarios.Rows[0].Selected = true;
+                if (e.Value != null && int.TryParse(e.Value.ToString(), out int cantidad))
+                {
+                    if (cantidad > 20)
+                    {
+                        e.CellStyle.BackColor = Color.Firebrick;
+                    }
+                    else if (cantidad > 5)
+                    {
+                        e.CellStyle.BackColor = Color.Goldenrod;
+                    }
+                    else
+                    {
+                        e.CellStyle.BackColor = Color.DarkSlateGray; // Color para pocos errores
+                    }
+                    e.CellStyle.ForeColor = Color.White;
+                }
+            }
+
+            // Formatear la fecha
+            if (dgvErroresSistema.Columns[e.ColumnIndex].Name == "ColumnaUltimaVez")
+            {
+                if (e.Value != null && e.Value is DateTime)
+                {
+                    e.Value = ((DateTime)e.Value).ToString("dd/MM/yyyy HH:mm");
+                    e.FormattingApplied = true;
+                }
             }
         }
     }

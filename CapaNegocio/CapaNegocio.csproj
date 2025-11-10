@@ -43,7 +43,6 @@
   <ItemGroup>
     <Compile Include="CN_Backup.cs" />
     <Compile Include="CN_Inmueble.cs" />
-    <Compile Include="CN_Log.cs" />
     <Compile Include="CN_Pago.cs" />
     <Compile Include="CN_PersonaRolCliente.cs" />
     <Compile Include="CN_Recibo.cs" />

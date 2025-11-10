@@ -28,24 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.Label label3;
             System.Windows.Forms.Label label1;
             System.Windows.Forms.Label label6;
             System.Windows.Forms.Label label7;
             System.Windows.Forms.Label label2;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle105 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle111 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle112 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle117 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle113 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle114 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle115 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle116 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle106 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle107 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle108 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle109 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle110 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
@@ -63,11 +62,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvErroresSistema = new System.Windows.Forms.DataGridView();
-            this.ColumnaUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnaFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnaFormulario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnaMetodo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnaMensajeDeError = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvAuditoriaUsuarios = new System.Windows.Forms.DataGridView();
             this.ColumnaAdministrador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnaFechaYHora = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,7 +69,12 @@
             this.ColumnaAccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
-            label3 = new System.Windows.Forms.Label();
+            this.ColumnaCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnaUltimaVez = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnaFormulario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnaMetodo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnaMensajeDeError = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label3 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             label6 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
@@ -94,20 +93,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvAuditoriaUsuarios)).BeginInit();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label3
-            // 
-            label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            label3.AutoSize = true;
-            label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            label3.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label3.ForeColor = System.Drawing.Color.White;
-            label3.Location = new System.Drawing.Point(0, 5);
-            label3.Margin = new System.Windows.Forms.Padding(0);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(126, 15);
-            label3.TabIndex = 23;
-            label3.Text = "Seleccionar Usuario";
             // 
             // label1
             // 
@@ -211,8 +196,8 @@
             // 
             this.tableLayoutPanel6.ColumnCount = 1;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Controls.Add(label3, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.CBUsuarios, 0, 1);
+            this.tableLayoutPanel6.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(278, 9);
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -428,18 +413,18 @@
             this.dgvErroresSistema.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.dgvErroresSistema.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvErroresSistema.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvErroresSistema.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle105.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle105.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle105.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle105.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle105.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle105.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle105.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvErroresSistema.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle105;
             this.dgvErroresSistema.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvErroresSistema.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnaUsuario,
-            this.ColumnaFecha,
+            this.ColumnaCantidad,
+            this.ColumnaUltimaVez,
             this.ColumnaFormulario,
             this.ColumnaMetodo,
             this.ColumnaMensajeDeError});
@@ -453,76 +438,11 @@
             this.dgvErroresSistema.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvErroresSistema.RowHeadersVisible = false;
             this.dgvErroresSistema.RowHeadersWidth = 62;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvErroresSistema.RowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle111.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvErroresSistema.RowsDefaultCellStyle = dataGridViewCellStyle111;
             this.dgvErroresSistema.Size = new System.Drawing.Size(811, 43);
             this.dgvErroresSistema.TabIndex = 37;
             this.dgvErroresSistema.Visible = false;
-            // 
-            // ColumnaUsuario
-            // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.ColumnaUsuario.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ColumnaUsuario.FillWeight = 106.2306F;
-            this.ColumnaUsuario.HeaderText = "Usuario";
-            this.ColumnaUsuario.MinimumWidth = 8;
-            this.ColumnaUsuario.Name = "ColumnaUsuario";
-            this.ColumnaUsuario.ReadOnly = true;
-            // 
-            // ColumnaFecha
-            // 
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.ColumnaFecha.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ColumnaFecha.FillWeight = 106.2306F;
-            this.ColumnaFecha.HeaderText = "Fecha y hora";
-            this.ColumnaFecha.MinimumWidth = 8;
-            this.ColumnaFecha.Name = "ColumnaFecha";
-            this.ColumnaFecha.ReadOnly = true;
-            // 
-            // ColumnaFormulario
-            // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.ColumnaFormulario.DefaultCellStyle = dataGridViewCellStyle4;
-            this.ColumnaFormulario.FillWeight = 106.2306F;
-            this.ColumnaFormulario.HeaderText = "Formulario";
-            this.ColumnaFormulario.MinimumWidth = 8;
-            this.ColumnaFormulario.Name = "ColumnaFormulario";
-            this.ColumnaFormulario.ReadOnly = true;
-            // 
-            // ColumnaMetodo
-            // 
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.ColumnaMetodo.DefaultCellStyle = dataGridViewCellStyle5;
-            this.ColumnaMetodo.FillWeight = 106.2306F;
-            this.ColumnaMetodo.HeaderText = "Metodo";
-            this.ColumnaMetodo.MinimumWidth = 8;
-            this.ColumnaMetodo.Name = "ColumnaMetodo";
-            this.ColumnaMetodo.ReadOnly = true;
-            // 
-            // ColumnaMensajeDeError
-            // 
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.ColumnaMensajeDeError.DefaultCellStyle = dataGridViewCellStyle6;
-            this.ColumnaMensajeDeError.FillWeight = 106.2306F;
-            this.ColumnaMensajeDeError.HeaderText = "Mensaje de error";
-            this.ColumnaMensajeDeError.MinimumWidth = 8;
-            this.ColumnaMensajeDeError.Name = "ColumnaMensajeDeError";
-            this.ColumnaMensajeDeError.ReadOnly = true;
             // 
             // dgvAuditoriaUsuarios
             // 
@@ -532,14 +452,14 @@
             this.dgvAuditoriaUsuarios.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.dgvAuditoriaUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvAuditoriaUsuarios.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAuditoriaUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle112.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle112.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle112.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle112.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle112.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle112.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle112.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAuditoriaUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle112;
             this.dgvAuditoriaUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAuditoriaUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnaAdministrador,
@@ -556,19 +476,19 @@
             this.dgvAuditoriaUsuarios.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvAuditoriaUsuarios.RowHeadersVisible = false;
             this.dgvAuditoriaUsuarios.RowHeadersWidth = 62;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvAuditoriaUsuarios.RowsDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle117.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvAuditoriaUsuarios.RowsDefaultCellStyle = dataGridViewCellStyle117;
             this.dgvAuditoriaUsuarios.Size = new System.Drawing.Size(811, 43);
             this.dgvAuditoriaUsuarios.TabIndex = 34;
             this.dgvAuditoriaUsuarios.Visible = false;
             // 
             // ColumnaAdministrador
             // 
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.ColumnaAdministrador.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle113.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle113.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle113.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle113.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
+            this.ColumnaAdministrador.DefaultCellStyle = dataGridViewCellStyle113;
             this.ColumnaAdministrador.FillWeight = 106.2306F;
             this.ColumnaAdministrador.HeaderText = "Administrador";
             this.ColumnaAdministrador.MinimumWidth = 8;
@@ -577,11 +497,11 @@
             // 
             // ColumnaFechaYHora
             // 
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.ColumnaFechaYHora.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle114.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle114.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle114.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle114.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
+            this.ColumnaFechaYHora.DefaultCellStyle = dataGridViewCellStyle114;
             this.ColumnaFechaYHora.FillWeight = 106.2306F;
             this.ColumnaFechaYHora.HeaderText = "Fecha y hora";
             this.ColumnaFechaYHora.MinimumWidth = 8;
@@ -590,11 +510,11 @@
             // 
             // ColumnaUsuarioAfectado
             // 
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.ColumnaUsuarioAfectado.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle115.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle115.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle115.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle115.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
+            this.ColumnaUsuarioAfectado.DefaultCellStyle = dataGridViewCellStyle115;
             this.ColumnaUsuarioAfectado.FillWeight = 106.2306F;
             this.ColumnaUsuarioAfectado.HeaderText = "Usuario afectado";
             this.ColumnaUsuarioAfectado.MinimumWidth = 8;
@@ -603,11 +523,11 @@
             // 
             // ColumnaAccion
             // 
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.ColumnaAccion.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle116.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle116.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle116.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle116.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
+            this.ColumnaAccion.DefaultCellStyle = dataGridViewCellStyle116;
             this.ColumnaAccion.FillWeight = 106.2306F;
             this.ColumnaAccion.HeaderText = "Accion";
             this.ColumnaAccion.MinimumWidth = 8;
@@ -636,6 +556,83 @@
             this.label5.Size = new System.Drawing.Size(127, 30);
             this.label5.TabIndex = 30;
             this.label5.Text = "Vista previa";
+            // 
+            // ColumnaCantidad
+            // 
+            dataGridViewCellStyle106.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle106.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle106.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle106.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
+            this.ColumnaCantidad.DefaultCellStyle = dataGridViewCellStyle106;
+            this.ColumnaCantidad.FillWeight = 106.2306F;
+            this.ColumnaCantidad.HeaderText = "Cantidad";
+            this.ColumnaCantidad.MinimumWidth = 8;
+            this.ColumnaCantidad.Name = "ColumnaCantidad";
+            this.ColumnaCantidad.ReadOnly = true;
+            // 
+            // ColumnaUltimaVez
+            // 
+            dataGridViewCellStyle107.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle107.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle107.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle107.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
+            this.ColumnaUltimaVez.DefaultCellStyle = dataGridViewCellStyle107;
+            this.ColumnaUltimaVez.FillWeight = 106.2306F;
+            this.ColumnaUltimaVez.HeaderText = "Ultima vez";
+            this.ColumnaUltimaVez.MinimumWidth = 8;
+            this.ColumnaUltimaVez.Name = "ColumnaUltimaVez";
+            this.ColumnaUltimaVez.ReadOnly = true;
+            // 
+            // ColumnaFormulario
+            // 
+            dataGridViewCellStyle108.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle108.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle108.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle108.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
+            this.ColumnaFormulario.DefaultCellStyle = dataGridViewCellStyle108;
+            this.ColumnaFormulario.FillWeight = 106.2306F;
+            this.ColumnaFormulario.HeaderText = "Formulario";
+            this.ColumnaFormulario.MinimumWidth = 8;
+            this.ColumnaFormulario.Name = "ColumnaFormulario";
+            this.ColumnaFormulario.ReadOnly = true;
+            // 
+            // ColumnaMetodo
+            // 
+            dataGridViewCellStyle109.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle109.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle109.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle109.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
+            this.ColumnaMetodo.DefaultCellStyle = dataGridViewCellStyle109;
+            this.ColumnaMetodo.FillWeight = 106.2306F;
+            this.ColumnaMetodo.HeaderText = "Metodo";
+            this.ColumnaMetodo.MinimumWidth = 8;
+            this.ColumnaMetodo.Name = "ColumnaMetodo";
+            this.ColumnaMetodo.ReadOnly = true;
+            // 
+            // ColumnaMensajeDeError
+            // 
+            dataGridViewCellStyle110.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle110.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle110.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle110.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
+            this.ColumnaMensajeDeError.DefaultCellStyle = dataGridViewCellStyle110;
+            this.ColumnaMensajeDeError.FillWeight = 106.2306F;
+            this.ColumnaMensajeDeError.HeaderText = "Mensaje de error";
+            this.ColumnaMensajeDeError.MinimumWidth = 8;
+            this.ColumnaMensajeDeError.Name = "ColumnaMensajeDeError";
+            this.ColumnaMensajeDeError.ReadOnly = true;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(3, 5);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(125, 15);
+            this.label3.TabIndex = 25;
+            this.label3.Text = "Seleccionar usuario";
             // 
             // ReportesAdministrador
             // 
@@ -699,10 +696,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaUsuarioAfectado;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaAccion;
         private System.Windows.Forms.DataGridView dgvErroresSistema;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaUsuario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaFecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaCantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaUltimaVez;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaFormulario;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaMetodo;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaMensajeDeError;
+        private System.Windows.Forms.Label label3;
     }
 }

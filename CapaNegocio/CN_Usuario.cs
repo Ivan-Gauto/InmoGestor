@@ -12,6 +12,7 @@ namespace CapaNegocio
     public class CN_Usuario
     {
         public CD_Usuario _capaDatos = new CD_Usuario();
+        private readonly CN_Reportes _cnReportes = new CN_Reportes();
 
         public List<Usuario> Listar(RolUsuarioFiltro rolFiltro, EstadoFiltro estadoFiltro)
         {
@@ -23,7 +24,7 @@ namespace CapaNegocio
             return _capaDatos.ObtenerEstadisticas();
         }
 
-        public bool Registrar(Usuario u, string adminEjecutorDni, out string mensaje) // <--- Acepta STRING
+        public bool Registrar(Usuario u, string adminEjecutorDni, out string mensaje)
         {
             bool exito = _capaDatos.Registrar(u, out mensaje);
 
@@ -32,15 +33,18 @@ namespace CapaNegocio
                 try
                 {
                     string afectadoDni = u.Dni;
-                    string detalle = $"Rol asignado: {u.oRolUsuario.Nombre}"; // Asegúrate que oRolUsuario.Nombre se cargue bien
-                    new CN_Log().RegistrarAuditoriaUsuario(adminEjecutorDni, afectadoDni, "Creación de Cuenta", detalle); // <--- Pasa STRINGS
+                    string detalle = $"Rol asignado: {u.oRolUsuario.Nombre}";
+                    _cnReportes.RegistrarAuditoriaUsuario(adminEjecutorDni, afectadoDni, "Registro de Cuenta", detalle);
                 }
-                catch { }
+                catch (Exception ex)
+                {
+                    _cnReportes.RegistrarError(null, "CN_Usuario", "Registrar(Log)", ex);
+                }
             }
             return exito;
         }
 
-        public bool Actualizar(Usuario u, string dniOriginal, string adminEjecutorDni, out string mensaje) // <--- Acepta STRING
+        public bool Actualizar(Usuario u, string dniOriginal, string adminEjecutorDni, out string mensaje)
         {
             bool exito = _capaDatos.Actualizar(u, dniOriginal, out mensaje);
 
@@ -48,16 +52,30 @@ namespace CapaNegocio
             {
                 try
                 {
-                    string afectadoDni = u.Dni; // El DNI nuevo
-                    string detalle = $"DNI cambiado de {dniOriginal} a {afectadoDni}. Rol: {u.oRolUsuario.Nombre}"; // Asegúrate que oRolUsuario.Nombre se cargue
-                    new CN_Log().RegistrarAuditoriaUsuario(adminEjecutorDni, afectadoDni, "Actualización de Cuenta", detalle); // <--- Pasa STRINGS
+                    string afectadoDni = u.Dni;
+                    string detalle = $"DNI cambiado de {dniOriginal} a {afectadoDni}. Rol: {u.oRolUsuario.Nombre}";
+                    _cnReportes.RegistrarAuditoriaUsuario(adminEjecutorDni, afectadoDni, "Actualización de Cuenta", detalle);
                 }
-                catch { }
+                catch (Exception ex)
+                {
+                    _cnReportes.RegistrarError(null, "CN_Usuario", "Actualizar(Log)", ex);
+                }
             }
             return exito;
         }
 
-        public bool CambiarEstado(string dni, int nuevoEstado, string adminEjecutorDni) // <--- Acepta STRING
+        public Usuario ValidarUsuario(string dni, string clave)
+        {
+            if (string.IsNullOrWhiteSpace(dni))
+                return null;
+            if (string.IsNullOrWhiteSpace(clave))
+                return null;
+
+            // Llama al nuevo método de la capa de datos
+            return _capaDatos.ValidarUsuario(dni, clave);
+        }
+
+        public bool CambiarEstado(string dni, int nuevoEstado, string adminEjecutorDni)
         {
             bool exito = _capaDatos.CambiarEstado(dni, nuevoEstado);
 
@@ -68,10 +86,12 @@ namespace CapaNegocio
                     string afectadoDni = dni;
                     string accion = (nuevoEstado == 1) ? "Reactivación de Cuenta" : "Baja Lógica de Cuenta";
                     string detalle = $"Usuario DNI: {afectadoDni}";
-
-                    new CN_Log().RegistrarAuditoriaUsuario(adminEjecutorDni, afectadoDni, accion, detalle); // <--- Pasa STRINGS
+                    _cnReportes.RegistrarAuditoriaUsuario(adminEjecutorDni, afectadoDni, accion, detalle);
                 }
-                catch { }
+                catch (Exception ex)
+                {
+                    _cnReportes.RegistrarError(null, "CN_Usuario", "CambiarEstado(Log)", ex);
+                }
             }
             return exito;
         }
