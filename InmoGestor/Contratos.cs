@@ -1,10 +1,11 @@
-﻿using System;
+﻿using CapaNegocio;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
+using System.Linq;
 using System.Windows.Forms;
-using CapaNegocio;
-// using CapaEntidades; // solo si necesitás tipos del DTO
-
+using CapaEntidades; 
 namespace InmoGestor
 {
     public partial class Contratos : Form
@@ -85,23 +86,32 @@ namespace InmoGestor
             // Carga inicial: solo vigentes (1). Para todos, pasá null.
             CargarContratosYKpis(1);
         }
+        // ==== helper: asigna el primer nombre de propiedad que exista en el DTO ====
+        private static void BindProp(DataGridViewColumn col, Type rowType, params string[] candidates)
+        {
+            var props = rowType.GetProperties();
+            foreach (var c in candidates)
+            {
+                if (props.Any(p => string.Equals(p.Name, c, StringComparison.OrdinalIgnoreCase)))
+                {
+                    col.DataPropertyName = c;
+                    return;
+                }
+            }
+            // si no encontró nada, deja el DataPropertyName vacío (columna quedará en blanco)
+        }
 
-        // ================== Grid: columnas -> propiedades del DTO ==================
+
+        // ==== ConfigurarGrid: solo estilos y AutoGenerate ====
         private void ConfigurarGrid()
         {
             dataGridContratos.AutoGenerateColumns = false;
 
-            ColumnaId.DataPropertyName = "ContratoId";
-            ColumnaInquilino.DataPropertyName = "InquilinoNombre";       // "Apellido, Nombre (DNI)"
-            ColumnaDireccion.DataPropertyName = "Direccion";             // dirección del inmueble
-            ColumnaInmueble.DataPropertyName = "InmuebleEtiqueta";       // ej. "Depto 2 ambientes"
-            ColumnaPrecioCuotas.DataPropertyName = "PrecioCuota";
-            ColumnaCuotas.DataPropertyName = "CantidadCuotas";
-            ColumnaInicio.DataPropertyName = "FechaInicio";
-            ColumnaFin.DataPropertyName = "FechaFin";
-            ColumnaPorcentajeAumentoMora.DataPropertyName = "MoraDiariaPct"; // decimal ya convertido a %
+            // Formato moneda con símbolo local
+            ColumnaPrecioCuotas.DefaultCellStyle.Format = "C0";
+            ColumnaPorcentajeAumentoMora.DefaultCellStyle.Format = "C0";
 
-            // Si querés alinear algunos campos:
+            // Alineaciones/estilos opcionales
             ColumnaPrecioCuotas.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             ColumnaCuotas.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             ColumnaInicio.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -109,11 +119,42 @@ namespace InmoGestor
             ColumnaPorcentajeAumentoMora.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
-        // ================== Carga de datos ==================
+        // ==== CargarContratos: primero obtengo filas, después bindeo nombres seguros ====
         private void CargarContratos(int? estado = null)
         {
             var cn = new CN_Contrato();
-            var filas = cn.ListarParaGrid(estado);     // List<ContratoGridRow> con las props mapeadas arriba
+            var filas = cn.ListarParaGrid(estado);
+
+            // si no hay filas, igual intento bindear contra el tipo del DTO
+            var rowType = filas?.FirstOrDefault()?.GetType();
+            if (rowType != null)
+            {
+                // ID
+                BindProp(ColumnaId, rowType, "Id", "ContratoId");
+
+                // Inquilino
+                BindProp(ColumnaInquilino, rowType, "Inquilino", "InquilinoNombre", "InquilinoEtiqueta");
+
+                // Dirección del inmueble
+                BindProp(ColumnaDireccion, rowType, "Direccion", "DireccionInmueble");
+
+                // Inmueble (etiqueta)
+                BindProp(ColumnaInmueble, rowType, "Inmueble", "InmuebleEtiqueta", "Unidad");
+
+                // Precio de cuota
+                BindProp(ColumnaPrecioCuotas, rowType, "PrecioCuota", "MontoCuota", "ImporteBase");
+
+                // Cantidad de cuotas
+                BindProp(ColumnaCuotas, rowType, "CantCuotas", "Cuotas");
+
+                // Fechas
+                BindProp(ColumnaInicio, rowType, "FechaInicio", "Inicio");
+                BindProp(ColumnaFin, rowType, "FechaFin", "Fin");
+
+                // Mora diaria (%)
+                BindProp(ColumnaPorcentajeAumentoMora, rowType, "MoraDiariaPct", "MoraDiaria", "PorcentajeMora");
+            }
+
             dataGridContratos.DataSource = filas;
         }
 
@@ -133,26 +174,95 @@ namespace InmoGestor
             CargarKpis();
         }
 
+
+        private static decimal GetDec(object obj, string prop)
+{
+    var p = obj.GetType().GetProperty(prop);
+    if (p == null) return 0m;
+    var v = p.GetValue(obj);
+    if (v is decimal dd) return dd;
+    if (v is double dbl) return (decimal)dbl;
+    if (v is float fl) return (decimal)fl;
+    decimal.TryParse(v?.ToString(), out var res);
+    return res;
+}
+
+
+
         // ================== Formateo visual ==================
         private void dataGridContratos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.Value == null) return;
-            var colName = dataGridContratos.Columns[e.ColumnIndex].Name;
+            if (e.RowIndex < 0) return;
 
+            var colName = dataGridContratos.Columns[e.ColumnIndex].Name;
+            var rowObj = dataGridContratos.Rows[e.RowIndex].DataBoundItem;
+            if (rowObj == null) return;
+
+            // Formato $ en precio de cuota
             if (colName == nameof(ColumnaPrecioCuotas))
             {
-                if (e.Value is decimal dec) e.Value = dec.ToString("C"); // moneda local
+                if (e.Value != null && decimal.TryParse(e.Value.ToString(), out var dec))
+                {
+                    e.Value = dec.ToString("C0", new System.Globalization.CultureInfo("es-AR"));
+                    e.FormattingApplied = true;
+                }
+                return;
             }
-            else if (colName == nameof(ColumnaInicio) || colName == nameof(ColumnaFin))
+
+            // Fechas
+            if (colName == nameof(ColumnaInicio) || colName == nameof(ColumnaFin))
             {
-                if (e.Value is DateTime dt) e.Value = dt.ToString("dd/MM/yyyy");
+                if (e.Value is DateTime dt)
+                {
+                    e.Value = dt.ToString("dd/MM/yyyy");
+                    e.FormattingApplied = true;
+                }
+                return;
             }
-            else if (colName == nameof(ColumnaPorcentajeAumentoMora))
+
+
+
+            // ===== MORA DIARIA ($) calculada desde MOR A MENSUAL % =====
+            if (colName == nameof(ColumnaPorcentajeAumentoMora))
             {
-                // Si viene como 0.15 (15), mostrás "15 %"
-                if (e.Value is decimal p) e.Value = p.ToString("0.##' %'");
+                // 1) Precio de cuota
+                decimal precioCuota =
+                    GetDec(rowObj, "PrecioCuota") != 0m ? GetDec(rowObj, "PrecioCuota")
+                    : GetDec(rowObj, "MontoCuota") != 0m ? GetDec(rowObj, "MontoCuota")
+                    : GetDec(rowObj, "ImporteBase");
+
+                // 2) Porcentaje de mora mensual (probar varios nombres)
+                decimal moraMensualPct =
+                    GetDec(rowObj, "MoraMensual") != 0m ? GetDec(rowObj, "MoraMensual")
+                    : GetDec(rowObj, "MoraMensualPct") != 0m ? GetDec(rowObj, "MoraMensualPct")
+                    : GetDec(rowObj, "PorcentajeMoraMensual");
+
+                // si no vino mensual, quizá ya tenés diario en %; lo convertimos a mensual para uniformar
+                if (moraMensualPct == 0m)
+                {
+                    var moraDiariaPctProp = GetDec(rowObj, "MoraDiaria") != 0m ? GetDec(rowObj, "MoraDiaria")
+                                          : GetDec(rowObj, "MoraDiariaPct");
+                    if (moraDiariaPctProp != 0m) moraMensualPct = moraDiariaPctProp * 30m;
+                }
+
+                // Normalizar: 10 => 0.10
+                if (moraMensualPct > 1m) moraMensualPct /= 100m;
+
+                // 3) Pct diario y monto diario
+                var moraDiariaPct = moraMensualPct / 30m;
+                var moraDiariaMonto = precioCuota * moraDiariaPct;
+
+                e.Value = moraDiariaMonto.ToString("C0", new System.Globalization.CultureInfo("es-AR"));
+                e.FormattingApplied = true;
+
+                // opcional: título amigable
+                ColumnaPorcentajeAumentoMora.HeaderText = "Mora diaria ($)";
+                return;
             }
         }
+
+
+
 
         // ================== Click en celdas (Rescindir) ==================
         private void dataGridContratos_CellContentClick(object sender, DataGridViewCellEventArgs e)

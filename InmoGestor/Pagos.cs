@@ -13,6 +13,35 @@ namespace InmoGestor
 {
     public partial class Pagos : Form
     {
+
+        private RegistrarPago registrarPagoForm;
+        private List<Pagos> _pagos = new List<Pagos>();
+
+
+        private static bool IsOpen(Form f) => f != null && !f.IsDisposed && f.Visible;
+        private bool HayFormAbierto() =>
+            IsOpen(registrarPagoForm);
+
+        private void FocusFormAbierto()
+        {
+            if (IsOpen(registrarPagoForm)) { registrarPagoForm.BringToFront(); registrarPagoForm.Focus(); return; }
+        }
+
+        private void Pagos_Resize(object sender, EventArgs e) => CentrarFormAbierto();
+
+        private void CentrarFormAbierto()
+        {
+            Form f = IsOpen(registrarPagoForm) ? (Form)registrarPagoForm
+                  : null;
+
+            if (f == null) return;
+
+            f.Location = new Point(
+                (ContenedorPagos.Width - f.Width) / 2,
+                (ContenedorPagos.Height - f.Height) / 2
+            );
+        }
+
         // ====== Servicios de negocio ======
         private readonly CN_Contrato _cnContrato = new CN_Contrato();
         private readonly CN_Cuota _cnCuota = new CN_Cuota();
@@ -291,10 +320,17 @@ namespace InmoGestor
                     var ok = _cnPago.ConfirmarPago(pagoIdDeTag, RolUsuarioActual);
                     if (ok)
                     {
-                        MessageBox.Show("Pago confirmado correctamente.", "Pagos",
+                        MessageBox.Show("Pago confirmado correctamente.", "Registrar pago",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        CargarPagosDeContratoSeleccionado();
+
+                        // aseguramos que el formulario se cierre inmediatamente
+                        this.BeginInvoke(new Action(() =>
+                        {
+                            this.DialogResult = DialogResult.OK;
+                            this.Close();
+                        }));
                     }
+
                     else
                     {
                         MessageBox.Show("No se pudo confirmar el pago.", "Pagos",
@@ -554,17 +590,28 @@ namespace InmoGestor
 
         private void BRegistrarPago_Click(object sender, EventArgs e)
         {
-            // Abre el formulario RegistrarPago
-            var form = new RegistrarPago();
+            if (HayFormAbierto()) { FocusFormAbierto(); return; }
 
-            // Pasamos datos de contexto (usuario y rol actual)
-            form.UsuarioIdActual = 1;          // reemplazá por el id real si lo tenés
-            form.RolUsuarioActual = RolUsuarioActual;
+            registrarPagoForm = new RegistrarPago
+            {
+                TopLevel = false,
+                FormBorderStyle = FormBorderStyle.None
+            };
+            ContenedorPagos.Controls.Add(registrarPagoForm);
 
-            form.ShowDialog();
+            registrarPagoForm.FormClosed += (_, __) =>
+            {
+                ContenedorPagos.Controls.Remove(registrarPagoForm);
+                registrarPagoForm.Dispose();
+                registrarPagoForm = null;
+            };
 
-            // Actualizar la vista de pagos al cerrar
-            CargarPagosDeContratoSeleccionado();
+            registrarPagoForm.Show();
+            registrarPagoForm.BringToFront();
+            registrarPagoForm.Focus();
+            CentrarFormAbierto();
         }
+
+
     }
 }
