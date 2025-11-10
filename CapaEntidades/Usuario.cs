@@ -4,7 +4,10 @@ namespace CapaEntidades
 {
     public class Usuario
     {
-        // PK (en BD: PRIMARY KEY (dni))
+        // PK (usuario.usuario_id, IDENTITY)
+        public int UsuarioId { get; set; }
+
+        // FK a persona(dni)
         public string Dni { get; set; } = string.Empty;
 
         // Credenciales / estado

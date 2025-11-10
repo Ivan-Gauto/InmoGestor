@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaNegocio;
+// using CapaEntidades; // solo si necesitás tipos del DTO
 
 namespace InmoGestor
 {
@@ -21,7 +18,9 @@ namespace InmoGestor
             this.Resize += Contratos_Resize;
         }
 
+        // ================== Helpers de ventana embebida ==================
         private static bool IsOpen(Form f) => f != null && !f.IsDisposed && f.Visible;
+
         private bool HayFormAbierto() =>
             IsOpen(agregarContratoForm) || IsOpen(editarContratoForm);
 
@@ -29,7 +28,6 @@ namespace InmoGestor
         {
             if (IsOpen(agregarContratoForm)) { agregarContratoForm.BringToFront(); agregarContratoForm.Focus(); return; }
             if (IsOpen(editarContratoForm)) { editarContratoForm.BringToFront(); editarContratoForm.Focus(); return; }
-
         }
 
         private void Contratos_Resize(object sender, EventArgs e) => CentrarFormAbierto();
@@ -48,6 +46,7 @@ namespace InmoGestor
             );
         }
 
+        // ================== Alta de contrato (panel embebido) ==================
         private void BAgregarContrato_Click(object sender, EventArgs e)
         {
             if (HayFormAbierto()) { FocusFormAbierto(); return; }
@@ -57,13 +56,17 @@ namespace InmoGestor
                 TopLevel = false,
                 FormBorderStyle = FormBorderStyle.None
             };
+
             ContenedorContratos.Controls.Add(agregarContratoForm);
 
-            agregarContratoForm.FormClosed += (_, __) =>
+            // Importante: parámetros con nombre (evita el error de tuplas) y dentro de un método
+            agregarContratoForm.FormClosed += (object s, FormClosedEventArgs args) =>
             {
                 ContenedorContratos.Controls.Remove(agregarContratoForm);
                 agregarContratoForm.Dispose();
                 agregarContratoForm = null;
+                // refrescamos listado y KPIs al cerrar (por si se creó contrato)
+                CargarContratosYKpis();
             };
 
             agregarContratoForm.Show();
@@ -72,54 +75,118 @@ namespace InmoGestor
             CentrarFormAbierto();
         }
 
+        // ================== Carga inicial ==================
+        private void Contratos_Load(object sender, EventArgs e)
+        {
+            ConfigurarGrid();
+            // El Designer ya engancha CellFormatting? Si no, descomentá la línea de abajo:
+            // this.dataGridContratos.CellFormatting += dataGridContratos_CellFormatting;
 
+            // Carga inicial: solo vigentes (1). Para todos, pasá null.
+            CargarContratosYKpis(1);
+        }
 
+        // ================== Grid: columnas -> propiedades del DTO ==================
+        private void ConfigurarGrid()
+        {
+            dataGridContratos.AutoGenerateColumns = false;
+
+            ColumnaId.DataPropertyName = "ContratoId";
+            ColumnaInquilino.DataPropertyName = "InquilinoNombre";       // "Apellido, Nombre (DNI)"
+            ColumnaDireccion.DataPropertyName = "Direccion";             // dirección del inmueble
+            ColumnaInmueble.DataPropertyName = "InmuebleEtiqueta";       // ej. "Depto 2 ambientes"
+            ColumnaPrecioCuotas.DataPropertyName = "PrecioCuota";
+            ColumnaCuotas.DataPropertyName = "CantidadCuotas";
+            ColumnaInicio.DataPropertyName = "FechaInicio";
+            ColumnaFin.DataPropertyName = "FechaFin";
+            ColumnaPorcentajeAumentoMora.DataPropertyName = "MoraDiariaPct"; // decimal ya convertido a %
+
+            // Si querés alinear algunos campos:
+            ColumnaPrecioCuotas.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            ColumnaCuotas.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            ColumnaInicio.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            ColumnaFin.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            ColumnaPorcentajeAumentoMora.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        }
+
+        // ================== Carga de datos ==================
+        private void CargarContratos(int? estado = null)
+        {
+            var cn = new CN_Contrato();
+            var filas = cn.ListarParaGrid(estado);     // List<ContratoGridRow> con las props mapeadas arriba
+            dataGridContratos.DataSource = filas;
+        }
+
+        private void CargarKpis()
+        {
+            var cn = new CN_Contrato();
+            var (total, activos, porVencer) = cn.ObtenerKpis(30); // ← deconstrucción
+
+            label_CantContratos.Text = total.ToString();
+            label_CantActivos.Text = activos.ToString();
+            label_CantXVencer.Text = porVencer.ToString();
+        }
+
+        private void CargarContratosYKpis(int? estado = null)
+        {
+            CargarContratos(estado);
+            CargarKpis();
+        }
+
+        // ================== Formateo visual ==================
+        private void dataGridContratos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.Value == null) return;
+            var colName = dataGridContratos.Columns[e.ColumnIndex].Name;
+
+            if (colName == nameof(ColumnaPrecioCuotas))
+            {
+                if (e.Value is decimal dec) e.Value = dec.ToString("C"); // moneda local
+            }
+            else if (colName == nameof(ColumnaInicio) || colName == nameof(ColumnaFin))
+            {
+                if (e.Value is DateTime dt) e.Value = dt.ToString("dd/MM/yyyy");
+            }
+            else if (colName == nameof(ColumnaPorcentajeAumentoMora))
+            {
+                // Si viene como 0.15 (15), mostrás "15 %"
+                if (e.Value is decimal p) e.Value = p.ToString("0.##' %'");
+            }
+        }
+
+        // ================== Click en celdas (Rescindir) ==================
         private void dataGridContratos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
-            var colName = dataGridContratos.Columns[e.ColumnIndex].Name;
 
-            if (HayFormAbierto()) { FocusFormAbierto(); return; }
+            var clickedCol = dataGridContratos.Columns[e.ColumnIndex].Name;
 
-            if (colName == "ColumnaEditar")
+            // Solo tenemos botón "Rescindir" en el diseño actual
+            if (clickedCol != nameof(ColumnaRescindir)) return;
+
+            // Obtenemos la fila bindeada (DTO con ContratoId)
+            var rowData = dataGridContratos.Rows[e.RowIndex].DataBoundItem;
+            if (rowData == null) return;
+
+            // Usamos dynamic para no acoplar al tipo exacto del DTO
+            int contratoId = (int)rowData.GetType().GetProperty("ContratoId").GetValue(rowData, null);
+
+            var r = MessageBox.Show("¿Rescindir (anular) el contrato seleccionado?",
+                                    "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (r != DialogResult.Yes) return;
+
+            var cn = new CN_Contrato();
+            if (cn.AnularContrato(contratoId, out string msg))
             {
-                editarContratoForm = new EditarContrato
-                {
-                    TopLevel = false,
-                    FormBorderStyle = FormBorderStyle.None
-                };
-                ContenedorContratos.Controls.Add(editarContratoForm);
-
-                editarContratoForm.FormClosed += (_, __) =>
-                {
-                    ContenedorContratos.Controls.Remove(editarContratoForm);
-                    editarContratoForm.Dispose();
-                    editarContratoForm = null;
-                };
-
-                editarContratoForm.Show();
-                editarContratoForm.BringToFront();
-                editarContratoForm.Focus();
-                CentrarFormAbierto();
+                MessageBox.Show("Contrato anulado correctamente.", "OK",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CargarContratosYKpis(); // refrescar grilla y KPIs
             }
-            else if (colName == "ColumnaEliminar")
+            else
             {
-                var result = MessageBox.Show("¿Está seguro de que desea eliminar este inquilino?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (result == DialogResult.Yes)
-                {
-                    dataGridContratos.Rows.RemoveAt(e.RowIndex);
-                }
+                MessageBox.Show($"No se pudo anular.\n{msg}", "Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void Contratos_Load(object sender, EventArgs e)
-        {
-            dataGridContratos.Rows.Add("1", "Juan Pérez", "Av. Corrientes 1200", "Depto 2B", "120000", "12", "01/01/2025", "01/01/2026");
-            dataGridContratos.Rows.Add("2", "María López", "San Martín 850", "Casa 3", "95000", "10", "15/02/2025", "15/12/2025");
-            dataGridContratos.Rows.Add("3", "Carlos Gómez", "Av. Rivadavia 3000", "Local A", "180000", "24", "01/03/2025", "01/03/2027");
-            dataGridContratos.Rows.Add("4", "Laura Fernández", "Belgrano 455", "Depto 1A", "110000", "18", "10/04/2025", "10/10/2026");
-            dataGridContratos.Rows.Add("5", "Diego Martínez", "Mitre 2200", "PH Fondo", "135000", "12", "01/05/2025", "01/05/2026");
-        }
-
     }
 }

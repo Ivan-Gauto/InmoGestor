@@ -20,6 +20,13 @@ namespace InmoGestor
             InitializeComponent();
         }
 
+        private void Login_Load(object sender, EventArgs e)
+        {
+            // Ajustes de UX
+            this.AcceptButton = BIngresar;  // Enter = click en Ingresar
+            TIngresoDNI.Focus();
+        }
+
         private void BIngresar_Click(object sender, EventArgs e)
         {
             BIngresar.Enabled = false;

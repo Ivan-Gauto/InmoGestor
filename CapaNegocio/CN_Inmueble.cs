@@ -1,6 +1,7 @@
 ﻿using CapaDatos;
 using CapaEntidades;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text; // Para las validaciones
 
 namespace CapaNegocio
@@ -14,6 +15,8 @@ namespace CapaNegocio
             return objDatos.Listar(incluirInactivos);
         }
 
+
+
         public bool ReactivarLogico(int idInmueble)
         {
             return objDatos.ReactivarLogico(idInmueble);
@@ -22,6 +25,18 @@ namespace CapaNegocio
         public List<Inmueble> ListarPorPropietario(string dni, int rolId)
         {
             return objDatos.ListarPorPropietario(dni, rolId);
+        }
+
+        /// <summary>
+        /// Devuelve los inmuebles activos y disponibles para alquilar.
+        /// </summary>
+        public List<Inmueble> ListarDisponibles()
+        {
+            CD_Inmueble cd = new CD_Inmueble();
+            List<Inmueble> lista = cd.ListarDisponibles();
+
+            // (Opcional) Ordenar por dirección para una mejor UX en el combo.
+            return lista?.OrderBy(i => i.Direccion).ToList() ?? new List<Inmueble>();
         }
 
         public List<TipoInmueble> ListarTiposInmueble()
