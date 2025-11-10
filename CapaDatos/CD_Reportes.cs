@@ -43,6 +43,57 @@ namespace CapaDatos
             }
         }
 
+        public DataTable ObtenerEstadoDeCuenta(int contratoId, DateTime fechaInicio, DateTime fechaFin)
+        {
+            DataTable dt = new DataTable();
+            using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    string query = @"
+                SELECT 
+                    c.periodo AS Periodo,
+                    p.fecha_pago AS Fecha,
+                    'Cuota ' + CAST(c.nro_cuota AS VARCHAR) + ' - ' + c.periodo AS DetalleConcepto,
+                    c.importe_base + c.otros_adicionales_total AS Debe,
+                    p.monto_total AS Haber,
+                    CASE 
+                        WHEN c.estado = 0 THEN 'Pendiente'
+                        WHEN c.estado = 1 THEN 'Pagada (Pend. Aprob.)'
+                        WHEN c.estado = 2 THEN 'Pagada (Confirmada)'
+                        WHEN c.estado = 3 THEN 'Anulada'
+                        ELSE 'Otro'
+                    END AS EstadoDelPago
+                FROM 
+                    dbo.cuota AS c
+                LEFT JOIN 
+                    dbo.pago AS p ON c.cuota_id = p.cuota_id AND p.estado IN (1, 2)
+                WHERE 
+                    c.contrato_id = @contratoId
+                    -- --- LÍNEA AÑADIDA ---
+                    AND c.fecha_venc BETWEEN @fechaInicio AND @fechaFin
+                ORDER BY 
+                    c.periodo ASC;
+            ";
+
+                    SqlCommand cmd = new SqlCommand(query, oconexion);
+                    cmd.Parameters.AddWithValue("@contratoId", contratoId);
+                    // --- LÍNEAS AÑADIDAS ---
+                    cmd.Parameters.AddWithValue("@fechaInicio", fechaInicio.Date);
+                    cmd.Parameters.AddWithValue("@fechaFin", fechaFin.Date);
+
+                    oconexion.Open();
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error en CD_Reportes (EstadoDeCuenta): " + ex.Message);
+                }
+                return dt;
+            }
+        }
+
         public List<LogUsuario> ListarAuditoriaUsuarios(string adminDni, DateTime inicio, DateTime fin)
         {
             var lista = new List<LogUsuario>();

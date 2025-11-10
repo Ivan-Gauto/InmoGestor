@@ -8,85 +8,181 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using CapaNegocio;
+using CapaEntidades;
 
 namespace InmoGestor
 {
     public partial class ReportesOperador : Form
     {
+        private CN_Reportes negocioReportes = new CN_Reportes();
+        private CN_PersonaRolCliente negocioClientes = new CN_PersonaRolCliente();
+        private CN_Contrato negocioContrato = new CN_Contrato();
+
+        private List<PersonaRolCliente> inquilinosActivos = new List<PersonaRolCliente>();
+        private List<ContratoAlquiler> contratosActivos = new List<ContratoAlquiler>();
+
         public ReportesOperador()
         {
             InitializeComponent();
-        }
 
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // Paso 1: Obtener el texto del item seleccionado en el ComboBox.
-            string reporteSeleccionado = comboBox2.SelectedItem?.ToString();
+            this.Load += new System.EventHandler(this.ReportesOperador_Load);
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.BDescargarcvs.Click += new System.EventHandler(this.BDescargarcvs_Click);
 
-            // Si no hay nada seleccionado (raro, pero puede pasar), no hacer nada.
-            if (string.IsNullOrEmpty(reporteSeleccionado))
-            {
-                return;
-            }
+            this.cmbSeleccionarInquilino.SelectedIndexChanged += new System.EventHandler(this.cmbSeleccionarInquilino_SelectedIndexChanged);
+            this.cmbSeleccionarContrato.SelectedIndexChanged += new System.EventHandler(this.cmbSeleccionarContrato_SelectedIndexChanged);
 
-            // Paso 2: Ocultar TODOS los DataGridViews.
-            dgvEstadoDeCuenta.Visible = false;
-            dgvInquilinosMorosos.Visible = false;
-            dgvInmueblesDisponibles.Visible = false;
-
-            // Aquí puedes añadir más lógica para habilitar/deshabilitar filtros
-            // Por ejemplo: txtSeleccionarInquilino.Enabled = true;
-
-            // Paso 3: Usar un switch (o if/else) para decidir qué DataGridView mostrar.
-            switch (reporteSeleccionado)
-            {
-                case "Estado de Cuenta del Inquilino":
-                    // Hacemos visible solo la grilla que corresponde.
-                    dgvEstadoDeCuenta.Visible = true;
-                    // TODO: Llamar al método CargarEstadoDeCuenta() aquí si quieres que se cargue automáticamente
-                    break;
-
-                case "Inquilinos Morosos":
-                    dgvInquilinosMorosos.Visible = true;
-                    // TODO: Llamar al método CargarInquilinosMorosos()
-                    break;
-
-                case "Inmuebles Disponibles":
-                    dgvInmueblesDisponibles.Visible = true;
-                    // TODO: Llamar al método CargarInmueblesDisponibles()
-                    break;
-            }
+            this.dtpInicio.ValueChanged += new System.EventHandler(this.Filtros_Reporte_Changed);
+            this.dtpFin.ValueChanged += new System.EventHandler(this.Filtros_Reporte_Changed);
         }
 
         private void ReportesOperador_Load(object sender, EventArgs e)
         {
-            // =================================================================
-            // CÓDIGO MODIFICADO: Configuración de Reporte por Defecto
-            // =================================================================
+            ConfigurarGrids();
 
-            // 1. Cargar las opciones disponibles en el ComboBox (si no están ya en el Diseñador)
+            CargarComboInquilinos();
+
             comboBox2.Items.Clear();
             comboBox2.Items.Add("Estado de Cuenta del Inquilino");
             comboBox2.Items.Add("Inquilinos Morosos");
             comboBox2.Items.Add("Inmuebles Disponibles");
 
-            // 2. Forzar la selección del primer elemento.
-            // Esto dispara el evento comboBox2_SelectedIndexChanged, haciendo visible el primer DataGrid.
             if (comboBox2.Items.Count > 0)
             {
-                comboBox2.SelectedIndex = 0; // Selecciona "Estado de Cuenta del Inquilino"
+                comboBox2.SelectedIndex = 0;
+            }
+        }
+
+        private void CargarComboInquilinos()
+        {
+            inquilinosActivos = negocioClientes.ListarClientes(TipoRolCliente.Inquilino, EstadoFiltro.Activos);
+
+            var dsInquilinos = inquilinosActivos
+                .Where(x => x.oPersona != null)
+                .Select(x => new {
+                    Dni = x.Dni,
+                    DisplayText = $"{x.oPersona.Apellido}, {x.oPersona.Nombre} ({x.Dni})"
+                })
+                .ToList();
+
+            cmbSeleccionarInquilino.ValueMember = "Dni";
+            cmbSeleccionarInquilino.DisplayMember = "DisplayText";
+            cmbSeleccionarInquilino.DataSource = dsInquilinos;
+
+            if (dsInquilinos.Any())
+            {
+                cmbSeleccionarInquilino.SelectedIndex = 0;
+            }
+        }
+
+        private void cmbSeleccionarInquilino_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbSeleccionarInquilino.SelectedValue == null) return;
+
+            string dniInquilino = cmbSeleccionarInquilino.SelectedValue.ToString();
+
+            contratosActivos = negocioContrato.ListarContratos(estado: 1, dniInquilino: dniInquilino);
+
+            var dsContratos = contratosActivos.Select(c => new {
+                ContratoId = c.ContratoId,
+                DisplayText = $"Contrato #{c.ContratoId} ({c.oInmueble.Direccion})"
+            }).ToList();
+
+            cmbSeleccionarContrato.ValueMember = "ContratoId";
+            cmbSeleccionarContrato.DisplayMember = "DisplayText";
+            cmbSeleccionarContrato.DataSource = dsContratos;
+
+            if (dsContratos.Any())
+            {
+                cmbSeleccionarContrato.SelectedIndex = 0;
+            }
+            else
+            {
+                cmbSeleccionarContrato.DataSource = null;
+                CargarEstadoDeCuenta();
+            }
+        }
+
+        private void cmbSeleccionarContrato_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarEstadoDeCuenta();
+        }
+
+        private void Filtros_Reporte_Changed(object sender, EventArgs e)
+        {
+            CargarEstadoDeCuenta();
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox2.SelectedItem == null) return;
+            string reporteSeleccionado = comboBox2.SelectedItem.ToString();
+
+            dgvEstadoDeCuenta.Visible = false;
+            dgvInquilinosMorosos.Visible = false;
+            dgvInmueblesDisponibles.Visible = false;
+
+            cmbSeleccionarInquilino.Visible = false;
+            cmbSeleccionarContrato.Visible = false;
+            dtpInicio.Visible = false;
+            dtpFin.Visible = false;
+
+            switch (reporteSeleccionado)
+            {
+                case "Estado de Cuenta del Inquilino":
+                    dgvEstadoDeCuenta.Visible = true;
+                    cmbSeleccionarInquilino.Visible = true;
+                    cmbSeleccionarContrato.Visible = true;
+                    dtpInicio.Visible = true;
+                    dtpFin.Visible = true;
+                    CargarEstadoDeCuenta();
+                    break;
+
+                case "Inquilinos Morosos":
+                    dgvInquilinosMorosos.Visible = true;
+                    dtpInicio.Visible = true;
+                    dtpFin.Visible = true;
+                    break;
+
+                case "Inmuebles Disponibles":
+                    dgvInmueblesDisponibles.Visible = true;
+                    break;
+            }
+        }
+
+        private void CargarEstadoDeCuenta()
+        {
+            if (!dgvEstadoDeCuenta.Visible) return;
+
+            if (cmbSeleccionarContrato.SelectedValue == null)
+            {
+                dgvEstadoDeCuenta.DataSource = null;
+                return;
             }
 
-            // NOTA: Si necesitas que los datos del reporte se muestren al cargar,
-            // la lógica de carga de datos (por ejemplo, al presionar "Generar Vista Previa")
-            // debe ser llamada aquí, después de establecer el SelectedIndex.
+            int contratoId = (int)cmbSeleccionarContrato.SelectedValue;
+            DateTime fechaInicio = dtpInicio.Value.Date;
+            DateTime fechaFin = dtpFin.Value.Date;
+
+            DataTable dt = negocioReportes.ObtenerEstadoDeCuenta(contratoId, fechaInicio, fechaFin);
+            dgvEstadoDeCuenta.DataSource = dt;
+        }
+
+        private void ConfigurarGrids()
+        {
+            dgvEstadoDeCuenta.AutoGenerateColumns = false;
+
+            ColumnaPeriodo.DataPropertyName = "Periodo";
+            ColumnaFecha.DataPropertyName = "Fecha";
+            ColumnaDetalle.DataPropertyName = "DetalleConcepto";
+            ColumnaDebe.DataPropertyName = "Debe";
+            ColumnaHaber.DataPropertyName = "Haber";
+            ColumnaEstadoPago.DataPropertyName = "EstadoDelPago";
         }
 
         private void Descargarcvs(DataGridView dgv)
         {
-            // NO se definen constantes para exclusión, ya que no hay botones de acción.
-
-            // 1. Configurar el cuadro de diálogo Guardar
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "Archivos CSV (*.csv)|*.csv";
             sfd.FileName = "Reporte_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".csv";
@@ -95,18 +191,14 @@ namespace InmoGestor
             {
                 try
                 {
-                    // 2. Construir el contenido
                     StringBuilder sb = new StringBuilder();
 
-                    // 3. Añadir Encabezados (TODAS las columnas visibles)
                     for (int i = 0; i < dgv.Columns.Count; i++)
                     {
-                        // Usamos ; como separador
                         sb.Append(dgv.Columns[i].HeaderText + ";");
                     }
-                    sb.Append("\r\n"); // Salto de línea
+                    sb.Append("\r\n");
 
-                    // 4. Añadir Filas de Datos
                     foreach (DataGridViewRow row in dgv.Rows)
                     {
                         if (!row.IsNewRow)
@@ -114,15 +206,13 @@ namespace InmoGestor
                             for (int i = 0; i < dgv.Columns.Count; i++)
                             {
                                 string valor = row.Cells[i].Value != null ? row.Cells[i].Value.ToString() : "";
-                                // Limpiar el valor de ; y saltos de línea
                                 valor = valor.Replace(";", ",").Replace("\n", " ").Replace("\r", "");
                                 sb.Append(valor + ";");
                             }
-                            sb.Append("\r\n"); // Salto de línea
+                            sb.Append("\r\n");
                         }
                     }
 
-                    // 5. Guardar el archivo con codificación UTF8
                     File.WriteAllText(sfd.FileName, sb.ToString(), Encoding.UTF8);
 
                     MessageBox.Show("Reporte exportado exitosamente.", "Exportación CSV Exitosa",
@@ -138,17 +228,14 @@ namespace InmoGestor
 
         private void BDescargarcvs_Click(object sender, EventArgs e)
         {
-            // Si el DataGrid de Estado de Cuenta está visible
             if (dgvEstadoDeCuenta.Visible)
             {
                 Descargarcvs(dgvEstadoDeCuenta);
             }
-            // Si el DataGrid de Inquilinos Morosos está visible
             else if (dgvInquilinosMorosos.Visible)
             {
                 Descargarcvs(dgvInquilinosMorosos);
             }
-            // Si el DataGrid de Inmuebles Disponibles está visible
             else if (dgvInmueblesDisponibles.Visible)
             {
                 Descargarcvs(dgvInmueblesDisponibles);
