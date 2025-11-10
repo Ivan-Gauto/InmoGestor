@@ -38,7 +38,6 @@ namespace InmoGestor
                 string dniText = TIngresoDNI.Text.Trim();
                 string clave = TIngresoClave.Text.Trim();
 
-                // --- Tus validaciones (están bien) ---
                 if (string.IsNullOrWhiteSpace(dniText))
                 {
                     MessageBox.Show("Debe completar su dni", "Atención",
@@ -55,7 +54,7 @@ namespace InmoGestor
                     return;
                 }
 
-                // (Considera ajustar esta validación si tu DNI puede tener otro formato)
+                // (Tus validaciones de Regex están bien)
                 if (!long.TryParse(dniText, out _) || dniText.Length != 8)
                 {
                     MessageBox.Show("El DNI debe ser numérico y tener 8 dígitos.", "Atención",
@@ -63,8 +62,6 @@ namespace InmoGestor
                     TIngresoDNI.Focus();
                     return;
                 }
-
-                // (Considera ajustar esta validación si tu clave tiene otro formato)
                 if (!Regex.IsMatch(clave, @"^\d{8,}$"))
                 {
                     MessageBox.Show("La contraseña debe tener al menos 8 dígitos numéricos.", "Atención",
@@ -73,16 +70,12 @@ namespace InmoGestor
                     return;
                 }
 
-                // --- Validación de Credenciales ---
-                // Mejora Sugerida: Es más eficiente crear un método
-                // CN_Usuario.ValidarCredenciales(dni, clave) que haga la consulta
-                // filtrando en la base de datos, en lugar de traer todos los usuarios.
-                List<Usuario> usuarios = new CN_Usuario().Listar(RolUsuarioFiltro.Todos, EstadoFiltro.Todos);
+                // --- ¡AQUÍ ESTÁ EL CAMBIO! ---
+                // 1. Llamamos al nuevo método eficiente
+                CN_Usuario cnUsuario = new CN_Usuario();
+                Usuario oUsuario = cnUsuario.ValidarUsuario(dniText, clave);
 
-                Usuario oUsuario = usuarios.FirstOrDefault(
-                    u => string.Equals(u.Dni?.Trim(), dniText, StringComparison.Ordinal)
-                      && string.Equals(u.Clave, clave, StringComparison.Ordinal)); // CUIDADO: Comparar claves en texto plano es inseguro. Deberías usar hashes.
-
+                // 2. Verificamos el resultado
                 if (oUsuario == null)
                 {
                     MessageBox.Show("DNI o Clave incorrecta.", "Atención",
@@ -97,10 +90,11 @@ namespace InmoGestor
                     return;
                 }
 
-                // --- ¡ÉXITO! Guardar Sesión y Abrir Formulario Principal ---
-                SesionUsuario.IniciarSesion(oUsuario); // <-- LÍNEA AGREGADA
+                // --- ¡ÉXITO! ---
+                // oUsuario AHORA SÍ CONTIENE EL 'UsuarioId' (ej. 1, 2, 3...)
+                SesionUsuario.IniciarSesion(oUsuario);
 
-                var form = new Inicio(oUsuario); // Ya le pasabas el usuario a Inicio, ¡perfecto!
+                var form = new Inicio(oUsuario);
                 form.FormClosing += frm_closing;
                 form.Show();
                 this.Hide();
@@ -109,8 +103,11 @@ namespace InmoGestor
             {
                 MessageBox.Show("No se pudo validar el usuario.\n" + ex.Message,
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                // Aquí deberías registrar el error en tu tabla log_error
-                // CN_Log.RegistrarError(0, "Login", "BIngresar_Click", ex.Message); // (0 si no sabes el usuario_id)
+
+                // --- REGISTRO DE ERROR ---
+                // Ahora esto funcionará, porque si el login falla (ej. error de BD),
+                // el usuarioId será null, no 0.
+                new CN_Reportes().RegistrarError(null, "Login", "BIngresar_Click", ex);
             }
             finally
             {

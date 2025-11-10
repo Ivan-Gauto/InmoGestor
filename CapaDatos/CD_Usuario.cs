@@ -92,6 +92,68 @@ namespace CapaDatos
             return lista;
         }
 
+        public Usuario ValidarUsuario(string dni, string clave)
+        {
+            Usuario usuarioLogueado = null;
+            using (var cn = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    // Esta consulta SÍ selecciona el 'usuario_id'
+                    string query = @"
+                SELECT 
+                    u.usuario_id, u.dni, u.estado, u.rol_usuario_id, 
+                    p.nombre, p.apellido, p.correo_electronico,
+                    r.nombre as RolNombre
+                FROM dbo.usuario u
+                JOIN dbo.persona p ON u.dni = p.dni
+                JOIN dbo.rol_usuario r ON u.rol_usuario_id = r.rol_usuario_id
+                WHERE 
+                    u.dni = @dni AND u.clave = @clave";
+
+                    SqlCommand cmd = new SqlCommand(query, cn);
+                    cmd.Parameters.AddWithValue("@dni", dni);
+                    cmd.Parameters.AddWithValue("@clave", clave);
+                    cn.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr.Read())
+                        {
+                            usuarioLogueado = new Usuario()
+                            {
+                                // --- ¡AQUÍ ESTÁ LA CORRECCIÓN! ---
+                                UsuarioId = Convert.ToInt32(dr["usuario_id"]),
+
+                                Dni = dr["dni"].ToString(),
+                                Estado = Convert.ToInt32(dr["estado"]),
+                                RolUsuarioId = Convert.ToInt32(dr["rol_usuario_id"]),
+
+                                oRolUsuario = new RolUsuario()
+                                {
+                                    RolUsuarioId = Convert.ToInt32(dr["rol_usuario_id"]),
+                                    Nombre = dr["RolNombre"].ToString()
+                                },
+                                oPersona = new Persona()
+                                {
+                                    Dni = dr["dni"].ToString(),
+                                    Nombre = dr["nombre"].ToString(),
+                                    Apellido = dr["apellido"].ToString(),
+                                    CorreoElectronico = dr["correo_electronico"].ToString()
+                                }
+                            };
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error en CD_Usuario.ValidarUsuario: " + ex.Message);
+                    return null;
+                }
+            }
+            return usuarioLogueado; // Devuelve el objeto COMPLETO o NULL si no lo encuentra
+        }
+
         public (int Total, int Admins, int Gerentes, int Operadores, int Activos, int Inactivos) ObtenerEstadisticas()
         {
             int total = 0, admins = 0, gerentes = 0, operadores = 0, activos = 0, inactivos = 0;
