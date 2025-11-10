@@ -400,6 +400,7 @@
             this.dateTimePicker_Inicio.Name = "dateTimePicker_Inicio";
             this.dateTimePicker_Inicio.Size = new System.Drawing.Size(198, 23);
             this.dateTimePicker_Inicio.TabIndex = 14;
+            this.dateTimePicker_Inicio.ValueChanged += new System.EventHandler(this.DateInputs_Changed);
             // 
             // tableLayoutPanel7
             // 
@@ -428,6 +429,7 @@
             this.dateTimePicker_fin.Name = "dateTimePicker_fin";
             this.dateTimePicker_fin.Size = new System.Drawing.Size(198, 23);
             this.dateTimePicker_fin.TabIndex = 14;
+            this.dateTimePicker_fin.ValueChanged += new System.EventHandler(this.DateInputs_Changed);
             // 
             // tableLayoutPanel8
             // 
@@ -545,6 +547,7 @@
             this.BIngresar.TabIndex = 19;
             this.BIngresar.Text = "Agregar";
             this.BIngresar.UseVisualStyleBackColor = false;
+            this.BIngresar.Click += new System.EventHandler(this.BIngresar_Click);
             // 
             // AgregarContrato
             // 

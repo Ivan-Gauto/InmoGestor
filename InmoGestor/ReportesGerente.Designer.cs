@@ -32,68 +32,59 @@
             System.Windows.Forms.Label label6;
             System.Windows.Forms.Label label7;
             System.Windows.Forms.Label label2;
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportesGerente));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dgvOcupacionYVacancia = new System.Windows.Forms.DataGridView();
+            this.dgvRendimientoOperadores = new System.Windows.Forms.DataGridView();
+            this.ColumnaOperador = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnaContratosNuevos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnaContratosRenovados = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnaIngresos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnaDeuda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
-            this.TNacimiento = new System.Windows.Forms.DateTimePicker();
-            this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.label12 = new System.Windows.Forms.Label();
             this.BDescargarcvs = new System.Windows.Forms.Button();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ColumnaDeuda = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnaIngresos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnaContratosRenovados = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnaContratosNuevos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnaOperador = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvRendimientoOperadores = new System.Windows.Forms.DataGridView();
-            this.ColumnaAnular = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ColumnaConfirmar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ColumnaAdicionalOtros = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnaAdicionalMora = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnaFechaPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnaInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnaMonto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnaPeriodo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnaFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvPagos = new System.Windows.Forms.DataGridView();
+            this.ColumnaInmueble = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnaTipoInmueble = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnaDiasOcupados = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnaDiasVacantes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnaPorcentajeOcupacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             label1 = new System.Windows.Forms.Label();
             label6 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOcupacionYVacancia)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRendimientoOperadores)).BeginInit();
             this.panel3.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -101,8 +92,6 @@
             this.tableLayoutPanel10.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRendimientoOperadores)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPagos)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -184,7 +173,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.panel1.Controls.Add(this.dgvPagos);
+            this.panel1.Controls.Add(this.dgvOcupacionYVacancia);
             this.panel1.Controls.Add(this.dgvRendimientoOperadores);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -194,6 +183,149 @@
             this.panel1.Padding = new System.Windows.Forms.Padding(20);
             this.panel1.Size = new System.Drawing.Size(887, 152);
             this.panel1.TabIndex = 6;
+            // 
+            // dgvOcupacionYVacancia
+            // 
+            this.dgvOcupacionYVacancia.AllowUserToAddRows = false;
+            this.dgvOcupacionYVacancia.AllowUserToOrderColumns = true;
+            this.dgvOcupacionYVacancia.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvOcupacionYVacancia.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.dgvOcupacionYVacancia.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvOcupacionYVacancia.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvOcupacionYVacancia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            this.dgvOcupacionYVacancia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOcupacionYVacancia.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnaInmueble,
+            this.ColumnaTipoInmueble,
+            this.ColumnaDiasOcupados,
+            this.ColumnaDiasVacantes,
+            this.ColumnaPorcentajeOcupacion});
+            this.dgvOcupacionYVacancia.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvOcupacionYVacancia.EnableHeadersVisualStyles = false;
+            this.dgvOcupacionYVacancia.GridColor = System.Drawing.Color.Teal;
+            this.dgvOcupacionYVacancia.Location = new System.Drawing.Point(20, 65);
+            this.dgvOcupacionYVacancia.Margin = new System.Windows.Forms.Padding(0);
+            this.dgvOcupacionYVacancia.Name = "dgvOcupacionYVacancia";
+            this.dgvOcupacionYVacancia.ReadOnly = true;
+            this.dgvOcupacionYVacancia.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvOcupacionYVacancia.RowHeadersVisible = false;
+            this.dgvOcupacionYVacancia.RowHeadersWidth = 62;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvOcupacionYVacancia.RowsDefaultCellStyle = dataGridViewCellStyle23;
+            this.dgvOcupacionYVacancia.Size = new System.Drawing.Size(847, 67);
+            this.dgvOcupacionYVacancia.TabIndex = 39;
+            this.dgvOcupacionYVacancia.Visible = false;
+            // 
+            // dgvRendimientoOperadores
+            // 
+            this.dgvRendimientoOperadores.AllowUserToAddRows = false;
+            this.dgvRendimientoOperadores.AllowUserToOrderColumns = true;
+            this.dgvRendimientoOperadores.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvRendimientoOperadores.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.dgvRendimientoOperadores.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvRendimientoOperadores.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle24.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRendimientoOperadores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle24;
+            this.dgvRendimientoOperadores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRendimientoOperadores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnaOperador,
+            this.ColumnaContratosNuevos,
+            this.ColumnaContratosRenovados,
+            this.ColumnaIngresos,
+            this.ColumnaDeuda});
+            this.dgvRendimientoOperadores.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvRendimientoOperadores.EnableHeadersVisualStyles = false;
+            this.dgvRendimientoOperadores.GridColor = System.Drawing.Color.Teal;
+            this.dgvRendimientoOperadores.Location = new System.Drawing.Point(20, 65);
+            this.dgvRendimientoOperadores.Margin = new System.Windows.Forms.Padding(0);
+            this.dgvRendimientoOperadores.Name = "dgvRendimientoOperadores";
+            this.dgvRendimientoOperadores.ReadOnly = true;
+            this.dgvRendimientoOperadores.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvRendimientoOperadores.RowHeadersVisible = false;
+            this.dgvRendimientoOperadores.RowHeadersWidth = 62;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvRendimientoOperadores.RowsDefaultCellStyle = dataGridViewCellStyle30;
+            this.dgvRendimientoOperadores.Size = new System.Drawing.Size(847, 67);
+            this.dgvRendimientoOperadores.TabIndex = 38;
+            this.dgvRendimientoOperadores.Visible = false;
+            // 
+            // ColumnaOperador
+            // 
+            dataGridViewCellStyle25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle25.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
+            this.ColumnaOperador.DefaultCellStyle = dataGridViewCellStyle25;
+            this.ColumnaOperador.FillWeight = 106.2306F;
+            this.ColumnaOperador.HeaderText = "Operador";
+            this.ColumnaOperador.MinimumWidth = 8;
+            this.ColumnaOperador.Name = "ColumnaOperador";
+            this.ColumnaOperador.ReadOnly = true;
+            // 
+            // ColumnaContratosNuevos
+            // 
+            dataGridViewCellStyle26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle26.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
+            this.ColumnaContratosNuevos.DefaultCellStyle = dataGridViewCellStyle26;
+            this.ColumnaContratosNuevos.FillWeight = 106.2306F;
+            this.ColumnaContratosNuevos.HeaderText = "Contratos nuevos";
+            this.ColumnaContratosNuevos.MinimumWidth = 8;
+            this.ColumnaContratosNuevos.Name = "ColumnaContratosNuevos";
+            this.ColumnaContratosNuevos.ReadOnly = true;
+            // 
+            // ColumnaContratosRenovados
+            // 
+            dataGridViewCellStyle27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle27.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
+            this.ColumnaContratosRenovados.DefaultCellStyle = dataGridViewCellStyle27;
+            this.ColumnaContratosRenovados.FillWeight = 106.2306F;
+            this.ColumnaContratosRenovados.HeaderText = "Contratos renovados";
+            this.ColumnaContratosRenovados.MinimumWidth = 8;
+            this.ColumnaContratosRenovados.Name = "ColumnaContratosRenovados";
+            this.ColumnaContratosRenovados.ReadOnly = true;
+            // 
+            // ColumnaIngresos
+            // 
+            dataGridViewCellStyle28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle28.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
+            this.ColumnaIngresos.DefaultCellStyle = dataGridViewCellStyle28;
+            this.ColumnaIngresos.FillWeight = 106.2306F;
+            this.ColumnaIngresos.HeaderText = "Ingresos totales gestionados";
+            this.ColumnaIngresos.MinimumWidth = 8;
+            this.ColumnaIngresos.Name = "ColumnaIngresos";
+            this.ColumnaIngresos.ReadOnly = true;
+            // 
+            // ColumnaDeuda
+            // 
+            dataGridViewCellStyle29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle29.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
+            this.ColumnaDeuda.DefaultCellStyle = dataGridViewCellStyle29;
+            this.ColumnaDeuda.FillWeight = 106.2306F;
+            this.ColumnaDeuda.HeaderText = "Monto de deuda total";
+            this.ColumnaDeuda.MinimumWidth = 8;
+            this.ColumnaDeuda.Name = "ColumnaDeuda";
+            this.ColumnaDeuda.ReadOnly = true;
             // 
             // panel3
             // 
@@ -262,7 +394,7 @@
             this.comboBox2.ForeColor = System.Drawing.Color.White;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
-            "Pagos Pendientes de Aprobacion",
+            "Ocupación y Vacancia de inmuebles",
             "Rendimiento de Operadores"});
             this.comboBox2.Location = new System.Drawing.Point(4, 28);
             this.comboBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -275,7 +407,7 @@
             // 
             this.tableLayoutPanel9.ColumnCount = 1;
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.Controls.Add(this.TNacimiento, 0, 1);
+            this.tableLayoutPanel9.Controls.Add(this.dateTimePicker1, 0, 1);
             this.tableLayoutPanel9.Controls.Add(label6, 0, 0);
             this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel9.Location = new System.Drawing.Point(10, 77);
@@ -287,26 +419,26 @@
             this.tableLayoutPanel9.Size = new System.Drawing.Size(270, 68);
             this.tableLayoutPanel9.TabIndex = 4;
             // 
-            // TNacimiento
+            // dateTimePicker1
             // 
-            this.TNacimiento.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.TNacimiento.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.TNacimiento.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.TNacimiento.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.TNacimiento.CalendarTrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.TNacimiento.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.TNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.TNacimiento.Location = new System.Drawing.Point(4, 22);
-            this.TNacimiento.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.TNacimiento.Name = "TNacimiento";
-            this.TNacimiento.Size = new System.Drawing.Size(262, 25);
-            this.TNacimiento.TabIndex = 24;
+            this.dateTimePicker1.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.dateTimePicker1.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.dateTimePicker1.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.dateTimePicker1.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.dateTimePicker1.CalendarTrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(4, 22);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(262, 25);
+            this.dateTimePicker1.TabIndex = 24;
             // 
             // tableLayoutPanel10
             // 
             this.tableLayoutPanel10.ColumnCount = 1;
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel10.Controls.Add(this.dateTimePicker1, 0, 1);
+            this.tableLayoutPanel10.Controls.Add(this.dateTimePicker2, 0, 1);
             this.tableLayoutPanel10.Controls.Add(label7, 0, 0);
             this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel10.Location = new System.Drawing.Point(288, 77);
@@ -318,20 +450,20 @@
             this.tableLayoutPanel10.Size = new System.Drawing.Size(291, 68);
             this.tableLayoutPanel10.TabIndex = 5;
             // 
-            // dateTimePicker1
+            // dateTimePicker2
             // 
-            this.dateTimePicker1.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.dateTimePicker1.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.dateTimePicker1.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.dateTimePicker1.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.dateTimePicker1.CalendarTrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
-            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(4, 23);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(283, 25);
-            this.dateTimePicker1.TabIndex = 24;
+            this.dateTimePicker2.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.dateTimePicker2.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.dateTimePicker2.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.dateTimePicker2.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.dateTimePicker2.CalendarTrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(35)))));
+            this.dateTimePicker2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker2.Location = new System.Drawing.Point(4, 23);
+            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(283, 25);
+            this.dateTimePicker2.TabIndex = 24;
             // 
             // tableLayoutPanel3
             // 
@@ -400,13 +532,13 @@
             // 
             // dataGridViewImageColumn1
             // 
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle20.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle20.NullValue")));
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.dataGridViewImageColumn1.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle31.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle31.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle31.NullValue = null;
+            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
+            this.dataGridViewImageColumn1.DefaultCellStyle = dataGridViewCellStyle31;
             this.dataGridViewImageColumn1.HeaderText = "Confirmar pago";
             this.dataGridViewImageColumn1.Image = global::InmoGestor.Properties.Resources.check_mark;
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
@@ -416,13 +548,13 @@
             // 
             // dataGridViewImageColumn2
             // 
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle21.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle21.NullValue")));
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.dataGridViewImageColumn2.DefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle32.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle32.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle32.NullValue = null;
+            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
+            this.dataGridViewImageColumn2.DefaultCellStyle = dataGridViewCellStyle32;
             this.dataGridViewImageColumn2.FillWeight = 74.01306F;
             this.dataGridViewImageColumn2.HeaderText = "Anular pago";
             this.dataGridViewImageColumn2.Image = global::InmoGestor.Properties.Resources.paper1;
@@ -432,281 +564,70 @@
             this.dataGridViewImageColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.dataGridViewImageColumn2.Width = 63;
             // 
-            // ColumnaDeuda
+            // ColumnaInmueble
             // 
             dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle18.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.ColumnaDeuda.DefaultCellStyle = dataGridViewCellStyle18;
-            this.ColumnaDeuda.FillWeight = 106.2306F;
-            this.ColumnaDeuda.HeaderText = "Monto de deuda total";
-            this.ColumnaDeuda.MinimumWidth = 8;
-            this.ColumnaDeuda.Name = "ColumnaDeuda";
-            this.ColumnaDeuda.ReadOnly = true;
+            this.ColumnaInmueble.DefaultCellStyle = dataGridViewCellStyle18;
+            this.ColumnaInmueble.FillWeight = 106.2306F;
+            this.ColumnaInmueble.HeaderText = "Inmueble";
+            this.ColumnaInmueble.MinimumWidth = 8;
+            this.ColumnaInmueble.Name = "ColumnaInmueble";
+            this.ColumnaInmueble.ReadOnly = true;
             // 
-            // ColumnaIngresos
+            // ColumnaTipoInmueble
             // 
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.ColumnaIngresos.DefaultCellStyle = dataGridViewCellStyle17;
-            this.ColumnaIngresos.FillWeight = 106.2306F;
-            this.ColumnaIngresos.HeaderText = "Ingresos totales gestionados";
-            this.ColumnaIngresos.MinimumWidth = 8;
-            this.ColumnaIngresos.Name = "ColumnaIngresos";
-            this.ColumnaIngresos.ReadOnly = true;
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
+            this.ColumnaTipoInmueble.DefaultCellStyle = dataGridViewCellStyle19;
+            this.ColumnaTipoInmueble.FillWeight = 106.2306F;
+            this.ColumnaTipoInmueble.HeaderText = "Tipo";
+            this.ColumnaTipoInmueble.MinimumWidth = 8;
+            this.ColumnaTipoInmueble.Name = "ColumnaTipoInmueble";
+            this.ColumnaTipoInmueble.ReadOnly = true;
             // 
-            // ColumnaContratosRenovados
+            // ColumnaDiasOcupados
             // 
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.ColumnaContratosRenovados.DefaultCellStyle = dataGridViewCellStyle16;
-            this.ColumnaContratosRenovados.FillWeight = 106.2306F;
-            this.ColumnaContratosRenovados.HeaderText = "Contratos renovados";
-            this.ColumnaContratosRenovados.MinimumWidth = 8;
-            this.ColumnaContratosRenovados.Name = "ColumnaContratosRenovados";
-            this.ColumnaContratosRenovados.ReadOnly = true;
+            dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
+            this.ColumnaDiasOcupados.DefaultCellStyle = dataGridViewCellStyle20;
+            this.ColumnaDiasOcupados.FillWeight = 106.2306F;
+            this.ColumnaDiasOcupados.HeaderText = "Dias ocupados";
+            this.ColumnaDiasOcupados.MinimumWidth = 8;
+            this.ColumnaDiasOcupados.Name = "ColumnaDiasOcupados";
+            this.ColumnaDiasOcupados.ReadOnly = true;
             // 
-            // ColumnaContratosNuevos
+            // ColumnaDiasVacantes
             // 
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.ColumnaContratosNuevos.DefaultCellStyle = dataGridViewCellStyle15;
-            this.ColumnaContratosNuevos.FillWeight = 106.2306F;
-            this.ColumnaContratosNuevos.HeaderText = "Contratos nuevos";
-            this.ColumnaContratosNuevos.MinimumWidth = 8;
-            this.ColumnaContratosNuevos.Name = "ColumnaContratosNuevos";
-            this.ColumnaContratosNuevos.ReadOnly = true;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
+            this.ColumnaDiasVacantes.DefaultCellStyle = dataGridViewCellStyle21;
+            this.ColumnaDiasVacantes.FillWeight = 106.2306F;
+            this.ColumnaDiasVacantes.HeaderText = "Dias vacantes";
+            this.ColumnaDiasVacantes.MinimumWidth = 8;
+            this.ColumnaDiasVacantes.Name = "ColumnaDiasVacantes";
+            this.ColumnaDiasVacantes.ReadOnly = true;
             // 
-            // ColumnaOperador
+            // ColumnaPorcentajeOcupacion
             // 
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.ColumnaOperador.DefaultCellStyle = dataGridViewCellStyle14;
-            this.ColumnaOperador.FillWeight = 106.2306F;
-            this.ColumnaOperador.HeaderText = "Operador";
-            this.ColumnaOperador.MinimumWidth = 8;
-            this.ColumnaOperador.Name = "ColumnaOperador";
-            this.ColumnaOperador.ReadOnly = true;
-            // 
-            // dgvRendimientoOperadores
-            // 
-            this.dgvRendimientoOperadores.AllowUserToAddRows = false;
-            this.dgvRendimientoOperadores.AllowUserToOrderColumns = true;
-            this.dgvRendimientoOperadores.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvRendimientoOperadores.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.dgvRendimientoOperadores.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvRendimientoOperadores.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRendimientoOperadores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
-            this.dgvRendimientoOperadores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvRendimientoOperadores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnaOperador,
-            this.ColumnaContratosNuevos,
-            this.ColumnaContratosRenovados,
-            this.ColumnaIngresos,
-            this.ColumnaDeuda});
-            this.dgvRendimientoOperadores.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvRendimientoOperadores.EnableHeadersVisualStyles = false;
-            this.dgvRendimientoOperadores.GridColor = System.Drawing.Color.Teal;
-            this.dgvRendimientoOperadores.Location = new System.Drawing.Point(20, 65);
-            this.dgvRendimientoOperadores.Margin = new System.Windows.Forms.Padding(0);
-            this.dgvRendimientoOperadores.Name = "dgvRendimientoOperadores";
-            this.dgvRendimientoOperadores.ReadOnly = true;
-            this.dgvRendimientoOperadores.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgvRendimientoOperadores.RowHeadersVisible = false;
-            this.dgvRendimientoOperadores.RowHeadersWidth = 62;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvRendimientoOperadores.RowsDefaultCellStyle = dataGridViewCellStyle19;
-            this.dgvRendimientoOperadores.Size = new System.Drawing.Size(847, 67);
-            this.dgvRendimientoOperadores.TabIndex = 38;
-            this.dgvRendimientoOperadores.Visible = false;
-            // 
-            // ColumnaAnular
-            // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle11.NullValue")));
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.ColumnaAnular.DefaultCellStyle = dataGridViewCellStyle11;
-            this.ColumnaAnular.FillWeight = 74.01306F;
-            this.ColumnaAnular.HeaderText = "Anular pago";
-            this.ColumnaAnular.Image = global::InmoGestor.Properties.Resources.paper1;
-            this.ColumnaAnular.MinimumWidth = 8;
-            this.ColumnaAnular.Name = "ColumnaAnular";
-            this.ColumnaAnular.ReadOnly = true;
-            this.ColumnaAnular.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnaAnular.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // ColumnaConfirmar
-            // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle10.NullValue")));
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.ColumnaConfirmar.DefaultCellStyle = dataGridViewCellStyle10;
-            this.ColumnaConfirmar.HeaderText = "Confirmar pago";
-            this.ColumnaConfirmar.Image = global::InmoGestor.Properties.Resources.check_mark;
-            this.ColumnaConfirmar.Name = "ColumnaConfirmar";
-            this.ColumnaConfirmar.ReadOnly = true;
-            this.ColumnaConfirmar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnaConfirmar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // ColumnaAdicionalOtros
-            // 
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.ColumnaAdicionalOtros.DefaultCellStyle = dataGridViewCellStyle9;
-            this.ColumnaAdicionalOtros.HeaderText = "Otros adicionales";
-            this.ColumnaAdicionalOtros.Name = "ColumnaAdicionalOtros";
-            this.ColumnaAdicionalOtros.ReadOnly = true;
-            // 
-            // ColumnaAdicionalMora
-            // 
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.ColumnaAdicionalMora.DefaultCellStyle = dataGridViewCellStyle8;
-            this.ColumnaAdicionalMora.HeaderText = "Adicional por mora";
-            this.ColumnaAdicionalMora.Name = "ColumnaAdicionalMora";
-            this.ColumnaAdicionalMora.ReadOnly = true;
-            // 
-            // ColumnaFechaPago
-            // 
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.ColumnaFechaPago.DefaultCellStyle = dataGridViewCellStyle7;
-            this.ColumnaFechaPago.FillWeight = 106.2306F;
-            this.ColumnaFechaPago.HeaderText = "Fecha de pago";
-            this.ColumnaFechaPago.MinimumWidth = 8;
-            this.ColumnaFechaPago.Name = "ColumnaFechaPago";
-            this.ColumnaFechaPago.ReadOnly = true;
-            // 
-            // ColumnaInicio
-            // 
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.ColumnaInicio.DefaultCellStyle = dataGridViewCellStyle6;
-            this.ColumnaInicio.FillWeight = 106.2306F;
-            this.ColumnaInicio.HeaderText = "Metodo de pago";
-            this.ColumnaInicio.MinimumWidth = 8;
-            this.ColumnaInicio.Name = "ColumnaInicio";
-            this.ColumnaInicio.ReadOnly = true;
-            // 
-            // ColumnaMonto
-            // 
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.ColumnaMonto.DefaultCellStyle = dataGridViewCellStyle5;
-            this.ColumnaMonto.FillWeight = 106.2306F;
-            this.ColumnaMonto.HeaderText = "Monto Pagado";
-            this.ColumnaMonto.MinimumWidth = 8;
-            this.ColumnaMonto.Name = "ColumnaMonto";
-            this.ColumnaMonto.ReadOnly = true;
-            // 
-            // ColumnaPeriodo
-            // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.ColumnaPeriodo.DefaultCellStyle = dataGridViewCellStyle4;
-            this.ColumnaPeriodo.FillWeight = 106.2306F;
-            this.ColumnaPeriodo.HeaderText = "Periodo";
-            this.ColumnaPeriodo.MinimumWidth = 8;
-            this.ColumnaPeriodo.Name = "ColumnaPeriodo";
-            this.ColumnaPeriodo.ReadOnly = true;
-            // 
-            // ColumnaFin
-            // 
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.ColumnaFin.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ColumnaFin.HeaderText = "Inquilino";
-            this.ColumnaFin.Name = "ColumnaFin";
-            this.ColumnaFin.ReadOnly = true;
-            // 
-            // ColumnaId
-            // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.ColumnaId.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ColumnaId.HeaderText = "Operador";
-            this.ColumnaId.Name = "ColumnaId";
-            this.ColumnaId.ReadOnly = true;
-            // 
-            // dgvPagos
-            // 
-            this.dgvPagos.AllowUserToAddRows = false;
-            this.dgvPagos.AllowUserToOrderColumns = true;
-            this.dgvPagos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvPagos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.dgvPagos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvPagos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPagos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvPagos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPagos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnaId,
-            this.ColumnaFin,
-            this.ColumnaPeriodo,
-            this.ColumnaMonto,
-            this.ColumnaInicio,
-            this.ColumnaFechaPago,
-            this.ColumnaAdicionalMora,
-            this.ColumnaAdicionalOtros,
-            this.ColumnaConfirmar,
-            this.ColumnaAnular});
-            this.dgvPagos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvPagos.EnableHeadersVisualStyles = false;
-            this.dgvPagos.GridColor = System.Drawing.Color.Teal;
-            this.dgvPagos.Location = new System.Drawing.Point(20, 65);
-            this.dgvPagos.Margin = new System.Windows.Forms.Padding(0);
-            this.dgvPagos.Name = "dgvPagos";
-            this.dgvPagos.ReadOnly = true;
-            this.dgvPagos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgvPagos.RowHeadersVisible = false;
-            this.dgvPagos.RowHeadersWidth = 62;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvPagos.RowsDefaultCellStyle = dataGridViewCellStyle12;
-            this.dgvPagos.Size = new System.Drawing.Size(847, 67);
-            this.dgvPagos.TabIndex = 41;
+            dataGridViewCellStyle22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
+            this.ColumnaPorcentajeOcupacion.DefaultCellStyle = dataGridViewCellStyle22;
+            this.ColumnaPorcentajeOcupacion.FillWeight = 106.2306F;
+            this.ColumnaPorcentajeOcupacion.HeaderText = "Porcentaje de ocupacion";
+            this.ColumnaPorcentajeOcupacion.MinimumWidth = 8;
+            this.ColumnaPorcentajeOcupacion.Name = "ColumnaPorcentajeOcupacion";
+            this.ColumnaPorcentajeOcupacion.ReadOnly = true;
             // 
             // ReportesGerente
             // 
@@ -725,6 +646,8 @@
             this.Load += new System.EventHandler(this.ReportesGerente_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOcupacionYVacancia)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRendimientoOperadores)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -737,8 +660,6 @@
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRendimientoOperadores)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPagos)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -750,9 +671,9 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
-        private System.Windows.Forms.DateTimePicker TNacimiento;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Label label12;
@@ -762,22 +683,17 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
-        private System.Windows.Forms.DataGridView dgvPagos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaFin;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaPeriodo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaMonto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaInicio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaFechaPago;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaAdicionalMora;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaAdicionalOtros;
-        private System.Windows.Forms.DataGridViewImageColumn ColumnaConfirmar;
-        private System.Windows.Forms.DataGridViewImageColumn ColumnaAnular;
+        private System.Windows.Forms.DataGridView dgvOcupacionYVacancia;
         private System.Windows.Forms.DataGridView dgvRendimientoOperadores;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaOperador;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaContratosNuevos;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaContratosRenovados;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaIngresos;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaDeuda;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaInmueble;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaTipoInmueble;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaDiasOcupados;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaDiasVacantes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaPorcentajeOcupacion;
     }
 }

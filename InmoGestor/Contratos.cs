@@ -10,7 +10,6 @@ namespace InmoGestor
 {
     public partial class Contratos : Form
     {
-        private EditarContrato editarContratoForm;
         private AgregarContrato agregarContratoForm;
 
         public Contratos()
@@ -23,12 +22,11 @@ namespace InmoGestor
         private static bool IsOpen(Form f) => f != null && !f.IsDisposed && f.Visible;
 
         private bool HayFormAbierto() =>
-            IsOpen(agregarContratoForm) || IsOpen(editarContratoForm);
+            IsOpen(agregarContratoForm);
 
         private void FocusFormAbierto()
         {
             if (IsOpen(agregarContratoForm)) { agregarContratoForm.BringToFront(); agregarContratoForm.Focus(); return; }
-            if (IsOpen(editarContratoForm)) { editarContratoForm.BringToFront(); editarContratoForm.Focus(); return; }
         }
 
         private void Contratos_Resize(object sender, EventArgs e) => CentrarFormAbierto();
@@ -36,7 +34,6 @@ namespace InmoGestor
         private void CentrarFormAbierto()
         {
             Form f = IsOpen(agregarContratoForm) ? (Form)agregarContratoForm
-                  : IsOpen(editarContratoForm) ? (Form)editarContratoForm
                   : null;
 
             if (f == null) return;
@@ -107,11 +104,17 @@ namespace InmoGestor
         {
             dataGridContratos.AutoGenerateColumns = false;
 
-            // Formato moneda con símbolo local
-            ColumnaPrecioCuotas.DefaultCellStyle.Format = "C0";
-            ColumnaPorcentajeAumentoMora.DefaultCellStyle.Format = "C0";
+            // --- NOMBRES DE PROPIEDAD CORREGIDOS ---
+            // Variable de tu Columna -> Propiedad de ContratoGridRow
+            ColumnaInquilino.DataPropertyName = "Inquilino";
+            ColumnaDireccion.DataPropertyName = "Direccion";
+            ColumnaPrecioCuotas.DataPropertyName = "PrecioCuota";
+            ColumnaCuotas.DataPropertyName = "CantCuotas";      // <-- Corregido
+            ColumnaInicio.DataPropertyName = "FechaInicio";    // <-- Corregido
+            ColumnaFin.DataPropertyName = "FechaFin";          // <-- Corregido
+            ColumnaPorcentajeAumentoMora.DataPropertyName = "MoraDiaria"; // <-- Corregido
 
-            // Alineaciones/estilos opcionales
+            // Estilos (Tu código original está bien)
             ColumnaPrecioCuotas.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             ColumnaCuotas.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             ColumnaInicio.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -269,17 +272,16 @@ namespace InmoGestor
         {
             if (e.RowIndex < 0) return;
 
+            // Asumo que tu columna se llama 'ColumnaRescindir'
             var clickedCol = dataGridContratos.Columns[e.ColumnIndex].Name;
+            if (clickedCol != "ColumnaRescindir") return;
 
-            // Solo tenemos botón "Rescindir" en el diseño actual
-            if (clickedCol != nameof(ColumnaRescindir)) return;
-
-            // Obtenemos la fila bindeada (DTO con ContratoId)
             var rowData = dataGridContratos.Rows[e.RowIndex].DataBoundItem;
             if (rowData == null) return;
 
-            // Usamos dynamic para no acoplar al tipo exacto del DTO
-            int contratoId = (int)rowData.GetType().GetProperty("ContratoId").GetValue(rowData, null);
+            // --- CORRECCIÓN AQUÍ ---
+            // La propiedad se llama 'Id', no 'ContratoId'
+            int contratoId = (int)rowData.GetType().GetProperty("Id").GetValue(rowData, null);
 
             var r = MessageBox.Show("¿Rescindir (anular) el contrato seleccionado?",
                                     "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);

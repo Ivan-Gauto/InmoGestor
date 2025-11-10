@@ -34,6 +34,8 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,11 +46,13 @@
   <ItemGroup>
     <Compile Include="CD_Contrato.cs" />
     <Compile Include="CD_Cuotas.cs" />
+    <Compile Include="CD_Backup.cs" />
     <Compile Include="CD_Inmueble.cs" />
     <Compile Include="CD_Log.cs" />
     <Compile Include="CD_Pago.cs" />
     <Compile Include="CD_PersonaRolCliente.cs" />
     <Compile Include="CD_Recibo.cs" />
+    <Compile Include="CD_Reportes.cs" />
     <Compile Include="CD_Usuario.cs" />
     <Compile Include="Conexion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
