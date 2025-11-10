@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="ContratoAlquiler.cs" />
     <Compile Include="Cuota.cs" />
+    <Compile Include="DTOs.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Inmueble.cs" />
     <Compile Include="LogUsuario.cs" />

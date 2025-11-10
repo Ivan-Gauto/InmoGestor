@@ -33,6 +33,8 @@ namespace CapaEntidades
                 }
             }
         }
+
+
         public string PropietarioNombreCompleto => $"{oPropietario?.oPersona?.Nombre} {oPropietario?.oPersona?.Apellido}".Trim();
 
         // Constructor

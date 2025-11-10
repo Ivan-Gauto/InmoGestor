@@ -34,8 +34,24 @@ namespace InmoGestor
 
             LDireccion.Text = inmueble.Direccion;
             LTipo.Text = inmueble.TipoInmuebleNombre;
-            LPropietarioNombre.Text = $"{inmueble.oPropietario.oPersona.Nombre}, {inmueble.oPropietario.oPersona.Apellido}";
             LEstado.Text = inmueble.DisponibilidadNombre;
+
+            // --- INICIO DE LA MODIFICACIÓN ---
+
+            // Lógica para el Propietario (LO QUE PIDES)
+            // Comprobamos que el propietario y la persona no sean nulos
+            if (inmueble.oPropietario != null &&
+                inmueble.oPropietario.oPersona != null &&
+                !string.IsNullOrEmpty(inmueble.oPropietario.oPersona.Nombre))
+            {
+                LPropietarioNombre.Text = $"{inmueble.oPropietario.oPersona.Nombre}, {inmueble.oPropietario.oPersona.Apellido}";
+            }
+            else
+            {
+                LPropietarioNombre.Text = "Sin propietario";
+            }
+
+            // --- FIN DE LA MODIFICACIÓN ---
 
             try
             {
@@ -126,7 +142,6 @@ namespace InmoGestor
             label1.ForeColor = colorTextoSecundario;
             label2.ForeColor = colorTextoSecundario;
             label3.ForeColor = colorTextoSecundario;
-
             LInquilinoNombre.Text = "Sin inquilino";
             LPrecio.Text = "$0";
         }

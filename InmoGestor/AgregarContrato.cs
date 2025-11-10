@@ -172,14 +172,15 @@ namespace InmoGestor
                     DniInquilino = Convert.ToString(comboBox2.SelectedValue),
                     RolInquilinoId = 2,                       // ajusta según tu catálogo
                     TasaMoraMensual = (decimal)tasa,
-                    Estado = 1                       // Vigente
-            };
+                    Estado = 1,// Vigente
+                    UsuarioCreador = 3
+                };
 
-                //asignamos usuario creador
+                /*asignamos usuario creador
                 if (SesionUsuario.UsuarioActual != null)
                 {
                     contrato.UsuarioCreador = SesionUsuario.UsuarioActual.IdUsuario;
-                }
+                }*/
 
 
                 // Registrar
