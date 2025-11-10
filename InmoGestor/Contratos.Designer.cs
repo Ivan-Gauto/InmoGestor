@@ -35,9 +35,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -49,7 +46,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Contratos));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ContenedorContratos = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -76,12 +72,9 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.label12 = new System.Windows.Forms.Label();
-            this.ColumnaPorcentajeAumentoMora = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnaRescindir = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ColumnaPorcentajeAumentoMora = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnaRescindir = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ColumnaPorcentajeAumentoMora = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnaRescindir = new System.Windows.Forms.DataGridViewImageColumn();
+            this.BAgregarContrato = new System.Windows.Forms.Button();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             label5 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             label10 = new System.Windows.Forms.Label();
@@ -228,6 +221,7 @@
             this.dataGridContratos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridContratos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridContratos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnaId,
             this.ColumnaInquilino,
             this.ColumnaDireccion,
             this.ColumnaInmueble,
@@ -255,6 +249,7 @@
             // 
             // ColumnaId
             // 
+            this.ColumnaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
@@ -318,7 +313,7 @@
             // 
             // ColumnaCuotas
             // 
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(15, 30, 45);
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
@@ -574,44 +569,10 @@
             this.dataGridViewImageColumn2.FillWeight = 76.14214F;
             this.dataGridViewImageColumn2.HeaderText = "Eliminar";
             this.dataGridViewImageColumn2.Image = global::InmoGestor.Properties.Resources.delete;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle11.NullValue")));
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.ColumnaRescindir.DefaultCellStyle = dataGridViewCellStyle11;
-            this.ColumnaRescindir.FillWeight = 76.14214F;
-            this.ColumnaRescindir.HeaderText = "Rescindir";
-            this.ColumnaRescindir.Image = global::InmoGestor.Properties.Resources.paper1;
-            this.ColumnaRescindir.Name = "ColumnaRescindir";
-            this.ColumnaRescindir.ReadOnly = true;
-            this.ColumnaRescindir.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnaRescindir.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle11.NullValue")));
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.ColumnaRescindir.DefaultCellStyle = dataGridViewCellStyle11;
-            this.ColumnaRescindir.FillWeight = 76.14214F;
-            this.ColumnaRescindir.HeaderText = "Rescindir";
-            this.ColumnaRescindir.Image = global::InmoGestor.Properties.Resources.paper1;
-            this.ColumnaRescindir.Name = "ColumnaRescindir";
-            this.ColumnaRescindir.ReadOnly = true;
-            this.ColumnaRescindir.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnaRescindir.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle11.NullValue")));
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(123)))), ((int)(((byte)(185)))));
-            this.ColumnaRescindir.DefaultCellStyle = dataGridViewCellStyle11;
-            this.ColumnaRescindir.FillWeight = 76.14214F;
-            this.ColumnaRescindir.HeaderText = "Rescindir";
-            this.ColumnaRescindir.Image = global::InmoGestor.Properties.Resources.paper1;
-            this.ColumnaRescindir.Name = "ColumnaRescindir";
-            this.ColumnaRescindir.ReadOnly = true;
-            this.ColumnaRescindir.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnaRescindir.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
+            this.dataGridViewImageColumn2.ReadOnly = true;
+            this.dataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewImageColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Contratos
             // 
@@ -666,6 +627,7 @@
         private System.Windows.Forms.Button BAgregarContrato;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaInquilino;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaDireccion;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnaInmueble;

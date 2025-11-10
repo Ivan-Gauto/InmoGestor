@@ -19,7 +19,7 @@ namespace CapaDatos
                 // 2. Modificamos el query para que el WHERE sea dinámico
                 string query = @"
             SELECT 
-                i.inmueble_id, i.direccion, i.descripcion, i.imagen, i.disponibilidad, i.estado, i.fecha_creacion, i.division,i.disponibilidad
+                i.inmueble_id, i.direccion, i.descripcion, i.imagen, i.disponibilidad, i.estado, i.fecha_creacion, i.division,
                 
                 ti.tipo_inmueble_id,
                 ti.nombre AS TipoInmuebleNombre,
@@ -84,6 +84,84 @@ namespace CapaDatos
                 {
                     Console.WriteLine("Error al listar inmuebles: " + ex.Message);
                     lista = new List<Inmueble>();
+                }
+            }
+            return lista;
+        }
+
+        public List<Inmueble> ListarPorPropietario(string dniPropietario, int rolIdPropietario)
+        {
+            List<Inmueble> lista = new List<Inmueble>();
+            using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    string query = @"
+                        SELECT 
+                            i.inmueble_id, i.direccion, i.descripcion, i.estado, i.id_tipo_inmueble,
+                            i.disponibilidad, i.division, i.imagen, i.fecha_creacion,
+                            i.dni AS PropietarioDni, i.rol_cliente_id,
+                            ti.nombre AS TipoNombre,
+                            p.nombre AS PropietarioNombre, 
+                            p.apellido AS PropietarioApellido
+                        FROM 
+                            dbo.inmueble i
+                        LEFT JOIN 
+                            dbo.tipo_inmueble ti ON i.id_tipo_inmueble = ti.tipo_inmueble_id
+                        LEFT JOIN 
+                            dbo.persona_rol_cliente prc ON i.dni = prc.dni AND i.rol_cliente_id = prc.rol_cliente_id
+                        LEFT JOIN
+                            dbo.persona p ON prc.dni = p.dni
+                        WHERE 
+                            i.dni = @dniPropietario AND i.rol_cliente_id = @rolIdPropietario";
+
+                    SqlCommand cmd = new SqlCommand(query, oconexion);
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@dniPropietario", dniPropietario);
+                    cmd.Parameters.AddWithValue("@rolIdPropietario", rolIdPropietario);
+
+                    oconexion.Open();
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            lista.Add(new Inmueble()
+                            {
+                                // --- Nombres Corregidos ---
+                                IdInmueble = Convert.ToInt32(reader["inmueble_id"]),
+                                Direccion = reader["direccion"] == DBNull.Value ? "" : reader["direccion"].ToString(),
+                                Descripcion = reader["descripcion"] == DBNull.Value ? "" : reader["descripcion"].ToString(),
+                                Estado = reader["estado"] == DBNull.Value ? 0 : Convert.ToInt32(reader["estado"]),
+                                Disponibilidad = reader["disponibilidad"] == DBNull.Value ? 0 : Convert.ToInt32(reader["disponibilidad"]),
+                                Division = reader["division"] == DBNull.Value ? "" : reader["division"].ToString(),
+                                RutaImagen = reader["imagen"] == DBNull.Value ? "" : reader["imagen"].ToString(),
+                                FechaCreacion = Convert.ToDateTime(reader["fecha_creacion"]),
+
+                                oTipoInmueble = reader["id_tipo_inmueble"] == DBNull.Value ? new TipoInmueble() : new TipoInmueble()
+                                {
+                                    IdTipoInmueble = Convert.ToInt32(reader["id_tipo_inmueble"]),
+                                    Nombre = reader["TipoNombre"].ToString()
+                                },
+
+                                oPropietario = reader["PropietarioDni"] == DBNull.Value ? new PersonaRolCliente { oPersona = new Persona() } : new PersonaRolCliente()
+                                {
+                                    Dni = reader["PropietarioDni"].ToString(),
+                                    oRolCliente = new RolCliente { RolClienteId = Convert.ToInt32(reader["rol_cliente_id"]) },
+                                    oPersona = new Persona()
+                                    {
+                                        // También asignamos el DNI aquí por coherencia
+                                        Dni = reader["PropietarioDni"].ToString(),
+                                        Nombre = reader["PropietarioNombre"].ToString(),
+                                        Apellido = reader["PropietarioApellido"].ToString()
+                                    }
+                                }
+                            });
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
                 }
             }
             return lista;
@@ -188,7 +266,16 @@ namespace CapaDatos
         {
             using (var cn = new SqlConnection(Conexion.cadena))
             {
-                string query = "UPDATE dbo.inmueble SET estado = 0 WHERE inmueble_id = @idInmueble";
+                // ESTA ES LA CONSULTA CORREGIDA
+                string query = @"
+                    UPDATE dbo.inmueble 
+                    SET 
+                        estado = 0, 
+                        dni = NULL, 
+                        rol_cliente_id = NULL 
+                    WHERE 
+                        inmueble_id = @idInmueble";
+
                 try
                 {
                     SqlCommand cmd = new SqlCommand(query, cn);
