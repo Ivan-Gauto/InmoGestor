@@ -8,6 +8,8 @@ namespace CapaNegocio
 {
     public class CN_Contrato
     {
+
+        private readonly CD_Contrato _cdContrato = new CD_Contrato();
         /// <summary>
         /// Valida los datos clave del contrato antes de persistir.
         /// </summary>
@@ -22,6 +24,11 @@ namespace CapaNegocio
             if (c.TasaMoraMensual < 0) return "La tasa de mora no puede ser negativa.";
             if (c.FechaInicio.Date > c.FechaFin.Date) return "La fecha de inicio no puede ser mayor a la de fin.";
             return string.Empty;
+        }
+
+        public bool ActualizarContratosFinalizados()
+        {
+            return _cdContrato.ActualizarContratosFinalizados();
         }
 
         /// <summary>

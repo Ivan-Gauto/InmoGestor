@@ -7,6 +7,7 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 
+
 namespace InmoGestor
 {
     public partial class ReportesGerente : Form
@@ -16,6 +17,14 @@ namespace InmoGestor
         public ReportesGerente()
         {
             InitializeComponent();
+
+            // Recalcular automáticamente al tocar fechas
+            dateTimePicker1.ValueChanged += (_, __) => CargarDatosReporte();
+            dateTimePicker2.ValueChanged += (_, __) => CargarDatosReporte();
+
+            // Algunos DTP solo disparan al cerrar el calendario:
+            dateTimePicker1.CloseUp += (_, __) => CargarDatosReporte();
+            dateTimePicker2.CloseUp += (_, __) => CargarDatosReporte();
         }
 
         // Tu función de descarga (está perfecta)
@@ -79,14 +88,24 @@ namespace InmoGestor
         }
 
         // Evento Load del Formulario (MODIFICADO)
+
         private void ReportesGerente_Load(object sender, EventArgs e)
         {
             ConfigurarGrids();
 
-            // Los items ya están cargados desde el diseñador.
-            // Establecer el valor por defecto
-            comboBox2.SelectedIndex = 0;
-            // Esto dispara 'comboBox2_SelectedIndexChanged' y carga el primer reporte.
+            // Suscribir cambios de fecha -> recarga automática
+            dateTimePicker1.ValueChanged += dateTime_ValueChanged;
+            dateTimePicker2.ValueChanged += dateTime_ValueChanged;
+
+            comboBox2.SelectedIndex = 0; // carga inicial
+        }
+
+        private void dateTime_ValueChanged(object sender, EventArgs e)
+        {
+            // (opcional) evitar consultas inválidas
+            if (dateTimePicker1.Value.Date > dateTimePicker2.Value.Date) return;
+
+            CargarDatosReporte();
         }
 
         // Evento del Botón Descargar (MODIFICADO)
@@ -113,9 +132,20 @@ namespace InmoGestor
         {
             if (comboBox2.SelectedItem == null) return;
 
+            var fechaInicio = dateTimePicker1.Value.Date;
+            var fechaFin = dateTimePicker2.Value.Date;
+
+            // ✅ Validación: inicio no puede ser mayor que fin
+            if (fechaInicio > fechaFin)
+            {
+                MessageBox.Show("La fecha de inicio no puede ser mayor que la fecha de fin.",
+                    "Rango de fechas inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             string reporteSeleccionado = comboBox2.SelectedItem.ToString();
-            DateTime fechaInicio = dateTimePicker1.Value;
-            DateTime fechaFin = dateTimePicker2.Value;
+            fechaInicio = dateTimePicker1.Value;
+            fechaFin = dateTimePicker2.Value;
 
 
 

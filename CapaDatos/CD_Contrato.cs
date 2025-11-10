@@ -79,6 +79,33 @@ namespace CapaDatos
             return lista;
         }
 
+        // using System.Data.SqlClient;
+        public bool ActualizarContratosFinalizados()
+        {
+            const string sql = @"
+        UPDATE dbo.contrato_alquiler
+        SET estado = 2
+        WHERE estado NOT IN (0,2)
+          AND fecha_fin < CAST(GETDATE() AS date);";
+
+            try
+            {
+                using (var cn = new SqlConnection(Conexion.cadena))
+                using (var cmd = new SqlCommand(sql, cn))
+                {
+                    cn.Open();
+                    cmd.ExecuteNonQuery();
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+
         /// <summary>
         /// Lista filas listas para la grilla de contratos.
         /// Trae: id, inquilino, dirección, inmueble, precio cuota, cant cuotas,

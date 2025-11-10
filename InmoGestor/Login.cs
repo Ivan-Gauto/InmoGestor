@@ -25,6 +25,8 @@ namespace InmoGestor
             // Ajustes de UX
             this.AcceptButton = BIngresar;  // Enter = click en Ingresar
             TIngresoDNI.Focus();
+            var cnContrato = new CN_Contrato();
+            cnContrato.ActualizarContratosFinalizados();
         }
 
         private void BIngresar_Click(object sender, EventArgs e)

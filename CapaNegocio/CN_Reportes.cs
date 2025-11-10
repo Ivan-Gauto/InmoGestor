@@ -17,5 +17,11 @@ namespace CapaNegocio
         {
             return objCD_Reportes.ObtenerReporteOcupacion();
         }
+
+        public DataTable ObtenerInquilinosMorosos(DateTime desde, DateTime hasta, string dniInquilino, int? contratoId)
+        {
+            return objCD_Reportes.ObtenerInquilinosMorosos(desde, hasta, dniInquilino, contratoId);
+        }
+
     }
 }
