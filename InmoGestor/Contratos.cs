@@ -64,7 +64,7 @@ namespace InmoGestor
                 agregarContratoForm.Dispose();
                 agregarContratoForm = null;
                 // refrescamos listado y KPIs al cerrar (por si se creó contrato)
-                CargarContratosYKpis();
+                CargarContratosYKpis(1);
             };
 
             agregarContratoForm.Show();
@@ -171,7 +171,7 @@ namespace InmoGestor
             label_CantXVencer.Text = porVencer.ToString();
         }
 
-        private void CargarContratosYKpis(int? estado = null)
+        private void CargarContratosYKpis(int? estado = 1)
         {
             CargarContratos(estado);
             CargarKpis();
@@ -272,15 +272,12 @@ namespace InmoGestor
         {
             if (e.RowIndex < 0) return;
 
-            // Asumo que tu columna se llama 'ColumnaRescindir'
             var clickedCol = dataGridContratos.Columns[e.ColumnIndex].Name;
             if (clickedCol != "ColumnaRescindir") return;
 
             var rowData = dataGridContratos.Rows[e.RowIndex].DataBoundItem;
             if (rowData == null) return;
 
-            // --- CORRECCIÓN AQUÍ ---
-            // La propiedad se llama 'Id', no 'ContratoId'
             int contratoId = (int)rowData.GetType().GetProperty("Id").GetValue(rowData, null);
 
             var r = MessageBox.Show("¿Rescindir (anular) el contrato seleccionado?",
@@ -292,7 +289,8 @@ namespace InmoGestor
             {
                 MessageBox.Show("Contrato anulado correctamente.", "OK",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
-                CargarContratosYKpis(); // refrescar grilla y KPIs
+
+                CargarContratosYKpis(1);
             }
             else
             {

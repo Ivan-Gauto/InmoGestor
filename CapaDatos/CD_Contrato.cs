@@ -38,8 +38,16 @@ namespace CapaDatos
             var where = new List<string>();
             var cmd = new SqlCommand();
 
-            if (estado.HasValue) { where.Add("c.estado = @estado"); cmd.Parameters.AddWithValue("@estado", estado.Value); }
-            if (inmuebleId.HasValue) { where.Add("c.inmueble_id = @inmueble_id"); cmd.Parameters.AddWithValue("@inmueble_id", inmuebleId.Value); }
+            if (estado.HasValue)
+            {
+                where.Add("c.estado = @estado");
+                cmd.Parameters.AddWithValue("@estado", estado.Value);
+            }
+            else
+            {
+                where.Add("c.estado IN (1, 2)");
+            }
+                if (inmuebleId.HasValue) { where.Add("c.inmueble_id = @inmueble_id"); cmd.Parameters.AddWithValue("@inmueble_id", inmuebleId.Value); }
             if (!string.IsNullOrWhiteSpace(dniInquilino)) { where.Add("c.dni_inquilino = @dni"); cmd.Parameters.AddWithValue("@dni", dniInquilino); }
             if (desde.HasValue) { where.Add("c.fecha_inicio >= @desde"); cmd.Parameters.AddWithValue("@desde", desde.Value.Date); }
             if (hasta.HasValue) { where.Add("c.fecha_fin <= @hasta"); cmd.Parameters.AddWithValue("@hasta", hasta.Value.Date); }
@@ -132,8 +140,8 @@ SELECT
 FROM dbo.contrato_alquiler c
 INNER JOIN dbo.inmueble i   ON i.inmueble_id = c.inmueble_id
 INNER JOIN dbo.persona  p   ON p.dni = c.dni_inquilino
-/**/ WHERE ( @estado IS NULL OR c.estado = @estado )
-ORDER BY c.contrato_id DESC;";
+WHERE (@estado IS NULL AND c.estado = 1) OR (c.estado = @estado)
+ORDER BY c.contrato_id DESC;"; ;
 
             using (var cn = new SqlConnection(Conexion.cadena))
             using (var cmd = new SqlCommand(sql, cn))

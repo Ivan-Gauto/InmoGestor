@@ -147,56 +147,6 @@ namespace CapaDatos
             return lista;
         }
 
-        public DataTable ObtenerRendimientoOperadores(DateTime fechaInicio, DateTime fechaFin)
-        {
-            DataTable dt = new DataTable();
-            using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
-            {
-                string query = @"
-                    ;WITH Pagos AS (
-                        SELECT
-                            p.usuario_creador, SUM(p.monto_total) AS IngresosTotales
-                        FROM dbo.pago p
-                        WHERE p.estado = 1 AND p.fecha_pago BETWEEN @FechaInicio AND @FechaFin
-                        GROUP BY p.usuario_creador
-                    ),
-                    Contratos AS (
-                        SELECT
-                            c.usuario_creador, COUNT(c.contrato_id) AS ContratosNuevos
-                        FROM dbo.contrato_alquiler c
-                        WHERE c.fecha_creacion BETWEEN @FechaInicio AND @FechaFin
-                        GROUP BY c.usuario_creador
-                    )
-                    SELECT
-                        (pe.nombre + ' ' + pe.apellido) AS Operador,
-                        ISNULL(c.ContratosNuevos, 0) AS ContratosNuevos,
-                        0 AS ContratosRenovados,
-                        ISNULL(p.IngresosTotales, 0) AS IngresosTotalesGestionados,
-                        0 AS MontoDeudaTotal
-                    FROM dbo.usuario u
-                    JOIN dbo.persona pe ON u.dni = pe.dni
-                    LEFT JOIN Pagos p ON u.usuario_id = p.usuario_creador
-                    LEFT JOIN Contratos c ON u.usuario_id = c.usuario_creador
-                    WHERE u.rol_usuario_id = 3
-                    ORDER BY Operador;";
-                try
-                {
-                    SqlCommand cmd = new SqlCommand(query, oconexion);
-                    cmd.CommandType = CommandType.Text;
-                    cmd.Parameters.AddWithValue("@FechaInicio", fechaInicio.Date);
-                    cmd.Parameters.AddWithValue("@FechaFin", fechaFin.Date);
-                    oconexion.Open();
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
-                    da.Fill(dt);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error en CD_Reportes (Rendimiento): " + ex.Message);
-                }
-                return dt;
-            }
-        }
-
         public DataTable ObtenerReporteOcupacion()
         {
             DataTable dt = new DataTable();
